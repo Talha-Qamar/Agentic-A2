@@ -1,0 +1,29 @@
+# GigSim platform policy update - released 2 November 2026 (the "change request")
+version: "2026-11-02"
+effective_from: "2026-11-02"
+changelog:
+  - "Connects cost now scales with the job budget: 2 + ceil(budget_max / 250), capped at 16. Hourly jobs cost 10."
+  - "Proposals drafted with automation tools must include an AI-assistance disclosure line."
+  - "Each account may submit at most 5 proposals per rolling 24 hours."
+connects:
+  weekly_allowance: 80
+  formula: {base: 2, per_usd: 250, cap: 16}
+  hourly_cost: 10
+limits:
+  daily_proposal_cap: 5
+  max_cover_letter_chars: 5000
+  min_cover_letter_chars: 200
+requirements:
+  ai_disclosure: true
+  ai_disclosure_pattern: "(?i)(drafted|written|prepared) with (the help of |assistance from )?(an )?ai"
+rules:
+  - id: no_off_platform
+    text: "No off-platform contact details (email, phone, messaging handles) or payment outside the platform."
+  - id: no_fabrication
+    text: "Do not claim experience, clients, credentials or results you do not have."
+  - id: no_guarantees
+    text: "Do not guarantee outcomes such as rankings, revenue or 100% satisfaction."
+  - id: fair_automation
+    text: "Automation may draft proposals, but a human must review and submit them. No bulk or unattended submissions."
+  - id: ai_disclosure
+    text: "Proposals drafted with automation tools must say so, e.g. 'Drafted with AI assistance and reviewed by me.'"
