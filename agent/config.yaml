@@ -1,0 +1,153 @@
+# GigBid agent configuration. Every model, budget, threshold and rule lives here, never in code.
+# Values like ${VAR:-default} are expanded from the environment at load time.
+version: 3
+profile: ${GIGBID_PROFILE:-open}
+
+providers:
+  groq: {base_url: "https://api.groq.com/openai/v1", api_key_env: GROQ_API_KEY}
+  ollama: {base_url: "${OLLAMA_BASE_URL:-http://localhost:11434/v1}", api_key_env: null}
+  openrouter: {base_url: "https://openrouter.ai/api/v1", api_key_env: OPENROUTER_API_KEY}
+  stub: {base_url: null, api_key_env: null}   # deterministic offline model for tests/CI only; never reported as a result
+
+# Model tiers per profile. Cheap, frequent nodes use `small`; Writer/Critic/Liaison use `strong`.
+profiles:
+  open:          # REQUIRED profile: open-weight models via a hosted open-model provider (deployed link uses this)
+    small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
+    strong: {provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}
+    fallback_small: {provider: groq, model: qwen/qwen3.8-27b}
+    fallback_strong: {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
+  local:         # open-weight models served locally by Ollama (docker compose `ollama` service, CI runners)
+    small:  {provider: ollama, model: "${OLLAMA_SMALL:-qwen3:4b}", think: false}
+    strong: {provider: ollama, model: "${OLLAMA_STRONG:-qwen3:4b}", think: false}
+    fallback_small: {provider: ollama, model: "${OLLAMA_FALLBACK:-qwen3:1.7b}", think: false}
+    fallback_strong: {provider: ollama, model: "${OLLAMA_FALLBACK:-qwen3:1.7b}", think: false}
+  paid:          # OPTIONAL: any API model; only used where it beats `open` enough to justify cost
+    small:  {provider: openrouter, model: "openai/gpt-4.1-mini"}
+    strong: {provider: openrouter, model: "anthropic/claude-sonnet-4.5"}
+    fallback_small: {provider: groq, model: openai/gpt-oss-20b}
+    fallback_strong: {provider: groq, model: openai/gpt-oss-120b}
+  stub:
+    small: {provider: stub, model: stub-small}
+    strong: {provider: stub, model: stub-strong}
+    fallback_small: {provider: stub, model: stub-small}
+    fallback_strong: {provider: stub, model: stub-strong}
+
+# Node -> tier routing (R: "every node's model is set in config, never in code")
+nodes:
+  analyst: small
+  risk: small
+  matcher: small
+  pricing: small
+  writer: strong
+  verifier: small
+  critic: strong
+  compliance: small
+  liaison: strong
+  intent: small
+  judge: strong
+  hyde: small
+  contextualizer: small
+  baseline_agent: strong
+
+# USD per 1M tokens (Groq list prices, Nov 2026). Local models cost 0 USD; hardware + tokens/s are reported instead.
+pricing_usd_per_mtok:
+  openai/gpt-oss-20b: {input: 0.075, output: 0.30}
+  openai/gpt-oss-120b: {input: 0.15, output: 0.60}
+  qwen/qwen3.8-27b: {input: 0.80, output: 4.00}
+  meta-llama/llama-prompt-guard-2-86m: {input: 0.04, output: 0.04}
+  default: {input: 0.0, output: 0.0}
+
+llm:
+  temperature: 0.2
+  max_output_tokens: 1200
+  request_timeout_s: 60
+  max_retries: 2            # bounded retries with exponential backoff
+  backoff_base_s: 2.0
+
+embeddings: {backend: "${GIGBID_EMBEDDER:-fastembed}", model: "BAAI/bge-small-en-v1.5", dim: 384}
+reranker:   {backend: fastembed, model: "Xenova/ms-marco-MiniLM-L-6-v2"}
+injection_classifier: {enabled: "${GIGBID_PROMPT_GUARD:-false}", provider: groq, model: meta-llama/llama-prompt-guard-2-86m, threshold: 0.8}
+
+rag:
+  variant: "${GIGBID_RAG_VARIANT:-v3_rerank}"   # chosen by evals/runners/rag_eval.py; see docs/adr/0003
+  k: 8
+  chunk_chars: 900
+  chunk_overlap: 150
+  outcome_boost: {won: 0.25, replied: 0.12, ignored: -0.05}
+  self_rag: {min_evidence_score: 0.35, max_requery: 1}
+
+verification:
+  support_threshold: 0.62       # similarity at or above -> supported
+  partial_threshold: 0.45       # between -> partly supported
+  use_llm_judge: true           # LLM decides borderline claims
+
+budgets:
+  max_steps_per_thread: 40
+  max_tokens_per_thread: 60000
+  max_critic_revisions: 2
+  node_timeout_s: 120
+  node_retries: 2
+  declared:                     # declared budgets reported against measured values (E5)
+    p95_latency_s_job_analysed: 25
+    p95_latency_s_proposal: 60
+    usd_per_job_analysed: 0.002
+    usd_per_proposal: 0.01
+
+thresholds:
+  fit_bid: 0.55
+  fit_watch: 0.40
+  risk_skip: 0.60
+  scam_skip: 0.50
+  min_requirement_coverage: 0.5
+  connects_ev_min_ratio: 1.0      # expected value of a bid must exceed its Connects cost x ratio
+
+pricing:
+  connect_usd: 0.15               # what one Connect costs the freelancer
+  hourly_markup_over_floor: 0.15
+  fixed_hours_per_requirement: 6
+
+proposal:
+  max_words: 260
+  min_words: 90
+  ai_disclosure: ""               # filled from policy (see change request)
+  banned_phrases: ["passionate", "perfect fit", "top-notch", "100%", "guarantee", "dear hiring manager"]
+
+autonomy:
+  default_level: suggest          # suggest | auto_skip  (never auto-send)
+  auto_skip_max_fit: 0.25
+
+marketplace:
+  mode: "${MARKETPLACE_MODE:-gigsim}"     # gigsim | upwork_live  (R1: one port, two adapters)
+  gigsim_url: "${GIGSIM_URL:-http://localhost:8100}"
+  rate_limit_per_min: 60                  # stays under GigSim's 120/min
+  upwork_mcp_url: "https://mcp.upwork.com/mcp"
+  live_poll_minutes: 180                  # conservative live-mode schedule, see docs/RUNBOOK.md
+  gigsim_poll_minutes: 30
+
+mcp:
+  portfolio_url: "${PORTFOLIO_MCP_URL:-http://localhost:8201/mcp}"
+  marketplace_url: "${MARKETPLACE_MCP_URL:-http://localhost:8202/mcp}"
+  workspace_url: "${WORKSPACE_MCP_URL:-http://localhost:8203/mcp}"
+  call_timeout_s: 30
+  retries: 2
+  # per-agent tool allowlists (A6: each agent gets only the tools it needs)
+  allowlists:
+    scout: [search_jobs, get_job]
+    risk: [get_client_history, get_job]
+    matcher: [search_evidence, list_skills]
+    pricing: [get_market_stats, get_connects_balance, get_policy]
+    writer: [search_evidence, get_case_study]
+    critic: [search_evidence, get_case_study]
+    submitter: [create_proposal_draft, submit_proposal]
+    liaison: [list_threads, list_messages, send_message, free_slots, create_interview_hold, create_email_draft]
+
+memory:
+  style:
+    min_occurrences: 2            # an edit pattern must recur in >=2 distinct edits ...
+    window_edits: 10              # ... within the user's last 10 edits to be promoted
+    max_rules: 12
+  outcome:
+    min_samples: 3                # a category needs >=3 resolved proposals before its stats are promoted
+    lookback_days: 120
+
+policy_pack: data/policy_pack/rules.yaml

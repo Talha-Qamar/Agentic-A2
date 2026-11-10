@@ -1,0 +1,45 @@
+# Experiment runner: pushing a branch named ci-run/<name> executes ci/run.sh on a GitHub-hosted
+# runner (4 vCPU, 16 GB) with the repo's secrets, then commits ci/out/ back to that branch.
+# Used for evaluations that need network access to model providers or model downloads.
+name: experiment-runner
+on:
+  push:
+    branches: ["ci-run/**"]
+permissions:
+  contents: write
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - uses: astral-sh/setup-uv@v5
+      - name: Cache model downloads
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/fastembed
+            ~/.ollama/models
+          key: models-v1
+      - name: Run experiment
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          HIDDEN_TEST_SEED: ${{ secrets.HIDDEN_TEST_SEED }}
+          FASTEMBED_CACHE_PATH: /home/runner/.cache/fastembed
+        run: |
+          mkdir -p ci/out
+          set -o pipefail
+          bash ci/run.sh 2>&1 | tee ci/out/run.log
+      - name: Commit outputs
+        if: always()
+        run: |
+          git config user.name "Talha-Qamar"
+          git config user.email "talhaa.qamar@gmail.com"
+          git add -f ci/out || true
+          git commit -m "ci-run outputs: ${GITHUB_REF_NAME} (run ${GITHUB_RUN_ID})" || echo "nothing to commit"
+          git push origin HEAD:${GITHUB_REF_NAME}
