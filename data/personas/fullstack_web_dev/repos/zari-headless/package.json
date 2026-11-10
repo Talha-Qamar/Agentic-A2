@@ -1,0 +1,8 @@
+{
+  "name": "zari-headless",
+  "private": true,
+  "dependencies": {
+    "graphql": "latest",
+    "lighthouse-ci": "latest"
+  }
+}

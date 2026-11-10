@@ -1,0 +1,9 @@
+{
+  "name": "roshan-site",
+  "private": true,
+  "dependencies": {
+    "groq-queries": "latest",
+    "next-sitemap": "latest",
+    "i18n": "latest"
+  }
+}

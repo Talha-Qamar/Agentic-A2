@@ -1,0 +1,9 @@
+{
+  "name": "live-track",
+  "private": true,
+  "dependencies": {
+    "redis-pub/sub": "latest",
+    "mapbox-gl": "latest",
+    "expo": "latest"
+  }
+}

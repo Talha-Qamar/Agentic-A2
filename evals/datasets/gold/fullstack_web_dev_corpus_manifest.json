@@ -1,0 +1,948 @@
+{
+ "persona": "fullstack_web_dev",
+ "documents": [
+  {
+   "path": "case_studies/fsw-p01.md",
+   "type": "case_study",
+   "project": "fsw-p01"
+  },
+  {
+   "path": "repos/routemate-saas/README.md",
+   "type": "readme",
+   "project": "fsw-p01"
+  },
+  {
+   "path": "repos/routemate-saas/src/index.ts",
+   "type": "code",
+   "project": "fsw-p01"
+  },
+  {
+   "path": "repos/routemate-saas/package.json",
+   "type": "code",
+   "project": "fsw-p01"
+  },
+  {
+   "path": "case_studies/fsw-p02.md",
+   "type": "case_study",
+   "project": "fsw-p02"
+  },
+  {
+   "path": "repos/stripe-billing-kit/README.md",
+   "type": "readme",
+   "project": "fsw-p02"
+  },
+  {
+   "path": "repos/stripe-billing-kit/src/index.ts",
+   "type": "code",
+   "project": "fsw-p02"
+  },
+  {
+   "path": "repos/stripe-billing-kit/package.json",
+   "type": "code",
+   "project": "fsw-p02"
+  },
+  {
+   "path": "case_studies/fsw-p03.md",
+   "type": "case_study",
+   "project": "fsw-p03"
+  },
+  {
+   "path": "repos/live-track/README.md",
+   "type": "readme",
+   "project": "fsw-p03"
+  },
+  {
+   "path": "repos/live-track/src/index.ts",
+   "type": "code",
+   "project": "fsw-p03"
+  },
+  {
+   "path": "repos/live-track/package.json",
+   "type": "code",
+   "project": "fsw-p03"
+  },
+  {
+   "path": "case_studies/fsw-p04.md",
+   "type": "case_study",
+   "project": "fsw-p04"
+  },
+  {
+   "path": "repos/zari-headless/README.md",
+   "type": "readme",
+   "project": "fsw-p04"
+  },
+  {
+   "path": "repos/zari-headless/src/index.ts",
+   "type": "code",
+   "project": "fsw-p04"
+  },
+  {
+   "path": "repos/zari-headless/package.json",
+   "type": "code",
+   "project": "fsw-p04"
+  },
+  {
+   "path": "repos/clinic-api/README.md",
+   "type": "readme",
+   "project": "fsw-p05"
+  },
+  {
+   "path": "repos/clinic-api/src/clinic_api/core.py",
+   "type": "code",
+   "project": "fsw-p05"
+  },
+  {
+   "path": "repos/clinic-api/src/clinic_api/tasks.py",
+   "type": "code",
+   "project": "fsw-p05"
+  },
+  {
+   "path": "repos/clinic-api/tests/test_core.py",
+   "type": "code",
+   "project": "fsw-p05"
+  },
+  {
+   "path": "repos/clinic-api/requirements.txt",
+   "type": "code",
+   "project": "fsw-p05"
+  },
+  {
+   "path": "case_studies/fsw-p06.md",
+   "type": "case_study",
+   "project": "fsw-p06"
+  },
+  {
+   "path": "case_studies/fsw-p07.md",
+   "type": "case_study",
+   "project": "fsw-p07"
+  },
+  {
+   "path": "repos/roshan-site/README.md",
+   "type": "readme",
+   "project": "fsw-p07"
+  },
+  {
+   "path": "repos/roshan-site/src/index.ts",
+   "type": "code",
+   "project": "fsw-p07"
+  },
+  {
+   "path": "repos/roshan-site/package.json",
+   "type": "code",
+   "project": "fsw-p07"
+  },
+  {
+   "path": "case_studies/fsw-p08.md",
+   "type": "case_study",
+   "project": "fsw-p08"
+  },
+  {
+   "path": "repos/booking-gateway/README.md",
+   "type": "readme",
+   "project": "fsw-p08"
+  },
+  {
+   "path": "repos/booking-gateway/src/index.ts",
+   "type": "code",
+   "project": "fsw-p08"
+  },
+  {
+   "path": "repos/booking-gateway/package.json",
+   "type": "code",
+   "project": "fsw-p08"
+  },
+  {
+   "path": "case_studies/fsw-p09.md",
+   "type": "case_study",
+   "project": "fsw-p09"
+  },
+  {
+   "path": "repos/formflow-infra/README.md",
+   "type": "readme",
+   "project": "fsw-p09"
+  },
+  {
+   "path": "repos/formflow-infra/src/formflow_infra/core.py",
+   "type": "code",
+   "project": "fsw-p09"
+  },
+  {
+   "path": "repos/formflow-infra/tests/test_core.py",
+   "type": "code",
+   "project": "fsw-p09"
+  },
+  {
+   "path": "repos/formflow-infra/requirements.txt",
+   "type": "code",
+   "project": "fsw-p09"
+  },
+  {
+   "path": "case_studies/fsw-p10.md",
+   "type": "case_study",
+   "project": "fsw-p10"
+  },
+  {
+   "path": "repos/a11y-fixes/README.md",
+   "type": "readme",
+   "project": "fsw-p11"
+  },
+  {
+   "path": "repos/a11y-fixes/src/index.ts",
+   "type": "code",
+   "project": "fsw-p11"
+  },
+  {
+   "path": "repos/a11y-fixes/package.json",
+   "type": "code",
+   "project": "fsw-p11"
+  },
+  {
+   "path": "case_studies/fsw-p12.md",
+   "type": "case_study",
+   "project": "fsw-p12"
+  },
+  {
+   "path": "repos/prospect-notes/README.md",
+   "type": "readme",
+   "project": "fsw-p12"
+  },
+  {
+   "path": "repos/prospect-notes/src/index.ts",
+   "type": "code",
+   "project": "fsw-p12"
+  },
+  {
+   "path": "repos/prospect-notes/package.json",
+   "type": "code",
+   "project": "fsw-p12"
+  },
+  {
+   "path": "case_studies/fsw-p13.md",
+   "type": "case_study",
+   "project": "fsw-p13"
+  },
+  {
+   "path": "repos/field-inspect-pwa/README.md",
+   "type": "readme",
+   "project": "fsw-p14"
+  },
+  {
+   "path": "repos/field-inspect-pwa/src/index.ts",
+   "type": "code",
+   "project": "fsw-p14"
+  },
+  {
+   "path": "repos/field-inspect-pwa/package.json",
+   "type": "code",
+   "project": "fsw-p14"
+  },
+  {
+   "path": "case_studies/fsw-p15.md",
+   "type": "case_study",
+   "project": "fsw-p15"
+  },
+  {
+   "path": "repos/teamboard-auth/README.md",
+   "type": "readme",
+   "project": "fsw-p15"
+  },
+  {
+   "path": "repos/teamboard-auth/src/index.ts",
+   "type": "code",
+   "project": "fsw-p15"
+  },
+  {
+   "path": "repos/teamboard-auth/package.json",
+   "type": "code",
+   "project": "fsw-p15"
+  },
+  {
+   "path": "case_studies/fsw-p16.md",
+   "type": "case_study",
+   "project": "fsw-p16"
+  },
+  {
+   "path": "repos/kheti-dash/README.md",
+   "type": "readme",
+   "project": "fsw-p16"
+  },
+  {
+   "path": "repos/kheti-dash/src/kheti_dash/core.py",
+   "type": "code",
+   "project": "fsw-p16"
+  },
+  {
+   "path": "repos/kheti-dash/tests/test_core.py",
+   "type": "code",
+   "project": "fsw-p16"
+  },
+  {
+   "path": "repos/kheti-dash/requirements.txt",
+   "type": "code",
+   "project": "fsw-p16"
+  },
+  {
+   "path": "case_studies/fsw-p17.md",
+   "type": "case_study",
+   "project": "fsw-p17"
+  },
+  {
+   "path": "case_studies/fsw-p18.md",
+   "type": "case_study",
+   "project": "fsw-p18"
+  },
+  {
+   "path": "repos/support-widget/README.md",
+   "type": "readme",
+   "project": "fsw-p18"
+  },
+  {
+   "path": "repos/support-widget/src/index.ts",
+   "type": "code",
+   "project": "fsw-p18"
+  },
+  {
+   "path": "repos/support-widget/package.json",
+   "type": "code",
+   "project": "fsw-p18"
+  },
+  {
+   "path": "cv.pdf",
+   "type": "cv",
+   "project": null
+  }
+ ],
+ "no_case_study": [
+  "fsw-p05",
+  "fsw-p11",
+  "fsw-p14"
+ ],
+ "thin_readme": [
+  "fsw-p15",
+  "fsw-p16"
+ ],
+ "projects": [
+  {
+   "id": "fsw-p01",
+   "title": "Multi-tenant SaaS dashboard for a logistics startup",
+   "industry": "Logistics",
+   "client": "RouteMate",
+   "date": "2025-08",
+   "weeks": 10,
+   "stack": [
+    "TypeScript",
+    "Next.js",
+    "Node.js",
+    "PostgreSQL",
+    "Prisma"
+   ],
+   "implicit": [
+    "zod",
+    "tRPC",
+    "row-level security"
+   ],
+   "tags": [
+    "multi-tenancy",
+    "dashboards",
+    "SaaS",
+    "role-based access"
+   ],
+   "problem": "each customer got a hand-patched copy of the app and onboarding took a week",
+   "approach": "a single multi-tenant Next.js app with tenant-scoped queries, role-based permissions and self-serve onboarding",
+   "outcomes": [
+    "new customer onboarding from 5 days to 20 minutes",
+    "infrastructure cost per tenant down 60%"
+   ],
+   "repo": "routemate-saas",
+   "rating": 5.0,
+   "review": "one codebase instead of twelve forks, finally"
+  },
+  {
+   "id": "fsw-p02",
+   "title": "Stripe subscriptions and billing portal",
+   "industry": "EdTech",
+   "client": "Learnly",
+   "date": "2025-04",
+   "weeks": 4,
+   "stack": [
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Stripe",
+    "Express"
+   ],
+   "implicit": [
+    "webhooks",
+    "idempotency keys",
+    "jest"
+   ],
+   "tags": [
+    "payments",
+    "subscriptions",
+    "billing",
+    "webhooks"
+   ],
+   "problem": "manual invoicing and failed card payments nobody noticed",
+   "approach": "Stripe Billing with plan upgrades, proration, dunning emails and webhook handlers that are safe to retry",
+   "outcomes": [
+    "involuntary churn down 23% after dunning",
+    "zero duplicate charges since launch"
+   ],
+   "repo": "stripe-billing-kit",
+   "rating": 5.0,
+   "review": "billing just works and we stopped chasing invoices"
+  },
+  {
+   "id": "fsw-p03",
+   "title": "Real-time delivery tracking with WebSockets",
+   "industry": "Food Delivery",
+   "client": "Khaana Now",
+   "date": "2024-12",
+   "weeks": 6,
+   "stack": [
+    "TypeScript",
+    "React Native",
+    "Node.js",
+    "Socket.IO",
+    "Redis"
+   ],
+   "implicit": [
+    "redis pub/sub",
+    "mapbox-gl",
+    "expo"
+   ],
+   "tags": [
+    "real-time",
+    "maps",
+    "mobile",
+    "WebSockets"
+   ],
+   "problem": "customers phoned support to ask where their rider was",
+   "approach": "rider apps stream GPS over WebSockets, fanned out through Redis to customer apps with live ETA",
+   "outcomes": [
+    "'where is my order' calls down 46%",
+    "location updates delivered under 1 s p95"
+   ],
+   "repo": "live-track",
+   "rating": 4.8,
+   "review": "the live map cut our support calls almost in half"
+  },
+  {
+   "id": "fsw-p04",
+   "title": "Headless Shopify storefront rebuild",
+   "industry": "E-commerce",
+   "client": "Zari Studio",
+   "date": "2024-09",
+   "weeks": 7,
+   "stack": [
+    "TypeScript",
+    "Next.js",
+    "Shopify Storefront API",
+    "Tailwind CSS",
+    "Vercel"
+   ],
+   "implicit": [
+    "graphql",
+    "ISR",
+    "lighthouse-ci"
+   ],
+   "tags": [
+    "headless commerce",
+    "performance",
+    "SEO",
+    "storefront"
+   ],
+   "problem": "a theme-based store scored 31 on mobile Lighthouse and lost shoppers on slow pages",
+   "approach": "a headless Next.js storefront with incremental static regeneration, image optimisation and a Shopify checkout",
+   "outcomes": [
+    "mobile Lighthouse score from 31 to 94",
+    "conversion rate up 19% month over month"
+   ],
+   "repo": "zari-headless",
+   "rating": 5.0,
+   "review": "the site is fast now and sales followed"
+  },
+  {
+   "id": "fsw-p05",
+   "title": "Django REST API for a clinic appointment system",
+   "industry": "Healthcare",
+   "client": "ShifaCare",
+   "date": "2024-05",
+   "weeks": 8,
+   "stack": [
+    "Python",
+    "Django",
+    "Django REST Framework",
+    "PostgreSQL",
+    "Celery"
+   ],
+   "implicit": [
+    "redis",
+    "pytest-django",
+    "drf-spectacular"
+   ],
+   "tags": [
+    "REST API",
+    "scheduling",
+    "background jobs",
+    "notifications"
+   ],
+   "problem": "double-booked appointments and no reminders, so 30% of patients no-showed",
+   "approach": "a booking API with slot locking, SMS reminders sent from a worker queue and an admin panel for front desks",
+   "outcomes": [
+    "no-show rate from 30% to 12%",
+    "double bookings eliminated"
+   ],
+   "repo": "clinic-api",
+   "rating": 4.9,
+   "review": "reliable and the reminders changed our no-show rate"
+  },
+  {
+   "id": "fsw-p06",
+   "title": "Internal admin panel with granular permissions",
+   "industry": "FinTech",
+   "client": "SadaPay Partners",
+   "date": "2025-02",
+   "weeks": 5,
+   "stack": [
+    "TypeScript",
+    "React",
+    "NestJS",
+    "PostgreSQL"
+   ],
+   "implicit": [
+    "casl",
+    "react-query",
+    "audit log"
+   ],
+   "tags": [
+    "admin tools",
+    "RBAC",
+    "audit logging",
+    "internal tools"
+   ],
+   "problem": "ops staff had database access to fix customer issues, which failed a compliance review",
+   "approach": "a React admin panel on a NestJS API with attribute-based permissions and an append-only audit trail",
+   "outcomes": [
+    "direct production database access removed for 40 staff",
+    "passed the follow-up compliance audit"
+   ],
+   "repo": null,
+   "rating": 5.0,
+   "review": "compliance was happy and ops actually like the tool"
+  },
+  {
+   "id": "fsw-p07",
+   "title": "Marketing site and CMS migration to a headless CMS",
+   "industry": "Non-profit",
+   "client": "Roshan Foundation",
+   "date": "2023-11",
+   "weeks": 4,
+   "stack": [
+    "Next.js",
+    "Sanity",
+    "Tailwind CSS",
+    "Vercel"
+   ],
+   "implicit": [
+    "groq-queries",
+    "next-sitemap",
+    "i18n"
+   ],
+   "tags": [
+    "CMS",
+    "marketing site",
+    "localisation",
+    "accessibility"
+   ],
+   "problem": "volunteers could not update a WordPress site without breaking the layout",
+   "approach": "a Sanity-backed Next.js site with structured content, English/Urdu localisation and WCAG AA checks",
+   "outcomes": [
+    "content edits by non-developers went from 0 to about 30 a month",
+    "page weight down 70%"
+   ],
+   "repo": "roshan-site",
+   "rating": 4.8,
+   "review": "our volunteers can update the site themselves"
+  },
+  {
+   "id": "fsw-p08",
+   "title": "GraphQL API gateway consolidating three legacy services",
+   "industry": "Travel",
+   "client": "Safarnama",
+   "date": "2024-03",
+   "weeks": 9,
+   "stack": [
+    "TypeScript",
+    "Apollo Server",
+    "Node.js",
+    "Docker",
+    "AWS ECS"
+   ],
+   "implicit": [
+    "dataloader",
+    "redis",
+    "k6"
+   ],
+   "tags": [
+    "GraphQL",
+    "API gateway",
+    "microservices",
+    "caching"
+   ],
+   "problem": "the mobile app made 14 REST calls to render one booking screen",
+   "approach": "a GraphQL gateway with batched resolvers and response caching in front of the legacy services",
+   "outcomes": [
+    "booking screen load time from 3.8 s to 1.1 s",
+    "API calls per screen from 14 to 1"
+   ],
+   "repo": "booking-gateway",
+   "rating": 4.7,
+   "review": "the app feels twice as fast"
+  },
+  {
+   "id": "fsw-p09",
+   "title": "CI/CD pipeline and containerised deployment",
+   "industry": "SaaS",
+   "client": "Formflow",
+   "date": "2025-06",
+   "weeks": 3,
+   "stack": [
+    "Docker",
+    "GitHub Actions",
+    "Terraform",
+    "AWS"
+   ],
+   "implicit": [
+    "ecs",
+    "cloudwatch",
+    "blue-green deploys"
+   ],
+   "tags": [
+    "DevOps",
+    "CI/CD",
+    "infrastructure as code",
+    "deployment"
+   ],
+   "problem": "deploys were manual SSH sessions that broke production every few weeks",
+   "approach": "containerised the app, wrote Terraform for the AWS stack and a GitHub Actions pipeline with blue-green releases",
+   "outcomes": [
+    "deploy time from 45 minutes to 8 minutes",
+    "no failed deploy reached users in six months"
+   ],
+   "repo": "formflow-infra",
+   "rating": 5.0,
+   "review": "we deploy daily now without fear"
+  },
+  {
+   "id": "fsw-p10",
+   "title": "Booking marketplace MVP for home services",
+   "industry": "Home Services",
+   "client": "FixIt.pk",
+   "date": "2023-08",
+   "weeks": 12,
+   "stack": [
+    "Python",
+    "Django",
+    "React",
+    "PostgreSQL",
+    "Stripe Connect"
+   ],
+   "implicit": [
+    "channels",
+    "celery",
+    "geodjango"
+   ],
+   "tags": [
+    "marketplace",
+    "MVP",
+    "payments",
+    "geolocation"
+   ],
+   "problem": "the founders needed a working two-sided marketplace to raise a seed round",
+   "approach": "an MVP with provider onboarding, location-based search, split payments and reviews in 12 weeks",
+   "outcomes": [
+    "launched with 180 providers in two cities",
+    "the company raised its seed round on the MVP"
+   ],
+   "repo": null,
+   "rating": 5.0,
+   "review": "delivered the MVP on time and it held up during the launch"
+  },
+  {
+   "id": "fsw-p11",
+   "title": "Accessibility remediation for a government portal",
+   "industry": "Government",
+   "client": "Punjab e-Services",
+   "date": "2024-07",
+   "weeks": 5,
+   "stack": [
+    "React",
+    "TypeScript",
+    "axe-core",
+    "Playwright"
+   ],
+   "implicit": [
+    "aria",
+    "jest-axe",
+    "storybook"
+   ],
+   "tags": [
+    "accessibility",
+    "WCAG",
+    "testing",
+    "public sector"
+   ],
+   "problem": "a citizen portal failed a WCAG 2.1 AA audit with 212 issues",
+   "approach": "fixed semantic markup, keyboard flows and contrast, then added automated accessibility checks to CI",
+   "outcomes": [
+    "audit issues from 212 to 6",
+    "screen-reader task completion up from 40% to 95%"
+   ],
+   "repo": "a11y-fixes",
+   "rating": 4.9,
+   "review": "thorough and explained every fix to our team"
+  },
+  {
+   "id": "fsw-p12",
+   "title": "Chrome extension for sales prospecting notes",
+   "industry": "Sales Tech",
+   "client": "Pipelyne",
+   "date": "2025-01",
+   "weeks": 4,
+   "stack": [
+    "TypeScript",
+    "Chrome Extensions",
+    "React",
+    "Supabase"
+   ],
+   "implicit": [
+    "manifest v3",
+    "service worker",
+    "vite"
+   ],
+   "tags": [
+    "browser extension",
+    "productivity",
+    "auth",
+    "sync"
+   ],
+   "problem": "reps kept prospect notes in spreadsheets that never synced",
+   "approach": "a Manifest V3 extension with a side panel, offline-first storage and sync to a Supabase backend",
+   "outcomes": [
+    "1,200 weekly active users after launch",
+    "Chrome Web Store rating of 4.7"
+   ],
+   "repo": "prospect-notes",
+   "rating": 4.8,
+   "review": "smooth extension, passed store review first time"
+  },
+  {
+   "id": "fsw-p13",
+   "title": "Performance rescue for a slow Laravel ecommerce site",
+   "industry": "E-commerce",
+   "client": "GharKaSaman",
+   "date": "2023-05",
+   "weeks": 3,
+   "stack": [
+    "PHP",
+    "Laravel",
+    "MySQL",
+    "Redis"
+   ],
+   "implicit": [
+    "query optimisation",
+    "n+1 fixes",
+    "laravel-horizon"
+   ],
+   "tags": [
+    "performance",
+    "database optimisation",
+    "caching",
+    "legacy code"
+   ],
+   "problem": "checkout took 12 seconds during sales and the database CPU hit 100%",
+   "approach": "profiled queries, added indexes, removed N+1 loops and cached catalogue pages in Redis",
+   "outcomes": [
+    "checkout time from 12 s to 1.6 s",
+    "database CPU at peak from 100% to 35%"
+   ],
+   "repo": null,
+   "rating": 4.7,
+   "review": "saved our sale weekend"
+  },
+  {
+   "id": "fsw-p14",
+   "title": "Progressive web app for offline field inspections",
+   "industry": "Construction",
+   "client": "BuildSafe",
+   "date": "2024-10",
+   "weeks": 8,
+   "stack": [
+    "TypeScript",
+    "React",
+    "IndexedDB",
+    "Node.js",
+    "MongoDB"
+   ],
+   "implicit": [
+    "workbox",
+    "service worker",
+    "background sync"
+   ],
+   "tags": [
+    "PWA",
+    "offline-first",
+    "forms",
+    "file uploads"
+   ],
+   "problem": "inspectors lost forms when the site had no signal",
+   "approach": "an offline-first PWA that queues inspections and photos locally and syncs when back online",
+   "outcomes": [
+    "lost inspection reports dropped to zero",
+    "report turnaround from 3 days to same day"
+   ],
+   "repo": "field-inspect-pwa",
+   "rating": 5.0,
+   "review": "works in basements with no signal, exactly as promised"
+  },
+  {
+   "id": "fsw-p15",
+   "title": "Auth overhaul with SSO and passkeys",
+   "industry": "SaaS",
+   "client": "Teamboard",
+   "date": "2025-09",
+   "weeks": 4,
+   "stack": [
+    "TypeScript",
+    "Next.js",
+    "Auth.js",
+    "PostgreSQL"
+   ],
+   "implicit": [
+    "webauthn",
+    "saml",
+    "oidc"
+   ],
+   "tags": [
+    "authentication",
+    "SSO",
+    "security",
+    "passkeys"
+   ],
+   "problem": "enterprise prospects required SSO and the homegrown login had no MFA",
+   "approach": "moved login to a standard auth library with Google and SAML SSO, passkeys and session hardening",
+   "outcomes": [
+    "closed two enterprise deals blocked on SSO",
+    "password reset tickets down 55%"
+   ],
+   "repo": "teamboard-auth",
+   "rating": 5.0,
+   "review": "unblocked our enterprise sales"
+  },
+  {
+   "id": "fsw-p16",
+   "title": "Analytics dashboard with charts and CSV exports",
+   "industry": "Agriculture",
+   "client": "KhetiTech",
+   "date": "2024-01",
+   "weeks": 5,
+   "stack": [
+    "React",
+    "TypeScript",
+    "D3.js",
+    "FastAPI",
+    "PostgreSQL"
+   ],
+   "implicit": [
+    "recharts",
+    "pandas",
+    "sqlalchemy"
+   ],
+   "tags": [
+    "dashboards",
+    "data visualization",
+    "reporting",
+    "exports"
+   ],
+   "problem": "agronomists emailed spreadsheets around to compare field yields",
+   "approach": "a dashboard with yield maps, season comparisons and scheduled CSV exports backed by a FastAPI service",
+   "outcomes": [
+    "weekly reporting time from 6 hours to 30 minutes",
+    "used by 85 agronomists"
+   ],
+   "repo": "kheti-dash",
+   "rating": 4.6,
+   "review": "exactly the charts our agronomists asked for"
+  },
+  {
+   "id": "fsw-p17",
+   "title": "Mobile app for a fitness studio chain",
+   "industry": "Fitness",
+   "client": "PulseFit",
+   "date": "2023-02",
+   "weeks": 10,
+   "stack": [
+    "React Native",
+    "TypeScript",
+    "Firebase",
+    "Stripe"
+   ],
+   "implicit": [
+    "expo",
+    "push notifications",
+    "firestore rules"
+   ],
+   "tags": [
+    "mobile app",
+    "bookings",
+    "push notifications",
+    "payments"
+   ],
+   "problem": "class bookings ran through WhatsApp groups",
+   "approach": "a cross-platform app with class booking, waitlists, payments and push reminders",
+   "outcomes": [
+    "4,000 downloads in the first two months",
+    "class fill rate up 18%"
+   ],
+   "repo": null,
+   "rating": 4.8,
+   "review": "members love the app and the waitlist feature"
+  },
+  {
+   "id": "fsw-p18",
+   "title": "LLM-powered support widget embedded in a web app",
+   "industry": "SaaS",
+   "client": "Docstack",
+   "date": "2025-11",
+   "weeks": 4,
+   "stack": [
+    "TypeScript",
+    "Next.js",
+    "OpenAI API",
+    "PostgreSQL",
+    "pgvector"
+   ],
+   "implicit": [
+    "vercel ai sdk",
+    "streaming",
+    "rate limiting"
+   ],
+   "tags": [
+    "AI integration",
+    "chat widget",
+    "RAG",
+    "streaming UI"
+   ],
+   "problem": "users could not find answers in 300 help-centre articles",
+   "approach": "an embedded chat widget with streaming answers grounded in help articles and a handoff to human support",
+   "outcomes": [
+    "support tickets down 29%",
+    "answer helpfulness rated 4.4/5 by users"
+   ],
+   "repo": "support-widget",
+   "rating": 4.9,
+   "review": "our users get answers in seconds now"
+  }
+ ]
+}

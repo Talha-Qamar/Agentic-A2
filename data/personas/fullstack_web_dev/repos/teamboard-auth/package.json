@@ -1,0 +1,9 @@
+{
+  "name": "teamboard-auth",
+  "private": true,
+  "dependencies": {
+    "webauthn": "latest",
+    "saml": "latest",
+    "oidc": "latest"
+  }
+}

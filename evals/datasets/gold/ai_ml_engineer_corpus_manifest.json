@@ -1,0 +1,1004 @@
+{
+ "persona": "ai_ml_engineer",
+ "documents": [
+  {
+   "path": "repos/clause-rag/README.md",
+   "type": "readme",
+   "project": "aiml-p01"
+  },
+  {
+   "path": "repos/clause-rag/src/clause_rag/core.py",
+   "type": "code",
+   "project": "aiml-p01"
+  },
+  {
+   "path": "repos/clause-rag/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p01"
+  },
+  {
+   "path": "repos/clause-rag/requirements.txt",
+   "type": "code",
+   "project": "aiml-p01"
+  },
+  {
+   "path": "case_studies/aiml-p02.md",
+   "type": "case_study",
+   "project": "aiml-p02"
+  },
+  {
+   "path": "repos/triage-agent/README.md",
+   "type": "readme",
+   "project": "aiml-p02"
+  },
+  {
+   "path": "repos/triage-agent/src/triage_agent/core.py",
+   "type": "code",
+   "project": "aiml-p02"
+  },
+  {
+   "path": "repos/triage-agent/src/triage_agent/tasks.py",
+   "type": "code",
+   "project": "aiml-p02"
+  },
+  {
+   "path": "repos/triage-agent/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p02"
+  },
+  {
+   "path": "repos/triage-agent/requirements.txt",
+   "type": "code",
+   "project": "aiml-p02"
+  },
+  {
+   "path": "case_studies/aiml-p03.md",
+   "type": "case_study",
+   "project": "aiml-p03"
+  },
+  {
+   "path": "repos/shelf-forecast/README.md",
+   "type": "readme",
+   "project": "aiml-p03"
+  },
+  {
+   "path": "repos/shelf-forecast/src/shelf_forecast/core.py",
+   "type": "code",
+   "project": "aiml-p03"
+  },
+  {
+   "path": "repos/shelf-forecast/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p03"
+  },
+  {
+   "path": "repos/shelf-forecast/requirements.txt",
+   "type": "code",
+   "project": "aiml-p03"
+  },
+  {
+   "path": "case_studies/aiml-p04.md",
+   "type": "case_study",
+   "project": "aiml-p04"
+  },
+  {
+   "path": "repos/invoice-vlm/README.md",
+   "type": "readme",
+   "project": "aiml-p04"
+  },
+  {
+   "path": "repos/invoice-vlm/src/invoice_vlm/core.py",
+   "type": "code",
+   "project": "aiml-p04"
+  },
+  {
+   "path": "repos/invoice-vlm/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p04"
+  },
+  {
+   "path": "repos/invoice-vlm/requirements.txt",
+   "type": "code",
+   "project": "aiml-p04"
+  },
+  {
+   "path": "case_studies/aiml-p05.md",
+   "type": "case_study",
+   "project": "aiml-p05"
+  },
+  {
+   "path": "repos/essay-evals/README.md",
+   "type": "readme",
+   "project": "aiml-p05"
+  },
+  {
+   "path": "repos/essay-evals/src/essay_evals/core.py",
+   "type": "code",
+   "project": "aiml-p05"
+  },
+  {
+   "path": "repos/essay-evals/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p05"
+  },
+  {
+   "path": "repos/essay-evals/requirements.txt",
+   "type": "code",
+   "project": "aiml-p05"
+  },
+  {
+   "path": "case_studies/aiml-p06.md",
+   "type": "case_study",
+   "project": "aiml-p06"
+  },
+  {
+   "path": "repos/hybrid-search/README.md",
+   "type": "readme",
+   "project": "aiml-p06"
+  },
+  {
+   "path": "repos/hybrid-search/src/hybrid_search/core.py",
+   "type": "code",
+   "project": "aiml-p06"
+  },
+  {
+   "path": "repos/hybrid-search/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p06"
+  },
+  {
+   "path": "repos/hybrid-search/requirements.txt",
+   "type": "code",
+   "project": "aiml-p06"
+  },
+  {
+   "path": "repos/bnpl-fraud/README.md",
+   "type": "readme",
+   "project": "aiml-p08"
+  },
+  {
+   "path": "repos/bnpl-fraud/src/bnpl_fraud/core.py",
+   "type": "code",
+   "project": "aiml-p08"
+  },
+  {
+   "path": "repos/bnpl-fraud/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p08"
+  },
+  {
+   "path": "repos/bnpl-fraud/requirements.txt",
+   "type": "code",
+   "project": "aiml-p08"
+  },
+  {
+   "path": "case_studies/aiml-p09.md",
+   "type": "case_study",
+   "project": "aiml-p09"
+  },
+  {
+   "path": "repos/research-crew/README.md",
+   "type": "readme",
+   "project": "aiml-p09"
+  },
+  {
+   "path": "repos/research-crew/src/research_crew/core.py",
+   "type": "code",
+   "project": "aiml-p09"
+  },
+  {
+   "path": "repos/research-crew/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p09"
+  },
+  {
+   "path": "repos/research-crew/requirements.txt",
+   "type": "code",
+   "project": "aiml-p09"
+  },
+  {
+   "path": "case_studies/aiml-p10.md",
+   "type": "case_study",
+   "project": "aiml-p10"
+  },
+  {
+   "path": "repos/loom-vision/README.md",
+   "type": "readme",
+   "project": "aiml-p10"
+  },
+  {
+   "path": "repos/loom-vision/src/loom_vision/core.py",
+   "type": "code",
+   "project": "aiml-p10"
+  },
+  {
+   "path": "repos/loom-vision/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p10"
+  },
+  {
+   "path": "repos/loom-vision/requirements.txt",
+   "type": "code",
+   "project": "aiml-p10"
+  },
+  {
+   "path": "case_studies/aiml-p11.md",
+   "type": "case_study",
+   "project": "aiml-p11"
+  },
+  {
+   "path": "case_studies/aiml-p12.md",
+   "type": "case_study",
+   "project": "aiml-p12"
+  },
+  {
+   "path": "repos/pod-recs/README.md",
+   "type": "readme",
+   "project": "aiml-p12"
+  },
+  {
+   "path": "repos/pod-recs/src/pod_recs/core.py",
+   "type": "code",
+   "project": "aiml-p12"
+  },
+  {
+   "path": "repos/pod-recs/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p12"
+  },
+  {
+   "path": "repos/pod-recs/requirements.txt",
+   "type": "code",
+   "project": "aiml-p12"
+  },
+  {
+   "path": "case_studies/aiml-p13.md",
+   "type": "case_study",
+   "project": "aiml-p13"
+  },
+  {
+   "path": "repos/llm-router/README.md",
+   "type": "readme",
+   "project": "aiml-p13"
+  },
+  {
+   "path": "repos/llm-router/src/llm_router/core.py",
+   "type": "code",
+   "project": "aiml-p13"
+  },
+  {
+   "path": "repos/llm-router/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p13"
+  },
+  {
+   "path": "repos/llm-router/requirements.txt",
+   "type": "code",
+   "project": "aiml-p13"
+  },
+  {
+   "path": "case_studies/aiml-p14.md",
+   "type": "case_study",
+   "project": "aiml-p14"
+  },
+  {
+   "path": "repos/urdu-ner/README.md",
+   "type": "readme",
+   "project": "aiml-p14"
+  },
+  {
+   "path": "repos/urdu-ner/src/urdu_ner/core.py",
+   "type": "code",
+   "project": "aiml-p14"
+  },
+  {
+   "path": "repos/urdu-ner/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p14"
+  },
+  {
+   "path": "repos/urdu-ner/requirements.txt",
+   "type": "code",
+   "project": "aiml-p14"
+  },
+  {
+   "path": "case_studies/aiml-p15.md",
+   "type": "case_study",
+   "project": "aiml-p15"
+  },
+  {
+   "path": "case_studies/aiml-p16.md",
+   "type": "case_study",
+   "project": "aiml-p16"
+  },
+  {
+   "path": "repos/agent-redteam/README.md",
+   "type": "readme",
+   "project": "aiml-p16"
+  },
+  {
+   "path": "repos/agent-redteam/src/agent_redteam/core.py",
+   "type": "code",
+   "project": "aiml-p16"
+  },
+  {
+   "path": "repos/agent-redteam/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p16"
+  },
+  {
+   "path": "repos/agent-redteam/requirements.txt",
+   "type": "code",
+   "project": "aiml-p16"
+  },
+  {
+   "path": "case_studies/aiml-p17.md",
+   "type": "case_study",
+   "project": "aiml-p17"
+  },
+  {
+   "path": "case_studies/aiml-p18.md",
+   "type": "case_study",
+   "project": "aiml-p18"
+  },
+  {
+   "path": "repos/prelabel/README.md",
+   "type": "readme",
+   "project": "aiml-p18"
+  },
+  {
+   "path": "repos/prelabel/src/prelabel/core.py",
+   "type": "code",
+   "project": "aiml-p18"
+  },
+  {
+   "path": "repos/prelabel/src/prelabel/tasks.py",
+   "type": "code",
+   "project": "aiml-p18"
+  },
+  {
+   "path": "repos/prelabel/tests/test_core.py",
+   "type": "code",
+   "project": "aiml-p18"
+  },
+  {
+   "path": "repos/prelabel/requirements.txt",
+   "type": "code",
+   "project": "aiml-p18"
+  },
+  {
+   "path": "cv.pdf",
+   "type": "cv",
+   "project": null
+  }
+ ],
+ "no_case_study": [
+  "aiml-p01",
+  "aiml-p07",
+  "aiml-p08"
+ ],
+ "thin_readme": [
+  "aiml-p10",
+  "aiml-p12"
+ ],
+ "projects": [
+  {
+   "id": "aiml-p01",
+   "title": "Contract clause assistant for a legal-tech startup",
+   "industry": "Legal",
+   "client": "Clausewise",
+   "date": "2025-09",
+   "weeks": 7,
+   "stack": [
+    "Python",
+    "LangGraph",
+    "FastAPI",
+    "Qdrant",
+    "OpenAI API"
+   ],
+   "implicit": [
+    "pydantic",
+    "pytest",
+    "asyncio"
+   ],
+   "tags": [
+    "RAG",
+    "document QA",
+    "citations",
+    "PDF parsing"
+   ],
+   "problem": "lawyers spent hours locating indemnity and termination clauses across 300-page vendor contracts",
+   "approach": "a retrieval pipeline that chunks contracts by clause heading, retrieves with hybrid search and forces every answer to quote the clause it relies on",
+   "outcomes": [
+    "clause lookup time fell from ~40 minutes to under 2 minutes",
+    "answer citation accuracy of 94% on a 120-question review set"
+   ],
+   "repo": "clause-rag",
+   "rating": 5.0,
+   "review": "the answers always pointed at the exact clause, which is what got our partners to trust it"
+  },
+  {
+   "id": "aiml-p02",
+   "title": "Customer-support triage agent for a SaaS helpdesk",
+   "industry": "SaaS",
+   "client": "Ticketly",
+   "date": "2025-06",
+   "weeks": 6,
+   "stack": [
+    "Python",
+    "LangChain",
+    "Zendesk API",
+    "PostgreSQL"
+   ],
+   "implicit": [
+    "celery",
+    "redis",
+    "tenacity"
+   ],
+   "tags": [
+    "agents",
+    "classification",
+    "tool calling",
+    "background jobs"
+   ],
+   "problem": "first-response times above 9 hours because every ticket was triaged by hand",
+   "approach": "an agent that classifies intent, pulls account context through the Zendesk API and drafts a reply for a human to approve, with long-running enrichment pushed to a worker queue",
+   "outcomes": [
+    "median first response dropped from 9.2 h to 47 min",
+    "63% of drafted replies sent with no edits"
+   ],
+   "repo": "triage-agent",
+   "rating": 5.0,
+   "review": "drafts were good enough that our team mostly just clicked approve"
+  },
+  {
+   "id": "aiml-p03",
+   "title": "Demand forecasting service for a grocery chain",
+   "industry": "Retail",
+   "client": "FreshCart",
+   "date": "2024-11",
+   "weeks": 9,
+   "stack": [
+    "Python",
+    "LightGBM",
+    "pandas",
+    "Airflow",
+    "AWS"
+   ],
+   "implicit": [
+    "scikit-learn",
+    "boto3",
+    "optuna"
+   ],
+   "tags": [
+    "time series",
+    "forecasting",
+    "MLOps",
+    "feature engineering"
+   ],
+   "problem": "stock-outs on fresh produce and 11% waste from over-ordering",
+   "approach": "store-by-SKU gradient-boosted forecasts with holiday and weather features, retrained nightly by an Airflow DAG",
+   "outcomes": [
+    "forecast MAPE improved from 31% to 18%",
+    "produce waste down 4 percentage points in the pilot region"
+   ],
+   "repo": "shelf-forecast",
+   "rating": 4.8,
+   "review": "the weekly error report made it easy for ops to see when to trust the numbers"
+  },
+  {
+   "id": "aiml-p04",
+   "title": "Invoice extraction pipeline with vision-language models",
+   "industry": "FinTech",
+   "client": "LedgerLoop",
+   "date": "2025-03",
+   "weeks": 5,
+   "stack": [
+    "Python",
+    "PyTorch",
+    "Donut",
+    "FastAPI",
+    "Docker"
+   ],
+   "implicit": [
+    "transformers",
+    "pdf2image",
+    "pydantic"
+   ],
+   "tags": [
+    "document AI",
+    "OCR",
+    "information extraction",
+    "computer vision"
+   ],
+   "problem": "an AP team keyed 2,000 supplier invoices a month by hand",
+   "approach": "a fine-tuned document-understanding model that outputs JSON line items, validated against purchase orders before posting",
+   "outcomes": [
+    "field-level F1 of 0.93 on held-out suppliers",
+    "manual keying reduced by roughly 70%"
+   ],
+   "repo": "invoice-vlm",
+   "rating": 5.0,
+   "review": "handled the ugly scanned invoices we were sure would break it"
+  },
+  {
+   "id": "aiml-p05",
+   "title": "Evaluation harness for an LLM writing assistant",
+   "industry": "EdTech",
+   "client": "Essayly",
+   "date": "2025-10",
+   "weeks": 4,
+   "stack": [
+    "Python",
+    "pytest",
+    "LangSmith",
+    "OpenAI API"
+   ],
+   "implicit": [
+    "pandas",
+    "scipy",
+    "jinja2"
+   ],
+   "tags": [
+    "LLM evaluation",
+    "LLM-as-judge",
+    "regression testing",
+    "prompt engineering"
+   ],
+   "problem": "prompt changes shipped weekly with no way to tell whether feedback quality got worse",
+   "approach": "a golden set of 400 graded essays, an LLM judge calibrated against teacher labels and a CI gate on every prompt change",
+   "outcomes": [
+    "judge agreement with teachers of Cohen's kappa 0.71",
+    "caught two regressions before release in the first month"
+   ],
+   "repo": "essay-evals",
+   "rating": 4.9,
+   "review": "finally we argue about numbers instead of vibes"
+  },
+  {
+   "id": "aiml-p06",
+   "title": "Semantic product search for a fashion marketplace",
+   "industry": "E-commerce",
+   "client": "Threadline",
+   "date": "2024-08",
+   "weeks": 6,
+   "stack": [
+    "Python",
+    "sentence-transformers",
+    "Elasticsearch",
+    "FastAPI"
+   ],
+   "implicit": [
+    "faiss",
+    "numpy",
+    "locust"
+   ],
+   "tags": [
+    "semantic search",
+    "embeddings",
+    "hybrid search",
+    "reranking"
+   ],
+   "problem": "keyword search returned nothing for queries like 'summer wedding outfit under 5k'",
+   "approach": "hybrid lexical plus dense retrieval with a cross-encoder reranker and price filters parsed from the query",
+   "outcomes": [
+    "search conversion up 17% in an A/B test",
+    "zero-result queries down from 12% to 3%"
+   ],
+   "repo": "hybrid-search",
+   "rating": 4.7,
+   "review": "conversion moved in the first week of the test"
+  },
+  {
+   "id": "aiml-p07",
+   "title": "Voice-notes summarizer for field sales reps",
+   "industry": "Pharma",
+   "client": "MedReach",
+   "date": "2025-01",
+   "weeks": 4,
+   "stack": [
+    "Python",
+    "Whisper",
+    "FastAPI",
+    "Twilio"
+   ],
+   "implicit": [
+    "ffmpeg",
+    "pydub",
+    "celery"
+   ],
+   "tags": [
+    "speech-to-text",
+    "summarization",
+    "audio",
+    "CRM integration"
+   ],
+   "problem": "reps recorded visit notes as voice memos that nobody ever listened to",
+   "approach": "speech-to-text transcription, structured summaries pushed into the CRM and a nightly digest for managers",
+   "outcomes": [
+    "CRM visit notes completion rose from 35% to 88%",
+    "average summary latency 40 seconds per memo"
+   ],
+   "repo": null,
+   "rating": 5.0,
+   "review": "our managers read the digest every morning now"
+  },
+  {
+   "id": "aiml-p08",
+   "title": "Fraud scoring model for a buy-now-pay-later lender",
+   "industry": "FinTech",
+   "client": "PayLater.pk",
+   "date": "2024-04",
+   "weeks": 10,
+   "stack": [
+    "Python",
+    "XGBoost",
+    "SHAP",
+    "MLflow",
+    "PostgreSQL"
+   ],
+   "implicit": [
+    "scikit-learn",
+    "imbalanced-learn",
+    "sqlalchemy"
+   ],
+   "tags": [
+    "fraud detection",
+    "imbalanced classification",
+    "explainability",
+    "credit risk"
+   ],
+   "problem": "rule-based fraud checks blocked good customers and missed coordinated fraud rings",
+   "approach": "a gradient-boosted classifier on application and device features with SHAP reason codes for analysts and monthly drift monitoring",
+   "outcomes": [
+    "fraud losses down 38% at the same approval rate",
+    "precision at 1% alert rate improved from 0.21 to 0.46"
+   ],
+   "repo": "bnpl-fraud",
+   "rating": 4.8,
+   "review": "the reason codes made our risk committee comfortable"
+  },
+  {
+   "id": "aiml-p09",
+   "title": "Multi-agent research assistant for an equity analyst team",
+   "industry": "Finance",
+   "client": "NorthBay Capital",
+   "date": "2025-08",
+   "weeks": 8,
+   "stack": [
+    "Python",
+    "LangGraph",
+    "Tavily API",
+    "Pinecone",
+    "Streamlit"
+   ],
+   "implicit": [
+    "pydantic",
+    "tiktoken",
+    "tenacity"
+   ],
+   "tags": [
+    "multi-agent",
+    "critique loop",
+    "report generation",
+    "web research"
+   ],
+   "problem": "first drafts of company notes took analysts most of a day",
+   "approach": "planner, researcher and critic agents with a bounded revision loop and source links on every paragraph",
+   "outcomes": [
+    "draft time cut from about 6 hours to 35 minutes",
+    "analysts kept 70% of generated paragraphs"
+   ],
+   "repo": "research-crew",
+   "rating": 5.0,
+   "review": "the critic step is what made the drafts usable"
+  },
+  {
+   "id": "aiml-p10",
+   "title": "Defect detection on a textile production line",
+   "industry": "Manufacturing",
+   "client": "Faisal Textiles",
+   "date": "2023-12",
+   "weeks": 12,
+   "stack": [
+    "Python",
+    "PyTorch",
+    "YOLOv8",
+    "OpenCV",
+    "NVIDIA Jetson"
+   ],
+   "implicit": [
+    "onnxruntime",
+    "albumentations",
+    "tensorrt"
+   ],
+   "tags": [
+    "computer vision",
+    "object detection",
+    "edge deployment",
+    "quality control"
+   ],
+   "problem": "manual inspection missed small weaving defects at line speed",
+   "approach": "an object detector trained on 9k annotated frames and exported to run on edge devices beside each loom",
+   "outcomes": [
+    "defect recall of 0.91 at 25 FPS on the device",
+    "customer returns for weaving faults down 27%"
+   ],
+   "repo": "loom-vision",
+   "rating": 4.6,
+   "review": "worked on the factory floor, not just in the demo"
+  },
+  {
+   "id": "aiml-p11",
+   "title": "Chatbot over HR policies with access control",
+   "industry": "HR",
+   "client": "PeopleFirst",
+   "date": "2025-05",
+   "weeks": 5,
+   "stack": [
+    "Python",
+    "LlamaIndex",
+    "Azure OpenAI",
+    "Microsoft Teams"
+   ],
+   "implicit": [
+    "msal",
+    "pgvector",
+    "fastapi"
+   ],
+   "tags": [
+    "RAG",
+    "enterprise chatbot",
+    "access control",
+    "Teams bot"
+   ],
+   "problem": "HR answered the same 50 leave and benefits questions every week",
+   "approach": "a Teams bot that answers from the policy wiki and filters documents by the employee's country and grade",
+   "outcomes": [
+    "HR ticket volume down 41% in three months",
+    "no policy answers leaked across regions in the audit"
+   ],
+   "repo": null,
+   "rating": 4.9,
+   "review": "employees use it instead of emailing us"
+  },
+  {
+   "id": "aiml-p12",
+   "title": "Recommendation engine for a podcast app",
+   "industry": "Media",
+   "client": "Sunwave Audio",
+   "date": "2024-02",
+   "weeks": 8,
+   "stack": [
+    "Python",
+    "implicit",
+    "Spark",
+    "Redis",
+    "FastAPI"
+   ],
+   "implicit": [
+    "pyspark",
+    "numpy",
+    "annoy"
+   ],
+   "tags": [
+    "recommender systems",
+    "collaborative filtering",
+    "cold start",
+    "A/B testing"
+   ],
+   "problem": "new listeners churned because the home feed showed only the global top 20",
+   "approach": "matrix-factorisation recommendations with a content-based fallback for cold-start users, served from a Redis cache",
+   "outcomes": [
+    "7-day listener retention up 9%",
+    "home-feed click-through up 22%"
+   ],
+   "repo": "pod-recs",
+   "rating": 4.7,
+   "review": "retention numbers moved, which is what we paid for"
+  },
+  {
+   "id": "aiml-p13",
+   "title": "LLM cost and latency optimisation for a writing tool",
+   "industry": "SaaS",
+   "client": "Draftwell",
+   "date": "2025-11",
+   "weeks": 3,
+   "stack": [
+    "Python",
+    "vLLM",
+    "Redis",
+    "OpenTelemetry"
+   ],
+   "implicit": [
+    "httpx",
+    "prometheus-client",
+    "asyncio"
+   ],
+   "tags": [
+    "LLM serving",
+    "caching",
+    "model routing",
+    "observability"
+   ],
+   "problem": "monthly LLM spend had tripled and p95 latency was over 9 seconds",
+   "approach": "semantic caching, routing short requests to a small self-hosted model and tracing every call with token and cost attributes",
+   "outcomes": [
+    "API spend down 58%",
+    "p95 latency from 9.4 s to 2.1 s"
+   ],
+   "repo": "llm-router",
+   "rating": 5.0,
+   "review": "paid for itself in the first month"
+  },
+  {
+   "id": "aiml-p14",
+   "title": "Named-entity extraction for Urdu news articles",
+   "industry": "Media",
+   "client": "Khabar Labs",
+   "date": "2023-07",
+   "weeks": 6,
+   "stack": [
+    "Python",
+    "spaCy",
+    "Hugging Face Transformers"
+   ],
+   "implicit": [
+    "datasets",
+    "seqeval",
+    "torch"
+   ],
+   "tags": [
+    "NLP",
+    "named entity recognition",
+    "low-resource languages",
+    "fine-tuning"
+   ],
+   "problem": "no off-the-shelf model recognised people and places in Urdu news reliably",
+   "approach": "fine-tuned a multilingual transformer on 6k hand-labelled sentences with active learning to pick what to label next",
+   "outcomes": [
+    "entity F1 of 0.86, up from 0.61 for the multilingual baseline",
+    "labelling budget cut by about 40% through active learning"
+   ],
+   "repo": "urdu-ner",
+   "rating": 4.8,
+   "review": "understood the language quirks better than we expected"
+  },
+  {
+   "id": "aiml-p15",
+   "title": "Churn prediction and retention playbook for a telecom",
+   "industry": "Telecom",
+   "client": "ZongPlus",
+   "date": "2024-06",
+   "weeks": 7,
+   "stack": [
+    "Python",
+    "scikit-learn",
+    "SQL",
+    "Power BI"
+   ],
+   "implicit": [
+    "lightgbm",
+    "shap",
+    "pandas"
+   ],
+   "tags": [
+    "churn prediction",
+    "classification",
+    "customer analytics",
+    "uplift"
+   ],
+   "problem": "the retention team called customers at random and burned their offer budget",
+   "approach": "a churn model with calibrated probabilities and a simple uplift ranking so offers went to persuadable customers",
+   "outcomes": [
+    "retention campaign ROI up 2.3x",
+    "AUC of 0.84 on the next quarter's data"
+   ],
+   "repo": null,
+   "rating": 4.6,
+   "review": "clear explanation of which customers to call and why"
+  },
+  {
+   "id": "aiml-p16",
+   "title": "Prompt-injection hardening for a customer-facing agent",
+   "industry": "Travel",
+   "client": "Safarnama",
+   "date": "2025-12",
+   "weeks": 3,
+   "stack": [
+    "Python",
+    "LangGraph",
+    "Guardrails",
+    "pytest"
+   ],
+   "implicit": [
+    "presidio",
+    "regex",
+    "pydantic"
+   ],
+   "tags": [
+    "AI safety",
+    "prompt injection",
+    "guardrails",
+    "PII redaction"
+   ],
+   "problem": "a booking agent could be talked into issuing refunds by instructions hidden in emails",
+   "approach": "untrusted-content delimiting, tool permission tiers, a red-team suite of 150 attacks and PII masking in logs",
+   "outcomes": [
+    "attack success rate fell from 34% to 3% on the red-team suite",
+    "no PII in traces after the rollout audit"
+   ],
+   "repo": "agent-redteam",
+   "rating": 5.0,
+   "review": "they broke our agent first, then fixed it"
+  },
+  {
+   "id": "aiml-p17",
+   "title": "Medical-image triage prototype for chest X-rays",
+   "industry": "Healthcare",
+   "client": "RadAssist",
+   "date": "2023-03",
+   "weeks": 10,
+   "stack": [
+    "Python",
+    "PyTorch",
+    "MONAI",
+    "DICOM"
+   ],
+   "implicit": [
+    "pydicom",
+    "grad-cam",
+    "albumentations"
+   ],
+   "tags": [
+    "medical imaging",
+    "classification",
+    "explainability",
+    "computer vision"
+   ],
+   "problem": "radiologists needed urgent studies pushed to the top of the reading list",
+   "approach": "a DenseNet classifier with Grad-CAM heatmaps that reorders the worklist; never used for diagnosis",
+   "outcomes": [
+    "sensitivity 0.92 for urgent findings on the retrospective set",
+    "time-to-read for urgent cases down 31% in the pilot"
+   ],
+   "repo": null,
+   "rating": 4.9,
+   "review": "careful about what the model should and should not decide"
+  },
+  {
+   "id": "aiml-p18",
+   "title": "Data-labelling tool with model-assisted pre-annotation",
+   "industry": "AI Services",
+   "client": "LabelForge",
+   "date": "2024-09",
+   "weeks": 5,
+   "stack": [
+    "Python",
+    "Label Studio",
+    "FastAPI",
+    "PostgreSQL"
+   ],
+   "implicit": [
+    "celery",
+    "boto3",
+    "torch"
+   ],
+   "tags": [
+    "data labelling",
+    "active learning",
+    "annotation tooling",
+    "MLOps"
+   ],
+   "problem": "annotators labelled every image from scratch",
+   "approach": "a Label Studio backend that pre-annotates with the latest model and routes uncertain items to senior annotators",
+   "outcomes": [
+    "labelling throughput up 2.6x",
+    "inter-annotator disagreement down 18%"
+   ],
+   "repo": "prelabel",
+   "rating": 4.8,
+   "review": "our annotators noticed the speed-up on day one"
+  }
+ ]
+}

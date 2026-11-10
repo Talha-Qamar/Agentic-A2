@@ -1,0 +1,20 @@
+{
+ "name": "Bilal Chaudhry",
+ "headline": "Full-stack developer: TypeScript, React/Next.js, Node and Django",
+ "location": "Islamabad, Pakistan (UTC+5)",
+ "hourly_floor": 28,
+ "target_rate": 45,
+ "years": 7,
+ "education": "BS Software Engineering, NUST (2018)",
+ "summary": "I ship web products end to end: typed frontends, APIs that do not fall over, payments, auth and the CI/CD that lets a two-person team deploy on a Friday.",
+ "categories": [
+  "Full Stack Development",
+  "Front-End Development",
+  "Back-End Development",
+  "Mobile App Development",
+  "Ecommerce Website Development",
+  "DevOps Engineering"
+ ],
+ "persona_id": "fullstack_web_dev",
+ "synthetic": true
+}

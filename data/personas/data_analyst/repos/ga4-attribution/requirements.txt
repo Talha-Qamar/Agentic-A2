@@ -1,0 +1,6 @@
+bigquery
+ga4-export-schema
+google-analytics-4
+looker-studio
+markov-attribution
+window-functions

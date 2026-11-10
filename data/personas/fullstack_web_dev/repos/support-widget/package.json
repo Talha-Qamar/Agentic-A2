@@ -1,0 +1,10 @@
+{
+  "name": "support-widget",
+  "private": true,
+  "dependencies": {
+    "pgvector": "latest",
+    "vercel-ai-sdk": "latest",
+    "streaming": "latest",
+    "rate-limiting": "latest"
+  }
+}

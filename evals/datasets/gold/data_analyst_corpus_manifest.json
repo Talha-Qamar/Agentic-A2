@@ -1,0 +1,943 @@
+{
+ "persona": "data_analyst",
+ "documents": [
+  {
+   "path": "case_studies/da-p01.md",
+   "type": "case_study",
+   "project": "da-p01"
+  },
+  {
+   "path": "case_studies/da-p02.md",
+   "type": "case_study",
+   "project": "da-p02"
+  },
+  {
+   "path": "repos/formflow-dbt/README.md",
+   "type": "readme",
+   "project": "da-p02"
+  },
+  {
+   "path": "repos/formflow-dbt/src/formflow_dbt/core.py",
+   "type": "code",
+   "project": "da-p02"
+  },
+  {
+   "path": "repos/formflow-dbt/tests/test_core.py",
+   "type": "code",
+   "project": "da-p02"
+  },
+  {
+   "path": "repos/formflow-dbt/requirements.txt",
+   "type": "code",
+   "project": "da-p02"
+  },
+  {
+   "path": "case_studies/da-p03.md",
+   "type": "case_study",
+   "project": "da-p03"
+  },
+  {
+   "path": "repos/snackbox-churn/README.md",
+   "type": "readme",
+   "project": "da-p03"
+  },
+  {
+   "path": "repos/snackbox-churn/src/snackbox_churn/core.py",
+   "type": "code",
+   "project": "da-p03"
+  },
+  {
+   "path": "repos/snackbox-churn/tests/test_core.py",
+   "type": "code",
+   "project": "da-p03"
+  },
+  {
+   "path": "repos/snackbox-churn/requirements.txt",
+   "type": "code",
+   "project": "da-p03"
+  },
+  {
+   "path": "case_studies/da-p04.md",
+   "type": "case_study",
+   "project": "da-p04"
+  },
+  {
+   "path": "repos/pharmacy-forecast/README.md",
+   "type": "readme",
+   "project": "da-p04"
+  },
+  {
+   "path": "repos/pharmacy-forecast/src/pharmacy_forecast/core.py",
+   "type": "code",
+   "project": "da-p04"
+  },
+  {
+   "path": "repos/pharmacy-forecast/tests/test_core.py",
+   "type": "code",
+   "project": "da-p04"
+  },
+  {
+   "path": "repos/pharmacy-forecast/requirements.txt",
+   "type": "code",
+   "project": "da-p04"
+  },
+  {
+   "path": "case_studies/da-p05.md",
+   "type": "case_study",
+   "project": "da-p05"
+  },
+  {
+   "path": "repos/ga4-attribution/README.md",
+   "type": "readme",
+   "project": "da-p05"
+  },
+  {
+   "path": "repos/ga4-attribution/src/ga4_attribution/core.py",
+   "type": "code",
+   "project": "da-p05"
+  },
+  {
+   "path": "repos/ga4-attribution/tests/test_core.py",
+   "type": "code",
+   "project": "da-p05"
+  },
+  {
+   "path": "repos/ga4-attribution/requirements.txt",
+   "type": "code",
+   "project": "da-p05"
+  },
+  {
+   "path": "case_studies/da-p07.md",
+   "type": "case_study",
+   "project": "da-p07"
+  },
+  {
+   "path": "repos/price-feeds/README.md",
+   "type": "readme",
+   "project": "da-p07"
+  },
+  {
+   "path": "repos/price-feeds/src/price_feeds/core.py",
+   "type": "code",
+   "project": "da-p07"
+  },
+  {
+   "path": "repos/price-feeds/tests/test_core.py",
+   "type": "code",
+   "project": "da-p07"
+  },
+  {
+   "path": "repos/price-feeds/requirements.txt",
+   "type": "code",
+   "project": "da-p07"
+  },
+  {
+   "path": "case_studies/da-p08.md",
+   "type": "case_study",
+   "project": "da-p08"
+  },
+  {
+   "path": "repos/ab-toolkit/README.md",
+   "type": "readme",
+   "project": "da-p09"
+  },
+  {
+   "path": "repos/ab-toolkit/src/ab_toolkit/core.py",
+   "type": "code",
+   "project": "da-p09"
+  },
+  {
+   "path": "repos/ab-toolkit/tests/test_core.py",
+   "type": "code",
+   "project": "da-p09"
+  },
+  {
+   "path": "repos/ab-toolkit/requirements.txt",
+   "type": "code",
+   "project": "da-p09"
+  },
+  {
+   "path": "case_studies/da-p10.md",
+   "type": "case_study",
+   "project": "da-p10"
+  },
+  {
+   "path": "case_studies/da-p11.md",
+   "type": "case_study",
+   "project": "da-p11"
+  },
+  {
+   "path": "repos/routemate-warehouse/README.md",
+   "type": "readme",
+   "project": "da-p11"
+  },
+  {
+   "path": "repos/routemate-warehouse/src/routemate_warehouse/core.py",
+   "type": "code",
+   "project": "da-p11"
+  },
+  {
+   "path": "repos/routemate-warehouse/tests/test_core.py",
+   "type": "code",
+   "project": "da-p11"
+  },
+  {
+   "path": "repos/routemate-warehouse/requirements.txt",
+   "type": "code",
+   "project": "da-p11"
+  },
+  {
+   "path": "case_studies/da-p12.md",
+   "type": "case_study",
+   "project": "da-p12"
+  },
+  {
+   "path": "repos/survey-segments/README.md",
+   "type": "readme",
+   "project": "da-p12"
+  },
+  {
+   "path": "repos/survey-segments/src/survey_segments/core.py",
+   "type": "code",
+   "project": "da-p12"
+  },
+  {
+   "path": "repos/survey-segments/tests/test_core.py",
+   "type": "code",
+   "project": "da-p12"
+  },
+  {
+   "path": "repos/survey-segments/requirements.txt",
+   "type": "code",
+   "project": "da-p12"
+  },
+  {
+   "path": "case_studies/da-p13.md",
+   "type": "case_study",
+   "project": "da-p13"
+  },
+  {
+   "path": "case_studies/da-p14.md",
+   "type": "case_study",
+   "project": "da-p14"
+  },
+  {
+   "path": "repos/teamboard-events/README.md",
+   "type": "readme",
+   "project": "da-p14"
+  },
+  {
+   "path": "repos/teamboard-events/src/teamboard_events/core.py",
+   "type": "code",
+   "project": "da-p14"
+  },
+  {
+   "path": "repos/teamboard-events/tests/test_core.py",
+   "type": "code",
+   "project": "da-p14"
+  },
+  {
+   "path": "repos/teamboard-events/requirements.txt",
+   "type": "code",
+   "project": "da-p14"
+  },
+  {
+   "path": "case_studies/da-p15.md",
+   "type": "case_study",
+   "project": "da-p15"
+  },
+  {
+   "path": "repos/store-sites/README.md",
+   "type": "readme",
+   "project": "da-p16"
+  },
+  {
+   "path": "repos/store-sites/src/store_sites/core.py",
+   "type": "code",
+   "project": "da-p16"
+  },
+  {
+   "path": "repos/store-sites/tests/test_core.py",
+   "type": "code",
+   "project": "da-p16"
+  },
+  {
+   "path": "repos/store-sites/requirements.txt",
+   "type": "code",
+   "project": "da-p16"
+  },
+  {
+   "path": "case_studies/da-p17.md",
+   "type": "case_study",
+   "project": "da-p17"
+  },
+  {
+   "path": "repos/kpi-mailer/README.md",
+   "type": "readme",
+   "project": "da-p17"
+  },
+  {
+   "path": "repos/kpi-mailer/src/kpi_mailer/core.py",
+   "type": "code",
+   "project": "da-p17"
+  },
+  {
+   "path": "repos/kpi-mailer/tests/test_core.py",
+   "type": "code",
+   "project": "da-p17"
+  },
+  {
+   "path": "repos/kpi-mailer/requirements.txt",
+   "type": "code",
+   "project": "da-p17"
+  },
+  {
+   "path": "case_studies/da-p18.md",
+   "type": "case_study",
+   "project": "da-p18"
+  },
+  {
+   "path": "repos/elasticity-study/README.md",
+   "type": "readme",
+   "project": "da-p18"
+  },
+  {
+   "path": "repos/elasticity-study/src/elasticity_study/core.py",
+   "type": "code",
+   "project": "da-p18"
+  },
+  {
+   "path": "repos/elasticity-study/tests/test_core.py",
+   "type": "code",
+   "project": "da-p18"
+  },
+  {
+   "path": "repos/elasticity-study/requirements.txt",
+   "type": "code",
+   "project": "da-p18"
+  },
+  {
+   "path": "cv.pdf",
+   "type": "cv",
+   "project": null
+  }
+ ],
+ "no_case_study": [
+  "da-p06",
+  "da-p09",
+  "da-p16"
+ ],
+ "thin_readme": [
+  "da-p03",
+  "da-p17"
+ ],
+ "projects": [
+  {
+   "id": "da-p01",
+   "title": "Sales performance dashboard for a consumer-goods distributor",
+   "industry": "FMCG",
+   "client": "Shan Distributors",
+   "date": "2025-07",
+   "weeks": 5,
+   "stack": [
+    "Power BI",
+    "SQL Server",
+    "DAX",
+    "Excel"
+   ],
+   "implicit": [
+    "power query",
+    "row-level security",
+    "star schema"
+   ],
+   "tags": [
+    "dashboards",
+    "sales analytics",
+    "KPIs",
+    "data modeling"
+   ],
+   "problem": "regional managers waited a week for an Excel pack that was already out of date",
+   "approach": "a star-schema model refreshed daily with a Power BI report per region and row-level security",
+   "outcomes": [
+    "reporting lag from 7 days to 1 day",
+    "used weekly by 60 managers"
+   ],
+   "repo": null,
+   "rating": 5.0,
+   "review": "our managers finally look at the same numbers"
+  },
+  {
+   "id": "da-p02",
+   "title": "dbt transformation layer on Snowflake",
+   "industry": "SaaS",
+   "client": "Formflow",
+   "date": "2025-03",
+   "weeks": 6,
+   "stack": [
+    "dbt",
+    "Snowflake",
+    "SQL",
+    "Fivetran"
+   ],
+   "implicit": [
+    "jinja",
+    "dbt tests",
+    "incremental models"
+   ],
+   "tags": [
+    "analytics engineering",
+    "data pipelines",
+    "data quality",
+    "ELT"
+   ],
+   "problem": "every analyst wrote their own revenue query and none of them matched",
+   "approach": "a tested dbt project with staging, intermediate and mart layers and one definition of revenue",
+   "outcomes": [
+    "one certified revenue metric replaced 9 conflicting queries",
+    "data test coverage on all mart models"
+   ],
+   "repo": "formflow-dbt",
+   "rating": 5.0,
+   "review": "numbers finally reconcile with finance"
+  },
+  {
+   "id": "da-p03",
+   "title": "Customer churn analysis for a subscription box",
+   "industry": "E-commerce",
+   "client": "Snackbox",
+   "date": "2024-10",
+   "weeks": 4,
+   "stack": [
+    "Python",
+    "pandas",
+    "SQL",
+    "Tableau"
+   ],
+   "implicit": [
+    "lifelines",
+    "statsmodels",
+    "seaborn"
+   ],
+   "tags": [
+    "churn analysis",
+    "cohort analysis",
+    "survival analysis",
+    "retention"
+   ],
+   "problem": "the team knew churn was rising but not which customers or why",
+   "approach": "cohort retention curves, survival analysis by acquisition channel and a Tableau story for leadership",
+   "outcomes": [
+    "identified a discount channel with 2x churn, which was paused",
+    "12-month retention up 6 points the next quarter"
+   ],
+   "repo": "snackbox-churn",
+   "rating": 4.9,
+   "review": "clear story that changed our acquisition budget"
+  },
+  {
+   "id": "da-p04",
+   "title": "Demand forecast for a pharmacy chain",
+   "industry": "Healthcare",
+   "client": "CarePlus Pharmacy",
+   "date": "2024-06",
+   "weeks": 6,
+   "stack": [
+    "Python",
+    "Prophet",
+    "SQL",
+    "Excel"
+   ],
+   "implicit": [
+    "statsmodels",
+    "pandas",
+    "holidays"
+   ],
+   "tags": [
+    "forecasting",
+    "time series",
+    "inventory",
+    "seasonality"
+   ],
+   "problem": "pharmacies ran out of seasonal medicines during flu season",
+   "approach": "weekly SKU forecasts with Ramadan and flu-season effects, exported to the purchasing team's Excel template",
+   "outcomes": [
+    "stock-outs on top 200 SKUs down 35%",
+    "forecast error (WAPE) from 28% to 16%"
+   ],
+   "repo": "pharmacy-forecast",
+   "rating": 4.8,
+   "review": "purchasing trusts the forecast now"
+  },
+  {
+   "id": "da-p05",
+   "title": "Marketing attribution and campaign ROI analysis",
+   "industry": "Retail",
+   "client": "Outfitters Online",
+   "date": "2025-01",
+   "weeks": 5,
+   "stack": [
+    "Google Analytics 4",
+    "BigQuery",
+    "SQL",
+    "Looker Studio"
+   ],
+   "implicit": [
+    "ga4 export schema",
+    "window functions",
+    "markov attribution"
+   ],
+   "tags": [
+    "marketing analytics",
+    "attribution",
+    "ROI",
+    "web analytics"
+   ],
+   "problem": "the marketing team credited every sale to the last click",
+   "approach": "GA4 raw-event export to BigQuery, a data-driven attribution model and a campaign ROI dashboard",
+   "outcomes": [
+    "shifted 20% of spend from branded search to prospecting",
+    "blended ROAS up 14% over the next two months"
+   ],
+   "repo": "ga4-attribution",
+   "rating": 4.7,
+   "review": "we stopped arguing about which channel works"
+  },
+  {
+   "id": "da-p06",
+   "title": "Financial model and board reporting for a fintech",
+   "industry": "FinTech",
+   "client": "NayaPay Labs",
+   "date": "2024-12",
+   "weeks": 4,
+   "stack": [
+    "Excel",
+    "Google Sheets",
+    "SQL"
+   ],
+   "implicit": [
+    "scenario analysis",
+    "xlookup",
+    "data validation"
+   ],
+   "tags": [
+    "financial modeling",
+    "FP&A",
+    "board reporting",
+    "unit economics"
+   ],
+   "problem": "the CFO rebuilt the board pack by hand every month",
+   "approach": "a driver-based three-statement model linked to the warehouse with scenario toggles and an automated board pack",
+   "outcomes": [
+    "board pack preparation from 4 days to half a day",
+    "unit economics by cohort for the Series A data room"
+   ],
+   "repo": null,
+   "rating": 5.0,
+   "review": "investors complimented the model in diligence"
+  },
+  {
+   "id": "da-p07",
+   "title": "Web scraping-free price monitoring with official APIs",
+   "industry": "E-commerce",
+   "client": "PriceWatch.pk",
+   "date": "2023-10",
+   "weeks": 4,
+   "stack": [
+    "Python",
+    "Airflow",
+    "PostgreSQL",
+    "Metabase"
+   ],
+   "implicit": [
+    "requests",
+    "pydantic",
+    "great expectations"
+   ],
+   "tags": [
+    "data pipelines",
+    "price monitoring",
+    "data quality",
+    "dashboards"
+   ],
+   "problem": "manual competitor price checks covered only 50 products",
+   "approach": "a daily pipeline that pulls partner product feeds through their official APIs, validates them and charts price moves",
+   "outcomes": [
+    "coverage from 50 to 8,000 products",
+    "pricing decisions reviewed daily instead of monthly"
+   ],
+   "repo": "price-feeds",
+   "rating": 4.6,
+   "review": "solid pipeline that runs every morning without babysitting"
+  },
+  {
+   "id": "da-p08",
+   "title": "Operations KPI dashboard for a ride-hailing fleet",
+   "industry": "Transport",
+   "client": "Bykea Partners",
+   "date": "2024-03",
+   "weeks": 5,
+   "stack": [
+    "Tableau",
+    "PostgreSQL",
+    "SQL",
+    "Python"
+   ],
+   "implicit": [
+    "postgis",
+    "geohash",
+    "pandas"
+   ],
+   "tags": [
+    "operations analytics",
+    "geospatial",
+    "dashboards",
+    "KPIs"
+   ],
+   "problem": "supply and demand were matched by gut feeling across 40 zones",
+   "approach": "a geospatial dashboard of supply, demand and wait times by zone and hour with alerting on gaps",
+   "outcomes": [
+    "average rider wait time down 18%",
+    "dashboard adopted by 25 zone managers"
+   ],
+   "repo": null,
+   "rating": 4.8,
+   "review": "zone managers check it every shift"
+  },
+  {
+   "id": "da-p09",
+   "title": "A/B test analysis framework for a mobile game",
+   "industry": "Gaming",
+   "client": "Mindstorm Studios",
+   "date": "2025-05",
+   "weeks": 4,
+   "stack": [
+    "Python",
+    "SQL",
+    "BigQuery",
+    "Jupyter"
+   ],
+   "implicit": [
+    "scipy",
+    "statsmodels",
+    "cuped"
+   ],
+   "tags": [
+    "experimentation",
+    "A/B testing",
+    "statistics",
+    "product analytics"
+   ],
+   "problem": "game designers shipped changes on tests that had not reached significance",
+   "approach": "a reusable notebook and SQL templates for power analysis, CUPED variance reduction and sequential testing guardrails",
+   "outcomes": [
+    "test duration cut by about 30% with CUPED",
+    "two false-positive launches prevented in the first quarter"
+   ],
+   "repo": "ab-toolkit",
+   "rating": 5.0,
+   "review": "our designers understand p-values now, sort of"
+  },
+  {
+   "id": "da-p10",
+   "title": "HR attrition analytics for a BPO",
+   "industry": "HR",
+   "client": "TeleConnect BPO",
+   "date": "2023-09",
+   "weeks": 5,
+   "stack": [
+    "Power BI",
+    "Excel",
+    "SQL"
+   ],
+   "implicit": [
+    "dax",
+    "power query",
+    "logistic regression"
+   ],
+   "tags": [
+    "people analytics",
+    "attrition",
+    "dashboards",
+    "survey analysis"
+   ],
+   "problem": "agent attrition was 60% a year and exit reasons were never analysed",
+   "approach": "combined HRIS, attendance and survey data into an attrition dashboard with drivers by team lead",
+   "outcomes": [
+    "identified two team leads driving a third of exits",
+    "annualised attrition down to 47% in nine months"
+   ],
+   "repo": null,
+   "rating": 4.7,
+   "review": "gave us facts for hard conversations"
+  },
+  {
+   "id": "da-p11",
+   "title": "Data warehouse migration from spreadsheets to BigQuery",
+   "industry": "Logistics",
+   "client": "RouteMate",
+   "date": "2025-10",
+   "weeks": 7,
+   "stack": [
+    "BigQuery",
+    "dbt",
+    "Python",
+    "Looker Studio"
+   ],
+   "implicit": [
+    "airbyte",
+    "partitioning",
+    "service accounts"
+   ],
+   "tags": [
+    "data warehouse",
+    "migration",
+    "data modeling",
+    "ELT"
+   ],
+   "problem": "the company ran on 40 linked Google Sheets that broke weekly",
+   "approach": "ingested operational sources into BigQuery, modelled them in dbt and rebuilt the key reports in Looker Studio",
+   "outcomes": [
+    "retired 40 spreadsheets",
+    "report refresh from manual weekly to automatic hourly"
+   ],
+   "repo": "routemate-warehouse",
+   "rating": 5.0,
+   "review": "nobody misses the spreadsheets"
+  },
+  {
+   "id": "da-p12",
+   "title": "Survey analysis and segmentation for a market research agency",
+   "industry": "Market Research",
+   "client": "Insight Pakistan",
+   "date": "2024-08",
+   "weeks": 3,
+   "stack": [
+    "Python",
+    "pandas",
+    "scikit-learn",
+    "Excel"
+   ],
+   "implicit": [
+    "k-means",
+    "factor analysis",
+    "weighting"
+   ],
+   "tags": [
+    "survey analysis",
+    "segmentation",
+    "clustering",
+    "market research"
+   ],
+   "problem": "a 5,000-respondent survey needed segments the client could act on",
+   "approach": "weighted responses, factor analysis on attitude questions and k-means segments with personas",
+   "outcomes": [
+    "five segments adopted in the client's brand strategy",
+    "report delivered three days ahead of deadline"
+   ],
+   "repo": "survey-segments",
+   "rating": 4.8,
+   "review": "segments were intuitive and backed by data"
+  },
+  {
+   "id": "da-p13",
+   "title": "Inventory and supplier analytics in Excel and Power Query",
+   "industry": "Manufacturing",
+   "client": "Faisal Textiles",
+   "date": "2023-04",
+   "weeks": 3,
+   "stack": [
+    "Excel",
+    "Power Query",
+    "Power Pivot"
+   ],
+   "implicit": [
+    "vba",
+    "pivot tables",
+    "abc analysis"
+   ],
+   "tags": [
+    "inventory analytics",
+    "supplier performance",
+    "Excel automation",
+    "ABC analysis"
+   ],
+   "problem": "buyers did not know which suppliers were late or which stock was dead",
+   "approach": "an automated Excel model with supplier on-time scores and ABC/XYZ inventory classification",
+   "outcomes": [
+    "dead stock identified worth about PKR 18M",
+    "supplier on-time delivery up from 71% to 86%"
+   ],
+   "repo": null,
+   "rating": 4.9,
+   "review": "simple tool that the buyers actually use"
+  },
+  {
+   "id": "da-p14",
+   "title": "Product analytics instrumentation for a SaaS app",
+   "industry": "SaaS",
+   "client": "Teamboard",
+   "date": "2025-08",
+   "weeks": 4,
+   "stack": [
+    "Mixpanel",
+    "SQL",
+    "Python",
+    "Segment"
+   ],
+   "implicit": [
+    "event taxonomy",
+    "funnels",
+    "retention curves"
+   ],
+   "tags": [
+    "product analytics",
+    "event tracking",
+    "funnels",
+    "activation"
+   ],
+   "problem": "the product team could not say where trial users dropped off",
+   "approach": "designed an event taxonomy, fixed tracking gaps and built activation and retention funnels",
+   "outcomes": [
+    "found an onboarding step losing 38% of trials",
+    "trial-to-paid conversion up from 9% to 13%"
+   ],
+   "repo": "teamboard-events",
+   "rating": 5.0,
+   "review": "we know our funnel now"
+  },
+  {
+   "id": "da-p15",
+   "title": "Credit portfolio monitoring dashboard for a microfinance bank",
+   "industry": "Banking",
+   "client": "Akhuwat Finance",
+   "date": "2024-01",
+   "weeks": 6,
+   "stack": [
+    "SQL",
+    "Power BI",
+    "Python"
+   ],
+   "implicit": [
+    "vintage analysis",
+    "roll rates",
+    "dax"
+   ],
+   "tags": [
+    "risk analytics",
+    "credit portfolio",
+    "dashboards",
+    "regulatory reporting"
+   ],
+   "problem": "portfolio-at-risk was calculated monthly in Excel and often wrong",
+   "approach": "automated PAR, roll-rate and vintage analysis with a Power BI dashboard for the risk committee",
+   "outcomes": [
+    "PAR reporting from monthly to daily",
+    "regulatory report errors reduced to zero in two audits"
+   ],
+   "repo": null,
+   "rating": 4.8,
+   "review": "our risk committee relies on it"
+  },
+  {
+   "id": "da-p16",
+   "title": "Geospatial analysis of store locations",
+   "industry": "Retail",
+   "client": "Chase Up Retail",
+   "date": "2025-02",
+   "weeks": 4,
+   "stack": [
+    "Python",
+    "GeoPandas",
+    "QGIS",
+    "SQL"
+   ],
+   "implicit": [
+    "shapely",
+    "h3",
+    "census data"
+   ],
+   "tags": [
+    "geospatial",
+    "site selection",
+    "catchment analysis",
+    "maps"
+   ],
+   "problem": "new stores were opened on landlord recommendations",
+   "approach": "catchment analysis combining census density, competitor locations and existing store sales to score sites",
+   "outcomes": [
+    "ranked 120 candidate sites",
+    "first two recommended stores beat sales targets by 22%"
+   ],
+   "repo": "store-sites",
+   "rating": 4.9,
+   "review": "the maps convinced our board"
+  },
+  {
+   "id": "da-p17",
+   "title": "Automated weekly KPI emails with Python",
+   "industry": "Media",
+   "client": "Dawn Digital",
+   "date": "2023-06",
+   "weeks": 2,
+   "stack": [
+    "Python",
+    "SQL",
+    "Google Sheets API"
+   ],
+   "implicit": [
+    "jinja2",
+    "matplotlib",
+    "cron"
+   ],
+   "tags": [
+    "reporting automation",
+    "KPIs",
+    "email reports",
+    "scheduling"
+   ],
+   "problem": "an analyst spent every Monday copying numbers into an email",
+   "approach": "a scheduled script that queries the database, renders charts and sends a templated KPI email",
+   "outcomes": [
+    "saved about 5 hours of analyst time a week",
+    "report sent at 8 am every Monday without fail"
+   ],
+   "repo": "kpi-mailer",
+   "rating": 4.7,
+   "review": "small project, big time saver"
+  },
+  {
+   "id": "da-p18",
+   "title": "Pricing elasticity study for an online grocery",
+   "industry": "E-commerce",
+   "client": "FreshCart",
+   "date": "2025-11",
+   "weeks": 5,
+   "stack": [
+    "Python",
+    "statsmodels",
+    "SQL",
+    "Tableau"
+   ],
+   "implicit": [
+    "log-log regression",
+    "causal inference",
+    "pandas"
+   ],
+   "tags": [
+    "pricing analytics",
+    "elasticity",
+    "regression",
+    "causal inference"
+   ],
+   "problem": "discounts were set by intuition and margins were shrinking",
+   "approach": "estimated price elasticity by category with controls for promotions and seasonality and simulated margin impact",
+   "outcomes": [
+    "recommended price changes lifted gross margin 1.8 points in the test categories",
+    "discount depth reduced on inelastic categories"
+   ],
+   "repo": "elasticity-study",
+   "rating": 5.0,
+   "review": "the elasticity numbers paid for the project quickly"
+  }
+ ]
+}

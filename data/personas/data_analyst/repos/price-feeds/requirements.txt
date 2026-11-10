@@ -1,0 +1,6 @@
+airflow
+great-expectations
+metabase
+postgresql
+pydantic
+requests

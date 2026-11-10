@@ -1,0 +1,7 @@
+asyncio
+fastapi
+langgraph
+openai-api
+pydantic
+pytest
+qdrant

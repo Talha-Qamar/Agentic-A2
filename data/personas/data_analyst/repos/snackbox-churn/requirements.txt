@@ -1,0 +1,5 @@
+lifelines
+pandas
+seaborn
+statsmodels
+tableau

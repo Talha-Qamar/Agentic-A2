@@ -1,0 +1,9 @@
+{
+  "name": "routemate-saas",
+  "private": true,
+  "dependencies": {
+    "zod": "latest",
+    "trpc": "latest",
+    "row-level-security": "latest"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "booking-gateway",
+  "private": true,
+  "dependencies": {
+    "dataloader": "latest",
+    "redis": "latest",
+    "k6": "latest"
+  }
+}

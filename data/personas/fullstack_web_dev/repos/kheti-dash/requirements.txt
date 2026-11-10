@@ -1,0 +1,8 @@
+d3.js
+fastapi
+pandas
+postgresql
+react
+recharts
+sqlalchemy
+typescript

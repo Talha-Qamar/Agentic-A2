@@ -1,0 +1,242 @@
+[
+ {
+  "review_id": "rev-fsw-p01",
+  "project": "fsw-p01",
+  "client": "RouteMate",
+  "industry": "Logistics",
+  "date": "2025-08",
+  "rating": 5.0,
+  "text": "One codebase instead of twelve forks, finally. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p02",
+  "project": "fsw-p02",
+  "client": "Learnly",
+  "industry": "EdTech",
+  "date": "2025-04",
+  "rating": 5.0,
+  "text": "Billing just works and we stopped chasing invoices. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p03",
+  "project": "fsw-p03",
+  "client": "Khaana Now",
+  "industry": "Food Delivery",
+  "date": "2024-12",
+  "rating": 4.8,
+  "text": "The live map cut our support calls almost in half. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p04",
+  "project": "fsw-p04",
+  "client": "Zari Studio",
+  "industry": "E-commerce",
+  "date": "2024-09",
+  "rating": 5.0,
+  "text": "The site is fast now and sales followed. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p05",
+  "project": "fsw-p05",
+  "client": "ShifaCare",
+  "industry": "Healthcare",
+  "date": "2024-05",
+  "rating": 4.9,
+  "text": "Reliable and the reminders changed our no-show rate. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p06",
+  "project": "fsw-p06",
+  "client": "SadaPay Partners",
+  "industry": "FinTech",
+  "date": "2025-02",
+  "rating": 5.0,
+  "text": "Compliance was happy and ops actually like the tool. Would hire again.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p07",
+  "project": "fsw-p07",
+  "client": "Roshan Foundation",
+  "industry": "Non-profit",
+  "date": "2023-11",
+  "rating": 4.8,
+  "text": "Our volunteers can update the site themselves. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p08",
+  "project": "fsw-p08",
+  "client": "Safarnama",
+  "industry": "Travel",
+  "date": "2024-03",
+  "rating": 4.7,
+  "text": "The app feels twice as fast. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p09",
+  "project": "fsw-p09",
+  "client": "Formflow",
+  "industry": "SaaS",
+  "date": "2025-06",
+  "rating": 5.0,
+  "text": "We deploy daily now without fear. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p10",
+  "project": "fsw-p10",
+  "client": "FixIt.pk",
+  "industry": "Home Services",
+  "date": "2023-08",
+  "rating": 5.0,
+  "text": "Delivered the MVP on time and it held up during the launch. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p11",
+  "project": "fsw-p11",
+  "client": "Punjab e-Services",
+  "industry": "Government",
+  "date": "2024-07",
+  "rating": 4.9,
+  "text": "Thorough and explained every fix to our team. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p12",
+  "project": "fsw-p12",
+  "client": "Pipelyne",
+  "industry": "Sales Tech",
+  "date": "2025-01",
+  "rating": 4.8,
+  "text": "Smooth extension, passed store review first time. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p13",
+  "project": "fsw-p13",
+  "client": "GharKaSaman",
+  "industry": "E-commerce",
+  "date": "2023-05",
+  "rating": 4.7,
+  "text": "Saved our sale weekend. Would hire again.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p14",
+  "project": "fsw-p14",
+  "client": "BuildSafe",
+  "industry": "Construction",
+  "date": "2024-10",
+  "rating": 5.0,
+  "text": "Works in basements with no signal, exactly as promised. Would hire again.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p15",
+  "project": "fsw-p15",
+  "client": "Teamboard",
+  "industry": "SaaS",
+  "date": "2025-09",
+  "rating": 5.0,
+  "text": "Unblocked our enterprise sales. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p16",
+  "project": "fsw-p16",
+  "client": "KhetiTech",
+  "industry": "Agriculture",
+  "date": "2024-01",
+  "rating": 4.6,
+  "text": "Exactly the charts our agronomists asked for. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p17",
+  "project": "fsw-p17",
+  "client": "PulseFit",
+  "industry": "Fitness",
+  "date": "2023-02",
+  "rating": 4.8,
+  "text": "Members love the app and the waitlist feature. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-fsw-p18",
+  "project": "fsw-p18",
+  "client": "Docstack",
+  "industry": "SaaS",
+  "date": "2025-11",
+  "rating": 4.9,
+  "text": "Our users get answers in seconds now. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-0",
+  "project": null,
+  "client": "Client 1",
+  "industry": "E-commerce",
+  "date": "2025-06",
+  "rating": 4.6,
+  "text": "Good consultation call.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-1",
+  "project": null,
+  "client": "Client 2",
+  "industry": "Media",
+  "date": "2024-09",
+  "rating": 4.3,
+  "text": "Quick fix, thanks!",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-2",
+  "project": null,
+  "client": "Client 3",
+  "industry": "Non-profit",
+  "date": "2023-02",
+  "rating": 4.4,
+  "text": "Quick fix, thanks!",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-3",
+  "project": null,
+  "client": "Client 4",
+  "industry": "Travel",
+  "date": "2023-01",
+  "rating": 4.5,
+  "text": "Good consultation call.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-4",
+  "project": null,
+  "client": "Client 5",
+  "industry": "Telecom",
+  "date": "2025-03",
+  "rating": 4.8,
+  "text": "Answered all my questions.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-5",
+  "project": null,
+  "client": "Client 6",
+  "industry": "EdTech",
+  "date": "2025-03",
+  "rating": 4.9,
+  "text": "Good consultation call.",
+  "synthetic": true
+ }
+]

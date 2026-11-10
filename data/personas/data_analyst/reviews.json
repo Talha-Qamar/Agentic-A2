@@ -1,0 +1,242 @@
+[
+ {
+  "review_id": "rev-da-p01",
+  "project": "da-p01",
+  "client": "Shan Distributors",
+  "industry": "FMCG",
+  "date": "2025-07",
+  "rating": 5.0,
+  "text": "Our managers finally look at the same numbers. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p02",
+  "project": "da-p02",
+  "client": "Formflow",
+  "industry": "SaaS",
+  "date": "2025-03",
+  "rating": 5.0,
+  "text": "Numbers finally reconcile with finance. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p03",
+  "project": "da-p03",
+  "client": "Snackbox",
+  "industry": "E-commerce",
+  "date": "2024-10",
+  "rating": 4.9,
+  "text": "Clear story that changed our acquisition budget. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p04",
+  "project": "da-p04",
+  "client": "CarePlus Pharmacy",
+  "industry": "Healthcare",
+  "date": "2024-06",
+  "rating": 4.8,
+  "text": "Purchasing trusts the forecast now. Would hire again.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p05",
+  "project": "da-p05",
+  "client": "Outfitters Online",
+  "industry": "Retail",
+  "date": "2025-01",
+  "rating": 4.7,
+  "text": "We stopped arguing about which channel works. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p06",
+  "project": "da-p06",
+  "client": "NayaPay Labs",
+  "industry": "FinTech",
+  "date": "2024-12",
+  "rating": 5.0,
+  "text": "Investors complimented the model in diligence. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p07",
+  "project": "da-p07",
+  "client": "PriceWatch.pk",
+  "industry": "E-commerce",
+  "date": "2023-10",
+  "rating": 4.6,
+  "text": "Solid pipeline that runs every morning without babysitting. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p08",
+  "project": "da-p08",
+  "client": "Bykea Partners",
+  "industry": "Transport",
+  "date": "2024-03",
+  "rating": 4.8,
+  "text": "Zone managers check it every shift. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p09",
+  "project": "da-p09",
+  "client": "Mindstorm Studios",
+  "industry": "Gaming",
+  "date": "2025-05",
+  "rating": 5.0,
+  "text": "Our designers understand p-values now, sort of. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p10",
+  "project": "da-p10",
+  "client": "TeleConnect BPO",
+  "industry": "HR",
+  "date": "2023-09",
+  "rating": 4.7,
+  "text": "Gave us facts for hard conversations. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p11",
+  "project": "da-p11",
+  "client": "RouteMate",
+  "industry": "Logistics",
+  "date": "2025-10",
+  "rating": 5.0,
+  "text": "Nobody misses the spreadsheets. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p12",
+  "project": "da-p12",
+  "client": "Insight Pakistan",
+  "industry": "Market Research",
+  "date": "2024-08",
+  "rating": 4.8,
+  "text": "Segments were intuitive and backed by data. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p13",
+  "project": "da-p13",
+  "client": "Faisal Textiles",
+  "industry": "Manufacturing",
+  "date": "2023-04",
+  "rating": 4.9,
+  "text": "Simple tool that the buyers actually use. Very professional.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p14",
+  "project": "da-p14",
+  "client": "Teamboard",
+  "industry": "SaaS",
+  "date": "2025-08",
+  "rating": 5.0,
+  "text": "We know our funnel now. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p15",
+  "project": "da-p15",
+  "client": "Akhuwat Finance",
+  "industry": "Banking",
+  "date": "2024-01",
+  "rating": 4.8,
+  "text": "Our risk committee relies on it. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p16",
+  "project": "da-p16",
+  "client": "Chase Up Retail",
+  "industry": "Retail",
+  "date": "2025-02",
+  "rating": 4.9,
+  "text": "The maps convinced our board. Delivered on time.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p17",
+  "project": "da-p17",
+  "client": "Dawn Digital",
+  "industry": "Media",
+  "date": "2023-06",
+  "rating": 4.7,
+  "text": "Small project, big time saver. Would hire again.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-da-p18",
+  "project": "da-p18",
+  "client": "FreshCart",
+  "industry": "E-commerce",
+  "date": "2025-11",
+  "rating": 5.0,
+  "text": "The elasticity numbers paid for the project quickly. Great communication throughout.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-0",
+  "project": null,
+  "client": "Client 1",
+  "industry": "E-commerce",
+  "date": "2024-03",
+  "rating": 4.3,
+  "text": "Good consultation call.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-1",
+  "project": null,
+  "client": "Client 2",
+  "industry": "Manufacturing",
+  "date": "2025-09",
+  "rating": 4.8,
+  "text": "Good consultation call.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-2",
+  "project": null,
+  "client": "Client 3",
+  "industry": "E-commerce",
+  "date": "2024-09",
+  "rating": 4.7,
+  "text": "Answered all my questions.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-3",
+  "project": null,
+  "client": "Client 4",
+  "industry": "Manufacturing",
+  "date": "2023-04",
+  "rating": 4.6,
+  "text": "Good consultation call.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-4",
+  "project": null,
+  "client": "Client 5",
+  "industry": "Non-profit",
+  "date": "2024-04",
+  "rating": 5.0,
+  "text": "Good consultation call.",
+  "synthetic": true
+ },
+ {
+  "review_id": "rev-misc-5",
+  "project": null,
+  "client": "Client 6",
+  "industry": "Healthcare",
+  "date": "2023-03",
+  "rating": 4.7,
+  "text": "Quick fix, thanks!",
+  "synthetic": true
+ }
+]

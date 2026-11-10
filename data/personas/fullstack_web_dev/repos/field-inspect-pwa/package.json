@@ -1,0 +1,9 @@
+{
+  "name": "field-inspect-pwa",
+  "private": true,
+  "dependencies": {
+    "workbox": "latest",
+    "service-worker": "latest",
+    "background-sync": "latest"
+  }
+}

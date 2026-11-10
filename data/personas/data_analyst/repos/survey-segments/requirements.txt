@@ -1,0 +1,6 @@
+excel
+factor-analysis
+k-means
+pandas
+scikit-learn
+weighting

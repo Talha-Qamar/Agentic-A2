@@ -1,0 +1,9 @@
+{
+  "name": "stripe-billing-kit",
+  "private": true,
+  "dependencies": {
+    "webhooks": "latest",
+    "idempotency-keys": "latest",
+    "jest": "latest"
+  }
+}

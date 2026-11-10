@@ -1,0 +1,9 @@
+{
+  "name": "prospect-notes",
+  "private": true,
+  "dependencies": {
+    "manifest-v3": "latest",
+    "service-worker": "latest",
+    "vite": "latest"
+  }
+}

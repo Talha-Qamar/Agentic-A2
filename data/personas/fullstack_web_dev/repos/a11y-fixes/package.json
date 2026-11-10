@@ -1,0 +1,10 @@
+{
+  "name": "a11y-fixes",
+  "private": true,
+  "dependencies": {
+    "axe-core": "latest",
+    "aria": "latest",
+    "jest-axe": "latest",
+    "storybook": "latest"
+  }
+}

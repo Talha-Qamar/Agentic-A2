@@ -1,0 +1,7 @@
+celery
+django
+django-rest-framework
+drf-spectacular
+postgresql
+pytest-django
+redis

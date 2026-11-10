@@ -1,0 +1,4 @@
+cron
+google-sheets-api
+jinja2
+matplotlib

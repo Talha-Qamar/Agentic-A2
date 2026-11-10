@@ -1,0 +1,19 @@
+{
+ "name": "Mahnoor Iqbal",
+ "headline": "Data analyst: SQL, dbt, BI dashboards and forecasting",
+ "location": "Karachi, Pakistan (UTC+5)",
+ "hourly_floor": 22,
+ "target_rate": 38,
+ "years": 5,
+ "education": "BS Economics & Mathematics, LUMS (2020)",
+ "summary": "I turn messy operational data into models people trust: clean SQL, tested dbt pipelines, dashboards with one number per question, and forecasts with honest error bars.",
+ "categories": [
+  "Data Analytics",
+  "Data Visualization",
+  "Financial Analysis & Modeling",
+  "Data Engineering",
+  "Market Research"
+ ],
+ "persona_id": "data_analyst",
+ "synthetic": true
+}
