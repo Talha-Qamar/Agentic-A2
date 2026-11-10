@@ -3,6 +3,7 @@ project: aiml-p04
 client_industry: FinTech
 date: 2025-03
 duration_weeks: 5
+repo: invoice-vlm
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Invoice extraction pipeline with vision-language models

@@ -3,6 +3,7 @@ project: fsw-p02
 client_industry: EdTech
 date: 2025-04
 duration_weeks: 4
+repo: stripe-billing-kit
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Learnly

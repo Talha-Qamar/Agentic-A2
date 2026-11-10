@@ -3,6 +3,7 @@ project: da-p18
 client_industry: E-commerce
 date: 2025-11
 duration_weeks: 5
+repo: elasticity-study
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # FreshCart: pricing analytics in 2025

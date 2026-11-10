@@ -3,6 +3,7 @@ project: da-p12
 client_industry: Market Research
 date: 2024-08
 duration_weeks: 3
+repo: survey-segments
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Insight Pakistan: survey analysis in 2024

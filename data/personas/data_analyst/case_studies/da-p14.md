@@ -3,6 +3,7 @@ project: da-p14
 client_industry: SaaS
 date: 2025-08
 duration_weeks: 4
+repo: teamboard-events
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Teamboard

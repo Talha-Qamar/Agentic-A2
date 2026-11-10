@@ -3,6 +3,7 @@ project: fsw-p07
 client_industry: Non-profit
 date: 2023-11
 duration_weeks: 4
+repo: roshan-site
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Marketing site and CMS migration to a headless CMS

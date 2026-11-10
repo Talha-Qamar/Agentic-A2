@@ -3,6 +3,7 @@ project: fsw-p12
 client_industry: Sales Tech
 date: 2025-01
 duration_weeks: 4
+repo: prospect-notes
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Pipelyne: browser extension in 2025

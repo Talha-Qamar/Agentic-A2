@@ -3,6 +3,7 @@ project: aiml-p05
 client_industry: EdTech
 date: 2025-10
 duration_weeks: 4
+repo: essay-evals
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Essayly

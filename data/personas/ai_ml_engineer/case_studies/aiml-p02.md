@@ -3,6 +3,7 @@ project: aiml-p02
 client_industry: SaaS
 date: 2025-06
 duration_weeks: 6
+repo: triage-agent
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Ticketly

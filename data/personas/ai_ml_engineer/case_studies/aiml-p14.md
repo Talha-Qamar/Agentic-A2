@@ -3,6 +3,7 @@ project: aiml-p14
 client_industry: Media
 date: 2023-07
 duration_weeks: 6
+repo: urdu-ner
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Khabar Labs

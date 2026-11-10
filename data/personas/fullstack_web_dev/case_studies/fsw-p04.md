@@ -3,6 +3,7 @@ project: fsw-p04
 client_industry: E-commerce
 date: 2024-09
 duration_weeks: 7
+repo: zari-headless
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Headless Shopify storefront rebuild

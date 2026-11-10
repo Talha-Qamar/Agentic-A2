@@ -3,6 +3,7 @@ project: da-p05
 client_industry: Retail
 date: 2025-01
 duration_weeks: 5
+repo: ga4-attribution
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Outfitters Online

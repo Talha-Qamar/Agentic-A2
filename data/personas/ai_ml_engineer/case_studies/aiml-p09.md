@@ -3,6 +3,7 @@ project: aiml-p09
 client_industry: Finance
 date: 2025-08
 duration_weeks: 8
+repo: research-crew
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # NorthBay Capital: multi-agent in 2025

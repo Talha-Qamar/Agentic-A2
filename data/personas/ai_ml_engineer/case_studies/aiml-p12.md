@@ -3,6 +3,7 @@ project: aiml-p12
 client_industry: Media
 date: 2024-02
 duration_weeks: 8
+repo: pod-recs
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Sunwave Audio: recommender systems in 2024

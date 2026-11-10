@@ -3,6 +3,7 @@ project: da-p11
 client_industry: Logistics
 date: 2025-10
 duration_weeks: 7
+repo: routemate-warehouse
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: RouteMate

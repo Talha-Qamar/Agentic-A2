@@ -3,6 +3,7 @@ project: fsw-p09
 client_industry: SaaS
 date: 2025-06
 duration_weeks: 3
+repo: formflow-infra
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Formflow: DevOps in 2025

@@ -3,6 +3,7 @@ project: fsw-p03
 client_industry: Food Delivery
 date: 2024-12
 duration_weeks: 6
+repo: live-track
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Khaana Now: real-time in 2024

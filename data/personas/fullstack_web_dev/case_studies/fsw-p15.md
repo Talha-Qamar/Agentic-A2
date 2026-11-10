@@ -3,6 +3,7 @@ project: fsw-p15
 client_industry: SaaS
 date: 2025-09
 duration_weeks: 4
+repo: teamboard-auth
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Teamboard: authentication in 2025

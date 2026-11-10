@@ -193,7 +193,8 @@ def case_study(p: dict, style: int, persona: str) -> str:
             return IMPLIED[canon(s)][0]
         return prose(s, 0)
     stack_txt = ", ".join(mention(s) for s in stack_named)
-    fm = f"---\nproject: {p['id']}\nclient_industry: {p['industry']}\ndate: {p['date']}\nduration_weeks: {p['weeks']}\n---\n"
+    repo_line = f"repo: {p['repo']}\n" if p["repo"] else ""
+    fm = f"---\nproject: {p['id']}\nclient_industry: {p['industry']}\ndate: {p['date']}\nduration_weeks: {p['weeks']}\n{repo_line}---\n"
     if style == 0:
         return f"""{fm}{SYNTH_BANNER}
 # {p['title']}

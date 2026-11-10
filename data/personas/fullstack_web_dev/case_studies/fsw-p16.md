@@ -3,6 +3,7 @@ project: fsw-p16
 client_industry: Agriculture
 date: 2024-01
 duration_weeks: 5
+repo: kheti-dash
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Analytics dashboard with charts and CSV exports

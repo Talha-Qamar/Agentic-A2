@@ -3,6 +3,7 @@ project: aiml-p18
 client_industry: AI Services
 date: 2024-09
 duration_weeks: 5
+repo: prelabel
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # LabelForge: data labelling in 2024

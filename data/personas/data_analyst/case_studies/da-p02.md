@@ -3,6 +3,7 @@ project: da-p02
 client_industry: SaaS
 date: 2025-03
 duration_weeks: 6
+repo: formflow-dbt
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Formflow

@@ -3,6 +3,7 @@ project: da-p03
 client_industry: E-commerce
 date: 2024-10
 duration_weeks: 4
+repo: snackbox-churn
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Snackbox: churn analysis in 2024

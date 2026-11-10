@@ -3,6 +3,7 @@ project: aiml-p10
 client_industry: Manufacturing
 date: 2023-12
 duration_weeks: 12
+repo: loom-vision
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Defect detection on a textile production line

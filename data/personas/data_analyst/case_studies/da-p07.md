@@ -3,6 +3,7 @@ project: da-p07
 client_industry: E-commerce
 date: 2023-10
 duration_weeks: 4
+repo: price-feeds
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Web scraping-free price monitoring with official APIs

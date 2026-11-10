@@ -3,6 +3,7 @@ project: fsw-p08
 client_industry: Travel
 date: 2024-03
 duration_weeks: 9
+repo: booking-gateway
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Safarnama

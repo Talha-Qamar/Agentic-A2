@@ -3,6 +3,7 @@ project: aiml-p16
 client_industry: Travel
 date: 2025-12
 duration_weeks: 3
+repo: agent-redteam
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Prompt-injection hardening for a customer-facing agent

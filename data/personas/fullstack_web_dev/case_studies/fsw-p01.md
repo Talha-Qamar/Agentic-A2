@@ -3,6 +3,7 @@ project: fsw-p01
 client_industry: Logistics
 date: 2025-08
 duration_weeks: 10
+repo: routemate-saas
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Multi-tenant SaaS dashboard for a logistics startup

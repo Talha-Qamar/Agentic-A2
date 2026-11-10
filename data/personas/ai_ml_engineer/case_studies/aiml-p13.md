@@ -3,6 +3,7 @@ project: aiml-p13
 client_industry: SaaS
 date: 2025-11
 duration_weeks: 3
+repo: llm-router
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # LLM cost and latency optimisation for a writing tool

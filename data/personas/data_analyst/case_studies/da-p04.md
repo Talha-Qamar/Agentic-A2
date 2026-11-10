@@ -3,6 +3,7 @@ project: da-p04
 client_industry: Healthcare
 date: 2024-06
 duration_weeks: 6
+repo: pharmacy-forecast
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Demand forecast for a pharmacy chain

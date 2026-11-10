@@ -3,6 +3,7 @@ project: da-p17
 client_industry: Media
 date: 2023-06
 duration_weeks: 2
+repo: kpi-mailer
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Case study: Dawn Digital

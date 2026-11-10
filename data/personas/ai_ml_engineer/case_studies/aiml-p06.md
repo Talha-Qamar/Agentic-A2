@@ -3,6 +3,7 @@ project: aiml-p06
 client_industry: E-commerce
 date: 2024-08
 duration_weeks: 6
+repo: hybrid-search
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Threadline: semantic search in 2024

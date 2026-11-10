@@ -3,6 +3,7 @@ project: fsw-p18
 client_industry: SaaS
 date: 2025-11
 duration_weeks: 4
+repo: support-widget
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # Docstack: AI integration in 2025

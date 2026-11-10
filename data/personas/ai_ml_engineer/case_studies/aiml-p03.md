@@ -3,6 +3,7 @@ project: aiml-p03
 client_industry: Retail
 date: 2024-11
 duration_weeks: 9
+repo: shelf-forecast
 ---
 <!-- SYNTHETIC DATA: invented for the GigBid assignment; not a real person or client. -->
 # FreshCart: time series in 2024
