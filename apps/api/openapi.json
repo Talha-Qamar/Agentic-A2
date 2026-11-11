@@ -737,6 +737,72 @@
     }
    }
   },
+  "/api/runs/{thread_id}/public": {
+   "post": {
+    "tags": [
+     "runs"
+    ],
+    "summary": "Set Public",
+    "operationId": "set_public_api_runs__thread_id__public_post",
+    "parameters": [
+     {
+      "name": "thread_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Thread Id"
+      }
+     },
+     {
+      "name": "gb_session",
+      "in": "cookie",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Gb Session"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PublicIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
   "/api/runs/{thread_id}/stream": {
    "get": {
     "tags": [
@@ -778,6 +844,47 @@
         }
        ],
        "title": "Gb Session"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/public/traces/{thread_id}": {
+   "get": {
+    "tags": [
+     "public"
+    ],
+    "summary": "Public Trace",
+    "description": "Read-only trace page for runs their owner explicitly published (PII already masked at write time).",
+    "operationId": "public_trace_api_public_traces__thread_id__get",
+    "parameters": [
+     {
+      "name": "thread_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Thread Id"
       }
      }
     ],
@@ -1627,6 +1734,182 @@
     }
    }
   },
+  "/api/panel/pair": {
+   "get": {
+    "tags": [
+     "human-eval"
+    ],
+    "summary": "Next Pair",
+    "operationId": "next_pair_api_panel_pair_get",
+    "parameters": [
+     {
+      "name": "rater",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Rater"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/panel/vote": {
+   "post": {
+    "tags": [
+     "human-eval"
+    ],
+    "summary": "Vote",
+    "operationId": "vote_api_panel_vote_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/VoteIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/panel/label": {
+   "get": {
+    "tags": [
+     "human-eval"
+    ],
+    "summary": "Next Label",
+    "operationId": "next_label_api_panel_label_get",
+    "parameters": [
+     {
+      "name": "labeller",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Labeller"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "human-eval"
+    ],
+    "summary": "Label",
+    "operationId": "label_api_panel_label_post",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LabelIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/panel/export": {
+   "get": {
+    "tags": [
+     "human-eval"
+    ],
+    "summary": "Export",
+    "description": "Anonymised export for evals/runners/human_eval.py (votes and labels, no rater names).",
+    "operationId": "export_api_panel_export_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
   "/api/health": {
    "get": {
     "summary": "Health",
@@ -1998,6 +2281,33 @@
     ],
     "title": "JobRow"
    },
+   "LabelIn": {
+    "properties": {
+     "item_id": {
+      "type": "string",
+      "title": "Item Id"
+     },
+     "labeller": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 2,
+      "title": "Labeller"
+     },
+     "score": {
+      "type": "number",
+      "maximum": 10.0,
+      "minimum": 1.0,
+      "title": "Score"
+     }
+    },
+    "type": "object",
+    "required": [
+     "item_id",
+     "labeller",
+     "score"
+    ],
+    "title": "LabelIn"
+   },
    "LoginIn": {
     "properties": {
      "email": {
@@ -2096,6 +2406,19 @@
      "persona"
     ],
     "title": "OnboardIn"
+   },
+   "PublicIn": {
+    "properties": {
+     "public": {
+      "type": "boolean",
+      "title": "Public"
+     }
+    },
+    "type": "object",
+    "required": [
+     "public"
+    ],
+    "title": "PublicIn"
    },
    "RegisterIn": {
     "properties": {
@@ -2286,6 +2609,37 @@
      "type"
     ],
     "title": "ValidationError"
+   },
+   "VoteIn": {
+    "properties": {
+     "pair_id": {
+      "type": "string",
+      "title": "Pair Id"
+     },
+     "rater": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 2,
+      "title": "Rater"
+     },
+     "choice": {
+      "type": "string",
+      "pattern": "^(A|B|tie)$",
+      "title": "Choice"
+     },
+     "flip": {
+      "type": "boolean",
+      "title": "Flip"
+     }
+    },
+    "type": "object",
+    "required": [
+     "pair_id",
+     "rater",
+     "choice",
+     "flip"
+    ],
+    "title": "VoteIn"
    }
   }
  }

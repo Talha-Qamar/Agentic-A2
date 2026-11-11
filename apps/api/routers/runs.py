@@ -5,12 +5,38 @@ import asyncio
 import json
 
 from fastapi import APIRouter, HTTPException, Request
+from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 
 from apps.api.auth.session import UserDep
 from common import db
 
 router = APIRouter(prefix="/api/runs", tags=["runs"])
+public_router = APIRouter(prefix="/api/public", tags=["public"])
+
+
+class PublicIn(BaseModel):
+    public: bool
+
+
+def _trace_payload(r: dict) -> dict:
+    ev = db.q("SELECT id, ts, node, kind, payload FROM run_events WHERE user_id=%s AND thread_id=%s ORDER BY id", (r["user_id"], r["thread_id"]))
+    job = db.one("SELECT summary FROM jobs WHERE user_id=%s AND thread_id=%s", (r["user_id"], r["thread_id"]))
+    audit = db.q("SELECT ts, server, tool, arguments, status FROM audit_log WHERE trace_id=%s ORDER BY id", (r.get("trace_id") or "-",))
+    from agent.tracing import phoenix_link
+    return {"run": r, "events": ev, "summary": (job or {}).get("summary"), "audit": audit, "phoenix_url": phoenix_link(r.get("trace_id") or "")}
+
+
+@public_router.get("/traces/{thread_id}")
+def public_trace(thread_id: str):
+    """Read-only trace page for runs their owner explicitly published (PII already masked at write time)."""
+    r = db.one("SELECT * FROM runs WHERE thread_id=%s AND public", (thread_id,))
+    if not r:
+        raise HTTPException(404, "trace not found or not public")
+    out = _trace_payload(r)
+    out["run"] = {k: v for k, v in r.items() if k != "user_id"}
+    out["phoenix_url"] = None
+    return out
 
 
 @router.get("")
@@ -24,10 +50,15 @@ def get_run(thread_id: str, user=UserDep):
     r = db.one("SELECT * FROM runs WHERE user_id=%s AND thread_id=%s", (user["user_id"], thread_id))
     if not r:
         raise HTTPException(404, "run not found")
-    ev = db.q("SELECT id, ts, node, kind, payload FROM run_events WHERE user_id=%s AND thread_id=%s ORDER BY id", (user["user_id"], thread_id))
-    job = db.one("SELECT summary FROM jobs WHERE user_id=%s AND thread_id=%s", (user["user_id"], thread_id))
-    from agent.tracing import phoenix_link
-    return {"run": r, "events": ev, "summary": (job or {}).get("summary"), "phoenix_url": phoenix_link(r.get("trace_id") or "")}
+    return _trace_payload(r)
+
+
+@router.post("/{thread_id}/public")
+def set_public(thread_id: str, body: PublicIn, user=UserDep):
+    n = db.x("UPDATE runs SET public=%s WHERE user_id=%s AND thread_id=%s", (body.public, user["user_id"], thread_id))
+    if not n:
+        raise HTTPException(404, "run not found")
+    return {"thread_id": thread_id, "public": body.public, "url": f"/t/{thread_id}" if body.public else None}
 
 
 @router.get("/{thread_id}/stream")

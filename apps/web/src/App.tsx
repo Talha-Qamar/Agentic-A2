@@ -84,6 +84,7 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/panel" element={<PanelPage />} />
         <Route path="/label" element={<LabelPage />} />
+        <Route path="/t/:id" element={<main className="main" style={{ maxWidth: 1200, margin: "0 auto" }}><div className="brand" style={{ margin: "8px 0 14px" }}><i>G</i> GigBid public trace</div><RunPage publicView /></main>} />
         <Route path="/onboarding" element={me ? <OnboardingPage /> : <Navigate to="/login" />} />
         <Route path="/inbox" element={guard(<InboxPage />)} />
         <Route path="/jobs/:id" element={guard(<JobPage />)} />

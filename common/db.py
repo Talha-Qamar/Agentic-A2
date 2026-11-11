@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS run_events (
   id BIGSERIAL PRIMARY KEY, thread_id TEXT NOT NULL, user_id TEXT NOT NULL, ts TIMESTAMPTZ NOT NULL DEFAULT now(),
   node TEXT, kind TEXT NOT NULL, payload JSONB);
 CREATE INDEX IF NOT EXISTS ix_run_events_thread ON run_events(thread_id, id);
+ALTER TABLE runs ADD COLUMN IF NOT EXISTS public BOOLEAN NOT NULL DEFAULT false;
 CREATE TABLE IF NOT EXISTS approvals (
   approval_id TEXT PRIMARY KEY, user_id TEXT NOT NULL, thread_id TEXT NOT NULL, kind TEXT NOT NULL,
   status TEXT NOT NULL DEFAULT 'pending', payload JSONB NOT NULL, decision JSONB, created_at TIMESTAMPTZ NOT NULL DEFAULT now(),

@@ -120,7 +120,7 @@ class AdvanceIn(BaseModel):
 def create_app() -> FastAPI:
     app = FastAPI(title="GigBid API", version="1.0.0", lifespan=lifespan,
                   description="Multi-agent freelancer copilot. All marketplace writes require human approval.")
-    for r in (auth.router, jobs.router, runs.router, approvals.router, workspace.router, panel.router):
+    for r in (auth.router, jobs.router, runs.router, runs.public_router, approvals.router, workspace.router, panel.router):
         app.include_router(r)
     app.state.mcp_servers = []
     if ALLINONE:

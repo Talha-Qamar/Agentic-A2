@@ -17,6 +17,6 @@ apps/web/playwright-report/
 gigsim/var/
 var/
 *.log
-runs/
+/runs/
 apps/web/test-results/
 apps/web/playwright-report/
