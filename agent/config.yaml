@@ -7,15 +7,23 @@ providers:
   groq: {base_url: "https://api.groq.com/openai/v1", api_key_env: GROQ_API_KEY}
   ollama: {base_url: "${OLLAMA_BASE_URL:-http://localhost:11434/v1}", api_key_env: null}
   openrouter: {base_url: "https://openrouter.ai/api/v1", api_key_env: OPENROUTER_API_KEY}
+  cerebras: {base_url: "https://api.cerebras.ai/v1", api_key_env: CEREBRAS_API_KEY}   # same open weights, separate free quota
   stub: {base_url: null, api_key_env: null}   # deterministic offline model for tests/CI only; never reported as a result
 
 # Model tiers per profile. Cheap, frequent nodes use `small`; Writer/Critic/Liaison use `strong`.
 profiles:
+  # A fallback may be a list: tried in order; entries whose provider has no API key, or whose daily quota is
+  # exhausted (HTTP 429 "per day"), are skipped for the rest of the process.
   open:          # REQUIRED profile: open-weight models via a hosted open-model provider (deployed link uses this)
     small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
     strong: {provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}
-    fallback_small: {provider: groq, model: qwen/qwen3.8-27b}
-    fallback_strong: {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
+    fallback_small: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: qwen/qwen3.8-27b}]
+    fallback_strong: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}]
+  open_cx:       # experiment profile: same models, strong tier served by Cerebras (Groq's 200K tokens/day cap per model)
+    small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
+    strong: {provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}
+    fallback_small: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: qwen/qwen3.8-27b}]
+    fallback_strong: [{provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}]
   open_small:    # comparison config: every node on the small open model (no strong-model routing)
     small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
     strong: {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
@@ -58,6 +66,7 @@ nodes:
 pricing_usd_per_mtok:
   openai/gpt-oss-20b: {input: 0.075, output: 0.30}
   openai/gpt-oss-120b: {input: 0.15, output: 0.60}
+  gpt-oss-120b: {input: 0.35, output: 0.75}       # Cerebras list price (free tier used; cost reported at list price)
   qwen/qwen3.8-27b: {input: 0.80, output: 4.00}
   meta-llama/llama-prompt-guard-2-86m: {input: 0.04, output: 0.04}
   default: {input: 0.0, output: 0.0}

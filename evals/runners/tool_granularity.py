@@ -112,12 +112,16 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--tasks", type=int, default=40)
     ap.add_argument("--designs", default="coarse,fine,bytype")
+    ap.add_argument("--provider", default=os.environ.get("TOOL_STUDY_PROVIDER", "groq"))
     ap.add_argument("--model", default=os.environ.get("TOOL_STUDY_MODEL", "qwen/qwen3.8-27b"))
     ap.add_argument("--out", default="tool_granularity.json")
     a = ap.parse_args()
     from langchain_openai import ChatOpenAI
-    model = ChatOpenAI(model=a.model, base_url="https://api.groq.com/openai/v1", api_key=os.environ["GROQ_API_KEY"], temperature=0,
-                       max_tokens=600, timeout=60, max_retries=4)
+
+    from agent import settings
+    prov = settings.get(f"providers.{a.provider}")
+    model = ChatOpenAI(model=a.model, base_url=prov["base_url"], api_key=os.environ[prov["api_key_env"]], temperature=0,
+                       max_tokens=600, timeout=90, max_retries=6)
     tasks = make_tasks(a.tasks)
     procs = []
     try:
@@ -146,7 +150,7 @@ def main() -> None:
                       "p50_latency_s": round(pct([r["latency_s"] for r in rs], 50), 2), "p95_latency_s": round(pct([r["latency_s"] for r in rs], 95), 2),
                       "mean_tokens": round(mean([r["tokens"] for r in rs]), 1), "errors": sum(bool(r["error"]) for r in rs),
                       "by_type": {t: round(mean([1.0 if r["success"] else 0.0 for r in rs if r["type"] == t]), 3) for t in sorted({r["type"] for r in rs})}}
-    write_result(a.out, {"provenance": provenance({"model": a.model, "tasks": len(tasks)}), "summary": summary, "rows": rows})
+    write_result(a.out, {"provenance": provenance({"model": a.model, "provider": a.provider, "tasks": len(tasks)}), "summary": summary, "rows": rows})
     print(json.dumps(summary, indent=1))
 
 

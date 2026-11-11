@@ -20,7 +20,8 @@ from agent.llm import load_prompt, parse_json
 
 
 def chat_model(node: str) -> ChatOpenAI:
-    spec = settings.model_for(node)
+    from agent.llm import available
+    spec = next((c for c in settings.model_candidates(node) if available(c)), settings.model_for(node))
     p = settings.get(f"providers.{spec['provider']}")
     kw = {}
     if spec.get("reasoning_effort"):

@@ -23,6 +23,16 @@ from .tracing import LLMCall, record, span
 
 T = TypeVar("T", bound=BaseModel)
 _clients: dict[str, object] = {}
+_EXHAUSTED: dict[tuple[str, str], float] = {}   # (provider, model) -> when its daily quota ran out
+
+
+def available(spec: dict) -> bool:
+    """A candidate is usable when its provider has a key and its daily quota was not exhausted in the last hour."""
+    p = settings.get(f"providers.{spec['provider']}") or {}
+    if p.get("api_key_env") and not os.environ.get(p["api_key_env"]):
+        return False
+    t = _EXHAUSTED.get((spec["provider"], spec["model"]))
+    return not (t and time.time() - t < 3600)
 
 
 class LLMError(RuntimeError):
@@ -90,8 +100,10 @@ async def complete(node: str, system: str, user: str, *, json_mode: bool = False
                    temperature: float | None = None) -> str:
     messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     last_err: Exception | None = None
-    for use_fallback in (False, True):
-        spec = settings.model_for(node, fallback=use_fallback)
+    for spec in settings.model_candidates(node):
+        use_fallback = spec["fallback"]
+        if not available(spec):
+            continue
         retries = settings.get("llm.max_retries", 2)
         for attempt in range(retries + 1):
             t0 = time.perf_counter()
@@ -113,6 +125,9 @@ async def complete(node: str, system: str, user: str, *, json_mode: bool = False
                                fallback=use_fallback, error=f"{type(e).__name__}: {str(e)[:120]}"))
                 if status in (400, 401, 403, 404):
                     break  # not transient: go to fallback model
+                if status == 429 and re.search(r"per day|TPD|RPD|daily", str(e), re.I):
+                    _EXHAUSTED[(spec["provider"], spec["model"])] = time.time()
+                    break  # daily quota gone: retrying cannot help
                 wait = settings.get("llm.backoff_base_s", 2.0) * (2 ** attempt)
                 if status == 429:
                     wait = max(wait, 8.0)

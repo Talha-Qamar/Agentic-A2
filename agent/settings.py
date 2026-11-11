@@ -56,10 +56,24 @@ def model_for(node: str, fallback: bool = False, profile: str | None = None) -> 
     prof = profile or os.environ.get("GIGBID_PROFILE") or c["profile"]
     tier = c["nodes"].get(node, "small")
     key = f"fallback_{tier}" if fallback else tier
-    spec = dict(c["profiles"][prof][key])
+    spec = c["profiles"][prof][key]
+    spec = dict(spec[0] if isinstance(spec, list) else spec)
     spec["profile"] = prof
     spec["tier"] = tier
     return spec
+
+
+def model_candidates(node: str, profile: str | None = None) -> list[dict]:
+    """Primary model for the node, then its fallbacks in order (a fallback entry may be a single spec or a list)."""
+    c = cfg()
+    prof = profile or os.environ.get("GIGBID_PROFILE") or c["profile"]
+    tier = c["nodes"].get(node, "small")
+    p = c["profiles"][prof]
+    fb = p.get(f"fallback_{tier}") or []
+    out = []
+    for i, spec in enumerate([p[tier]] + (fb if isinstance(fb, list) else [fb])):
+        out.append(dict(spec, profile=prof, tier=tier, fallback=i > 0))
+    return out
 
 
 def price(model: str) -> dict:
