@@ -1,0 +1,32 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__(<p>__start__</p>)
+	load_thread(load_thread)
+	intent(intent)
+	liaison(liaison)
+	reply_compliance(reply_compliance)
+	reply_approval(reply_approval)
+	send(send)
+	dead_letter(dead_letter)
+	needs_attention(needs_attention)
+	__end__(<p>__end__</p>)
+	__start__ --> load_thread;
+	intent -.-> __end__;
+	intent -.-> liaison;
+	liaison -.-> __end__;
+	liaison -.-> reply_compliance;
+	load_thread -.-> __end__;
+	load_thread -.-> intent;
+	reply_approval -.-> __end__;
+	reply_approval -.-> reply_compliance;
+	reply_approval -.-> send;
+	reply_compliance -.-> __end__;
+	reply_compliance -.-> reply_approval;
+	send --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

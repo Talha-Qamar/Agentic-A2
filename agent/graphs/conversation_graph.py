@@ -16,13 +16,18 @@ from agent.state import ConversationState
 def _ok(nxt):
     def r(s):
         return END if s.get("status") in ("dead_letter", "needs_attention") else nxt
+    r.__name__ = f"to_{nxt}"
     return r
+
+
+def route_intent(s):
+    return END if s.get("status") in ("dead_letter", "needs_attention", "no_client_message") else "liaison"
 
 
 def build_conversation_graph(checkpointer=None, store=None):
     g = StateGraph(ConversationState)
     g.add_node("load_thread", load_thread)
-    g.add_node("intent", intent, destinations=("liaison", END))
+    g.add_node("intent", intent)
     g.add_node("liaison", liaison)
     g.add_node("reply_compliance", reply_compliance, destinations=("reply_approval", END))
     g.add_node("reply_approval", reply_approval, destinations=("send", "reply_compliance", END))
@@ -31,8 +36,7 @@ def build_conversation_graph(checkpointer=None, store=None):
     g.add_node("needs_attention", needs_attention)
     g.add_edge(START, "load_thread")
     g.add_conditional_edges("load_thread", _ok("intent"), ["intent", END])
-    g.add_conditional_edges("intent", lambda s: END if s.get("status") in ("dead_letter", "needs_attention", "no_client_message") else "liaison",
-                            ["liaison", END])
+    g.add_conditional_edges("intent", route_intent, ["liaison", END])
     g.add_conditional_edges("liaison", _ok("reply_compliance"), ["reply_compliance", END])
     g.add_edge("send", END)
     g.add_edge("dead_letter", END)
