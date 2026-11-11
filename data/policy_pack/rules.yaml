@@ -1,6 +1,6 @@
 # GigBid policy pack: rules the Compliance Guard enforces on every proposal and message.
 # Absorbing a platform policy change = editing this file (and agent/config.yaml), not code. See docs/CHANGELOG.md.
-version: "2026-10-27"
+version: "2026-11-02"   # absorbed GigSim platform policy update of 2 Nov 2026 (docs/CHANGELOG.md)
 allowed_link_domains: []
 rules:
   - id: no_off_platform
@@ -21,9 +21,12 @@ rules:
   - id: banned_phrases
     severity: fix
     text: "Avoid generic phrases clients ignore."
+  - id: ai_disclosure
+    severity: fix
+    text: "Proposals drafted with automation tools must say so (added automatically from disclosure.line)."
   - id: fair_automation
     severity: block
     text: "A human approves every proposal, message and Connects spend; nothing is sent automatically."
 disclosure:
-  required: false
-  line: ""
+  required: true
+  line: "Drafted with AI assistance and reviewed by me before sending."

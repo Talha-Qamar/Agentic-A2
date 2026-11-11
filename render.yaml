@@ -21,6 +21,7 @@ services:
       - {key: WORKSPACE_MCP_URL, value: "http://127.0.0.1:10000/mcp/workspace/mcp"}
       - {key: GIGSIM_DB, value: /tmp/gigsim.db}
       - {key: GIGSIM_SPEED, value: "0.5"}
+      - {key: GIGSIM_POLICY_VERSION, value: "2026-11-02"}
       - {key: EMBED_THREADS, value: "1"}
       - {key: DB_POOL_MAX, value: "4"}
       - {key: GIGBID_SECRET, generateValue: true}

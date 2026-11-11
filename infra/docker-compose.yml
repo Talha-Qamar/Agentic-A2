@@ -40,7 +40,7 @@ services:
   gigsim:
     <<: *app
     command: uvicorn gigsim.app:app --host 0.0.0.0 --port 8100
-    environment: {<<: *appenv, GIGSIM_DB: /data/gigsim.db}
+    environment: {<<: *appenv, GIGSIM_DB: /data/gigsim.db, GIGSIM_POLICY_VERSION: "2026-11-02"}
     volumes: [gigsim:/data]
     depends_on: []
     ports: ["8100:8100"]
