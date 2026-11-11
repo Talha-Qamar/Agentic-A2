@@ -19,8 +19,11 @@ def _expand(v: Any) -> Any:
         def rep(m):
             return os.environ.get(m.group(1), m.group(2) if m.group(2) is not None else "")
         out = _VAR.sub(rep, v)
-        if out.lower() in ("true", "false") and _VAR.search(v):
-            return out.lower() == "true"
+        if _VAR.search(v):
+            if out.lower() in ("true", "false"):
+                return out.lower() == "true"
+            if re.fullmatch(r"-?\d+(\.\d+)?", out):
+                return float(out) if "." in out else int(out)
         return out
     if isinstance(v, dict):
         return {k: _expand(x) for k, x in v.items()}

@@ -94,8 +94,8 @@ budgets:
     usd_per_proposal: 0.01
 
 thresholds:
-  fit_bid: 0.55
-  fit_watch: 0.40
+  fit_bid: ${GIGBID_FIT_BID:-0.55}
+  fit_watch: ${GIGBID_FIT_WATCH:-0.40}
   risk_skip: 0.60
   scam_skip: 0.50
   min_requirement_coverage: 0.5

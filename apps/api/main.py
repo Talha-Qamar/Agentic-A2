@@ -84,6 +84,14 @@ async def _worker_loop():
             await asyncio.sleep(int(os.environ.get("TICK_MINUTES", "5")) * 60)
 
 
+class FaultIn(BaseModel):
+    down: bool
+
+
+class AdvanceIn(BaseModel):
+    minutes: float = 120
+
+
 def create_app() -> FastAPI:
     app = FastAPI(title="GigBid API", version="1.0.0", lifespan=lifespan,
                   description="Multi-agent freelancer copilot. All marketplace writes require human approval.")
@@ -120,9 +128,6 @@ def create_app() -> FastAPI:
             out.update(marketplace=f"unavailable: {str(e)[:120]}", degraded=True)
         return out
 
-    class FaultIn(BaseModel):
-        down: bool
-
     @app.post("/api/demo/fault")
     async def demo_fault(body: FaultIn):
         """Demo control: take GigSim down/up to show degraded mode (marketplace admin key held server-side)."""
@@ -130,9 +135,6 @@ def create_app() -> FastAPI:
             r = await c.post(settings.get("marketplace.gigsim_url").rstrip("/") + "/v1/admin/fault", json={"down": body.down},
                              headers={"X-Admin-Key": os.environ.get("GIGSIM_ADMIN_KEY", "gigsim-admin")})
         return r.json()
-
-    class AdvanceIn(BaseModel):
-        minutes: float = 120
 
     @app.post("/api/demo/advance")
     async def demo_advance(body: AdvanceIn):
