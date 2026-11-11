@@ -35,3 +35,5 @@ openinference-instrumentation-langchain==0.1.82
 pytest==9.2.0
 pytest-asyncio==1.4.1.post1
 ruff==0.17.4
+imageio-ffmpeg==0.6.0
+playwright==1.63.0
