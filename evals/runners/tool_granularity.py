@@ -1,4 +1,10 @@
-"""A5: Portfolio MCP tool-granularity study - coarse vs fine vs by-type tool designs on 40 portfolio tasks.
+"""R&D question A: Portfolio MCP tool granularity on 40 portfolio tasks with known correct calls.
+
+Designs: coarse (one tool: match_requirements), bytype (many fine-grained tools: one search per document type),
+rewritten (the default four-tool set with descriptions rewritten after reading the first two designs' failures),
+and fine (the default set minus match_requirements, original descriptions).
+Metrics per design: task success, tool-selection accuracy (first call is a correct tool for the task),
+argument accuracy (a correct call carries the key term / id / outcome filter), tokens per task, latency.
 
     python -m evals.runners.tool_granularity --tasks 40
 
@@ -22,7 +28,7 @@ import httpx
 
 from evals.runners.common import DATASETS, mean, pct, provenance, write_result
 
-PORTS = {"coarse": 8211, "fine": 8212, "bytype": 8213}
+PORTS = {"coarse": 8211, "fine": 8212, "bytype": 8213, "rewritten": 8214}
 EXPECTED = {
     "coarse": {"evidence": {"match_requirements"}, "result": {"match_requirements"}, "skill": {"match_requirements"}, "outcome": {"match_requirements"}},
     "fine": {"evidence": {"search_evidence"}, "result": {"get_case_study", "search_evidence"}, "skill": {"list_skills", "search_evidence"},
@@ -30,7 +36,27 @@ EXPECTED = {
     "bytype": {"evidence": {"search_case_studies", "search_repositories", "search_reviews_and_cv"},
                "result": {"get_case_study", "search_case_studies", "search_reviews_and_cv"}, "skill": {"list_skills", "search_repositories", "search_case_studies"},
                "outcome": {"search_past_proposals"}},
+    "rewritten": {"evidence": {"search_evidence"}, "result": {"get_case_study", "search_evidence"}, "skill": {"list_skills", "search_evidence"},
+                  "outcome": {"search_evidence"}},
 }
+
+
+def args_ok(task: dict, name: str, args: dict) -> bool:
+    """Argument accuracy: the call carries what the task needs (the key term, the right id, the outcome filter)."""
+    blob = json.dumps(args).lower()
+    term = str(task.get("term", "")).lower()
+    if task["type"] == "outcome":
+        if name == "search_past_proposals":
+            return args.get("outcome") in ("won", "replied") or "won" in blob
+        if name == "search_evidence":
+            f = args.get("filters") or {}
+            return "proposal" in (f.get("types") or []) and bool(set(f.get("outcomes") or []) & {"won", "replied"})
+        return False
+    if name == "list_skills":
+        return task["type"] == "skill"
+    if name == "get_case_study":
+        return str(args.get("id", "")).lower() in {str(x).lower() for x in task.get("ids", [])}
+    return bool(term) and term in blob
 
 
 def make_tasks(n: int) -> list[dict]:
@@ -45,15 +71,15 @@ def make_tasks(n: int) -> list[dict]:
             tag = rng.choice(p["tags"])
             clients = sorted({q["client"] for q in projects if tag in q["tags"]})
             tasks.append({"persona": persona, "type": "evidence", "q": f"A client needs {tag}. Which of my past clients did I do {tag} work for? Name the client.",
-                          "check": {"any_of": clients}})
+                          "check": {"any_of": clients}, "term": tag})
         for p in rng.sample(projects, 3):
             nums = re.findall(r"\d+(?:\.\d+)?", p["outcomes"][0])
             tasks.append({"persona": persona, "type": "result", "q": f"What measurable result did I achieve for {p['client']}? Quote the figure.",
-                          "check": {"any_of": nums}})
+                          "check": {"any_of": nums}, "term": p["client"], "ids": [p["id"]]})
         present = rng.choice(projects)["stack"][0]
         absent = rng.choice(["Unity", "Solidity", "SAP ABAP", "COBOL"])
-        tasks.append({"persona": persona, "type": "skill", "q": f"Do I have portfolio evidence of using {present}? Answer yes or no.", "check": {"yes": True}})
-        tasks.append({"persona": persona, "type": "skill", "q": f"Do I have portfolio evidence of using {absent}? Answer yes or no.", "check": {"yes": False}})
+        tasks.append({"persona": persona, "type": "skill", "q": f"Do I have portfolio evidence of using {present}? Answer yes or no.", "check": {"yes": True}, "term": present})
+        tasks.append({"persona": persona, "type": "skill", "q": f"Do I have portfolio evidence of using {absent}? Answer yes or no.", "check": {"yes": False}, "term": absent})
         won = [x for x in props if x["outcome"] in ("won", "replied")]
         cat = rng.choice(won)["job_category"]
         tasks.append({"persona": persona, "type": "outcome",
@@ -94,16 +120,21 @@ async def run_design(design: str, tasks: list[dict], model) -> list[dict]:
             out = await agent.ainvoke({"messages": [("user", t["q"])]}, {"callbacks": [cb], "recursion_limit": 14})
             msgs = out["messages"]
             answer = msgs[-1].content if isinstance(msgs[-1].content, str) else str(msgs[-1].content)
-            calls = [tc["name"] for m in msgs for tc in (getattr(m, "tool_calls", None) or [])]
+            tcs = [tc for m in msgs for tc in (getattr(m, "tool_calls", None) or [])]
+            calls = [tc["name"] for tc in tcs]
+            call_args = [tc.get("args") or {} for tc in tcs]
             err = None
         except Exception as e:  # noqa: BLE001
-            answer, calls, err = "", [], f"{type(e).__name__}: {str(e)[:160]}"
+            answer, calls, call_args, err = "", [], [], f"{type(e).__name__}: {str(e)[:160]}"
         lat = time.perf_counter() - t0
         exp = EXPECTED[design][t["type"]]
         wrong = sum(c not in exp for c in calls)
         tokens = sum(u.get("input_tokens", 0) + u.get("output_tokens", 0) for u in cb.usage_metadata.values())
+        right = [i for i, c in enumerate(calls) if c in exp]
         rows.append({"design": design, "persona": t["persona"], "type": t["type"], "q": t["q"], "answer": answer[:400], "success": success(t, answer) and not err,
-                     "calls": calls, "n_calls": len(calls), "wrong_tool_calls": wrong, "latency_s": round(lat, 2), "tokens": tokens, "error": err})
+                     "calls": calls, "args": call_args, "n_calls": len(calls), "wrong_tool_calls": wrong, "latency_s": round(lat, 2), "tokens": tokens, "error": err,
+                     "tool_selected_ok": bool(calls) and calls[0] in exp,
+                     "args_ok": any(args_ok(t, calls[i], call_args[i]) for i in right) if right else False})
         print(f"[{design}] {t['type']:8s} ok={rows[-1]['success']} calls={calls} {lat:.1f}s", flush=True)
     return rows
 
@@ -111,7 +142,7 @@ async def run_design(design: str, tasks: list[dict], model) -> list[dict]:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--tasks", type=int, default=40)
-    ap.add_argument("--designs", default="coarse,fine,bytype")
+    ap.add_argument("--designs", default="coarse,bytype,rewritten")
     ap.add_argument("--provider", default=os.environ.get("TOOL_STUDY_PROVIDER", "groq"))
     ap.add_argument("--model", default=os.environ.get("TOOL_STUDY_MODEL", "qwen/qwen3.8-27b"))
     ap.add_argument("--out", default="tool_granularity.json")
@@ -145,7 +176,11 @@ def main() -> None:
     for d in a.designs.split(","):
         rs = [r for r in rows if r["design"] == d]
         calls = sum(r["n_calls"] for r in rs)
+        ok = [r for r in rs if not r["error"]]
         summary[d] = {"tasks": len(rs), "success_rate": round(mean([1.0 if r["success"] else 0.0 for r in rs]), 4),
+                      "tool_selection_accuracy": round(mean([1.0 if r["tool_selected_ok"] else 0.0 for r in ok]), 4) if ok else None,
+                      "argument_accuracy": round(mean([1.0 if r["args_ok"] else 0.0 for r in ok if r["tool_selected_ok"]]), 4)
+                      if any(r["tool_selected_ok"] for r in ok) else None,
                       "mean_calls": round(calls / len(rs), 2), "wrong_tool_rate": round(sum(r["wrong_tool_calls"] for r in rs) / calls, 4) if calls else 0.0,
                       "p50_latency_s": round(pct([r["latency_s"] for r in rs], 50), 2), "p95_latency_s": round(pct([r["latency_s"] for r in rs], 95), 2),
                       "mean_tokens": round(mean([r["tokens"] for r in rs]), 1), "errors": sum(bool(r["error"]) for r in rs),

@@ -98,17 +98,43 @@ TOOLSETS = {
     "fine": {"search_evidence", "get_case_study", "list_skills"},
     "coarse": {"match_requirements"},
     "bytype": {"search_case_studies", "search_repositories", "search_past_proposals", "search_reviews_and_cv", "get_case_study", "list_skills"},
+    "rewritten": {"search_evidence", "match_requirements", "get_case_study", "list_skills"},
+}
+
+# Tool study (R&D question A), design 3: the default tool set with descriptions rewritten after reading the failures of
+# the coarse and by-type designs (outcome questions never used the outcome filter; yes/no skill questions searched
+# prose instead of listing skills; result questions did not fetch the full case study).
+REWRITTEN = {
+    "search_evidence": (
+        "Search the freelancer's portfolio for evidence about ONE thing (a skill, a kind of work, a client). "
+        "Use filters to narrow: filters={'types': ['proposal'], 'outcomes': ['won']} for past proposals that won "
+        "(or ['won','replied'] for ones that got a reply); types can be case_study, readme, code, review, cv, proposal. "
+        "Each item has evidence_id, type, source, project and text; a proposal item's evidence_id starts with the proposal id (e.g. ai_m-prop-012:0 -> ai_m-prop-012)."),
+    "match_requirements": (
+        "Only for a whole job post with several requirements: maps each requirement to evidence in one call. "
+        "For a single question about one skill, client or past proposal use search_evidence instead."),
+    "get_case_study": (
+        "Full text of one case study, including its measurable results. Call it with the project id from a "
+        "search_evidence item (field 'project') when you need exact figures or the client name."),
+    "list_skills": (
+        "Every skill evidenced anywhere in the portfolio with a mention count. For yes/no questions like "
+        "'do I have evidence of X?', call this and check whether X is listed (also try search_evidence for X)."),
 }
 
 
 def register(mcp, backend, toolset: str | None = None) -> None:
     import os
-    enabled = TOOLSETS[toolset or os.environ.get("PORTFOLIO_TOOLSET", "default")]
+    name = toolset or os.environ.get("PORTFOLIO_TOOLSET", "default")
+    enabled = TOOLSETS[name]
     real_tool = mcp.tool
 
     def tool(*a, **kw):
         def deco(fn):
-            return real_tool(*a, **kw)(fn) if fn.__name__ in enabled else fn
+            if fn.__name__ not in enabled:
+                return fn
+            if name == "rewritten" and fn.__name__ in REWRITTEN:
+                kw["description"] = REWRITTEN[fn.__name__]
+            return real_tool(*a, **kw)(fn)
         return deco
     mcp.tool = tool
     try:

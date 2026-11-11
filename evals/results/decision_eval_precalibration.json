@@ -1,0 +1,1455 @@
+{
+ "provenance": {
+  "git_sha": "ea06a77",
+  "timestamp": "2026-11-11T14:35:09+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "rag_variant": "v9_skill_graph",
+  "models": {
+   "analyst": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "small"
+   },
+   "writer": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "strong"
+   },
+   "critic": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "strong"
+   }
+  }
+ },
+ "summary": {
+  "n": 21,
+  "errors": 0,
+  "bid_f1": 0.2857,
+  "accuracy": 0.5238,
+  "confusion": {
+   "tp": 2,
+   "fp": 0,
+   "fn": 10,
+   "tn": 9
+  },
+  "scam_recall": 1.0,
+  "scam_skip_rate": 1.0,
+  "false_scam_rate": 0.05,
+  "price_in_band": 1.0,
+  "proposals_drafted": 2,
+  "unsupported_claim_rate_before": 0.4,
+  "unsupported_claim_rate_after": 0.0,
+  "claims_checked": 5,
+  "p50_latency_s": 17.38,
+  "p95_latency_s": 50.29,
+  "p95_latency_s_proposal": 63.86,
+  "mean_cost_usd_job": 0.001368,
+  "mean_cost_usd_proposal": 0.003635,
+  "mean_tokens_job": 3652.0,
+  "dead_letter": 0,
+  "needs_attention": 0
+ },
+ "by_persona": {
+  "ai_ml_engineer": {
+   "n": 7,
+   "errors": 0,
+   "bid_f1": 0.0,
+   "accuracy": 0.2857,
+   "confusion": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 5,
+    "tn": 2
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": null,
+   "proposals_drafted": 0,
+   "unsupported_claim_rate_before": null,
+   "unsupported_claim_rate_after": null,
+   "claims_checked": 0,
+   "p50_latency_s": 9.04,
+   "p95_latency_s": 25.65,
+   "p95_latency_s_proposal": null,
+   "mean_cost_usd_job": 0.000784,
+   "mean_cost_usd_proposal": null,
+   "mean_tokens_job": 2286.4,
+   "dead_letter": 0,
+   "needs_attention": 0
+  },
+  "data_analyst": {
+   "n": 7,
+   "errors": 0,
+   "bid_f1": 0.4,
+   "accuracy": 0.5714,
+   "confusion": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 3,
+    "tn": 3
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": 1.0,
+   "proposals_drafted": 1,
+   "unsupported_claim_rate_before": 0.5,
+   "unsupported_claim_rate_after": 0.0,
+   "claims_checked": 4,
+   "p50_latency_s": 25.33,
+   "p95_latency_s": 58.53,
+   "p95_latency_s_proposal": 65.76,
+   "mean_cost_usd_job": 0.002012,
+   "mean_cost_usd_proposal": 0.004308,
+   "mean_tokens_job": 5010.0,
+   "dead_letter": 0,
+   "needs_attention": 0
+  },
+  "fullstack_web_dev": {
+   "n": 7,
+   "errors": 0,
+   "bid_f1": 0.5,
+   "accuracy": 0.7143,
+   "confusion": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 2,
+    "tn": 4
+   },
+   "scam_recall": 1.0,
+   "scam_skip_rate": 1.0,
+   "false_scam_rate": 0.1667,
+   "price_in_band": 1.0,
+   "proposals_drafted": 1,
+   "unsupported_claim_rate_before": 0.0,
+   "unsupported_claim_rate_after": 0.0,
+   "claims_checked": 1,
+   "p50_latency_s": 17.71,
+   "p95_latency_s": 45.32,
+   "p95_latency_s_proposal": 27.77,
+   "mean_cost_usd_job": 0.001307,
+   "mean_cost_usd_proposal": 0.002963,
+   "mean_tokens_job": 3659.6,
+   "dead_letter": 0,
+   "needs_attention": 0
+  }
+ },
+ "declared_budgets": {
+  "p95_latency_s_job_analysed": 25,
+  "p95_latency_s_proposal": 60,
+  "usd_per_job_analysed": 0.002,
+  "usd_per_proposal": 0.01
+ },
+ "rows": [
+  {
+   "job_id": "dev-fe57fd3998",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    35,
+    46.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.2315,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 2.507,
+   "tokens": 2182,
+   "cost_usd": 0.000263,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 58,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1086,
+     "tokens": 1165,
+     "cost": 0.000156
+    },
+    "risk": {
+     "ms": 738,
+     "tokens": 1017,
+     "cost": 0.000107
+    },
+    "matcher": {
+     "ms": 2002,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "e6138b432b3a4bcb99e6e0ee62566203",
+   "errors": []
+  },
+  {
+   "job_id": "dev-3a835b2c40",
+   "persona": "ai_ml_engineer",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "high",
+   "band": [
+    520.0,
+    580.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3153,
+   "scam_score": 0.2,
+   "risk": 0.4,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 2.377,
+   "tokens": 2413,
+   "cost_usd": 0.000323,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 57,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1218,
+     "tokens": 1229,
+     "cost": 0.000175
+    },
+    "risk": {
+     "ms": 1052,
+     "tokens": 1184,
+     "cost": 0.000148
+    },
+    "matcher": {
+     "ms": 2130,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "2d87cf2d5932416689c5e8000ded921d",
+   "errors": []
+  },
+  {
+   "job_id": "dev-9ff3c69969",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "high",
+   "band": [
+    35,
+    48.3
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.2413,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 1.215,
+   "tokens": 2284,
+   "cost_usd": 0.000302,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 42,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1096,
+     "tokens": 1226,
+     "cost": 0.000184
+    },
+    "risk": {
+     "ms": 890,
+     "tokens": 1058,
+     "cost": 0.000118
+    },
+    "matcher": {
+     "ms": 343,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "bbd292ba6927434786ce2d673bfd7afd",
+   "errors": []
+  },
+  {
+   "job_id": "dev-74900b1fc2",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    430.0,
+    890.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.0012,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 9.041,
+   "tokens": 2008,
+   "cost_usd": 0.00024,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 41,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 645,
+     "tokens": 1035,
+     "cost": 0.000134
+    },
+    "risk": {
+     "ms": 8943,
+     "tokens": 973,
+     "cost": 0.000106
+    },
+    "matcher": {
+     "ms": 187,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "e23f5db4b24245b68a8f311a140d3bd8",
+   "errors": []
+  },
+  {
+   "job_id": "dev-dfc6ecdb6c",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    35,
+    49.4
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.1655,
+   "scam_score": 0.02,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 25.45,
+   "tokens": 2318,
+   "cost_usd": 0.001846,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 25,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1021,
+     "tokens": 1228,
+     "cost": 0.000174
+    },
+    "risk": {
+     "ms": 25364,
+     "tokens": 1090,
+     "cost": 0.001672
+    },
+    "matcher": {
+     "ms": 180,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "31ac551ec6f341ee8da8cc9cd6a93694",
+   "errors": []
+  },
+  {
+   "job_id": "dev-bbb50c2054",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    520.0,
+    960.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.0944,
+   "scam_score": 0.05,
+   "risk": 0.15,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 25.735,
+   "tokens": 2457,
+   "cost_usd": 0.002202,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 30,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 9102,
+     "tokens": 1304,
+     "cost": 0.000201
+    },
+    "risk": {
+     "ms": 25625,
+     "tokens": 1153,
+     "cost": 0.002001
+    },
+    "matcher": {
+     "ms": 202,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "c1f25e9ce9b342afb2d7465615aea3a8",
+   "errors": []
+  },
+  {
+   "job_id": "dev-32a4693498",
+   "persona": "ai_ml_engineer",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    420.0,
+    460.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3553,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 16.937,
+   "tokens": 2343,
+   "cost_usd": 0.000312,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 27,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 904,
+     "tokens": 1309,
+     "cost": 0.000199
+    },
+    "risk": {
+     "ms": 16836,
+     "tokens": 1034,
+     "cost": 0.000113
+    },
+    "matcher": {
+     "ms": 118,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "23442a8f73fc434eb30c601e1b821c6d",
+   "errors": []
+  },
+  {
+   "job_id": "dev-d2b679d112",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "partial",
+   "band": [
+    1220.0,
+    2550.0
+   ],
+   "status": "awaiting_approval",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.5529,
+   "scam_score": 0.05,
+   "risk": 0.24,
+   "price": 2265.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 4,
+   "unsupported_before": 2,
+   "unsupported_after": 0,
+   "latency_s": 65.761,
+   "tokens": 21083,
+   "cost_usd": 0.004308,
+   "steps": 17,
+   "cover_letter": "I built Salesforce Apex functionality for Bykea Partners, delivering a geospatial dashboard that cut rider wait time by 18% (evidence c61202f0c4cd). I also created an interactive Microsoft Power\u202fBI dashboard for Shan Distributors that shrank reporting lag from 7 days to 1 day and is used daily by 60 managers (evidence 1e8bfb9261fc). I will apply this experience to design a credit\u2011portfolio engine for your travel team, integrating Apex data models and a Power\u202fBI manager view.\n\n**First\u2011week plan**: Day\u202f1\u20112 review requirements and set up Apex data model with roll\u2011rate calculations; Day\u202f3\u20115 develop the core credit\u2011portfolio logic; Day\u202f6\u20117 build the interactive Power\u202fBI dashboard with row\u2011level security; Day\u202f8\u20119 add tests, monitoring, and documentation; Day\u202f10 deliver a working slice and conduct a joint review.\n\nFixed price: $2265.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 25,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 883,
+     "tokens": 1236,
+     "cost": 0.000186
+    },
+    "risk": {
+     "ms": 17105,
+     "tokens": 1083,
+     "cost": 0.000125
+    },
+    "matcher": {
+     "ms": 1185,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 69,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 18122,
+     "tokens": 3162,
+     "cost": 0.000749
+    },
+    "verifier": {
+     "ms": 9560,
+     "tokens": 1354,
+     "cost": 0.000152
+    },
+    "critic": {
+     "ms": 2151,
+     "tokens": 1816,
+     "cost": 0.000431
+    },
+    "compliance": {
+     "ms": 483,
+     "tokens": 728,
+     "cost": 7.8e-05
+    },
+    "preview": {
+     "ms": 77,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "564989cec69041ccad290b70cf891ca0",
+   "errors": []
+  },
+  {
+   "job_id": "dev-a1268a5ea6",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    260.0,
+    340.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.251,
+   "scam_score": 0.05,
+   "risk": 0.15,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 25.332,
+   "tokens": 2178,
+   "cost_usd": 0.002051,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 24,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 8931,
+     "tokens": 1078,
+     "cost": 0.000144
+    },
+    "risk": {
+     "ms": 25256,
+     "tokens": 1100,
+     "cost": 0.001907
+    },
+    "matcher": {
+     "ms": 108,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "296576233bc740bbab44181e63a22537",
+   "errors": []
+  },
+  {
+   "job_id": "dev-32bf8cb350",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    520.0,
+    1100.0
+   ],
+   "status": "watching",
+   "pred": "skip",
+   "raw_decision": "watch",
+   "fit": 0.4103,
+   "scam_score": 0.05,
+   "risk": 0.108,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 17.122,
+   "tokens": 2374,
+   "cost_usd": 0.000316,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 28,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 9105,
+     "tokens": 1333,
+     "cost": 0.000204
+    },
+    "risk": {
+     "ms": 17042,
+     "tokens": 1041,
+     "cost": 0.000112
+    },
+    "matcher": {
+     "ms": 176,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "6befb1da873e40ebb0cd20f747851af5",
+   "errors": []
+  },
+  {
+   "job_id": "dev-1d61bcaf84",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    330.0,
+    360.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.1742,
+   "scam_score": 0.05,
+   "risk": 0.2,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 41.649,
+   "tokens": 2388,
+   "cost_usd": 0.002135,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 25,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 678,
+     "tokens": 1216,
+     "cost": 0.000161
+    },
+    "risk": {
+     "ms": 41557,
+     "tokens": 1172,
+     "cost": 0.001974
+    },
+    "matcher": {
+     "ms": 155,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "b29798e298c84a60aa5efd759c37ac40",
+   "errors": []
+  },
+  {
+   "job_id": "dev-adadadf79d",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    400.0,
+    440.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.0076,
+   "scam_score": 0.02,
+   "risk": 0.05,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 17.185,
+   "tokens": 2329,
+   "cost_usd": 0.000299,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 23,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 9271,
+     "tokens": 1303,
+     "cost": 0.000193
+    },
+    "risk": {
+     "ms": 17122,
+     "tokens": 1026,
+     "cost": 0.000106
+    },
+    "matcher": {
+     "ms": 138,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "76cb3bfaf90f478db060b1281587cf4c",
+   "errors": []
+  },
+  {
+   "job_id": "dev-dc68b35403",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    400.0,
+    440.0
+   ],
+   "status": "watching",
+   "pred": "skip",
+   "raw_decision": "watch",
+   "fit": 0.4026,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 17.217,
+   "tokens": 2325,
+   "cost_usd": 0.000304,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 24,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 9125,
+     "tokens": 1260,
+     "cost": 0.000185
+    },
+    "risk": {
+     "ms": 17124,
+     "tokens": 1065,
+     "cost": 0.000119
+    },
+    "matcher": {
+     "ms": 166,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "1f1e6c33e0d54b67a85efe0bdec49443",
+   "errors": []
+  },
+  {
+   "job_id": "dev-9c17bc3fcf",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "low",
+   "band": [
+    22,
+    46.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3431,
+   "scam_score": 0.05,
+   "risk": 0.15,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 25.862,
+   "tokens": 2393,
+   "cost_usd": 0.004673,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 26,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 25769,
+     "tokens": 1306,
+     "cost": 0.002869
+    },
+    "risk": {
+     "ms": 25251,
+     "tokens": 1087,
+     "cost": 0.001804
+    },
+    "matcher": {
+     "ms": 193,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "41b111e04e3f4a26b7858b615a5d0e35",
+   "errors": []
+  },
+  {
+   "job_id": "dev-f8e549af1e",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "low",
+   "band": [
+    500.0,
+    760.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.5747,
+   "scam_score": 0.85,
+   "risk": 0.9,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 17.715,
+   "tokens": 2392,
+   "cost_usd": 0.000336,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 24,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 9078,
+     "tokens": 1190,
+     "cost": 0.000169
+    },
+    "risk": {
+     "ms": 17623,
+     "tokens": 1202,
+     "cost": 0.000167
+    },
+    "matcher": {
+     "ms": 1097,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "c119958a1ead44e1a4279f1ca5996a73",
+   "errors": []
+  },
+  {
+   "job_id": "dev-324595103c",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    500.0,
+    550.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3883,
+   "scam_score": 0.05,
+   "risk": 0.127,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 17.294,
+   "tokens": 2203,
+   "cost_usd": 0.00029,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 25,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 8965,
+     "tokens": 1167,
+     "cost": 0.00017
+    },
+    "risk": {
+     "ms": 17205,
+     "tokens": 1036,
+     "cost": 0.00012
+    },
+    "matcher": {
+     "ms": 159,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "4148dc22833743019f1ff11c00d6d87c",
+   "errors": []
+  },
+  {
+   "job_id": "dev-d593651b45",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    28,
+    37.9
+   ],
+   "status": "watching",
+   "pred": "skip",
+   "raw_decision": "watch",
+   "fit": 0.4789,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 50.291,
+   "tokens": 2479,
+   "cost_usd": 0.003298,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 22,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 25981,
+     "tokens": 1440,
+     "cost": 0.003187
+    },
+    "risk": {
+     "ms": 50162,
+     "tokens": 1039,
+     "cost": 0.000111
+    },
+    "matcher": {
+     "ms": 167,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 3,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "ee564a978a32475a86dd72621d3195d2",
+   "errors": []
+  },
+  {
+   "job_id": "dev-b411186277",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": true,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    340.0,
+    370.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.1892,
+   "scam_score": 0.85,
+   "risk": 0.8,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 17.227,
+   "tokens": 2383,
+   "cost_usd": 0.0003,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 30,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 8925,
+     "tokens": 1155,
+     "cost": 0.000144
+    },
+    "risk": {
+     "ms": 17137,
+     "tokens": 1228,
+     "cost": 0.000156
+    },
+    "matcher": {
+     "ms": 148,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "4c8122b4cbd74939a52fbb8f0f68a12b",
+   "errors": []
+  },
+  {
+   "job_id": "dev-22423d2c16",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    28,
+    37.9
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.0063,
+   "scam_score": 0.05,
+   "risk": 0.2,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 33.72,
+   "tokens": 2026,
+   "cost_usd": 0.001707,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 47,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 8874,
+     "tokens": 1003,
+     "cost": 0.000121
+    },
+    "risk": {
+     "ms": 33600,
+     "tokens": 1023,
+     "cost": 0.001586
+    },
+    "matcher": {
+     "ms": 314,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "f773b7cc03f84aa4a28d5476ad119b8a",
+   "errors": []
+  },
+  {
+   "job_id": "dev-b40428589d",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    420.0,
+    720.0
+   ],
+   "status": "awaiting_approval",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.552,
+   "scam_score": 0.0,
+   "risk": 0.108,
+   "price": 690.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 27.775,
+   "tokens": 12039,
+   "cost_usd": 0.002963,
+   "steps": 14,
+   "cover_letter": "You need a scheduling\u2011centric API that can reliably trigger background jobs. I have hands\u2011on scheduling experience, having delivered a booking API with slot locking at ShifaCare, eliminating double bookings (evidence:7bc2d19ee4f0). I work with Django REST Framework, Celery, PostgreSQL, Redis and pytest\u2011django as listed in my requirements.txt (evidence:4711efc7f9c4).\nFirst\u2011week plan: (1) kickoff call to confirm endpoints and job types; (2) scaffold DRF serializers and viewsets for notification scheduling; (3) configure Celery workers and Redis broker for email/SMS tasks; (4) implement slot\u2011locking logic and provider onboarding endpoints; (5) deliver a working slice that creates a scheduled notification and processes it in the background; (6) run pytest\u2011django unit and integration tests and share a test report. Subsequent weeks will add monitoring, documentation and final hand\u2011off. Fixed price $690 for the 30\u2011day project.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 33,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 9163,
+     "tokens": 1261,
+     "cost": 0.000193
+    },
+    "risk": {
+     "ms": 17541,
+     "tokens": 967,
+     "cost": 9.7e-05
+    },
+    "matcher": {
+     "ms": 199,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 77,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 2130,
+     "tokens": 2832,
+     "cost": 0.000699
+    },
+    "verifier": {
+     "ms": 817,
+     "tokens": 476,
+     "cost": 5.6e-05
+    },
+    "critic": {
+     "ms": 923,
+     "tokens": 1626,
+     "cost": 0.000329
+    },
+    "compliance": {
+     "ms": 1552,
+     "tokens": 580,
+     "cost": 0.000499
+    },
+    "preview": {
+     "ms": 78,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "abfcb8235b87497cb9ac6b3ca17b785e",
+   "errors": []
+  },
+  {
+   "job_id": "dev-c492dbe4e2",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    380.0,
+    800.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.1568,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 17.38,
+   "tokens": 2095,
+   "cost_usd": 0.000253,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 23,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 17291,
+     "tokens": 1086,
+     "cost": 0.000141
+    },
+    "risk": {
+     "ms": 8861,
+     "tokens": 1009,
+     "cost": 0.000112
+    },
+    "matcher": {
+     "ms": 102,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "833380c5c99642ac89cb2b99b4713704",
+   "errors": []
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "provenance": {
+  "git_sha": "ea06a77",
+  "timestamp": "2026-11-11T14:31:03+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open"
+ },
+ "summary": {
+  "full": {
+   "n": 247,
+   "recall@5": 0.6761,
+   "mrr": 0.8459,
+   "ndcg@10": 0.7812,
+   "recall@5_has_implied": 0.6253,
+   "recall@5_explicit_only": 0.7317
+  },
+  "-decomposition": {
+   "n": 247,
+   "recall@5": 0.6409,
+   "mrr": 0.8583,
+   "ndcg@10": 0.7391,
+   "recall@5_has_implied": 0.5566,
+   "recall@5_explicit_only": 0.733
+  },
+  "-outcome_boost": {
+   "n": 247,
+   "recall@5": 0.646,
+   "mrr": 0.8284,
+   "ndcg@10": 0.7561,
+   "recall@5_has_implied": 0.5925,
+   "recall@5_explicit_only": 0.7044
+  },
+  "-dense_tiebreak": {
+   "n": 247,
+   "recall@5": 0.68,
+   "mrr": 0.8657,
+   "ndcg@10": 0.7907,
+   "recall@5_has_implied": 0.6326,
+   "recall@5_explicit_only": 0.7318
+  },
+  "-hybrid_fallback": {
+   "n": 247,
+   "recall@5": 0.6346,
+   "mrr": 0.828,
+   "ndcg@10": 0.7074,
+   "recall@5_has_implied": 0.5495,
+   "recall@5_explicit_only": 0.7277
+  },
+  "+rerank": {
+   "n": 247,
+   "recall@5": 0.6603,
+   "mrr": 0.8197,
+   "ndcg@10": 0.7603,
+   "recall@5_has_implied": 0.6102,
+   "recall@5_explicit_only": 0.7151
+  }
+ }
+}
