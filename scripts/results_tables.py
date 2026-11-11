@@ -119,8 +119,23 @@ SECTIONS = [("Retrieval (B2)", rag_table), ("Retrieval by job type", rag_by_type
             ("B5 results table", b5_table), ("Decisions end to end", decision_table), ("Multi-agent comparison (C)", multiagent_table),
             ("Tool granularity (A)", tool_table), ("Prompt injection (E4)", injection_table)]
 
+README_KEYS = {"rag": rag_table, "b5": b5_table, "decisions": decision_table, "multiagent": multiagent_table,
+               "tools": tool_table, "injection": injection_table}
+
+
+def fill_readme(text: str) -> str:
+    """Replace every <!-- table:KEY --> ... <!-- /table --> block with freshly generated markdown."""
+    import re
+    return re.sub(r"(<!-- table:(\w+) -->\n).*?(<!-- /table -->)", lambda m: m.group(1) + README_KEYS[m.group(2)]().strip() + "\n" + m.group(3),
+                  text, flags=re.S)
+
+
 if __name__ == "__main__":
-    if "--json" in sys.argv:
+    if "--readme" in sys.argv:
+        rp = R.parents[1] / "README.md"
+        rp.write_text(fill_readme(rp.read_text()))
+        print("README tables regenerated")
+    elif "--json" in sys.argv:
         print(json.dumps({t: fn() for t, fn in SECTIONS}))
     else:
         for t, fn in SECTIONS:

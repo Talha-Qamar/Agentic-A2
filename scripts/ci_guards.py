@@ -46,8 +46,14 @@ def check_readme_numbers() -> list[str]:
         f, path, shown = m.groups()
         try:
             v = json.loads((ROOT / "evals" / "results" / f).read_text())
-            for k in path.split("."):
-                v = v[k]
+            parts = path.split(".")
+            while parts:  # keys may themselves contain dots (e.g. "check_at_previous_default_0.55")
+                for n in range(len(parts), 0, -1):
+                    if ".".join(parts[:n]) in v:
+                        v, parts = v[".".join(parts[:n])], parts[n:]
+                        break
+                else:
+                    raise KeyError(".".join(parts))
             if abs(float(v) - float(shown)) > 0.0051 * max(1, abs(float(v))):
                 bad.append(f"README shows {shown} for {f}:{path} but results say {v}")
         except Exception as e:  # noqa: BLE001
@@ -55,12 +61,23 @@ def check_readme_numbers() -> list[str]:
     return bad
 
 
+def check_readme_tables() -> list[str]:
+    """README tables between <!-- table:KEY --> markers must equal what scripts/results_tables.py generates."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import results_tables
+    rp = ROOT / "README.md"
+    if not rp.exists():
+        return []
+    cur = rp.read_text()
+    return [] if results_tables.fill_readme(cur) == cur else ["README tables differ from evals/results (run scripts/results_tables.py --readme)"]
+
+
 if __name__ == "__main__":
     if "--freeze" in sys.argv:
         FROZEN.write_text("\n".join(f"{h}  {f}" for f, h in gigsim_hashes().items()) + "\n")
         print(f"froze {len(gigsim_hashes())} GigSim files")
         sys.exit(0)
-    problems = check_gigsim() + check_prompts() + check_readme_numbers()
+    problems = check_gigsim() + check_prompts() + check_readme_numbers() + check_readme_tables()
     for p in problems:
         print("GUARD FAILED:", p)
     sys.exit(1 if problems else 0)
