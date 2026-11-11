@@ -69,11 +69,20 @@ class Variant:
         for r in reqs:
             per[r["id"]] = self.search_requirement(r, max(k, 10))
         merged = self.merge(per, k)
-        res = RetrievalResult(self.name, [evidence_from_chunk(self.corpus.by_id[c], s) for c, s in merged],
-                              {rid: [evidence_from_chunk(self.corpus.by_id[c], s) for c, s in lst[:5]] for rid, lst in per.items()},
+        res = RetrievalResult(self.name, [self.evidence(c, s) for c, s in merged],
+                              {rid: [self.evidence(c, s) for c, s in lst[:5]] for rid, lst in per.items()},
                               reqs)
         res.latency_s = round(time.perf_counter() - t0, 4)
         return res
+
+    def evidence(self, cid: str, score: float) -> dict:
+        """Evidence item with the skills of its whole project (skill graph), not just of the one chunk shown."""
+        c = self.corpus.by_id[cid]
+        e = evidence_from_chunk(c, score)
+        item = c.get("project") or c.get("item_id")
+        if c["type"] != "proposal" and item:
+            e["skills"] = sorted(set(e["skills"]) | self.corpus.graph.item_skills.get(item, set()))[:24]
+        return e
 
     def merge(self, per: dict[str, list[tuple[str, float]]], k: int) -> list[tuple[str, float]]:
         """Fuse per-requirement lists with RRF so every requirement contributes evidence."""

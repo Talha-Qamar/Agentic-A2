@@ -19,8 +19,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from agent import settings
-from apps.api.auth.session import create_user, seed_searches
-from apps.api.auth.session import UserDep
+from apps.api.auth.session import UserDep, create_user, seed_searches
 from apps.api.routers import approvals, auth, jobs, panel, runs, workspace
 from common import db
 

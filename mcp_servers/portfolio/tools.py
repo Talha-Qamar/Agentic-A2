@@ -29,6 +29,7 @@ class EvidenceOut(BaseModel):
     project: str | None = None
     text: str
     score: float
+    skills: list[str] = Field(default_factory=list, description="skills evidenced by this item's project (chunk + skill graph)")
 
 
 class SearchEvidenceResult(BaseModel):

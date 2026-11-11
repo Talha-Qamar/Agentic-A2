@@ -1,7 +1,8 @@
 """Fit Matcher: requirement decomposition -> Portfolio MCP (match_requirements) -> cross-encoder grading.
 
 Runs in parallel with the Job Analyst, so it extracts requirements deterministically from the (quarantined) post.
-Support per requirement = best cross-encoder probability over its top evidence; fit = coverage-weighted score.
+Support per requirement = max(skill-graph support, best cross-encoder probability) over its top evidence;
+fit = coverage-weighted score. Thresholds are set on the dev split (evals/results/fit_calibration.json).
 """
 from __future__ import annotations
 
@@ -17,9 +18,38 @@ def _sig(x: float) -> float:
     return 1 / (1 + math.exp(-x))
 
 
+def skill_support(requirement: str, evidence: list[dict]) -> float:
+    """Graph-style support: share of the requirement's skills (canonicalised, incl. implied phrasings) that occur in
+    the skills or text of one of its top evidence items. Covers code/README evidence that a prose-trained
+    cross-encoder scores near zero (the cross-encoder also lowered retrieval recall in the ablation)."""
+    from rag.index.graph import canon
+    from rag.ingest.loaders import extract_skills
+    rs = {canon(x) for x in extract_skills(requirement)} - GENERIC
+    if not rs:
+        return 0.0
+    best = 0.0
+    for e in evidence[:3]:
+        es = {canon(x) for x in (e.get("skills") or [])} | {canon(x) for x in extract_skills(e.get("text", ""))}
+        best = max(best, len(rs & es) / len(rs))
+    return 0.8 if best >= 0.999 else 0.45 if best >= 0.5 else 0.25 if best > 0 else 0.0
+
+
+GENERIC = {"api", "rest api", "json"}
+
+
+PROOF_TYPES = {"case_study", "readme", "code", "cv", "review"}
+
+
 def grade(requirement: str, evidence: list[dict]) -> float:
+    """Past proposals are bids, not proof: they often repeat a job's wording ("shipped Flutter apps") without the
+    freelancer having done it, so only case studies, repos, CV lines and client reviews can support a requirement."""
+    evidence = [e for e in evidence if e.get("type", "case_study") in PROOF_TYPES]
     if not evidence:
         return 0.0
+    return max(skill_support(requirement, evidence), cross_encoder_support(requirement, evidence))
+
+
+def cross_encoder_support(requirement: str, evidence: list[dict]) -> float:
     try:
         from rag.embed import get_reranker
         rr = get_reranker()

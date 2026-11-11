@@ -1674,6 +1674,14 @@
         "title": "Score",
         "type": "number"
        },
+       "skills": {
+        "description": "skills evidenced by this item's project (chunk + skill graph)",
+        "items": {
+         "type": "string"
+        },
+        "title": "Skills",
+        "type": "array"
+       },
        "source": {
         "title": "Source",
         "type": "string"
@@ -1911,6 +1919,14 @@
        "score": {
         "title": "Score",
         "type": "number"
+       },
+       "skills": {
+        "description": "skills evidenced by this item's project (chunk + skill graph)",
+        "items": {
+         "type": "string"
+        },
+        "title": "Skills",
+        "type": "array"
        },
        "source": {
         "title": "Source",
