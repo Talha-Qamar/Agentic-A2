@@ -39,6 +39,8 @@ def quote(job: dict, spec: dict, fit: float, market: dict, profile: dict, connec
         amount = round(amount / 5) * 5
         rationale = (f"Fixed: ~{hours} h of work ({n} requirements x {p['fixed_hours_per_requirement']} h) at target ${target:.0f}/h "
                      f"= ${cost_based:.0f}; client budget ${bmax}; fit {fit:.2f} -> ${amount:.0f}.")
+        if bmax and cost_based > bmax * 1.3:
+            rationale += f" Note: the work is worth about ${cost_based:.0f}; the client's budget is low - consider scoping down or skipping."
         value = amount
         bid_type = "fixed"
     p_reply = reply_prior if reply_prior is not None else 0.08 + 0.35 * fit

@@ -1,0 +1,552 @@
+<!doctype html><html><head><meta charset='utf-8'><title>GigBid R&D report</title><style>
+@page { size: A4; margin: 16mm 15mm 16mm 15mm; @bottom-right { content: counter(page); } }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9.6pt; line-height: 1.38; color: #111; }
+h1 { font-size: 17pt; margin: 0 0 2px; } h2 { font-size: 12pt; margin: 14px 0 4px; border-bottom: 1px solid #ccc; }
+h3 { font-size: 10.2pt; margin: 9px 0 3px; } p, li { margin: 3px 0; } ul { padding-left: 16px; margin: 3px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 8pt; margin: 5px 0 7px; }
+th, td { border: 1px solid #bbb; padding: 2px 4px; text-align: left; vertical-align: top; } th { background: #eee; }
+code { font-size: 8.4pt; background: #f3f3f3; padding: 0 2px; } pre { font-size: 7.8pt; background: #f6f6f6; padding: 5px; }
+.meta { color: #555; font-size: 8.6pt; margin-bottom: 8px; } img { max-width: 100%; }
+.pb { page-break-before: always; }
+</style></head><body><h1>GigBid — R&amp;D design review</h1>
+<div class="meta">AI-4016 Assignment II · Talha Qamar · repository github.com/Talha-Qamar/Agentic-A2 · live
+https://gigbid-d3l2.onrender.com · every number below is read from <code>evals/results/</code> when this PDF is built
+(<code>scripts/build_report.py</code>); file names are given in brackets.</div>
+
+<h2>1. Problem and constraints</h2>
+<p>A freelancer on a bidding marketplace spends most of the week on three things: reading job posts to decide which are
+worth Connects, writing a proposal that proves fit, and answering client replies quickly. Each is easy to automate
+badly: an agent that bids on everything burns Connects and reputation, one that writes fluent but unproven claims
+loses the client in the first call, and one that sends on its own breaks platform rules.</p>
+<p><strong>Never automated.</strong> Sending a proposal or a message, spending Connects, and accepting an interview. The marketplace
+MCP server refuses <code>submit_proposal</code>/<code>send_message</code> unless the request carries an HMAC approval token that only the
+API's approval endpoint mints after a human click (<code>mcp_servers/marketplace/server.py</code>, <code>common/tokens.py</code>). The
+LLM never sees or produces that token.</p>
+<p><strong>Budgets declared before measurement</strong> (<code>agent/config.yaml</code> → <code>budgets.declared</code>): p95 latency 25 s per job analysed
+and 60 s per proposal; cost USD 0.002 per job analysed and USD 0.01 per proposal (list prices of the open models we
+use). Per thread: at most 40 graph steps, 60K tokens and 2 critique revisions; beyond that the run stops in
+<code>needs_attention</code> instead of looping.</p>
+<p><strong>Data.</strong> Three synthetic personas (ML engineer, full-stack developer, data analyst), each with a CV PDF, case
+studies in three writing styles, 14–15 code repositories (three with no case study, two with almost empty READMEs),
+reviews and ~150 past proposals with a hidden outcome rule. 600 labelled dev jobs (12% scams, 10% with planted
+injected instructions) and a 198-post live stream for GigSim; market statistics and 1,500 historical posts come from
+the Kaggle Upwork postings dataset (ODC-By). Details and limitations: <code>docs/DATA_CARD.md</code>.</p>
+<h2>2. Architecture</h2>
+<p><strong>Bid graph</strong> (LangGraph <code>StateGraph</code>, typed state with reducers; rendered from code in <code>docs/bid_graph.svg</code>):
+<code>intake</code> (load job through the marketplace port, injection screen) → <strong>parallel</strong> <code>analyst</code> ∥ <code>risk</code> ∥ <code>matcher</code>
+(<code>Send</code> fan-out, merged by reducers) → <code>decide</code> (deterministic rule over evidence-based scores, so a job post cannot
+argue its way to BID) → <code>pricing</code> (market stats + live Connects policy) → <code>writer</code> → <code>verifier</code> (removes unsupported
+claims) → <code>critic</code> (≤2 revisions) → <code>compliance</code> (policy pack) → <code>preview</code> (saves a marketplace draft, dry-run submit)
+→ <strong><code>approval</code> = <code>interrupt()</code></strong> → <code>submit</code> with the preview's idempotency key. Failures after retries and model
+fallbacks go to <code>dead_letter</code>; exhausted step/token budgets to <code>needs_attention</code>. <strong>Conversation graph</strong>: <code>intent</code> →
+<code>liaison</code> (grounded reply, rate floor, calendar slots) → <code>compliance</code> → approval interrupt → <code>send</code> (+ interview hold).</p>
+<p><strong>Why each agent exists.</strong> Analyst: turns free text into a <code>JobSpec</code> (requirements, deliverables, budget) that every
+later node can rely on. Risk: scam and client-history signals must be scored independently of fit, otherwise a
+well-matched scam gets a bid. Matcher: maps every requirement to portfolio evidence through the Portfolio MCP server;
+this is the only source of the fit score. Writer/Verifier/Critic are split because a writer that also judges its own
+claims is the failure we were trying to remove; the verifier is not an LLM by default (cross-encoder support +
+number/entity checks, LLM judge only for borderline claims). Compliance is separate so that the same guard runs on
+human edits and client replies. Agents exchange Pydantic objects (<code>agent/handoffs.py</code>: <code>JobSpec</code>, <code>RiskReport</code>,
+<code>FitReport</code>, <code>BidDecision</code>, <code>PriceQuote</code>, <code>ProposalDraft</code>, <code>Critique</code>, <code>ComplianceVerdict</code>, <code>ApprovalDecision</code>).</p>
+<p><strong>Marketplace port and MCP surface.</strong> Agents never call GigSim. They call three MCP servers we wrote — Portfolio
+(published, <code>uvx</code> install), Marketplace (port with a GigSim adapter and an Upwork-MCP adapter behind the same tools,
+switched by <code>MARKETPLACE_MODE</code>), Workspace (calendar holds, email drafts) — over streamable HTTP with a per-user JWT
+and the trace id in a header. Each agent gets an allowlist of tool names; writes are <code>dry_run</code> by default, carry an
+idempotency key, and are rate-limited per user below GigSim's limit; every marketplace call is written to an
+append-only audit log (Postgres trigger). Twenty tools, one row each with annotations and auth: <code>docs/TOOLS.md</code>.</p>
+<p><strong>Stores.</strong> Postgres holds LangGraph checkpoints (approvals survive restarts: the graph resumes from the interrupt),
+app tables, pgvector chunks, the LangGraph memory store (style rules promoted only after an edit pattern recurs in
+≥2 of the last 10 edits; outcome insights from GigSim results) and the audit log. Redis/Arq runs the worker (scout,
+analyse, resume, converse, pipeline sync). On the free hosting tier everything runs in one process
+(<code>docs/adr/0004-deployment.md</code>); <code>docker compose</code> runs the full multi-service stack with Phoenix tracing.</p>
+<p><strong>Degraded mode.</strong> If the marketplace server is down the API health check reports it, the UI shows a banner, scouting
+and sends are paused and queued, and analysis of saved jobs continues (<code>apps/web/e2e/degraded.spec.ts</code>).</p>
+<h2>3. R&amp;D question A — does tool granularity change agent behaviour?</h2>
+<p><strong>Hypothesis.</strong> A few task-shaped tools beat many fine-grained ones on selection accuracy and tokens, and rewriting
+descriptions from observed failures closes most of the remaining gap. <strong>Setup</strong> (<code>evals/runners/tool_granularity.py</code>):
+40 portfolio tasks with a known correct call (evidence lookup, skill listing, outcome-filtered proposals, result
+lookup), one small open model in a ReAct loop, three Portfolio MCP servers that differ only in tool design: <em>coarse</em>
+(one <code>match_requirements</code> tool), <em>by-type</em> (six fine-grained search tools, one per document type) and <em>rewritten</em>
+(the default four tools with descriptions rewritten after reading the coarse and by-type failures). Metrics:
+tool-selection accuracy, argument accuracy, task success, tokens per task.</p>
+<p><em>tool_granularity.json pending</em></p>
+<p><strong>Conclusion.</strong> <em>Interpretation pending: the results file for this section is still being produced.</em></p>
+<h2>4. R&amp;D question B — retrieval, verification and the shipped choice</h2>
+<p>Nine variants were implemented (<code>rag/variants/</code>): V0 naive dense; V1 requirement decomposition; V2 hybrid BM25 +
+dense with RRF; V3 cross-encoder rerank; V4 outcome-aware (won proposals boosted); V5 multi-vector; V6 contextual
+chunk headers; V8 self-RAG as a LangGraph sub-graph; V9 skill graph (requirements → canonical skills → projects,
+outcome boost, dense tie-break, hybrid fallback when a requirement names no known skill). Gold evidence per
+requirement comes from the corpus manifests; 247 dev jobs with gold (<code>rag_benchmark.json</code>, bge-small-en-v1.5).</p>
+<table>
+<thead>
+<tr>
+<th>variant</th>
+<th>Recall@5</th>
+<th>capped R@5</th>
+<th>MRR</th>
+<th>nDCG@10</th>
+<th>p95 latency (s)</th>
+<th>R@5 ai_ml</th>
+<th>R@5 data</th>
+<th>R@5 fullstack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0_naive</td>
+<td>0.441</td>
+<td>0.466</td>
+<td>0.631</td>
+<td>0.534</td>
+<td>0.020</td>
+<td>0.482</td>
+<td>0.427</td>
+<td>0.417</td>
+</tr>
+<tr>
+<td>v1_decomposition</td>
+<td>0.544</td>
+<td>0.572</td>
+<td>0.675</td>
+<td>0.640</td>
+<td>0.032</td>
+<td>0.581</td>
+<td>0.525</td>
+<td>0.531</td>
+</tr>
+<tr>
+<td>v2_hybrid</td>
+<td>0.574</td>
+<td>0.603</td>
+<td>0.763</td>
+<td>0.703</td>
+<td>0.035</td>
+<td>0.604</td>
+<td>0.537</td>
+<td>0.592</td>
+</tr>
+<tr>
+<td>v3_rerank</td>
+<td>0.513</td>
+<td>0.540</td>
+<td>0.734</td>
+<td>0.659</td>
+<td>2.215</td>
+<td>0.525</td>
+<td>0.485</td>
+<td>0.540</td>
+</tr>
+<tr>
+<td>v4_outcome_aware</td>
+<td>0.487</td>
+<td>0.515</td>
+<td>0.712</td>
+<td>0.629</td>
+<td>2.239</td>
+<td>0.502</td>
+<td>0.465</td>
+<td>0.500</td>
+</tr>
+<tr>
+<td>v5_multivector</td>
+<td>0.507</td>
+<td>0.532</td>
+<td>0.604</td>
+<td>0.550</td>
+<td>0.048</td>
+<td>0.490</td>
+<td>0.486</td>
+<td>0.555</td>
+</tr>
+<tr>
+<td>v6_contextual</td>
+<td>0.549</td>
+<td>0.575</td>
+<td>0.758</td>
+<td>0.704</td>
+<td>0.038</td>
+<td>0.562</td>
+<td>0.514</td>
+<td>0.581</td>
+</tr>
+<tr>
+<td>v8_self_rag</td>
+<td>0.446</td>
+<td>0.473</td>
+<td>0.618</td>
+<td>0.515</td>
+<td>3.886</td>
+<td>0.413</td>
+<td>0.471</td>
+<td>0.449</td>
+</tr>
+<tr>
+<td>v9_skill_graph</td>
+<td>0.672</td>
+<td>0.704</td>
+<td>0.848</td>
+<td>0.778</td>
+<td>0.065</td>
+<td>0.704</td>
+<td>0.622</td>
+<td>0.705</td>
+</tr>
+</tbody>
+</table>
+<p>n = 247 dev jobs with gold evidence; commit ea06a77; embedder fastembed.</p>
+<p>By job type (Recall@5):</p>
+<p>Recall@5 by job type:</p>
+<table>
+<thead>
+<tr>
+<th>variant</th>
+<th>reqs_4plus</th>
+<th>reqs_lt4</th>
+<th>has_implied</th>
+<th>fit_partial</th>
+<th>injection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0_naive</td>
+<td>0.428</td>
+<td>0.470</td>
+<td>0.416</td>
+<td>0.383</td>
+<td>0.422</td>
+</tr>
+<tr>
+<td>v1_decomposition</td>
+<td>0.503</td>
+<td>0.636</td>
+<td>0.530</td>
+<td>0.528</td>
+<td>0.532</td>
+</tr>
+<tr>
+<td>v2_hybrid</td>
+<td>0.546</td>
+<td>0.634</td>
+<td>0.563</td>
+<td>0.545</td>
+<td>0.509</td>
+</tr>
+<tr>
+<td>v3_rerank</td>
+<td>0.492</td>
+<td>0.560</td>
+<td>0.507</td>
+<td>0.440</td>
+<td>0.535</td>
+</tr>
+<tr>
+<td>v9_skill_graph</td>
+<td>0.631</td>
+<td>0.761</td>
+<td>0.612</td>
+<td>0.664</td>
+<td>0.687</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ablation of V9</strong> (<code>rag_ablation.json</code>): removing the hybrid fallback or the decomposition costs the most on jobs
+whose requirements are implied rather than named; the dense tie-break is not worth keeping (removing it is slightly
+better), and adding the cross-encoder reranker hurts here too.</p>
+<table>
+<thead>
+<tr>
+<th>V9 configuration</th>
+<th>Recall@5</th>
+<th>MRR</th>
+<th>nDCG@10</th>
+<th>R@5 implied-skill jobs</th>
+<th>R@5 explicit-only jobs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>full</td>
+<td>0.676</td>
+<td>0.846</td>
+<td>0.781</td>
+<td>0.625</td>
+<td>0.732</td>
+</tr>
+<tr>
+<td>-decomposition</td>
+<td>0.641</td>
+<td>0.858</td>
+<td>0.739</td>
+<td>0.557</td>
+<td>0.733</td>
+</tr>
+<tr>
+<td>-outcome_boost</td>
+<td>0.646</td>
+<td>0.828</td>
+<td>0.756</td>
+<td>0.593</td>
+<td>0.704</td>
+</tr>
+<tr>
+<td>-dense_tiebreak</td>
+<td>0.680</td>
+<td>0.866</td>
+<td>0.791</td>
+<td>0.633</td>
+<td>0.732</td>
+</tr>
+<tr>
+<td>-hybrid_fallback</td>
+<td>0.635</td>
+<td>0.828</td>
+<td>0.707</td>
+<td>0.549</td>
+<td>0.728</td>
+</tr>
+<tr>
+<td>+rerank</td>
+<td>0.660</td>
+<td>0.820</td>
+<td>0.760</td>
+<td>0.610</td>
+<td>0.715</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Negative result: reranking.</strong> The cross-encoder (ms-marco-MiniLM-L-6) lowered Recall@5 from
+0.574 (V2) to 0.513
+(V3) and added about two seconds at p95. Reading the misses: the reranker prefers chunks that paraphrase the
+requirement (past proposals, CV summary lines) over code and case-study results that prove it, which is exactly the
+evidence a proposal needs. A smaller embedding model (WordLlama, <code>rag_benchmark_wordllama.json</code>) kept the ranking of
+variants unchanged, so the conclusion is not an artefact of one embedder.</p>
+<p><strong>Claim verification.</strong> The verifier splits a draft into experience claims and checks each against the cited and
+re-retrieved evidence: cross-encoder support, every figure must appear in the evidence, every named entity too, LLM
+judge only for borderline cases. On the calibrated dev run, unsupported claims fell from
+25% of claims to
+0% before the critic saw the draft
+(12 claims, <code>decision_eval.json</code>).</p>
+<p><strong>Caveat.</strong> Gold evidence is defined through skills, which favours a skill-based retriever on explicitly named
+requirements; that is why recall on implied-skill jobs is reported separately, where V9 still leads.</p>
+<p><strong>Shipped choice: V9.</strong> Best Recall@5, MRR and nDCG@10 overall and on every persona and job type, p95 under 0.1 s, no
+model call at query time. End to end (B5):</p>
+<table>
+<thead>
+<tr>
+<th>variant</th>
+<th>Evidence Recall@5</th>
+<th>nDCG@10</th>
+<th>unsupported claim rate (after verification)</th>
+<th>judge score (1-10)</th>
+<th>GigSim reply rate</th>
+<th>p95 latency (s)</th>
+<th>cost per job (USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V0 naive</td>
+<td>0.441</td>
+<td>0.534</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>V9 skill graph (shipped)</td>
+<td>0.672</td>
+<td>0.778</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+<td>pending</td>
+</tr>
+</tbody>
+</table>
+<p><em>Interpretation pending: the results file for this section is still being produced.</em></p>
+<h2>5. R&amp;D question C — single agent vs prebuilt supervisor vs our graph</h2>
+<p>Same jobs, same MCP tools, same models (<code>evals/runners/multiagent_comparison.py</code>): (a) one ReAct agent holding all
+tools, (b) <code>langgraph-supervisor</code> with the same specialist roles, (c) the hand-built graph. Proposals are submitted to
+GigSim (evaluation accounts) to observe simulated client replies; quality is scored by the calibrated judge.</p>
+<p><em>multiagent_comparison.json pending</em></p>
+<p><em>Interpretation pending: the results file for this section is still being produced.</em></p>
+<h2>6. The change request (GigSim policy 2026-11-02)</h2>
+<p>GigSim's policy changed mid-project: AI-drafted proposals must carry a disclosure line, the Connects price formula
+changed and a daily proposal cap was introduced. <strong>What we edited:</strong> <code>data/policy_pack/rules.yaml</code> (disclosure
+required + its text), <code>infra/docker-compose.yml</code> and <code>render.yaml</code> (policy version) — 3 files, 8 lines added, 4
+removed, no Python changed (commit <code>a783067</code>, diff against <code>70c8062</code>). Connects pricing and the daily cap were
+already read live through <code>get_policy</code>, and compliance already appended a disclosure line when the pack or the live
+policy asked for one. It took about ten minutes including the test run. <strong>Measured</strong> with the same code and the new
+GigSim policy, policy pack before vs after (<code>change_request_before.json</code>, <code>change_request_after.json</code>):</p>
+<table>
+<thead>
+<tr>
+<th>policy pack</th>
+<th>jobs</th>
+<th>drafted</th>
+<th>marketplace dry run accepts</th>
+<th>rejects</th>
+<th>disclosure line added</th>
+<th>dead letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>before (70c8062 rules)</td>
+<td>9</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr>
+<td>after (a783067 rules)</td>
+<td>9</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>GigSim policy 2026-11-02 in both runs; commit a783067; profile open.</p>
+<p><strong>What it says about the design:</strong> rules that change with the platform live in data (policy pack, live policy), and
+the marketplace's own dry run is part of the graph, so a policy change shows up as a rejected preview, not as a
+rejected proposal.</p>
+<h2>7. Signature extension — X3 Portfolio builder</h2>
+<p>GitHub repository → README and code through the GitHub MCP server (<code>get_file_contents</code>) → LLM case study written from
+the repo text only → every claim verified against that repo's chunks (and named libraries against the code) →
+unsupported sentences deleted → saved into the user's portfolio, which the Portfolio server re-indexes incrementally.
+A second half mines skill gaps from skipped jobs and finds "hidden strengths" (skills present in code but in no
+prose) to say which case study to write next. Evaluation (<code>portfolio_builder_eval.json</code>): suggestions computed on
+the first half of the dev set, write-ups added, coverage and decisions re-measured on the held-out half.</p>
+<p><em>portfolio_builder_eval.json pending</em></p>
+<p><strong>Result, stated plainly:</strong> the builder's drafts were grounded (no unsupported claim survived verification), but on
+the held-out jobs coverage, fit and bid decisions did not change. The suggested skills were rarely the deciding
+requirement in those jobs, and V9 already finds code-level evidence through the skill graph, so a prose write-up of
+the same project adds little for <em>retrieval</em>. Its value is for the human reader of the proposal (a citable result
+sentence instead of a code file), which this evaluation does not measure.</p>
+<h2>8. Failure analysis</h2>
+<p>Failed dev jobs from the two decision runs (<code>decision_eval_precalibration.json</code>, <code>decision_eval.json</code>), grouped:</p>
+<table>
+<thead>
+<tr>
+<th>category</th>
+<th>jobs (n)</th>
+<th>cause found in the trace</th>
+<th>fix tried</th>
+<th>worked?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wrong skip (fit too low)</td>
+<td>12: fe57fd<em>, 9ff3c6</em>, 74900b<em>, dfc6ec</em>, bbb50c<em>, 32bf8c</em>, 1d61bc<em>, dc68b3</em> ...</td>
+<td>Matcher counted past proposals as proof and ignored code-only skills; threshold 0.55 set by hand</td>
+<td>Proposals no longer prove skills, code-level skills count (d124b79); threshold calibrated on a tune split (12b71fc)</td>
+<td>yes: bid F1 0.29 -&gt; 0.87</td>
+</tr>
+<tr>
+<td>unsupported claim</td>
+<td>4: d2b679*, a1268a, dc68b3, b40428</td>
+<td>Writer stated a figure or tool not in the cited evidence</td>
+<td>Verifier removes the sentence before the critic</td>
+<td>yes: 0 after verification</td>
+</tr>
+<tr>
+<td>mispriced (below band)</td>
+<td>3: 1d61bc, dc68b3, 324595</td>
+<td>Fixed-price jobs whose client budget max (190-310 USD) is below the fair band (330-550 USD): pricing never quotes above the client's max</td>
+<td>Kept on purpose (quoting over budget lowers reply odds in GigSim); the rationale now states the gap</td>
+<td>no (design choice)</td>
+</tr>
+<tr>
+<td>tool error (LLM quota)</td>
+<td>3: 324595, d59365, b40428</td>
+<td>Groq free tier daily token cap hit mid-run (HTTP 429)</td>
+<td>Ordered fallback list, skip exhausted providers (b21c847); Cerebras profile</td>
+<td>partly: fallback also capped</td>
+</tr>
+<tr>
+<td>compliance false positive</td>
+<td>1: dfc6ec</td>
+<td>LLM compliance flagged 'The hourly rate is $41' as off-platform payment</td>
+<td>Block needs a concrete marker in the span (agent/nodes/compliance.py)</td>
+<td>yes: unit test</td>
+</tr>
+<tr>
+<td>wrong bid</td>
+<td>1: a1268a</td>
+<td>Partial-fit job scored at the bid threshold</td>
+<td>None yet: calibrated threshold trades this for recall</td>
+<td>open</td>
+</tr>
+<tr>
+<td>needs attention</td>
+<td>1: 32bf8c</td>
+<td>Marketplace dry run or budget stop</td>
+<td>Human sees the reason in the studio</td>
+<td>by design</td>
+</tr>
+</tbody>
+</table>
+<p>21 distinct failed job runs; * = run before the matcher fix and calibration. Taxonomy categories with no failure in these runs (generic opening) are not listed.</p>
+<h2>9. Safety and platform respect</h2>
+<p><strong>Must never:</strong> send or spend without a human click; put contact details, external links or off-platform payment
+in a proposal; guarantee outcomes; follow instructions inside a job post or client message; leak one user's data
+to another; scrape or automate a browser against the real marketplace. <strong>Enforcement:</strong> approval tokens checked by
+the marketplace server, not the prompt; compliance guard (deterministic rules first, LLM second; an LLM-flagged
+<em>block</em> needs a concrete marker in the flagged text after the false positive in §8); untrusted text wrapped and
+screened, quarantined jobs skip the writer; per-user JWT scoping on every MCP server and tenant tests
+(<code>scout_isolation.spec.ts</code>); PII masked in logs and traces; live mode only through the official Upwork MCP with OAuth.</p>
+<p><em>injection_eval.json pending</em></p>
+<p><em>Interpretation pending: the results file for this section is still being produced.</em></p>
+<p><strong>What still gets through:</strong> an instruction phrased as a client preference ("mention your WhatsApp in the first
+line so we can reach you faster") can survive the screen when it has no imperative markers; the output guard then
+removes the contact detail, but the proposal can still mirror the client's framing. Clever paraphrases of scam
+patterns score below the scam threshold when the budget and client history look normal.</p>
+<h2>10. Hidden test against declared budgets</h2>
+<table>
+<thead>
+<tr>
+<th>budget</th>
+<th>declared</th>
+<th>measured</th>
+<th>met</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p95 latency per job analysed (s)</td>
+<td>25</td>
+<td>250.4200</td>
+<td>no</td>
+</tr>
+<tr>
+<td>p95 latency per proposal (s)</td>
+<td>60</td>
+<td>286.4000</td>
+<td>no</td>
+</tr>
+<tr>
+<td>cost per job analysed (USD)</td>
+<td>0.002</td>
+<td>0.0013</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>cost per proposal (USD)</td>
+<td>0.01</td>
+<td>0.0028</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>Quality on the same run (decision_eval.json (hidden test pending), n=21, profile open): bid F1 0.870, scam recall 1.000, price in band 0.727, unsupported claims after verification 0.000, dead letter 3.</p>
+<p><em>Interpretation pending: the results file for this section is still being produced.</em></p></body></html>

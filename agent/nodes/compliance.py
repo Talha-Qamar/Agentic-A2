@@ -14,6 +14,21 @@ from agent.handoffs import ComplianceVerdict, Violation
 from agent.llm import complete_json, load_prompt
 from agent.nodes.runtime import Deps, node
 
+# An LLM-reported BLOCK must be corroborated by a concrete marker in the flagged span; otherwise a sentence such as
+# "The hourly rate is $41" could block a good proposal (failure dev-dfc6ecdb6c, decision_eval.json at 1066741).
+CORROBORATE = {
+    "no_off_platform": re.compile(r"(?i)@|\bhttps?://|\+?\d[\d\s().-]{7,}\d|whats ?app|telegram|skype|signal|discord|wechat|"
+                                  r"paypal|payoneer|wise\b|venmo|zelle|crypto|bitcoin|usdt|bank transfer|off[- ]platform|outside (the )?platform|"
+                                  r"outside (of )?upwork|e-?mail me|call me|text me|dm me"),
+}
+
+
+def _corroborated(v: Violation, severity: dict) -> bool:
+    if severity.get(v.rule) != "block":
+        return True
+    pat = CORROBORATE.get(v.rule)
+    return bool(pat and pat.search(v.span or ""))
+
 
 class _LLMViolations(BaseModel):
     violations: list[Violation] = []
@@ -30,6 +45,7 @@ async def check(text: str, policy: dict, use_llm: bool = True) -> ComplianceVerd
     pack = settings.policy_rules()
     severity = {r["id"]: r["severity"] for r in pack["rules"]}
     viol = [Violation(**v) for v in output_violations(text, tuple(pack.get("allowed_link_domains") or ()))]
+    ignored: list[Violation] = []
     for ph in settings.get("proposal.banned_phrases", []):
         m = re.search(re.escape(ph), text, re.I)
         if m:
@@ -39,11 +55,14 @@ async def check(text: str, policy: dict, use_llm: bool = True) -> ComplianceVerd
             rules = "\n".join(f"- {r['id']}: {r['text']}" for r in pack["rules"])
             llm = await complete_json("compliance", load_prompt("compliance").format(rules=rules), text, _LLMViolations, max_tokens=500)
             known = {(v.rule, v.span) for v in viol}
-            viol += [v for v in llm.violations if (v.rule, v.span) not in known and v.span and v.span in text
-                     and v.rule in severity and v.rule != "no_fabrication"]
+            cand = [v for v in llm.violations if (v.rule, v.span) not in known and v.span and v.span in text
+                    and v.rule in severity and v.rule != "no_fabrication"]
+            viol += [v for v in cand if _corroborated(v, severity)]
+            ignored = [v for v in cand if not _corroborated(v, severity)]
         except Exception:  # noqa: BLE001 - deterministic checks still apply
             pass
     fixes, final = [], text
+    fixes += [f"{v.rule}: model flag not corroborated, kept for review ('{v.span[:40]}')" for v in ignored]
     fixable = [v.model_dump() for v in viol if severity.get(v.rule, "fix") == "fix"]
     if fixable:
         final = strip_violations(final, [f for f in fixable if f["rule"] != "banned_phrases"])
