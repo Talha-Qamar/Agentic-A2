@@ -13,9 +13,11 @@ def test_scam_skipped_even_with_high_fit():
 def test_bid_watch_skip_thresholds():
     job = {"budget_type": "fixed", "budget_max": 2000}
     risk = {"scam_score": 0.0, "risk_score": 0.2}
-    assert decide_rule({"fit_score": 0.8}, risk, job, PROFILE).action == "bid"
-    assert decide_rule({"fit_score": 0.45}, risk, job, PROFILE).action == "watch"
-    assert decide_rule({"fit_score": 0.1, "gaps": ["x"]}, risk, job, PROFILE).action == "skip"
+    from agent import settings
+    t = settings.get("thresholds")
+    assert decide_rule({"fit_score": t["fit_bid"] + 0.01}, risk, job, PROFILE).action == "bid"
+    assert decide_rule({"fit_score": (t["fit_bid"] + t["fit_watch"]) / 2}, risk, job, PROFILE).action == "watch"
+    assert decide_rule({"fit_score": t["fit_watch"] / 2, "gaps": ["x"]}, risk, job, PROFILE).action == "skip"
 
 
 def test_low_hourly_budget_skipped():
