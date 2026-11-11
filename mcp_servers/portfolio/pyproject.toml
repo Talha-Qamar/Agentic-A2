@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gigbid-portfolio-mcp"
+version = "0.1.0"
+description = "MCP server that turns a freelancer portfolio (CV, case studies, repos, reviews, past proposals) into searchable, citable evidence."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Talha Qamar"}]
+dependencies = ["mcp>=1.30,<2", "pydantic>=2.7", "rank-bm25>=0.2.2", "pypdf>=4", "uvicorn>=0.30"]
+
+[project.optional-dependencies]
+dense = ["fastembed>=0.4", "numpy>=1.26"]
+
+[project.scripts]
+gigbid-portfolio-mcp = "gigbid_portfolio.server:main"
+
+[project.urls]
+Homepage = "https://github.com/Talha-Qamar/Agentic-A2/tree/main/mcp_servers/portfolio"
+
+[tool.setuptools]
+packages = ["gigbid_portfolio"]
+package-dir = {"gigbid_portfolio" = "."}

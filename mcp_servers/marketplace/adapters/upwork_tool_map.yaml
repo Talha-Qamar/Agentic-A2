@@ -1,0 +1,15 @@
+# Logical marketplace operation -> Upwork MCP tool. `names` are tried first (exact match), then any tool whose
+# name contains all `keywords`. Run `python -m mcp_servers.marketplace.adapters.discover_upwork` after connecting
+# to print Upwork's live tool list and update this file without touching code.
+tools:
+  search_jobs: {names: [search_jobs, jobs_search, find_jobs], keywords: [search, job], args: {query: query, limit: limit}}
+  get_job: {names: [get_job, job_details, get_job_details], keywords: [job, detail], args: {job_id: job_id}}
+  get_client: {names: [get_client, client_details], keywords: [client], args: {client_id: client_id}}
+  get_connects: {names: [get_connects, connects_balance], keywords: [connect], args: {}}
+  list_proposals: {names: [list_proposals, my_proposals], keywords: [proposal, list], args: {status: status}}
+  create_proposal_draft: {names: [create_proposal_draft, draft_proposal, create_proposal], keywords: [proposal, draft],
+                          args: {job_id: job_id, cover_letter: cover_letter, amount: amount, answers: answers}}
+  list_rooms: {names: [list_rooms, list_conversations, list_threads], keywords: [room], args: {}}
+  list_messages: {names: [list_messages, get_messages, room_messages], keywords: [message], args: {room_id: room_id}}
+  draft_message: {names: [draft_message, create_message_draft, send_message], keywords: [message, draft],
+                  args: {room_id: room_id, message: message}}
