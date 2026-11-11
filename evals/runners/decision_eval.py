@@ -57,6 +57,8 @@ def score(rows: list[dict]) -> dict:
         "p95_latency_s_proposal": round(pct([r["latency_s"] for r in drafts], 95), 2) if drafts else None,
         "mean_cost_usd_job": round(mean([r["cost_usd"] for r in ok]), 6), "mean_cost_usd_proposal": round(mean([r["cost_usd"] for r in drafts]), 6) if drafts else None,
         "mean_tokens_job": round(mean([r["tokens"] for r in ok]), 1),
+        "marketplace_would_accept": sum(r.get("would_be_accepted") is True for r in rows),
+        "marketplace_would_reject": sum(r.get("would_be_accepted") is False for r in rows),
         "dead_letter": sum(r.get("status") == "dead_letter" for r in rows), "needs_attention": sum(r.get("status") == "needs_attention" for r in rows),
     }
 
@@ -84,7 +86,9 @@ async def run_one(job: dict, user: dict, defences: dict | None) -> dict:
                latency_s=out["latency_s"], tokens=out["tokens"], cost_usd=out["cost_usd"], steps=out["steps"],
                cover_letter=draft.get("cover_letter"), compliance=(out.get("compliance") or {}).get("violations"),
                by_node={t["node"]: {"ms": t["ms"], "tokens": t["tokens"], "cost": t["cost_usd"]} for t in out.get("trace", [])},
-               trace_id=out["trace_id"], errors=out.get("errors"))
+               trace_id=out["trace_id"], errors=out.get("errors"),
+               platform_violations=(out.get("preview") or {}).get("platform_violations"),
+               would_be_accepted=(out.get("preview") or {}).get("would_be_accepted"))
     return row
 
 

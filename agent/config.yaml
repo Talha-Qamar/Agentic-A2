@@ -24,6 +24,11 @@ profiles:
     strong: {provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}
     fallback_small: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: qwen/qwen3.8-27b}]
     fallback_strong: [{provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}]
+  cx:            # experiment profile when Groq's daily cap is spent: every node on Cerebras gpt-oss-120b (1M tokens/day free)
+    small:  {provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}
+    strong: {provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}
+    fallback_small: [{provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}]
+    fallback_strong: [{provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}]
   open_small:    # comparison config: every node on the small open model (no strong-model routing)
     small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
     strong: {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
