@@ -113,7 +113,7 @@ async def main_async(a) -> dict:
                 row["verify"] = await verify_letter(j["persona"], letter)
                 row["judge"] = await judge(j, letter)
                 row["letter"] = letter
-                key = gigsim_account(system, j["persona"])
+                key = gigsim_account(system + a.tag, j["persona"])
                 row["gigsim_proposal"] = submit_to_gigsim(key, j["job_id"], letter, res.get("price"), j["budget_type"])
             print(f"[{system}] {j['job_id']} gold={row['gold']} pred={dec} judge={row.get('judge')} uns={row.get('verify', {}).get('unsupported_rate')} "
                   f"{row['latency_s']}s ${row['cost_usd']} {row.get('error') or ''}", flush=True)
@@ -127,7 +127,7 @@ async def main_async(a) -> dict:
         letters = [r for r in rs if r.get("verify")]
         cl = sum(r["verify"]["claims"] for r in letters)
         un = sum(r["verify"]["unsupported"] for r in letters)
-        persona_keys = {f"gs-key-cmp-{system}-{p}"[:47] for p in {r["persona"] for r in rs}}
+        persona_keys = {f"gs-key-cmp-{system + a.tag}-{p}"[:47] for p in {r["persona"] for r in rs}}
         oc = [outcomes(k) for k in persona_keys]
         sub = sum(o["submitted"] for o in oc)
         rep = sum(o["replied_or_better"] for o in oc)
@@ -145,6 +145,7 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=5)
     ap.add_argument("--systems", default="gigbid_graph,single_react,supervisor")
     ap.add_argument("--out", default="multiagent_comparison.json")
+    ap.add_argument("--tag", default="", help="suffix for GigSim accounts, e.g. a retrieval-variant run on the same jobs")
     a = ap.parse_args()
     sys.path.insert(0, "scripts")
     import run_stack
@@ -154,7 +155,8 @@ def main() -> None:
     finally:
         run_stack.stop(ps)
     from agent import settings
-    write_result(a.out, {"provenance": provenance({"profile": settings.get("profile"), "baseline_model": settings.model_for("baseline_agent")}), **res})
+    write_result(a.out, {"provenance": provenance({"profile": settings.get("profile"), "baseline_model": settings.model_for("baseline_agent"),
+                                                     "rag_variant": settings.get("rag.variant"), "tag": a.tag}), **res})
     print(json.dumps(res["summary"], indent=1))
 
 
