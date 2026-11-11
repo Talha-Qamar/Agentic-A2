@@ -1,0 +1,4971 @@
+{
+ "provenance": {
+  "git_sha": "1066741",
+  "timestamp": "2026-11-11T14:58:17+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "variant": "v9_skill_graph",
+  "split": "tune=dev jobs 100-199 per persona, check=0-99"
+ },
+ "summary": {
+  "fit_bid": 0.175,
+  "fit_watch": 0.025,
+  "tune": {
+   "t": 0.175,
+   "precision": 0.7325,
+   "recall": 0.9274,
+   "f1": 0.8185
+  },
+  "check": {
+   "t": 0.175,
+   "precision": 0.7466,
+   "recall": 0.8862,
+   "f1": 0.8104
+  },
+  "check_at_previous_default_0.55": {
+   "t": 0.55,
+   "precision": 1.0,
+   "recall": 0.2764,
+   "f1": 0.4331
+  },
+  "n_tune": 256,
+  "n_check": 272,
+  "gold_bid_fit_median_tune": 0.475
+ },
+ "sweep": [
+  {
+   "t": 0.1,
+   "precision": 0.6864,
+   "recall": 0.9355,
+   "f1": 0.7918
+  },
+  {
+   "t": 0.125,
+   "precision": 0.6988,
+   "recall": 0.9355,
+   "f1": 0.8
+  },
+  {
+   "t": 0.15,
+   "precision": 0.716,
+   "recall": 0.9355,
+   "f1": 0.8112
+  },
+  {
+   "t": 0.175,
+   "precision": 0.7325,
+   "recall": 0.9274,
+   "f1": 0.8185
+  },
+  {
+   "t": 0.2,
+   "precision": 0.7413,
+   "recall": 0.8548,
+   "f1": 0.794
+  },
+  {
+   "t": 0.225,
+   "precision": 0.7413,
+   "recall": 0.8548,
+   "f1": 0.794
+  },
+  {
+   "t": 0.25,
+   "precision": 0.8067,
+   "recall": 0.7742,
+   "f1": 0.7901
+  },
+  {
+   "t": 0.275,
+   "precision": 0.819,
+   "recall": 0.7661,
+   "f1": 0.7917
+  },
+  {
+   "t": 0.3,
+   "precision": 0.8407,
+   "recall": 0.7661,
+   "f1": 0.8017
+  },
+  {
+   "t": 0.325,
+   "precision": 0.8791,
+   "recall": 0.6452,
+   "f1": 0.7442
+  },
+  {
+   "t": 0.35,
+   "precision": 0.8764,
+   "recall": 0.629,
+   "f1": 0.7324
+  },
+  {
+   "t": 0.375,
+   "precision": 0.8864,
+   "recall": 0.629,
+   "f1": 0.7358
+  },
+  {
+   "t": 0.4,
+   "precision": 0.8947,
+   "recall": 0.5484,
+   "f1": 0.68
+  },
+  {
+   "t": 0.425,
+   "precision": 0.9041,
+   "recall": 0.5323,
+   "f1": 0.6701
+  },
+  {
+   "t": 0.45,
+   "precision": 0.9041,
+   "recall": 0.5323,
+   "f1": 0.6701
+  },
+  {
+   "t": 0.475,
+   "precision": 0.9143,
+   "recall": 0.5161,
+   "f1": 0.6598
+  },
+  {
+   "t": 0.5,
+   "precision": 0.9636,
+   "recall": 0.4274,
+   "f1": 0.5922
+  },
+  {
+   "t": 0.525,
+   "precision": 0.9636,
+   "recall": 0.4274,
+   "f1": 0.5922
+  },
+  {
+   "t": 0.55,
+   "precision": 1.0,
+   "recall": 0.4032,
+   "f1": 0.5747
+  },
+  {
+   "t": 0.575,
+   "precision": 1.0,
+   "recall": 0.3145,
+   "f1": 0.4785
+  },
+  {
+   "t": 0.6,
+   "precision": 1.0,
+   "recall": 0.2742,
+   "f1": 0.4304
+  },
+  {
+   "t": 0.625,
+   "precision": 1.0,
+   "recall": 0.2661,
+   "f1": 0.4204
+  },
+  {
+   "t": 0.65,
+   "precision": 1.0,
+   "recall": 0.2177,
+   "f1": 0.3576
+  },
+  {
+   "t": 0.675,
+   "precision": 1.0,
+   "recall": 0.2016,
+   "f1": 0.3356
+  },
+  {
+   "t": 0.7,
+   "precision": 1.0,
+   "recall": 0.1694,
+   "f1": 0.2897
+  },
+  {
+   "t": 0.725,
+   "precision": 1.0,
+   "recall": 0.121,
+   "f1": 0.2158
+  },
+  {
+   "t": 0.75,
+   "precision": 1.0,
+   "recall": 0.121,
+   "f1": 0.2158
+  },
+  {
+   "t": 0.775,
+   "precision": 1.0,
+   "recall": 0.0887,
+   "f1": 0.163
+  },
+  {
+   "t": 0.8,
+   "precision": 1.0,
+   "recall": 0.0726,
+   "f1": 0.1353
+  }
+ ],
+ "rows": {
+  "tune": [
+   {
+    "job_id": "dev-9a24191048",
+    "persona": "ai_ml_engineer",
+    "fit": 0.8219,
+    "coverage": 0.875,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-40c30e27e4",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4786,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-14f3768fc6",
+    "persona": "ai_ml_engineer",
+    "fit": 0.579,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7706e72f1b",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2313,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": false
+   },
+   {
+    "job_id": "dev-1e33051735",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6812,
+    "coverage": 0.7143,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-ef937bfc45",
+    "persona": "ai_ml_engineer",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-65708885b5",
+    "persona": "ai_ml_engineer",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-055218e9fc",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6902644d56",
+    "persona": "ai_ml_engineer",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7f348cd4f5",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0056,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1661156647",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1188,
+    "coverage": 0.125,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b4e2b18d44",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1103,
+    "coverage": 0.125,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-4490b281ff",
+    "persona": "ai_ml_engineer",
+    "fit": 0.483,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-2324ed23b7",
+    "persona": "ai_ml_engineer",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-9102a3b988",
+    "persona": "ai_ml_engineer",
+    "fit": 0.397,
+    "coverage": 0.4286,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b9f937f70c",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6575,
+    "coverage": 0.7,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3a6e9b7881",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3896,
+    "coverage": 0.4167,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-674513fadf",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2771,
+    "coverage": 0.2857,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3724485c3d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1595e9618e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1357,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d85cb5498f",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6333,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0f1adca272",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-4e5708377c",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-db04ca89b8",
+    "persona": "ai_ml_engineer",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b7ee818034",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-35fe081e13",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f99e927679",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d99da10f2b",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d6aedf33f4",
+    "persona": "ai_ml_engineer",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-39c96d8949",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2819db56f3",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-076312965e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-23eb8ab586",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5446,
+    "coverage": 0.5714,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ba08a805b9",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4142,
+    "coverage": 0.4286,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d57f681b88",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1187,
+    "coverage": 0.125,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8e777dacc7",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1103,
+    "coverage": 0.125,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f5cddd78fc",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1206,
+    "coverage": 0.125,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f3a27f1d4e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4756,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4338ce5cfc",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2775,
+    "coverage": 0.3,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b883a52769",
+    "persona": "ai_ml_engineer",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-73430a46bc",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f9a1b35d12",
+    "persona": "ai_ml_engineer",
+    "fit": 0.8051,
+    "coverage": 0.8333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ca517d1471",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0003,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6a87fcdd4d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1357,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-74353ab46c",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-83f585c0c2",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a62dd85806",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c56adb4f04",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2376,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c38dbc6143",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3808,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a4a120a296",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c4c5d57d7e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3469,
+    "coverage": 0.375,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": false
+   },
+   {
+    "job_id": "dev-9cd2685c03",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4775,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-a23413be4f",
+    "persona": "ai_ml_engineer",
+    "fit": 0.7655,
+    "coverage": 0.8,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-82e16a8815",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5773,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5a9a14c129",
+    "persona": "ai_ml_engineer",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f2e6062ea8",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8175264a6d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": false
+   },
+   {
+    "job_id": "dev-2b120189b8",
+    "persona": "ai_ml_engineer",
+    "fit": 0.7932,
+    "coverage": 0.8333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8ab2b6908b",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6381,
+    "coverage": 0.6667,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-171073f12b",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-97b7554c02",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8fcd1acb9e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": false
+   },
+   {
+    "job_id": "dev-682230a0af",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f9365366d9",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-cc72e2311e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1c4a0094a6",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5722,
+    "coverage": 0.5833,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e91a042b7a",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fcf1f06c79",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6333,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e4564c1b50",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2714,
+    "coverage": 0.2857,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0b20fc4555",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ccc91fa592",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2276,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-de916eea07",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4759,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-910751ed3d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5836,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-00b4d6149f",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6937,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4716823fde",
+    "persona": "ai_ml_engineer",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fe0468b207",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3231,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.6,
+    "ok": false
+   },
+   {
+    "job_id": "dev-a1614efe65",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5487,
+    "coverage": 0.5833,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-03eb4b9ae1",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5086d664cb",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2357,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-225cef9778",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-5ef02807f9",
+    "persona": "ai_ml_engineer",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2e61711a89",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3469,
+    "coverage": 0.375,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f78a7c0aca",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0048,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f6008196c8",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-47f45fc745",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a96c273f4a",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ad44898aab",
+    "persona": "fullstack_web_dev",
+    "fit": 0.5454,
+    "coverage": 0.5833,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f2ce68dd88",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5b49582cc5",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2033ff84f0",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0f7fe72a94",
+    "persona": "fullstack_web_dev",
+    "fit": 0.8434,
+    "coverage": 0.9,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-7825a6fc5b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7ae228904e",
+    "persona": "fullstack_web_dev",
+    "fit": 0.348,
+    "coverage": 0.3571,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-e1c67bf0cb",
+    "persona": "fullstack_web_dev",
+    "fit": 0.7125,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5953f2d51b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4637,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-392be2b0e2",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1357,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-682106afda",
+    "persona": "fullstack_web_dev",
+    "fit": 0.9485,
+    "coverage": 1.0,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f3496e500e",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-44e1966ac3",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-700581783a",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fadb38613b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-000c32d76b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-bc365556e5",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cad4aec425",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-992e072a83",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1584,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0e6ec48e55",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-df6d995020",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3227,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-48d313aa0c",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-04ab978ab8",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4752,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3369286c56",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f2c574e8d4",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7ffec0f0b8",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6334,
+    "coverage": 0.6667,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-55bb38a2b3",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6422,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6332eb381a",
+    "persona": "fullstack_web_dev",
+    "fit": 0.7681,
+    "coverage": 0.8,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fb89fc36c5",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2714,
+    "coverage": 0.2857,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c52c2cd9cc",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-943a2d0d43",
+    "persona": "fullstack_web_dev",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f7046e1ac0",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3857,
+    "coverage": 0.4,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ab08cc1f33",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-e334c6d53a",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8729fc5d5f",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2984,
+    "coverage": 0.3125,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c73470f228",
+    "persona": "fullstack_web_dev",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-acc30b3704",
+    "persona": "fullstack_web_dev",
+    "fit": 0.5651,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-be224589e6",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-9fa7b8f00d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e91918ab45",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ef87bd3cfb",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c9f30e6b95",
+    "persona": "fullstack_web_dev",
+    "fit": 0.376,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5b3aae2821",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3785,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1d3bfbf515",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6110fbaaef",
+    "persona": "fullstack_web_dev",
+    "fit": 0.7919,
+    "coverage": 0.8333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8d6212afc8",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2429,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-963b9cf13b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-dea113d4c0",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4758,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a6a4d4babb",
+    "persona": "fullstack_web_dev",
+    "fit": 0.5447,
+    "coverage": 0.5714,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cdf1d2fb30",
+    "persona": "fullstack_web_dev",
+    "fit": 0.76,
+    "coverage": 0.8,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-bd97607737",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0003,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-82641f237f",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3b3df6ff06",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-868007e178",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f6160b38fa",
+    "persona": "fullstack_web_dev",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1ce2f31adc",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-8295087de2",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2371,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ba1e3d1e9b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-906b28fe4c",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0004,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f6d9bd8907",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6333,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-939957ed3e",
+    "persona": "fullstack_web_dev",
+    "fit": 0.5805,
+    "coverage": 0.625,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b732cababf",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f7d5d508d3",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6335,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-9646e3c78d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-17abc37f99",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3187,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-432729a603",
+    "persona": "fullstack_web_dev",
+    "fit": 0.066,
+    "coverage": 0.0714,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-001737e4f4",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c39d0aa698",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c3aaa0b22c",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4061,
+    "coverage": 0.4286,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4921041717",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b8a0a10ce3",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4831,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-629ff187fa",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6788,
+    "coverage": 0.7143,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-73f6dfbc2c",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-480a291eec",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-9f42b6a031",
+    "persona": "fullstack_web_dev",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-c6b149c2d6",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6851,
+    "coverage": 0.7143,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-96b8d9866d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-292ccde47d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-34fe06eb9b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6333,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-bdc5687bcc",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-af191a88e0",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2c42b0f8f2",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0a7be282fd",
+    "persona": "data_analyst",
+    "fit": 0.1901,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e40ad4c4ac",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b5feadb775",
+    "persona": "data_analyst",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-0b36bbaf0a",
+    "persona": "data_analyst",
+    "fit": 0.6786,
+    "coverage": 0.7143,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8fc55cefe7",
+    "persona": "data_analyst",
+    "fit": 0.1596,
+    "coverage": 0.1667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-62f396287e",
+    "persona": "data_analyst",
+    "fit": 0.238,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a9247eaab4",
+    "persona": "data_analyst",
+    "fit": 0.0012,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-328b0bab0f",
+    "persona": "data_analyst",
+    "fit": 0.652,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-20e6cc5ec2",
+    "persona": "data_analyst",
+    "fit": 0.2714,
+    "coverage": 0.2857,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-40407add34",
+    "persona": "data_analyst",
+    "fit": 0.3235,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-024690b8f9",
+    "persona": "data_analyst",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2891856a0b",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a5da4ef6f7",
+    "persona": "data_analyst",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-81f8a47da6",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": false
+   },
+   {
+    "job_id": "dev-739d111804",
+    "persona": "data_analyst",
+    "fit": 0.1994,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a58343a10e",
+    "persona": "data_analyst",
+    "fit": 0.2384,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b5c491951b",
+    "persona": "data_analyst",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-51e5ce947e",
+    "persona": "data_analyst",
+    "fit": 0.3221,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": false
+   },
+   {
+    "job_id": "dev-40bee50a9a",
+    "persona": "data_analyst",
+    "fit": 0.5309,
+    "coverage": 0.5625,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-00dd236692",
+    "persona": "data_analyst",
+    "fit": 0.3456,
+    "coverage": 0.375,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e6ebcb677c",
+    "persona": "data_analyst",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d35fe5758d",
+    "persona": "data_analyst",
+    "fit": 0.9537,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0f3e572020",
+    "persona": "data_analyst",
+    "fit": 0.1935,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-11c1a3e470",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-82ba7cb098",
+    "persona": "data_analyst",
+    "fit": 0.47,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-bc9fa841d4",
+    "persona": "data_analyst",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cbaf1342e7",
+    "persona": "data_analyst",
+    "fit": 0.1603,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-d713d3d5ee",
+    "persona": "data_analyst",
+    "fit": 0.408,
+    "coverage": 0.4286,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4b340da606",
+    "persona": "data_analyst",
+    "fit": 0.5546,
+    "coverage": 0.5833,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-a826d05629",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0d1e9505b3",
+    "persona": "data_analyst",
+    "fit": 0.7125,
+    "coverage": 0.75,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-9153c45d0b",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f0cf9fa325",
+    "persona": "data_analyst",
+    "fit": 0.7218,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-48ee28c685",
+    "persona": "data_analyst",
+    "fit": 0.4747,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8d3b2cb968",
+    "persona": "data_analyst",
+    "fit": 0.0892,
+    "coverage": 0.1,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": false
+   },
+   {
+    "job_id": "dev-0feba1ec62",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-990e054112",
+    "persona": "data_analyst",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e56ceb4136",
+    "persona": "data_analyst",
+    "fit": 0.2391,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-3932d0dd90",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-87459ed51c",
+    "persona": "data_analyst",
+    "fit": 0.5666,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-de364f3c44",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-dc058fa71e",
+    "persona": "data_analyst",
+    "fit": 0.76,
+    "coverage": 0.8,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-56b1252d23",
+    "persona": "data_analyst",
+    "fit": 0.3171,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f5bd005dd5",
+    "persona": "data_analyst",
+    "fit": 0.5847,
+    "coverage": 0.625,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b61545fb00",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-2ac3c9cf97",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-80ddd72140",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-980ba5bb3e",
+    "persona": "data_analyst",
+    "fit": 0.317,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cf27a44ce9",
+    "persona": "data_analyst",
+    "fit": 0.7134,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2c40ff203c",
+    "persona": "data_analyst",
+    "fit": 0.5433,
+    "coverage": 0.5714,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2516a2b9fb",
+    "persona": "data_analyst",
+    "fit": 0.0001,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7b8bd6d0ec",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cf2f74624f",
+    "persona": "data_analyst",
+    "fit": 0.1357,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-95ce337e94",
+    "persona": "data_analyst",
+    "fit": 0.6243,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6eee307e7b",
+    "persona": "data_analyst",
+    "fit": 0.3803,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5c8f398245",
+    "persona": "data_analyst",
+    "fit": 0.2346,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fecf7639a8",
+    "persona": "data_analyst",
+    "fit": 0.6355,
+    "coverage": 0.6667,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f3c4031683",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0025ce6e26",
+    "persona": "data_analyst",
+    "fit": 0.7125,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-74ac5bc95f",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5e61e7db5e",
+    "persona": "data_analyst",
+    "fit": 0.5701,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-53288f6381",
+    "persona": "data_analyst",
+    "fit": 0.3622,
+    "coverage": 0.375,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a4436d928d",
+    "persona": "data_analyst",
+    "fit": 0.7125,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2689c7dfbf",
+    "persona": "data_analyst",
+    "fit": 0.6333,
+    "coverage": 0.6667,
+    "gold": false,
+    "gold_coverage": 0.67,
+    "ok": false
+   },
+   {
+    "job_id": "dev-7581da0896",
+    "persona": "data_analyst",
+    "fit": 0.0005,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e4219d34c0",
+    "persona": "data_analyst",
+    "fit": 0.6855,
+    "coverage": 0.7143,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-244805a4e9",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-52f677c8a3",
+    "persona": "data_analyst",
+    "fit": 0.1904,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ba65e10172",
+    "persona": "data_analyst",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f166c741ab",
+    "persona": "data_analyst",
+    "fit": 0.5563,
+    "coverage": 0.5833,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-761e1f628f",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-229b9783b9",
+    "persona": "data_analyst",
+    "fit": 0.3169,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6e1b5096f2",
+    "persona": "data_analyst",
+    "fit": 0.238,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6c70fafd64",
+    "persona": "data_analyst",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e5fd6f0823",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8ecfcc8a2c",
+    "persona": "data_analyst",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a7fea371a3",
+    "persona": "data_analyst",
+    "fit": 0.243,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4eaccc37e3",
+    "persona": "data_analyst",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5613345aab",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d6e0812767",
+    "persona": "data_analyst",
+    "fit": 0.5563,
+    "coverage": 0.5833,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6292a16882",
+    "persona": "data_analyst",
+    "fit": 0.0001,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-675630a6dc",
+    "persona": "data_analyst",
+    "fit": 0.7125,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8ce60a9315",
+    "persona": "data_analyst",
+    "fit": 0.6629,
+    "coverage": 0.7,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-b93ee57a62",
+    "persona": "data_analyst",
+    "fit": 0.3901,
+    "coverage": 0.4167,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7fd7c5d550",
+    "persona": "data_analyst",
+    "fit": 0.2377,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4008df472a",
+    "persona": "data_analyst",
+    "fit": 0.0002,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c1bdf5bb2e",
+    "persona": "data_analyst",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-541e0fa659",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   }
+  ],
+  "check": [
+   {
+    "job_id": "dev-fe57fd3998",
+    "persona": "ai_ml_engineer",
+    "fit": 0.7139,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3a835b2c40",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3172,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-9ff3c69969",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6492,
+    "coverage": 0.6875,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-74900b1fc2",
+    "persona": "ai_ml_engineer",
+    "fit": 0.153,
+    "coverage": 0.1667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-dfc6ecdb6c",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5502,
+    "coverage": 0.5833,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-bbb50c2054",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2775,
+    "coverage": 0.3,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-32a4693498",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3536,
+    "coverage": 0.375,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-6c3ccaf80f",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d74c1fa35e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3593,
+    "coverage": 0.4,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": false
+   },
+   {
+    "job_id": "dev-953c8fc26d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-75225920eb",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.6,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f69db36ca1",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1358,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b74e60647c",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6708,
+    "coverage": 0.7,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c6ee30a56b",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4647,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-19cf56c7ca",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b943382337",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4779,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4c91ce10ca",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5e355739b2",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1483,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-17493db4fa",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-df64efbc99",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3193,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-298a000602",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b2a663a1f7",
+    "persona": "ai_ml_engineer",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-42f13ebeef",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2704,
+    "coverage": 0.2857,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-b9182605f3",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1584,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.6,
+    "ok": false
+   },
+   {
+    "job_id": "dev-0b1c98c31b",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3026,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f5b5e78b0c",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8478b524fd",
+    "persona": "ai_ml_engineer",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-afe6847f21",
+    "persona": "ai_ml_engineer",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c5024191f1",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-009541a04c",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6363,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2ef75cff10",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6cd8c36129",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4142,
+    "coverage": 0.4286,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-85e132770c",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.67,
+    "ok": false
+   },
+   {
+    "job_id": "dev-8dcd6cb51d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1357,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ca5c413386",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0009,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-da408e1586",
+    "persona": "ai_ml_engineer",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-26d9881d69",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0ca62f18bc",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4608,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ab8b52cba1",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-12f1fc3e55",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7c1572398d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5368,
+    "coverage": 0.5714,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6d1c97019b",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-209bc4df7f",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-00b23d3f3f",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4697,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2ed7a35eb5",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5d3587c7d0",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2043,
+    "coverage": 0.2143,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ad09d25acb",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-fa07ab6352",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-542aa79ed0",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a0b808048f",
+    "persona": "ai_ml_engineer",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ef2026a135",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4675,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fb1eac6b33",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2188,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a20f52dc67",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2499,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-0520349f6a",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3475,
+    "coverage": 0.375,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-cdd953885d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.6,
+    "ok": false
+   },
+   {
+    "job_id": "dev-6102f2fff0",
+    "persona": "ai_ml_engineer",
+    "fit": 0.7126,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e7ec8ab49d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-adde669a9e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5648,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-dd8e93ba6b",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1cefe7f607",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cfddf742d7",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-ca9d2283e1",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3745,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-572c5639b9",
+    "persona": "ai_ml_engineer",
+    "fit": 0.5844,
+    "coverage": 0.625,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2de2104aba",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b91046bb0a",
+    "persona": "ai_ml_engineer",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e6434cf461",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2382,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3f1da264db",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2714,
+    "coverage": 0.2857,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-34ca9c76da",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2265,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-2674328af2",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a86af0a5e4",
+    "persona": "ai_ml_engineer",
+    "fit": 0.463,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-19064231e6",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3321,
+    "coverage": 0.3571,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1cce45433e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.3895,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-052dcf06bf",
+    "persona": "ai_ml_engineer",
+    "fit": 0.278,
+    "coverage": 0.3,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-feedeebc83",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-044b1da3f4",
+    "persona": "ai_ml_engineer",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d86111ae4f",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e6e840b12d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.4729,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3a42ac647e",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": false
+   },
+   {
+    "job_id": "dev-ece5183502",
+    "persona": "ai_ml_engineer",
+    "fit": 0.1357,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-0d0f17b933",
+    "persona": "ai_ml_engineer",
+    "fit": 0.8395,
+    "coverage": 0.875,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-0f033d4fa0",
+    "persona": "ai_ml_engineer",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-67cceba547",
+    "persona": "ai_ml_engineer",
+    "fit": 0.6486,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-51e413ad4d",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2025ca8932",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-4d6d1b6fff",
+    "persona": "ai_ml_engineer",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-adf505d6cf",
+    "persona": "ai_ml_engineer",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f571ffba17",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0708,
+    "coverage": 0.0714,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cfe079f9c2",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": false
+   },
+   {
+    "job_id": "dev-79a4646d45",
+    "persona": "ai_ml_engineer",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f8e549af1e",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1357,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-324595103c",
+    "persona": "fullstack_web_dev",
+    "fit": 0.57,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d593651b45",
+    "persona": "fullstack_web_dev",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-22423d2c16",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-b40428589d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3139,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c492dbe4e2",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1488,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ed5da425c2",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-27489a5ba1",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3f758e85cf",
+    "persona": "fullstack_web_dev",
+    "fit": 0.48,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a78d716fda",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2745,
+    "coverage": 0.2857,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-10667a4b83",
+    "persona": "fullstack_web_dev",
+    "fit": 0.966,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e126fcb3c3",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-171d1ad385",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c9e0fd5e8d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f101b29ece",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3249,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4cc7ee1f47",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d42f394a4a",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3966,
+    "coverage": 0.4167,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-fb6b820824",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": false
+   },
+   {
+    "job_id": "dev-a832dcdc7f",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-de06fd2454",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3813,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-de849eb78d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-26046e0503",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6daf657f02",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1584,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": false
+   },
+   {
+    "job_id": "dev-94c4fe393d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1cfc9a8c16",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f24700d45c",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2fb7a5dce7",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cc81ca3b6d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6333,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a2d54b418c",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-9b579ae111",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0979,
+    "coverage": 0.1,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1496fe4f4a",
+    "persona": "fullstack_web_dev",
+    "fit": 0.5948,
+    "coverage": 0.625,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-634eabfe89",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": false
+   },
+   {
+    "job_id": "dev-8ad0b82212",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4782,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-bd4943779a",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3525bdf169",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-b68ff6898b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1611,
+    "coverage": 0.1667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fc6f19cba0",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8515dfd05f",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-62b5b3b766",
+    "persona": "fullstack_web_dev",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-56e668966d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1516563a10",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0001,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-56cbaf6806",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1751,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2a56c5b299",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8dbe857322",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3801,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-52aac3d0db",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-16b073dd26",
+    "persona": "fullstack_web_dev",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-542e2a9b2f",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6333,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a663acd089",
+    "persona": "fullstack_web_dev",
+    "fit": 0.5755,
+    "coverage": 0.6,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4923449613",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c0ed1d04b8",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4912,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-26ee773a70",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-e80b077cc5",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-84a98e0fde",
+    "persona": "fullstack_web_dev",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-8980eacd4b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4766,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f4d70da360",
+    "persona": "fullstack_web_dev",
+    "fit": 0.7585,
+    "coverage": 0.8,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-009b880750",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1357,
+    "coverage": 0.1429,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7bec98d210",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4137,
+    "coverage": 0.4286,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-6b25435815",
+    "persona": "fullstack_web_dev",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-22529a8f3e",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1362,
+    "coverage": 0.1429,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4eb363ad57",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4669,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-1622e54d69",
+    "persona": "fullstack_web_dev",
+    "fit": 0.6333,
+    "coverage": 0.6667,
+    "gold": false,
+    "gold_coverage": 0.67,
+    "ok": false
+   },
+   {
+    "job_id": "dev-2d33e1cfc0",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4763,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-043c502b32",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-9c54a7b265",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1444,
+    "coverage": 0.1667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4f63842dad",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8f5e16f99d",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3262,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d3670f5857",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3247,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3f0618e29e",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-84e69a024a",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1409a5c518",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a80301ac9b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3264,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-39ef15c41b",
+    "persona": "fullstack_web_dev",
+    "fit": 0.5565,
+    "coverage": 0.5833,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-de53e519e5",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": false
+   },
+   {
+    "job_id": "dev-e035f9da96",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4805,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7c18b3f7f8",
+    "persona": "fullstack_web_dev",
+    "fit": 0.1911,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-52aaaa9e76",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2298,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0d95371b85",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0032,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-301ccbef15",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-860b26dfc6",
+    "persona": "fullstack_web_dev",
+    "fit": 0.7405,
+    "coverage": 0.7857,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-010a320bde",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-697e9f7d6f",
+    "persona": "fullstack_web_dev",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a5cd46c448",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3804,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-eb4f522248",
+    "persona": "fullstack_web_dev",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-1a62a6012e",
+    "persona": "fullstack_web_dev",
+    "fit": 0.4801,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a8810cdd46",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f4cebcfa97",
+    "persona": "fullstack_web_dev",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7acfcfe728",
+    "persona": "fullstack_web_dev",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a758259410",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-9cc96f25f0",
+    "persona": "fullstack_web_dev",
+    "fit": 0.3842,
+    "coverage": 0.4,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-59cdd49d15",
+    "persona": "fullstack_web_dev",
+    "fit": 0.2775,
+    "coverage": 0.2857,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d2b679d112",
+    "persona": "data_analyst",
+    "fit": 0.1427,
+    "coverage": 0.1429,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a1268a5ea6",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-32bf8cb350",
+    "persona": "data_analyst",
+    "fit": 0.6412,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1d61bcaf84",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-adadadf79d",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-dc68b35403",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-9c17bc3fcf",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-48cbf2bea0",
+    "persona": "data_analyst",
+    "fit": 0.6357,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d50ba06672",
+    "persona": "data_analyst",
+    "fit": 0.6334,
+    "coverage": 0.6667,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-f22cf00f81",
+    "persona": "data_analyst",
+    "fit": 0.2054,
+    "coverage": 0.2143,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d441912fba",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-888696b78e",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-18d62f31e3",
+    "persona": "data_analyst",
+    "fit": 0.2824,
+    "coverage": 0.3,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-9cd51cc3c8",
+    "persona": "data_analyst",
+    "fit": 0.6415,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-097bd01c4d",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": false
+   },
+   {
+    "job_id": "dev-4c7d416aa2",
+    "persona": "data_analyst",
+    "fit": 0.7129,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-c2a40c9afc",
+    "persona": "data_analyst",
+    "fit": 0.38,
+    "coverage": 0.4,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e0baac4154",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-781a20e2f4",
+    "persona": "data_analyst",
+    "fit": 0.1625,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f75236df1e",
+    "persona": "data_analyst",
+    "fit": 0.2152,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4c5100cfdb",
+    "persona": "data_analyst",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-367a6c5ffc",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1af352a8b6",
+    "persona": "data_analyst",
+    "fit": 0.4777,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7ff7618246",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6af22dcd66",
+    "persona": "data_analyst",
+    "fit": 0.95,
+    "coverage": 1.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a46babfe64",
+    "persona": "data_analyst",
+    "fit": 0.6334,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d7e4045da0",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-38e17bb72a",
+    "persona": "data_analyst",
+    "fit": 0.2714,
+    "coverage": 0.2857,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-9074ba4808",
+    "persona": "data_analyst",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-82aa09a1fc",
+    "persona": "data_analyst",
+    "fit": 0.1505,
+    "coverage": 0.1667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1d4f3256de",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-dd34daeb9c",
+    "persona": "data_analyst",
+    "fit": 0.2714,
+    "coverage": 0.2857,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-06013e88fc",
+    "persona": "data_analyst",
+    "fit": 0.2877,
+    "coverage": 0.3,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5f4faf0dee",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5bc9235f17",
+    "persona": "data_analyst",
+    "fit": 0.4868,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4d27d6f5b5",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-96be6caf46",
+    "persona": "data_analyst",
+    "fit": 0.0002,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-ac2fc309e6",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-de24f812c4",
+    "persona": "data_analyst",
+    "fit": 0.6377,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-5088b96d42",
+    "persona": "data_analyst",
+    "fit": 0.1415,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": false
+   },
+   {
+    "job_id": "dev-ef3ebde820",
+    "persona": "data_analyst",
+    "fit": 0.7125,
+    "coverage": 0.75,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0054c94208",
+    "persona": "data_analyst",
+    "fit": 0.4625,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-818e614a37",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-85d670a5a2",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b895d16064",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-988bf4068c",
+    "persona": "data_analyst",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-160edf8518",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-cdd00bcf7d",
+    "persona": "data_analyst",
+    "fit": 0.1583,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f660838c62",
+    "persona": "data_analyst",
+    "fit": 0.136,
+    "coverage": 0.1429,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1a9b18e135",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-d4dac399e6",
+    "persona": "data_analyst",
+    "fit": 0.3182,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.6,
+    "ok": false
+   },
+   {
+    "job_id": "dev-7abd158790",
+    "persona": "data_analyst",
+    "fit": 0.6496,
+    "coverage": 0.6667,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6223f58961",
+    "persona": "data_analyst",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-acb09b1243",
+    "persona": "data_analyst",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-54f54786c0",
+    "persona": "data_analyst",
+    "fit": 0.2376,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-f8bebaab30",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-10dcaaad6f",
+    "persona": "data_analyst",
+    "fit": 0.6334,
+    "coverage": 0.6667,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-574c76449a",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d99ace4617",
+    "persona": "data_analyst",
+    "fit": 0.2483,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1405c9c399",
+    "persona": "data_analyst",
+    "fit": 0.4763,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-71b111167d",
+    "persona": "data_analyst",
+    "fit": 0.2785,
+    "coverage": 0.2857,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3e99f51e39",
+    "persona": "data_analyst",
+    "fit": 0.0001,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.2,
+    "ok": true
+   },
+   {
+    "job_id": "dev-75f84d9844",
+    "persona": "data_analyst",
+    "fit": 0.3983,
+    "coverage": 0.4167,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0c3c055da4",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": false
+   },
+   {
+    "job_id": "dev-a25fe81575",
+    "persona": "data_analyst",
+    "fit": 0.8529,
+    "coverage": 0.9167,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-2cde624705",
+    "persona": "data_analyst",
+    "fit": 0.5429,
+    "coverage": 0.5714,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-e91ad50083",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-a204d48bba",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-6a5642b704",
+    "persona": "data_analyst",
+    "fit": 0.3167,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.67,
+    "ok": false
+   },
+   {
+    "job_id": "dev-54dda7cdcf",
+    "persona": "data_analyst",
+    "fit": 0.4625,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-4f61d42e78",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-adcdad1319",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-3cbc1fcf4e",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": true
+   },
+   {
+    "job_id": "dev-88a2ba745e",
+    "persona": "data_analyst",
+    "fit": 0.1593,
+    "coverage": 0.1667,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-86ffb4ec6a",
+    "persona": "data_analyst",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 0.25,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fd714e7a51",
+    "persona": "data_analyst",
+    "fit": 0.4768,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-fe11e1ec6a",
+    "persona": "data_analyst",
+    "fit": 0.3859,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-8a75cc4fa8",
+    "persona": "data_analyst",
+    "fit": 0.0012,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-51323c5ef3",
+    "persona": "data_analyst",
+    "fit": 0.1902,
+    "coverage": 0.2,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1f5a1b51d2",
+    "persona": "data_analyst",
+    "fit": 0.6334,
+    "coverage": 0.6667,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-8f70e1be76",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-12622fc8e5",
+    "persona": "data_analyst",
+    "fit": 0.3069,
+    "coverage": 0.3333,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-d7b3a989f3",
+    "persona": "data_analyst",
+    "fit": 0.475,
+    "coverage": 0.5,
+    "gold": false,
+    "gold_coverage": 0.5,
+    "ok": true
+   },
+   {
+    "job_id": "dev-1d9b67b491",
+    "persona": "data_analyst",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-7d43df487c",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.17,
+    "ok": true
+   },
+   {
+    "job_id": "dev-14d14b2c17",
+    "persona": "data_analyst",
+    "fit": 0.2375,
+    "coverage": 0.25,
+    "gold": false,
+    "gold_coverage": 1.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-8fdd4fb0ee",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.0,
+    "ok": false
+   },
+   {
+    "job_id": "dev-ee3bfa36a0",
+    "persona": "data_analyst",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 0.6,
+    "ok": true
+   },
+   {
+    "job_id": "dev-0e471efd7a",
+    "persona": "data_analyst",
+    "fit": 0.3308,
+    "coverage": 0.3333,
+    "gold": true,
+    "gold_coverage": 0.67,
+    "ok": true
+   },
+   {
+    "job_id": "dev-b7f6a371af",
+    "persona": "data_analyst",
+    "fit": 0.19,
+    "coverage": 0.2,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-834d61ab86",
+    "persona": "data_analyst",
+    "fit": 0.2409,
+    "coverage": 0.25,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   },
+   {
+    "job_id": "dev-01c529fa33",
+    "persona": "data_analyst",
+    "fit": 0.0,
+    "coverage": 0.0,
+    "gold": false,
+    "gold_coverage": 0.33,
+    "ok": false
+   },
+   {
+    "job_id": "dev-64a05071d7",
+    "persona": "data_analyst",
+    "fit": 0.3831,
+    "coverage": 0.4,
+    "gold": true,
+    "gold_coverage": 1.0,
+    "ok": true
+   }
+  ]
+ }
+}

@@ -1,0 +1,1691 @@
+{
+ "provenance": {
+  "git_sha": "1066741",
+  "timestamp": "2026-11-11T15:20:03+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "rag_variant": "v9_skill_graph",
+  "models": {
+   "analyst": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "small"
+   },
+   "writer": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "strong"
+   },
+   "critic": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "strong"
+   }
+  }
+ },
+ "summary": {
+  "n": 21,
+  "errors": 0,
+  "bid_f1": 0.8696,
+  "accuracy": 0.8571,
+  "confusion": {
+   "tp": 10,
+   "fp": 1,
+   "fn": 2,
+   "tn": 8
+  },
+  "scam_recall": 1.0,
+  "scam_skip_rate": 1.0,
+  "false_scam_rate": 0.0,
+  "price_in_band": 0.7273,
+  "proposals_drafted": 9,
+  "unsupported_claim_rate_before": 0.25,
+  "unsupported_claim_rate_after": 0.0,
+  "claims_checked": 12,
+  "p50_latency_s": 99.6,
+  "p95_latency_s": 250.42,
+  "p95_latency_s_proposal": 286.4,
+  "mean_cost_usd_job": 0.001252,
+  "mean_cost_usd_proposal": 0.002766,
+  "mean_tokens_job": 5600.8,
+  "dead_letter": 3,
+  "needs_attention": 1
+ },
+ "by_persona": {
+  "ai_ml_engineer": {
+   "n": 7,
+   "errors": 0,
+   "bid_f1": 0.8889,
+   "accuracy": 0.8571,
+   "confusion": {
+    "tp": 4,
+    "fp": 0,
+    "fn": 1,
+    "tn": 2
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": 1.0,
+   "proposals_drafted": 4,
+   "unsupported_claim_rate_before": 0.0,
+   "unsupported_claim_rate_after": 0.0,
+   "claims_checked": 6,
+   "p50_latency_s": 9.27,
+   "p95_latency_s": 253.78,
+   "p95_latency_s_proposal": 282.08,
+   "mean_cost_usd_job": 0.001895,
+   "mean_cost_usd_proposal": 0.003095,
+   "mean_tokens_job": 9264.1,
+   "dead_letter": 0,
+   "needs_attention": 0
+  },
+  "data_analyst": {
+   "n": 7,
+   "errors": 0,
+   "bid_f1": 0.75,
+   "accuracy": 0.7143,
+   "confusion": {
+    "tp": 3,
+    "fp": 1,
+    "fn": 1,
+    "tn": 2
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": 0.5,
+   "proposals_drafted": 4,
+   "unsupported_claim_rate_before": 0.4,
+   "unsupported_claim_rate_after": 0.0,
+   "claims_checked": 5,
+   "p50_latency_s": 99.27,
+   "p95_latency_s": 248.52,
+   "p95_latency_s_proposal": 249.47,
+   "mean_cost_usd_job": 0.001734,
+   "mean_cost_usd_proposal": 0.002953,
+   "mean_tokens_job": 6968.7,
+   "dead_letter": 0,
+   "needs_attention": 1
+  },
+  "fullstack_web_dev": {
+   "n": 7,
+   "errors": 0,
+   "bid_f1": 1.0,
+   "accuracy": 1.0,
+   "confusion": {
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "tn": 4
+   },
+   "scam_recall": 1.0,
+   "scam_skip_rate": 1.0,
+   "false_scam_rate": 0.0,
+   "price_in_band": 0.6667,
+   "proposals_drafted": 1,
+   "unsupported_claim_rate_before": 1.0,
+   "unsupported_claim_rate_after": null,
+   "claims_checked": 1,
+   "p50_latency_s": 100.46,
+   "p95_latency_s": 206.57,
+   "p95_latency_s_proposal": 209.09,
+   "mean_cost_usd_job": 0.000128,
+   "mean_cost_usd_proposal": 0.0007,
+   "mean_tokens_job": 569.6,
+   "dead_letter": 3,
+   "needs_attention": 0
+  }
+ },
+ "declared_budgets": {
+  "p95_latency_s_job_analysed": 25,
+  "p95_latency_s_proposal": 60,
+  "usd_per_job_analysed": 0.002,
+  "usd_per_proposal": 0.01
+ },
+ "rows": [
+  {
+   "job_id": "dev-fe57fd3998",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    35,
+    46.0
+   ],
+   "status": "awaiting_approval",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.7139,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": 42.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 7.23,
+   "tokens": 8387,
+   "cost_usd": 0.001568,
+   "steps": 11,
+   "cover_letter": "You need a fast\u2011track RAG system that works on Azure OpenAI and integrates with Teams. In a recent PeopleFirst engagement I built a Teams bot using LlamaIndex and Azure OpenAI that cut HR ticket volume by 41% in three months (edb17df9985b:0). I also have hands\u2011on XGBoost experience from a fintech project (cf40b1add91a:0). For the first week I will (1) set up the Azure OpenAI endpoint and LlamaIndex data pipeline, (2) prototype the retrieval layer and integrate a basic XGBoost ranking model, (3) deliver a working demo in Teams and document the setup for your team. My rate is $42\u202f/hr, matching the quoted price. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 66,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1085,
+     "tokens": 1324,
+     "cost": 0.000205
+    },
+    "risk": {
+     "ms": 639,
+     "tokens": 1003,
+     "cost": 0.000103
+    },
+    "matcher": {
+     "ms": 1519,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 39,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 2144,
+     "tokens": 2815,
+     "cost": 0.000761
+    },
+    "verifier": {
+     "ms": 598,
+     "tokens": 759,
+     "cost": 7.5e-05
+    },
+    "critic": {
+     "ms": 1798,
+     "tokens": 1767,
+     "cost": 0.000346
+    },
+    "compliance": {
+     "ms": 587,
+     "tokens": 719,
+     "cost": 7.8e-05
+    },
+    "preview": {
+     "ms": 80,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "5430d9609b66426abdf9846ea5e5a48b",
+   "errors": []
+  },
+  {
+   "job_id": "dev-3a835b2c40",
+   "persona": "ai_ml_engineer",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "high",
+   "band": [
+    520.0,
+    580.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3172,
+   "scam_score": 0.3,
+   "risk": 0.6,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 9.269,
+   "tokens": 2427,
+   "cost_usd": 0.000327,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 54,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1002,
+     "tokens": 1239,
+     "cost": 0.000178
+    },
+    "risk": {
+     "ms": 9147,
+     "tokens": 1188,
+     "cost": 0.000149
+    },
+    "matcher": {
+     "ms": 1701,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "b69624a3693141edb64c3a68849cd694",
+   "errors": []
+  },
+  {
+   "job_id": "dev-9ff3c69969",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "high",
+   "band": [
+    35,
+    48.3
+   ],
+   "status": "awaiting_approval",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.6492,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": 42.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 2,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 121.685,
+   "tokens": 21126,
+   "cost_usd": 0.003878,
+   "steps": 17,
+   "cover_letter": "Bright Travel\u2019s travel\u2011related vision challenges demand a model that runs fast on NVIDIA Jetson. I delivered a 9k\u2011frame object detector for Faisal Textiles that achieved 0.91 recall at 25\u202fFPS on edge devices, proving the speed and accuracy required (da1d33400b24:0, 4e5e93e7dc09:0). I have hands\u2011on experience with TensorRT, Albumentations, PyTorch, OpenCV and Jetson (5870d2977579:0, 37b10073bbdd:0, cf40b1add91a:0). I will incorporate XGBoost for any classification or regression components, as I have used it successfully in prior projects (cf40b1add91a:0). First\u2011week plan: (1) set up the data pipeline and augmentations with Albumentations; (2) train a baseline detector in PyTorch, convert it to TensorRT and benchmark on Jetson; (3) deliver a working slice, test suite and documentation. I can start immediately at $42\u202f/hr. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 22,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 760,
+     "tokens": 1207,
+     "cost": 0.000179
+    },
+    "risk": {
+     "ms": 646,
+     "tokens": 1033,
+     "cost": 0.000111
+    },
+    "matcher": {
+     "ms": 112,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 70,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 25471,
+     "tokens": 2980,
+     "cost": 0.000343
+    },
+    "verifier": {
+     "ms": 1659,
+     "tokens": 1305,
+     "cost": 0.000151
+    },
+    "critic": {
+     "ms": 2058,
+     "tokens": 1858,
+     "cost": 0.000451
+    },
+    "compliance": {
+     "ms": 776,
+     "tokens": 765,
+     "cost": 7.5e-05
+    },
+    "preview": {
+     "ms": 79,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "0fad67d111c049fabe17593c1cdd139f",
+   "errors": []
+  },
+  {
+   "job_id": "dev-74900b1fc2",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    430.0,
+    890.0
+   ],
+   "status": "watching",
+   "pred": "skip",
+   "raw_decision": "watch",
+   "fit": 0.153,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 8.945,
+   "tokens": 1991,
+   "cost_usd": 0.000234,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 23,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 744,
+     "tokens": 1028,
+     "cost": 0.000132
+    },
+    "risk": {
+     "ms": 8857,
+     "tokens": 963,
+     "cost": 0.000102
+    },
+    "matcher": {
+     "ms": 70,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "dbae0b4e9e3b42eda089f088e7b570b9",
+   "errors": []
+  },
+  {
+   "job_id": "dev-dfc6ecdb6c",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    35,
+    49.4
+   ],
+   "status": "blocked",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.5502,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": 41.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 31.032,
+   "tokens": 8327,
+   "cost_usd": 0.001508,
+   "steps": 10,
+   "cover_letter": "You need a prompt\u2011injection mitigation layer for your retail chatbot so hidden text can\u2019t manipulate the agent. In a recent project for Safarnama I reduced attack success from 34% to 3% by adding untrusted\u2011content delimiting, permission tiers and a red\u2011team test suite (evidence: 635579365bc1:0). I will deliver a working slice in the first week: (1) set up pydantic models for input validation, (2) integrate Microsoft Presidio for PII masking, (3) add pytest\u2011based detection tests, and (4) document the module for your team. I\u2019ll run a quick red\u2011team test on day\u202f5 and review progress with you twice a week. My codebase already includes guardrails, pytest, pydantic and Presidio in the requirements (evidence: 2beeeaf3f8dc:0, d53fbfcd4b93:0, 635579365bc1:0). The hourly rate is $41.0. I\u2019ll focus on AI\u2011safety best practices and deliver the detection and sanitization module, unit tests, data models and deployment guide within the 7\u2011day window. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": [
+    {
+     "rule": "no_off_platform",
+     "evidence": "The hourly rate is $41.0",
+     "span": "The hourly rate is $41.0"
+    }
+   ],
+   "by_node": {
+    "intake": {
+     "ms": 26,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 909,
+     "tokens": 1259,
+     "cost": 0.000184
+    },
+    "risk": {
+     "ms": 17274,
+     "tokens": 1103,
+     "cost": 0.000129
+    },
+    "matcher": {
+     "ms": 168,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 74,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 2914,
+     "tokens": 2678,
+     "cost": 0.000712
+    },
+    "verifier": {
+     "ms": 698,
+     "tokens": 806,
+     "cost": 8e-05
+    },
+    "critic": {
+     "ms": 9356,
+     "tokens": 1644,
+     "cost": 0.000311
+    },
+    "compliance": {
+     "ms": 611,
+     "tokens": 837,
+     "cost": 9.2e-05
+    }
+   },
+   "trace_id": "7d9104f6e29749c0b73e41e4678812fb",
+   "errors": []
+  },
+  {
+   "job_id": "dev-bbb50c2054",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    520.0,
+    960.0
+   ],
+   "status": "awaiting_approval",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.2775,
+   "scam_score": 0.1,
+   "risk": 0.2,
+   "price": 910.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 2,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 310.386,
+   "tokens": 20196,
+   "cost_usd": 0.005424,
+   "steps": 17,
+   "cover_letter": "You need an A/B\u2011tested recommendation prototype that handles cold\u2011start users and a reliable image\u2011labeling pipeline. I delivered a matrix\u2011factorisation recommender for Sunwave Audio that lifted home\u2011feed click\u2011through 22% (evidence 13262f9f4049) and ran an A/B test for Threadline that boosted conversion in the first week (evidence 993ed583f849). I also built NumPy\u2011based data pipelines that reduced zero\u2011result queries from 12% to 3% (evidence f5c8f4598889). \n\nFirst\u2011week plan:\n1. Audit your data, define success metrics, and set up a reproducible NumPy pipeline for matrix factorisation.\n2. Prototype collaborative\u2011filtering with matrix factorisation and a content\u2011based fallback for cold\u2011start users.\n3. Implement an A/B testing harness around the prototype to compare variants.\n4. Create an image\u2011labeling pipeline by fine\u2011tuning a small LLM on your image metadata, running batch inference, and storing labels for downstream use.\n5. Deliver documentation, deployment scripts, and a kickoff review.\n\nFixed price: $910. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 25,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 918,
+     "tokens": 1282,
+     "cost": 0.000195
+    },
+    "risk": {
+     "ms": 16995,
+     "tokens": 1068,
+     "cost": 0.000124
+    },
+    "matcher": {
+     "ms": 106,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 79,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 51723,
+     "tokens": 3208,
+     "cost": 0.000813
+    },
+    "verifier": {
+     "ms": 73384,
+     "tokens": 662,
+     "cost": 0.001032
+    },
+    "critic": {
+     "ms": 1459,
+     "tokens": 1947,
+     "cost": 0.000469
+    },
+    "compliance": {
+     "ms": 48762,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "preview": {
+     "ms": 85,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "8cd9adb540304f88b9329cd96c8f2bc3",
+   "errors": []
+  },
+  {
+   "job_id": "dev-32a4693498",
+   "persona": "ai_ml_engineer",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    420.0,
+    460.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3536,
+   "scam_score": 0.2,
+   "risk": 0.4,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 8.92,
+   "tokens": 2395,
+   "cost_usd": 0.000329,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 19,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1018,
+     "tokens": 1327,
+     "cost": 0.000205
+    },
+    "risk": {
+     "ms": 8866,
+     "tokens": 1068,
+     "cost": 0.000124
+    },
+    "matcher": {
+     "ms": 80,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "0d50b075e62644a79f344d17f6c0c692",
+   "errors": []
+  },
+  {
+   "job_id": "dev-d2b679d112",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "partial",
+   "band": [
+    1220.0,
+    2550.0
+   ],
+   "status": "watching",
+   "pred": "skip",
+   "raw_decision": "watch",
+   "fit": 0.1427,
+   "scam_score": 0.15,
+   "risk": 0.35,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 17.549,
+   "tokens": 2367,
+   "cost_usd": 0.000324,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 25,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 9286,
+     "tokens": 1270,
+     "cost": 0.000195
+    },
+    "risk": {
+     "ms": 17458,
+     "tokens": 1097,
+     "cost": 0.000129
+    },
+    "matcher": {
+     "ms": 979,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "da5d23809bf84eafa4dca6fc459044c6",
+   "errors": []
+  },
+  {
+   "job_id": "dev-a1268a5ea6",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    260.0,
+    340.0
+   ],
+   "status": "awaiting_approval",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.475,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": 320.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 1,
+   "unsupported_after": 0,
+   "latency_s": 87.448,
+   "tokens": 9773,
+   "cost_usd": 0.001724,
+   "steps": 14,
+   "cover_letter": "Orbit Labs needs a rapid survival analysis solution that feeds Tableau dashboards and runs on Kubernetes.\n\n**First\u2011week plan**: 1) Ingest and clean the supplied data, creating survival\u2011time and censoring columns. 2) Fit a Cox proportional hazards model with statsmodels, validate assumptions, and generate baseline survival curves. 3) Produce Tableau data extracts and draft two dashboards\u2014one for cohort survival curves, another for covariate effects. 4) Containerize the pipeline with Docker and prepare Helm charts for Kubernetes deployment; deliver a working slice by day\u202f5 for review. 5) Iterate based on feedback, add monitoring scripts, and produce a short edited video walkthrough of the deployed pipeline. \n\nAll work will stay within the $320 budget. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 24,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 731,
+     "tokens": 1090,
+     "cost": 0.000147
+    },
+    "risk": {
+     "ms": 8919,
+     "tokens": 1032,
+     "cost": 0.00012
+    },
+    "matcher": {
+     "ms": 59,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 72,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 25276,
+     "tokens": 2460,
+     "cost": 0.000267
+    },
+    "verifier": {
+     "ms": 99,
+     "tokens": 0,
+     "cost": 0
+    },
+    "critic": {
+     "ms": 1301,
+     "tokens": 1362,
+     "cost": 0.000262
+    },
+    "compliance": {
+     "ms": 48557,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "preview": {
+     "ms": 78,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "f97c5b0856f047e989d4dc05cd86cb18",
+   "errors": []
+  },
+  {
+   "job_id": "dev-32bf8cb350",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    520.0,
+    1100.0
+   ],
+   "status": "needs_attention",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.6412,
+   "scam_score": 0.0,
+   "risk": 0.10849999999999997,
+   "price": 1050.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 202.601,
+   "tokens": 4643,
+   "cost_usd": 0.001147,
+   "steps": 11,
+   "cover_letter": "You need an operations analytics solution that turns raw location data into actionable, leadership\u2011ready visual reports. In a recent transport project I built a geospatial dashboard in PostgreSQL that cut average rider wait time by 18% and was adopted by 25 zone managers (ed6947052039). I will use PostgreSQL (bfbe88857363) and Metabase for dashboards, delivering interactive visual reports (17080b87b1a7) and map\u2011based analysis (cca331e14ad3). Week\u202f1: ingest the raw data, create a basic geohash table, and deliver a prototype dashboard slice for your core metrics. Week\u202f2\u20114: expand visualizations, add alerts, and test performance. Week\u202f5\u20118: finalize reports, document handover, and train your team. Fixed price: $1050. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 19,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99315,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99430,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 131,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 41,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 2531,
+     "tokens": 2962,
+     "cost": 0.000834
+    },
+    "verifier": {
+     "ms": 48591,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "critic": {
+     "ms": 1287,
+     "tokens": 1681,
+     "cost": 0.000313
+    },
+    "compliance": {
+     "ms": 50575,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "preview": {
+     "ms": 82,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "0e63474441974d2f8c908eb03234418e",
+   "errors": []
+  },
+  {
+   "job_id": "dev-1d61bcaf84",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    330.0,
+    360.0
+   ],
+   "status": "awaiting_approval",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.475,
+   "scam_score": 0.0,
+   "risk": 0.0,
+   "price": 270.0,
+   "in_band": false,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 244.091,
+   "tokens": 16620,
+   "cost_usd": 0.004857,
+   "steps": 17,
+   "cover_letter": "You need a data\u2011quality pipeline for inventory data and a Metabase dashboard. I built a production\u2011ready geospatial dashboard with Metabase and PostgreSQL that was adopted by 25 zone managers, reducing rider wait time by 18% (evidence: 7863d5349621). I know Metabase (evidence: bfbe88857363) and have strong PostgreSQL experience (evidence: bfbe88857363). My background in inventory\u2011related analytics lets me design validation rules and visual reports that surface data issues quickly. For Flutter UI and embedded C firmware I will collaborate with a vetted specialist to ensure seamless integration while I focus on the data layer. **First\u2011week plan:** (1) kickoff call to confirm scope, quality metrics, and success criteria; (2) audit existing inventory data sources and define validation rules using Great Expectations; (3) set up PostgreSQL tables and Metabase models; (4) deliver a working slice of the pipeline for your review. Fixed price: $270. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 21,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99417,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 101261,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 99,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 44,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 2328,
+     "tokens": 3129,
+     "cost": 0.000818
+    },
+    "verifier": {
+     "ms": 48618,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "critic": {
+     "ms": 1848,
+     "tokens": 1949,
+     "cost": 0.000457
+    },
+    "compliance": {
+     "ms": 48560,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "preview": {
+     "ms": 80,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "e5896039ea0241a3a2cf78146e47d8fd",
+   "errors": []
+  },
+  {
+   "job_id": "dev-adadadf79d",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    400.0,
+    440.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.475,
+   "scam_score": 0.0,
+   "risk": 0.0,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 99.271,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 19,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99217,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99109,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 86,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "6c9b1da963a14e3d91923a76f0904b1e",
+   "errors": []
+  },
+  {
+   "job_id": "dev-dc68b35403",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    400.0,
+    440.0
+   ],
+   "status": "awaiting_approval",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.475,
+   "scam_score": 0.0,
+   "risk": 0.08749999999999995,
+   "price": 310.0,
+   "in_band": false,
+   "drafted": true,
+   "claims": 2,
+   "unsupported_before": 1,
+   "unsupported_after": 0,
+   "latency_s": 250.421,
+   "tokens": 15378,
+   "cost_usd": 0.004085,
+   "steps": 17,
+   "cover_letter": "You need a fast\u2011moving KPI dashboard in Power BI and I have already cut reporting lag from seven days to one day for a consumer\u2011goods distributor, delivering a daily\u2011refreshed report used weekly by 60 managers (evidence:1e8bfb9261fc:0).\n\nFirst\u2011week plan: (1) kickoff call to confirm KPI definitions, data sources and any geohash requirements; (2) ship a working Power BI slice that visualises core KPIs on a map using the available location fields; (3) incorporate feedback, add basic tests and monitoring, and prepare hand\u2011off. Fixed price $310.\n\nRisk assessment: the riskiest part is the lack of existing geohash\u2011encoded data, which could delay spatial aggregation. I will mitigate by (a) mapping current latitude/longitude to geohash in PostgreSQL during week one, (b) validating the mapping with sample queries, and (c) adjusting the Power BI visuals once the geohash layer is confirmed. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": [],
+   "by_node": {
+    "intake": {
+     "ms": 23,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99360,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99503,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 116,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 40,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 2156,
+     "tokens": 2996,
+     "cost": 0.000772
+    },
+    "verifier": {
+     "ms": 1054,
+     "tokens": 659,
+     "cost": 6.9e-05
+    },
+    "critic": {
+     "ms": 1690,
+     "tokens": 1876,
+     "cost": 0.000449
+    },
+    "compliance": {
+     "ms": 40688,
+     "tokens": 609,
+     "cost": 0.000522
+    },
+    "preview": {
+     "ms": 79,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "2bb89b2a7fcb4099bc79999b7017b1c2",
+   "errors": []
+  },
+  {
+   "job_id": "dev-9c17bc3fcf",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "low",
+   "band": [
+    22,
+    46.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.0,
+   "scam_score": 0.0,
+   "risk": 0.004199999999999964,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 99.193,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 19,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99141,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99107,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 66,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "233851edb17a4e09839b84d941e014da",
+   "errors": []
+  },
+  {
+   "job_id": "dev-f8e549af1e",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "low",
+   "band": [
+    500.0,
+    760.0
+   ],
+   "status": "watching",
+   "pred": "skip",
+   "raw_decision": "watch",
+   "fit": 0.1357,
+   "scam_score": 0.0,
+   "risk": 0.13999999999999996,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 99.493,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 21,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99383,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99426,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 946,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "1f94e6deb33749a8b09cf3686060bcce",
+   "errors": []
+  },
+  {
+   "job_id": "dev-324595103c",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    500.0,
+    550.0
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.57,
+   "scam_score": 0.0,
+   "risk": 0.12687500000000002,
+   "price": 190.0,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 199.646,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 19,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99957,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99326,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 89,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 72,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 99557,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "3dfe790cf486470bad0d9be06c54aef8",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199148, Requested 3680. Please try again in 20m21.696s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-d593651b45",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    28,
+    37.9
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.38,
+   "scam_score": 0.0,
+   "risk": 0.05249999999999996,
+   "price": 31.0,
+   "in_band": true,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 200.69,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 19,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99339,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 100235,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 75,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 41,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 100354,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "7e17f2417d8d4405978ab5ccbd485084",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199129, Requested 3652. Please try again in 20m1.392s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-b411186277",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": true,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    340.0,
+    370.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3801,
+   "scam_score": 0.55,
+   "risk": 0.6403000000000001,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 100.461,
+   "tokens": 1319,
+   "cost_usd": 0.000195,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 23,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 51132,
+     "tokens": 1319,
+     "cost": 0.000195
+    },
+    "risk": {
+     "ms": 100381,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 112,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "447610bc30734f2b93317dbaba029f0a",
+   "errors": []
+  },
+  {
+   "job_id": "dev-22423d2c16",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    28,
+    37.9
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3167,
+   "scam_score": 0.0,
+   "risk": 0.0,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 100.129,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 26,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99990,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 100038,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 71,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "f2b5abb29a944b4090e76286e4365c85",
+   "errors": []
+  },
+  {
+   "job_id": "dev-b40428589d",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    420.0,
+    720.0
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.4722,
+   "scam_score": 0.0,
+   "risk": 0.10849999999999997,
+   "price": 690.0,
+   "in_band": true,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 1,
+   "unsupported_after": 0,
+   "latency_s": 209.089,
+   "tokens": 2668,
+   "cost_usd": 0.0007,
+   "steps": 9,
+   "cover_letter": "You need a reliable notifications system built quickly for Quartz Health. I recently delivered a booking API with slot\u2011locking that eliminated double bookings, proving my hands\u2011on scheduling expertise (evidence:7bc2d19ee4f0). For the first week I will: (1) set up the project skeleton with DRF serializers, viewsets and Celery workers for async notifications; (2) implement a simple email/SMS endpoint and a test suite covering all endpoints; (3) demo the working slice and gather feedback. The full solution will be delivered within the 30\u2011day timeline for the fixed price of $690. Drafted with AI assistance and reviewed by me before sending.",
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 22,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99375,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99517,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 126,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 41,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 10131,
+     "tokens": 2668,
+     "cost": 0.0007
+    },
+    "verifier": {
+     "ms": 114,
+     "tokens": 0,
+     "cost": 0
+    },
+    "critic": {
+     "ms": 99207,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "d4cdfed4c98b4f268c2135b0df0c11a0",
+   "errors": [
+    {
+     "node": "critic",
+     "error": "LLMError: critic: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199423, Requested 2067. Please try again in 10m43.68s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-c492dbe4e2",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    380.0,
+    800.0
+   ],
+   "status": "watching",
+   "pred": "skip",
+   "raw_decision": "watch",
+   "fit": 0.1488,
+   "scam_score": 0.0,
+   "risk": 0.0,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 99.596,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 30,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99485,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99523,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 126,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "9521a10d6a414fcf8db5e1f46b9533b5",
+   "errors": []
+  }
+ ]
+}

@@ -1,0 +1,1208 @@
+{
+ "provenance": {
+  "git_sha": "ea06a77",
+  "timestamp": "2026-11-11T14:57:16+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "model": "qwen/qwen3.8-27b",
+  "tasks": 39
+ },
+ "summary": {
+  "coarse": {
+   "tasks": 39,
+   "success_rate": 0.6923,
+   "mean_calls": 0.87,
+   "wrong_tool_rate": 0.0,
+   "p50_latency_s": 40.2,
+   "p95_latency_s": 45.34,
+   "mean_tokens": 4191.6,
+   "errors": 1,
+   "by_type": {
+    "evidence": 0.778,
+    "outcome": 0.0,
+    "result": 0.778,
+    "skill": 1.0
+   }
+  },
+  "fine": {
+   "tasks": 39,
+   "success_rate": 0.0,
+   "mean_calls": 0.0,
+   "wrong_tool_rate": 0.0,
+   "p50_latency_s": 0.08,
+   "p95_latency_s": 0.12,
+   "mean_tokens": 22.6,
+   "errors": 39,
+   "by_type": {
+    "evidence": 0.0,
+    "outcome": 0.0,
+    "result": 0.0,
+    "skill": 0.0
+   }
+  }
+ },
+ "rows": [
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for FixIt.pk? Quote the figure.",
+   "answer": "For FixIt.pk you launched the MVP with \"180 providers in two cities,\" and the company raised its seed round on the MVP.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 2.18,
+   "tokens": 4766,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs FP&A. Which of my past clients did I do FP&A work for? Name the client.",
+   "answer": "I don't have clear evidence of dedicated FP&A work in your portfolio \u2014 the closest match is **Akhuwat Finance**, where you built automated portfolio-at-risk, roll-rate and vintage analysis with a Power BI dashboard for the risk committee (2024). If that's the FP&A-adjacent engagement you're thinking of, that's the client to name.",
+   "success": false,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 19.32,
+   "tokens": 4749,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using COBOL? Answer yes or no.",
+   "answer": "No. None of the returned portfolio evidence (CV or past proposals) mentions COBOL, so there is no supporting evidence of COBOL experience.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 43.45,
+   "tokens": 5252,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "You did classification work for **Ticketly** (an intent-classification agent) and **RadAssist** (a DenseNet classifier for radiology worklist triage).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 39.33,
+   "tokens": 4691,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs price monitoring. Which of my past clients did I do price monitoring work for? Name the client.",
+   "answer": "You did price monitoring work for **PriceWatch.pk** (e-commerce), building a daily pipeline that pulls partner product feeds through official APIs and expanded coverage from 50 to 8,000 products.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 45.12,
+   "tokens": 5413,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs risk analytics. Which of my past clients did I do risk analytics work for? Name the client.",
+   "answer": "You did risk analytics work for **Akhuwat Finance** (2024), building automated portfolio-at-risk, roll-rate and vintage analysis with a Power BI dashboard for their risk committee.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 40.41,
+   "tokens": 4843,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for Ticketly? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 4.28,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: parameters for tool match_requirements did not match schema: errors: [missing properties: 'job_text']"
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Tableau? Answer yes or no.",
+   "answer": "Yes \u2014 Tableau appears in the requirements.txt of two portfolio projects (elasticity-study and snackbox-churn).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 30.39,
+   "tokens": 3645,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Python? Answer yes or no.",
+   "answer": "Yes \u2014 multiple case studies and code repos (e.g., the Draftwell LLM optimisation, Khabar Labs NER, and the prelabel/pod-recs repos) document Python use.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 43.13,
+   "tokens": 5150,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs product analytics. Which of my past clients did I do product analytics work for? Name the client.",
+   "answer": "I don't have a case study explicitly labeled \"product analytics\" in my portfolio. The closest matches are analytics work for **TeleConnect BPO** (HR attrition analytics) and **Outfitters Online** (GA4/BigQuery attribution and campaign ROI analytics), but neither is specifically product analytics. I'd need to confirm which of these (or another project) you're referring to before naming a client.",
+   "success": false,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 38.91,
+   "tokens": 4709,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs RAG. Which of my past clients did I do RAG work for? Name the client.",
+   "answer": "You did RAG work for **Docstack** \u2014 an embedded chat widget with streaming answers grounded in help articles (retrieval over their docs) plus human handoff, rated 4.4/5 for helpfulness.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 27.21,
+   "tokens": 3349,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "outcome",
+   "q": "Give the id of one of my past proposals for Machine Learning work that got a reply or was won.",
+   "answer": "One example is **ai_m-prop-106** (a Machine Learning training project for a manufacturing client, outcome: won).",
+   "success": false,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 43.2,
+   "tokens": 5065,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs background jobs. Which of my past clients did I do background jobs work for? Name the client.",
+   "answer": "I couldn't find any past client where you specifically did background jobs work \u2014 the closest match is a PWA repo (field-inspect-pwa) that uses a \"background-sync\" dependency, but that's not a named client project. So I can't name a client for background jobs work.",
+   "success": false,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 48.53,
+   "tokens": 5840,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using React Native? Answer yes or no.",
+   "answer": "Yes \u2014 the live-track project README lists React Native in its stack (rider/customer GPS apps).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 40.2,
+   "tokens": 4831,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "outcome",
+   "q": "Give the id of one of my past proposals for Front-End Development work that got a reply or was won.",
+   "answer": "I don't have a tool to look up your past proposals, so I can't provide a proposal ID. If you share the proposal list (or a tool for it), I can identify one that was replied to or won.",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 4.4,
+   "tokens": 565,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for Essayly? Quote the figure.",
+   "answer": "For Essayly you achieved \"judge agreement with teachers of Cohen's kappa 0.71\" (and caught two regressions before release in the first month).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 40.25,
+   "tokens": 4720,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "result",
+   "q": "What measurable result did I achieve for CarePlus Pharmacy? Quote the figure.",
+   "answer": "For CarePlus Pharmacy you cut stock-outs on the top 200 SKUs by 35% and reduced forecast error (WAPE) from 28% to 16%.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 42.18,
+   "tokens": 5043,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using COBOL? Answer yes or no.",
+   "answer": "No. The matched evidence is unrelated to COBOL (analytics, Mixpanel, BigQuery, etc.), so there is no portfolio evidence of using COBOL.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 39.03,
+   "tokens": 4683,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "You did classification work for **Ticketly** (an intent-classification agent) and **RadAssist** (a DenseNet classifier for radiology worklist triage).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 39.13,
+   "tokens": 4691,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "result",
+   "q": "What measurable result did I achieve for PriceWatch.pk? Quote the figure.",
+   "answer": "For PriceWatch.pk you expanded price-monitoring coverage from 50 to 8,000 products.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 43.11,
+   "tokens": 5088,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "I don't have access to your proposal history or any tool that lists past proposals, so I can't provide a won proposal ID.",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 4.54,
+   "tokens": 536,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs admin tools. Which of my past clients did I do admin tools work for? Name the client.",
+   "answer": "You did admin tools work for **SadaPay Partners** \u2014 a React admin panel on a NestJS API with attribute-based permissions and an append-only audit trail, which removed direct production database access for 40 staff and passed a compliance audit.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 42.25,
+   "tokens": 5076,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs information extraction. Which of my past clients did I do information extraction work for? Name the client.",
+   "answer": "You did information extraction work for **Ledgerloop** (FinTech) \u2014 a document-understanding model that extracted JSON line items from supplier invoices, achieving a field\u2011level F1 of 0.93 and reducing the AP team's hand\u2011keying by about 70% (2025\u201103).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 39.4,
+   "tokens": 4728,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs public sector. Which of my past clients did I do public sector work for? Name the client.",
+   "answer": "You did public sector work for **Punjab e-Services (Government)** \u2014 a citizen portal where you fixed semantic markup, cutting audit issues from 212 to 6 and raising screen-reader task completion from 40% to 95%.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 47.36,
+   "tokens": 5605,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using SAP ABAP? Answer yes or no.",
+   "answer": "No. The only mention of SAP ABAP is in a proposal that merely echoes the client's requirement (\"You need sAP ABAP skills required\") while describing unrelated SSO work \u2014 there is no actual portfolio evidence of SAP ABAP experience.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 42.31,
+   "tokens": 5149,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "outcome",
+   "q": "Give the id of one of my past proposals for Data Visualization work that got a reply or was won.",
+   "answer": "One matching proposal is **data-prop-007** (won, 2025-08-05), which references a geospatial dashboard of supply.",
+   "success": false,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 42.15,
+   "tokens": 4952,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs RAG. Which of my past clients did I do RAG work for? Name the client.",
+   "answer": "The closest RAG-related work in your portfolio is at **Clausewise**, where you delivered a retrieval pipeline that chunks contracts by clause heading (94% answer citation accuracy). That's the client to name for RAG experience.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 23.17,
+   "tokens": 2887,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "I don't have access to your proposal history or any tool that lists past proposals, so I can't provide a won proposal ID.",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 4.29,
+   "tokens": 536,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for ShifaCare? Quote the figure.",
+   "answer": "For ShifaCare you reduced the no-show rate from 30% to 12% (via a booking API with slot locking).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 40.12,
+   "tokens": 4711,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "result",
+   "q": "What measurable result did I achieve for TeleConnect BPO? Quote the figure.",
+   "answer": "For TeleConnect BPO, you reduced annualised attrition to 47% in nine months (down from 60% a year).",
+   "success": false,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 40.12,
+   "tokens": 4755,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "I don't have access to your proposal history or any tool that lists past proposals, so I can't provide a won proposal ID.",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 3.26,
+   "tokens": 536,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs tool calling. Which of my past clients did I do tool calling work for? Name the client.",
+   "answer": "The strongest tool-calling evidence is the Safarnama (Travel) project, where you built a stateful agent workflow with tool permission tiers. That's the client to name.",
+   "success": false,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 34.25,
+   "tokens": 4052,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs prompt engineering. Which of my past clients did I do prompt engineering work for? Name the client.",
+   "answer": "You did prompt engineering work for **Essayly** (an edtech client), where you built a golden set of 400 graded essays, an LLM judge calibrated against teacher labels, and a CI gate on every prompt change.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 19.26,
+   "tokens": 2289,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs headless commerce. Which of my past clients did I do headless commerce work for? Name the client.",
+   "answer": "You did headless commerce work for **Zari Studio** \u2014 a headless Next.js storefront with Shopify Storefront API, which lifted their mobile Lighthouse score from 31 to 94 and conversion up 19%.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 43.27,
+   "tokens": 5246,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs maps. Which of my past clients did I do maps work for? Name the client.",
+   "answer": "You did maps work for **Khaana Now** (food delivery) \u2014 a live map that cut their support calls almost in half \u2014 and for **KhetiTech** (agriculture), where you built a dashboard with yield maps.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 43.23,
+   "tokens": 5180,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs operations analytics. Which of my past clients did I do operations analytics work for? Name the client.",
+   "answer": "The clearest operations-analytics match is **Bykea Partners** (transport), where you built a geospatial supply dashboard that cut average rider wait time by 18%.\n\nA close second is **Faisal Textiles** (manufacturing), where you delivered inventory and supplier analytics (supplier on-time scores, ABC/XYZ classification).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 40.24,
+   "tokens": 4867,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for SadaPay Partners? Quote the figure.",
+   "answer": "For SadaPay Partners, you removed direct production database access for 40 staff, and the client passed the follow-up compliance audit.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 42.15,
+   "tokens": 4982,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs geospatial. Which of my past clients did I do geospatial work for? Name the client.",
+   "answer": "You did geospatial work for **Bykea Partners** \u2014 a geospatial dashboard of supply that was adopted by 25 zone managers and cut average rider wait time by 18%.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 44.27,
+   "tokens": 5233,
+   "error": null
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for RadAssist? Quote the figure.",
+   "answer": "For RadAssist you achieved \"sensitivity 0.92 for urgent findings on the retrospective set,\" and \"time-to-read for urgent cases down 31% in the pilot.\"",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 42.39,
+   "tokens": 5060,
+   "error": null
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for FixIt.pk? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.01,
+   "tokens": 0,
+   "error": "RuntimeError: Event loop is closed"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs FP&A. Which of my past clients did I do FP&A work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.12,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using COBOL? Answer yes or no.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 7.79,
+   "tokens": 882,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs price monitoring. Which of my past clients did I do price monitoring work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.09,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs risk analytics. Which of my past clients did I do risk analytics work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for Ticketly? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Tableau? Answer yes or no.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Python? Answer yes or no.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.07,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs product analytics. Which of my past clients did I do product analytics work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs RAG. Which of my past clients did I do RAG work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "outcome",
+   "q": "Give the id of one of my past proposals for Machine Learning work that got a reply or was won.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs background jobs. Which of my past clients did I do background jobs work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.09,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using React Native? Answer yes or no.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.09,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "outcome",
+   "q": "Give the id of one of my past proposals for Front-End Development work that got a reply or was won.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.1,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for Essayly? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "result",
+   "q": "What measurable result did I achieve for CarePlus Pharmacy? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using COBOL? Answer yes or no.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "result",
+   "q": "What measurable result did I achieve for PriceWatch.pk? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.07,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs admin tools. Which of my past clients did I do admin tools work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.07,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs information extraction. Which of my past clients did I do information extraction work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.07,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs public sector. Which of my past clients did I do public sector work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.09,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using SAP ABAP? Answer yes or no.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "outcome",
+   "q": "Give the id of one of my past proposals for Data Visualization work that got a reply or was won.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs RAG. Which of my past clients did I do RAG work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.13,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for ShifaCare? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "result",
+   "q": "What measurable result did I achieve for TeleConnect BPO? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs tool calling. Which of my past clients did I do tool calling work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs prompt engineering. Which of my past clients did I do prompt engineering work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs headless commerce. Which of my past clients did I do headless commerce work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs maps. Which of my past clients did I do maps work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs operations analytics. Which of my past clients did I do operations analytics work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.09,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for SadaPay Partners? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs geospatial. Which of my past clients did I do geospatial work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  },
+  {
+   "design": "fine",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for RadAssist? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.08,
+   "tokens": 0,
+   "error": "OpenAIRateLimitError: Error code: 429 - Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (T"
+  }
+ ]
+}

@@ -1,0 +1,817 @@
+{
+ "provenance": {
+  "git_sha": "70c8062",
+  "timestamp": "2026-11-11T15:36:20+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "rag_variant": "v9_skill_graph",
+  "models": {
+   "analyst": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "small"
+   },
+   "writer": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "strong"
+   },
+   "critic": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "strong"
+   }
+  }
+ },
+ "summary": {
+  "n": 9,
+  "errors": 0,
+  "bid_f1": 0.8571,
+  "accuracy": 0.7778,
+  "confusion": {
+   "tp": 6,
+   "fp": 2,
+   "fn": 0,
+   "tn": 1
+  },
+  "scam_recall": null,
+  "scam_skip_rate": null,
+  "false_scam_rate": 0.0,
+  "price_in_band": 0.875,
+  "proposals_drafted": 1,
+  "unsupported_claim_rate_before": 0.0,
+  "unsupported_claim_rate_after": 0.0,
+  "claims_checked": 1,
+  "p50_latency_s": 199.85,
+  "p95_latency_s": 215.13,
+  "p95_latency_s_proposal": 224.8,
+  "mean_cost_usd_job": 0.000625,
+  "mean_cost_usd_proposal": 0.001741,
+  "mean_tokens_job": 869.6,
+  "dead_letter": 8,
+  "needs_attention": 0
+ },
+ "by_persona": {
+  "ai_ml_engineer": {
+   "n": 3,
+   "errors": 0,
+   "bid_f1": 1.0,
+   "accuracy": 1.0,
+   "confusion": {
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "tn": 1
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": 1.0,
+   "proposals_drafted": 0,
+   "unsupported_claim_rate_before": null,
+   "unsupported_claim_rate_after": null,
+   "claims_checked": 0,
+   "p50_latency_s": 199.85,
+   "p95_latency_s": 200.36,
+   "p95_latency_s_proposal": null,
+   "mean_cost_usd_job": 0.000685,
+   "mean_cost_usd_proposal": null,
+   "mean_tokens_job": 400.3,
+   "dead_letter": 2,
+   "needs_attention": 0
+  },
+  "data_analyst": {
+   "n": 3,
+   "errors": 0,
+   "bid_f1": 0.8,
+   "accuracy": 0.6667,
+   "confusion": {
+    "tp": 2,
+    "fp": 1,
+    "fn": 0,
+    "tn": 0
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": 1.0,
+   "proposals_drafted": 0,
+   "unsupported_claim_rate_before": null,
+   "unsupported_claim_rate_after": null,
+   "claims_checked": 0,
+   "p50_latency_s": 200.34,
+   "p95_latency_s": 200.59,
+   "p95_latency_s_proposal": null,
+   "mean_cost_usd_job": 0.00061,
+   "mean_cost_usd_proposal": null,
+   "mean_tokens_job": 753.7,
+   "dead_letter": 3,
+   "needs_attention": 0
+  },
+  "fullstack_web_dev": {
+   "n": 3,
+   "errors": 0,
+   "bid_f1": 0.8,
+   "accuracy": 0.6667,
+   "confusion": {
+    "tp": 2,
+    "fp": 1,
+    "fn": 0,
+    "tn": 0
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": 0.6667,
+   "proposals_drafted": 1,
+   "unsupported_claim_rate_before": 0.0,
+   "unsupported_claim_rate_after": 0.0,
+   "claims_checked": 1,
+   "p50_latency_s": 198.97,
+   "p95_latency_s": 222.22,
+   "p95_latency_s_proposal": 224.8,
+   "mean_cost_usd_job": 0.00058,
+   "mean_cost_usd_proposal": 0.001741,
+   "mean_tokens_job": 1454.7,
+   "dead_letter": 3,
+   "needs_attention": 0
+  }
+ },
+ "declared_budgets": {
+  "p95_latency_s_job_analysed": 25,
+  "p95_latency_s_proposal": 60,
+  "usd_per_job_analysed": 0.002,
+  "usd_per_proposal": 0.01
+ },
+ "rows": [
+  {
+   "job_id": "dev-fe57fd3998",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    35,
+    46.0
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.2315,
+   "scam_score": 0.0,
+   "risk": 0.0,
+   "price": 38.0,
+   "in_band": true,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 200.417,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 55,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99932,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99892,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 1750,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 250,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 99764,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "853938de42bc47b2bd5688377941dbac",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198778, Requested 3513. Please try again in 16m29.712s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-3a835b2c40",
+   "persona": "ai_ml_engineer",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "high",
+   "band": [
+    520.0,
+    580.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.3153,
+   "scam_score": 0.1,
+   "risk": 0.3,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 100.163,
+   "tokens": 1201,
+   "cost_usd": 0.002055,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 54,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 100036,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 25771,
+     "tokens": 1201,
+     "cost": 0.002055
+    },
+    "matcher": {
+     "ms": 2113,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "308cbc905b9e4868a379a23100e36bd0",
+   "errors": []
+  },
+  {
+   "job_id": "dev-9ff3c69969",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "high",
+   "band": [
+    35,
+    48.3
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.2427,
+   "scam_score": 0.0,
+   "risk": 0.1,
+   "price": 42.0,
+   "in_band": true,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 199.848,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 31,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 100038,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99839,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 251,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 104,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 99601,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "44eb059d17ca4749a7acb3f7ae1a02c5",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198547, Requested 3743. Please try again in 16m29.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-d2b679d112",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": "prompt_leak",
+   "fit_level": "partial",
+   "band": [
+    1220.0,
+    2550.0
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.5529,
+   "scam_score": 0.0,
+   "risk": 0.23999999999999996,
+   "price": 2265.0,
+   "in_band": true,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 199.333,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 35,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99680,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99821,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 1138,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 32,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 99390,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "7c9fac7cbc6448e7886e39170db73dd7",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199500, Requested 2554. Please try again in 14m47.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-a1268a5ea6",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    260.0,
+    340.0
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.251,
+   "scam_score": 0.0,
+   "risk": 0.0,
+   "price": 320.0,
+   "in_band": true,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 200.342,
+   "tokens": 1183,
+   "cost_usd": 0.000175,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 24,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 9190,
+     "tokens": 1183,
+     "cost": 0.000175
+    },
+    "risk": {
+     "ms": 100045,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 112,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 46,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 100151,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "828934a764d145379053924fccd3c06a",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199267, Requested 1929. Please try again in 8m36.672s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-32bf8cb350",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    520.0,
+    1100.0
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.4103,
+   "scam_score": 0.05,
+   "risk": 0.15,
+   "price": 1050.0,
+   "in_band": true,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 200.613,
+   "tokens": 1078,
+   "cost_usd": 0.001656,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 26,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 100607,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 83981,
+     "tokens": 1078,
+     "cost": 0.001656
+    },
+    "matcher": {
+     "ms": 423,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 117,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 99802,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "c170a206d1d944048372f64379eb02b6",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199036, Requested 2469. Please try again in 10m50.16s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-f8e549af1e",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "low",
+   "band": [
+    500.0,
+    760.0
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.5686,
+   "scam_score": 0.0,
+   "risk": 0.13999999999999996,
+   "price": 720.0,
+   "in_band": true,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 198.968,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 33,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99139,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99296,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 1111,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 40,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 99535,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "aa4e9bd84a754b8c87ce6820a91a036d",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199570, Requested 2365. Please try again in 13m55.92s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-324595103c",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "high",
+   "band": [
+    500.0,
+    550.0
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.5842,
+   "scam_score": 0.05,
+   "risk": 0.127,
+   "price": 190.0,
+   "in_band": false,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 224.802,
+   "tokens": 4364,
+   "cost_usd": 0.001741,
+   "steps": 9,
+   "cover_letter": "You need a fast, reliable payments solution built on a mobile app that already handles bookings and Firebase back\u2011end. I delivered a cross\u2011platform mobile app with class booking, payments and push reminders using Expo, TypeScript and Firebase, achieving 4,000 downloads in two months and an 18% rise in class fill rate (evidence 3d28b2a513ee:0). My code uses Expo\u2011Location for live GPS tracking, showing deep Expo expertise (evidence a9119559abea:0). For the first week I will (1) run a kickoff call to confirm scope and success metrics, (2) set up the Expo project with Firebase auth and Stripe integration, and (3) deliver a prototype of the booking flow for your feedback. Fixed price is $190. Drafted with AI assistance and reviewed by me.",
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 26,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99042,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 1020,
+     "tokens": 1019,
+     "cost": 0.000115
+    },
+    "matcher": {
+     "ms": 145,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 90,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 1779,
+     "tokens": 2615,
+     "cost": 0.000636
+    },
+    "verifier": {
+     "ms": 25206,
+     "tokens": 730,
+     "cost": 0.00099
+    },
+    "critic": {
+     "ms": 98568,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "20d369829dfc4518a43911d80f5d01b5",
+   "errors": [
+    {
+     "node": "critic",
+     "error": "LLMError: critic: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199279, Requested 1810. Please try again in 7m50.448s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  },
+  {
+   "job_id": "dev-d593651b45",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    28,
+    37.9
+   ],
+   "status": "dead_letter",
+   "pred": "bid",
+   "raw_decision": "bid",
+   "fit": 0.4789,
+   "scam_score": 0.0,
+   "risk": 0.05249999999999996,
+   "price": 31.0,
+   "in_band": true,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 198.963,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 7,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 37,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 99415,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 99562,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 211,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    },
+    "pricing": {
+     "ms": 43,
+     "tokens": 0,
+     "cost": 0
+    },
+    "writer": {
+     "ms": 99234,
+     "tokens": 0,
+     "cost": 0.0
+    }
+   },
+   "trace_id": "8bfb689e20f04030b4f200a389d9921b",
+   "errors": [
+    {
+     "node": "writer",
+     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199110, Requested 2769. Please try again in 13m31.728s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+    }
+   ]
+  }
+ ]
+}
