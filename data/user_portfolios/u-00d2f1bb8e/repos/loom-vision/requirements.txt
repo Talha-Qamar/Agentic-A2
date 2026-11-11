@@ -1,7 +1,0 @@
-albumentations
-nvidia-jetson
-onnxruntime
-opencv
-pytorch
-tensorrt
-yolov8

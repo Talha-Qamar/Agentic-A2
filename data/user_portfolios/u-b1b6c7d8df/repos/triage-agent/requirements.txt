@@ -1,6 +1,0 @@
-celery
-langchain
-postgresql
-redis
-tenacity
-zendesk-api

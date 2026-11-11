@@ -1,6 +1,0 @@
-asyncio
-httpx
-opentelemetry
-prometheus-client
-redis
-vllm

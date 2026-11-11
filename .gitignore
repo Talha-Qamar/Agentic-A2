@@ -20,3 +20,5 @@ var/
 /runs/
 apps/web/test-results/
 apps/web/playwright-report/
+data/user_portfolios/
+*.tsbuildinfo

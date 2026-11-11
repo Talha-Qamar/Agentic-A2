@@ -1,5 +1,0 @@
-datasets
-hugging-face-transformers
-seqeval
-spacy
-torch

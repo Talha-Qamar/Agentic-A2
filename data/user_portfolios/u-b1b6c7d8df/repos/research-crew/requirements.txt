@@ -1,7 +1,0 @@
-langgraph
-pinecone
-pydantic
-streamlit
-tavily-api
-tenacity
-tiktoken

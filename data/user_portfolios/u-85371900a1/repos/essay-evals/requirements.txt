@@ -1,6 +1,0 @@
-jinja2
-langsmith
-openai-api
-pandas
-pytest
-scipy

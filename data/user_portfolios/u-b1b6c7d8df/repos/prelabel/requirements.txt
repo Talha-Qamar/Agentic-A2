@@ -1,6 +1,0 @@
-boto3
-celery
-fastapi
-label-studio
-postgresql
-torch
