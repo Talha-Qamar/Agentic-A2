@@ -12,10 +12,15 @@ from agent.llm import complete_json, load_prompt
 from agent.nodes.runtime import Deps, node
 
 
+class _WriterClaim(BaseModel):
+    text: str
+    evidence_ids: list[str] = []
+
+
 class _WriterOut(BaseModel):
     cover_letter: str
     screening_answers: list[ScreeningAnswer] = []
-    claims: list[Claim] = []
+    claims: list[_WriterClaim] = []
 
 
 def evidence_block(evidence: list[dict], limit: int = 10) -> str:
@@ -70,6 +75,7 @@ async def writer(state: dict, deps: Deps) -> dict:
     out = await complete_json("writer", sys, user, _WriterOut, max_tokens=1600)
     version = len(state.get("drafts") or []) + 1
     words = len(re.findall(r"\w+", out.cover_letter))
+    claims = [Claim(id=f"w{i + 1}", text=c.text, evidence_ids=c.evidence_ids) for i, c in enumerate(out.claims)]
     draft = ProposalDraft(version=version, cover_letter=out.cover_letter.strip(), screening_answers=out.screening_answers,
-                          claims=out.claims, evidence_ids=sorted({i for c in out.claims for i in c.evidence_ids}), word_count=words)
+                          claims=claims, evidence_ids=sorted({i for c in claims for i in c.evidence_ids}), word_count=words)
     return {"drafts": [draft.model_dump()], "evidence": evidence, "regenerate_paragraph": None, "status": "verifying"}

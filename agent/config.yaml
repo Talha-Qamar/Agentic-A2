@@ -141,7 +141,7 @@ mcp:
     writer: [search_evidence, get_case_study]
     critic: [search_evidence, get_case_study]
     submitter: [create_proposal_draft, submit_proposal]
-    liaison: [list_threads, list_messages, send_message, free_slots, create_interview_hold, create_email_draft]
+    liaison: [list_threads, list_messages, send_message, free_slots, create_interview_hold, create_email_draft, search_evidence]
 
 memory:
   style:

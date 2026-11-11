@@ -138,3 +138,65 @@ def approval_token_for(user_id: str, pending: dict) -> str:
 
 
 Any  # noqa: B018
+
+
+async def run_conversation(user: dict, marketplace_thread_id: str, job: dict | None = None, proposal: dict | None = None,
+                           thread_id: str | None = None, emit=None, checkpointer=None) -> dict:
+    from agent.graphs.conversation_graph import build_conversation_graph
+    thread_id = thread_id or f"conv-{uuid.uuid4().hex[:12]}"
+    trace_id = new_trace_id()
+    trace_id_var.set(trace_id)
+    t0 = time.perf_counter()
+    deps = await make_deps(user, emit, None, trace_id)
+    cfg = {"configurable": {"thread_id": thread_id, "deps": deps}, "recursion_limit": 40}
+    init = {"thread_id": thread_id, "user_id": user["user_id"], "persona": deps.persona, "trace_id": trace_id,
+            "marketplace_thread_id": marketplace_thread_id, "job": job or {}, "proposal": proposal or {}, "status": "queued"}
+
+    async def go(cp):
+        g = build_conversation_graph(checkpointer=cp)
+        async for _ in g.astream(init, cfg, stream_mode="updates"):
+            pass
+        return await g.aget_state(cfg)
+    if checkpointer is not None:
+        snap = await go(checkpointer)
+    else:
+        async with checkpointer_ctx() as cp:
+            snap = await go(cp)
+    return summarize_conv(thread_id, trace_id, snap, time.perf_counter() - t0)
+
+
+async def resume_conversation(user: dict, thread_id: str, decision: dict, emit=None, checkpointer=None) -> dict:
+    from agent.graphs.conversation_graph import build_conversation_graph
+    t0 = time.perf_counter()
+
+    async def go(cp):
+        g = build_conversation_graph(checkpointer=cp)
+        prev = await g.aget_state({"configurable": {"thread_id": thread_id}})
+        tid = prev.values.get("trace_id") or new_trace_id()
+        trace_id_var.set(tid)
+        deps = await make_deps(user, emit, None, tid)
+        cfg = {"configurable": {"thread_id": thread_id, "deps": deps}, "recursion_limit": 40}
+        async for _ in g.astream(Command(resume=decision), cfg, stream_mode="updates"):
+            pass
+        return await g.aget_state(cfg), tid
+    if checkpointer is not None:
+        snap, tid = await go(checkpointer)
+    else:
+        async with checkpointer_ctx() as cp:
+            snap, tid = await go(cp)
+    return summarize_conv(thread_id, tid, snap, time.perf_counter() - t0)
+
+
+def summarize_conv(thread_id: str, trace_id: str, snap, elapsed: float) -> dict:
+    v = snap.values
+    return {"thread_id": thread_id, "trace_id": trace_id, "status": v.get("status"), "status_reason": v.get("status_reason"),
+            "intent": v.get("intent"), "reply": v.get("reply"), "preview": v.get("preview"), "sent": v.get("sent"),
+            "pending_approval": _interrupt_payload(snap), "steps": v.get("steps", 0), "tokens": v.get("tokens", 0),
+            "cost_usd": round(v.get("cost_usd", 0.0), 6), "latency_s": round(elapsed, 3), "trace": v.get("trace", []),
+            "errors": v.get("errors", []), "marketplace_thread_id": v.get("marketplace_thread_id")}
+
+
+def message_token_for(user_id: str, pending: dict) -> str:
+    from common.tokens import mint_approval
+    return mint_approval(user_id, "send_message", {"thread_id": pending["marketplace_thread_id"],
+                                                   "idempotency_key": pending["idempotency_key"], "text": pending["text"]})

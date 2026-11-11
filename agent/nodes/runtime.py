@@ -16,6 +16,7 @@ from dataclasses import dataclass, field
 from typing import Any, Awaitable, Callable
 
 from langchain_core.runnables import RunnableConfig
+from langgraph.errors import GraphBubbleUp
 from langgraph.types import Command
 
 from agent import settings
@@ -94,6 +95,8 @@ def node(name: str, fallback: Callable[[dict, Deps, Exception], Awaitable[dict]]
                         out = await asyncio.wait_for(fn(state, deps), timeout=timeout)
                         err = None
                         break
+                    except GraphBubbleUp:
+                        raise  # interrupts and parent commands are control flow, not failures
                     except Exception as e:  # noqa: BLE001
                         err = e
                         deps.emit(name, "node_retry", {"attempt": attempt + 1, "error": f"{type(e).__name__}: {str(e)[:200]}"})
