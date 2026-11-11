@@ -20,7 +20,7 @@ from pydantic import BaseModel
 
 from agent import settings
 from apps.api.auth.session import create_user, seed_searches
-from apps.api.routers import approvals, auth, jobs, runs, workspace
+from apps.api.routers import approvals, auth, jobs, panel, runs, workspace
 from common import db
 
 log = logging.getLogger("gigbid.api")
@@ -120,7 +120,7 @@ class AdvanceIn(BaseModel):
 def create_app() -> FastAPI:
     app = FastAPI(title="GigBid API", version="1.0.0", lifespan=lifespan,
                   description="Multi-agent freelancer copilot. All marketplace writes require human approval.")
-    for r in (auth.router, jobs.router, runs.router, approvals.router, workspace.router):
+    for r in (auth.router, jobs.router, runs.router, approvals.router, workspace.router, panel.router):
         app.include_router(r)
     app.state.mcp_servers = []
     if ALLINONE:

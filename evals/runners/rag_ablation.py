@@ -2,7 +2,7 @@
     python -m evals.runners.rag_ablation"""
 from __future__ import annotations
 
-from evals.runners.common import GoldMapper, job_text, load_dev, mean, provenance, recall_at, mrr, ndcg_at, write_result
+from evals.runners.common import GoldMapper, job_text, load_dev, mean, mrr, ndcg_at, provenance, recall_at, write_result
 from rag.variants.v9_skill_graph import V9SkillGraph
 
 CONFIGS = {"full": {}, "-decomposition": {"decomposition": False}, "-outcome_boost": {"outcome_boost": False},

@@ -11,6 +11,8 @@ import MessagesPage from "./app/messages/page";
 import RunPage from "./app/runs/[id]/page";
 import AnalyticsPage from "./app/analytics/page";
 import SettingsPage from "./app/settings/page";
+import PanelPage from "./app/panel/page";
+import LabelPage from "./app/label/page";
 
 type Ctx = { me: Me | null; refresh: () => Promise<void> };
 const AuthCtx = createContext<Ctx>({ me: null, refresh: async () => {} });
@@ -80,6 +82,8 @@ export default function App() {
     <AuthCtx.Provider value={{ me, refresh }}>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/panel" element={<PanelPage />} />
+        <Route path="/label" element={<LabelPage />} />
         <Route path="/onboarding" element={me ? <OnboardingPage /> : <Navigate to="/login" />} />
         <Route path="/inbox" element={guard(<InboxPage />)} />
         <Route path="/jobs/:id" element={guard(<JobPage />)} />
