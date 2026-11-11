@@ -18,13 +18,14 @@ def extract_requirements(text: str, max_n: int = 8) -> list[dict]:
     # ignore the screening-question block
     clean = re.split(r"(?im)^please answer:?$", clean)[0]
     cands: list[str] = []
-    for line in clean.splitlines():
-        line = line.strip(" -*\t")
+    for raw in clean.splitlines():
+        bullet = bool(re.match(r"^\s*([-*\u2022]|\d+[.)])\s+", raw)) and not re.match(r"^\s*\d+[.)]", raw)
+        line = raw.strip(" -*\u2022\t")
         if not line or SKIP.search(line):
             continue
         for sent in re.split(r"(?<=[.!?])\s+", line):
             sent = sent.strip()
-            if 8 <= len(sent) <= 220 and NEED_HINT.search(sent) and not SKIP.search(sent):
+            if 8 <= len(sent) <= 220 and (bullet or NEED_HINT.search(sent)) and not SKIP.search(sent):
                 cands.append(sent.rstrip("."))
     seen, out = set(), []
     for c in cands:

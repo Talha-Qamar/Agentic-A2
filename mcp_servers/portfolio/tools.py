@@ -69,9 +69,19 @@ class SkillList(BaseModel):
 
 
 def _user(ctx: Context | None) -> str | None:
+    """Which portfolio to search: persona/user claim of the GigBid bearer token (JWT), else none (standalone)."""
     try:
         req = ctx.request_context.request
-        return req.headers.get("x-gigbid-user") if req is not None else None
+        if req is None:
+            return None
+        auth = req.headers.get("authorization", "")
+        if auth.startswith("Bearer "):
+            try:
+                from common.tokens import verify_mcp_token
+                return verify_mcp_token(auth[7:]).get("persona")
+            except Exception:  # noqa: BLE001 - standalone install or static token
+                return None
+        return None
     except Exception:  # noqa: BLE001
         return None
 

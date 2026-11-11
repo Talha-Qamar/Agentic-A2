@@ -10,7 +10,7 @@ from cryptography.fernet import Fernet
 
 
 def _fernet() -> Fernet:
-    raw = os.environ.get("GIGBID_TOKEN_KEY") or os.environ.get("GIGBID_SECRET", "dev-only-secret-change-me")
+    raw = os.environ.get("GIGBID_TOKEN_KEY") or os.environ.get("GIGBID_SECRET", "dev-only-secret-change-me-0123456789abcdef")
     key = raw.encode() if len(raw) == 44 and raw.endswith("=") else base64.urlsafe_b64encode(hashlib.sha256(raw.encode()).digest())
     return Fernet(key)
 

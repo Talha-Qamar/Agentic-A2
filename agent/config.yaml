@@ -99,6 +99,8 @@ thresholds:
   risk_skip: 0.60
   scam_skip: 0.50
   min_requirement_coverage: 0.5
+  support_strong: 0.5             # cross-encoder probability for a requirement to count as strongly evidenced
+  support_partial: 0.15
   connects_ev_min_ratio: 1.0      # expected value of a bid must exceed its Connects cost x ratio
 
 pricing:
@@ -134,7 +136,7 @@ mcp:
   allowlists:
     scout: [search_jobs, get_job]
     risk: [get_client_history, get_job]
-    matcher: [search_evidence, list_skills]
+    matcher: [match_requirements, search_evidence, list_skills]
     pricing: [get_market_stats, get_connects_balance, get_policy]
     writer: [search_evidence, get_case_study]
     critic: [search_evidence, get_case_study]

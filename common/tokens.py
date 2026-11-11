@@ -21,7 +21,7 @@ ALG = "HS256"
 def secret() -> str:
     s = os.environ.get("GIGBID_SECRET")
     if not s:
-        s = "dev-only-secret-change-me"
+        s = "dev-only-secret-change-me-0123456789abcdef"
     return s
 
 
