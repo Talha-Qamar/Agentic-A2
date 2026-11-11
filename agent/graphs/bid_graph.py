@@ -54,7 +54,7 @@ def build_bid_graph(checkpointer=None, store=None):
     g.add_node("critic", critic, destinations=("writer", "compliance"))
     g.add_node("compliance", compliance, destinations=("preview", END))
     g.add_node("preview", preview)
-    g.add_node("approval", approval, destinations=("submit", "preview", END))
+    g.add_node("approval", approval, destinations=("submit", "preview", "writer", END))
     g.add_node("submit", submit)
     g.add_node("dead_letter", dead_letter)
     g.add_node("needs_attention", needs_attention)

@@ -172,7 +172,8 @@ class ComplianceVerdict(BaseModel):
 
 
 class ApprovalDecision(BaseModel):
-    action: Literal["approve", "edit", "reject"]
+    action: Literal["approve", "edit", "reject", "regenerate"]
+    paragraph: int | None = None
     edited_text: str | None = None
     reason: str | None = None
     approver: str | None = None

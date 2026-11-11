@@ -53,8 +53,10 @@ async def approval(state: dict, deps: Deps):
                "balance_after": pv["balance_after"], "fit": state["fit"].get("fit_score"), "risk": state["risk"].get("risk_score"),
                "claims": state["drafts"][-1].get("claims", []), "compliance": state["compliance"]}
     raw = interrupt(payload)
-    d = ApprovalDecision(**{k: raw.get(k) for k in ("action", "edited_text", "reason", "approver")})
+    d = ApprovalDecision(**{k: raw.get(k) for k in ("action", "edited_text", "reason", "approver", "paragraph")})
     rec = {**d.model_dump(), "proposal_id": pv["proposal_id"], "version": state["drafts"][-1]["version"]}
+    if d.action == "regenerate":
+        return Command(goto="writer", update={"approvals": [rec], "regenerate_paragraph": d.paragraph or 0, "status": "drafting"})
     if d.action == "reject":
         return Command(goto=END, update={"approvals": [rec], "status": "rejected", "status_reason": d.reason or "rejected by user"})
     if d.action == "edit" and d.edited_text and d.edited_text.strip() != pv["cover_letter"].strip():
