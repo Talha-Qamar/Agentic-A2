@@ -35,7 +35,7 @@ async def critic(state: dict, deps: Deps):
     draft, spec = state["drafts"][-1], state["job_spec"]
     ver = draft.get("verification", {})
     user = (f"JOB SPEC: {spec.get('summary')}\nRequirements: {[r['text'] for r in spec.get('requirements', [])]}\n"
-            f"Screening questions: {spec.get('screening_questions')}\n\nEVIDENCE available:\n{evidence_block(state.get('evidence') or [], 8)}\n\n"
+            f"Screening questions: {spec.get('screening_questions')}\n\nEVIDENCE available:\n{evidence_block(state.get('evidence') or [], 5)}\n\n"
             f"VERIFICATION: {ver.get('before')} -> removed {len(draft.get('removed_claims', []))} unsupported claims\n\n"
             f"DRAFT v{draft['version']}:\n{draft['cover_letter']}\n\nSCREENING ANSWERS: {draft.get('screening_answers')}")
     c = await complete_json("critic", load_prompt("critic"), user, Critique, max_tokens=700)

@@ -23,11 +23,11 @@ class _WriterOut(BaseModel):
     claims: list[_WriterClaim] = []
 
 
-def evidence_block(evidence: list[dict], limit: int = 10) -> str:
+def evidence_block(evidence: list[dict], limit: int = 7) -> str:
     lines = []
     for e in evidence[:limit]:
         meta = ", ".join(x for x in [e.get("type"), e.get("date"), f"outcome={e['outcome']}" if e.get("outcome") else None] if x)
-        lines.append(f"[{e['evidence_id']}] ({meta}) {e.get('title', '')}\n{e['text'][:700]}")
+        lines.append(f"[{e['evidence_id']}] ({meta}) {e.get('title', '')}\n{e['text'][:550]}")
     return "\n\n".join(lines) if lines else "(no evidence found)"
 
 

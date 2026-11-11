@@ -74,7 +74,7 @@ reranker:   {backend: fastembed, model: "Xenova/ms-marco-MiniLM-L-6-v2"}
 injection_classifier: {enabled: "${GIGBID_PROMPT_GUARD:-false}", provider: groq, model: meta-llama/llama-prompt-guard-2-86m, threshold: 0.8}
 
 rag:
-  variant: "${GIGBID_RAG_VARIANT:-v3_rerank}"   # chosen by evals/runners/rag_eval.py; see docs/adr/0003
+  variant: "${GIGBID_RAG_VARIANT:-v9_skill_graph}"   # chosen by evals/results/rag_benchmark.json (best nDCG@10); see docs/adr/0003-retrieval.md
   k: 8
   chunk_chars: 900
   chunk_overlap: 150
