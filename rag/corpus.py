@@ -112,7 +112,35 @@ def _cached_corpus(persona: str, chunking: str, embedder_backend: str, contextua
         for c in chunks:
             c["context"] = llm_ctx.get(c["chunk_id"]) or template_context(c)
             c["context_source"] = "llm" if c["chunk_id"] in llm_ctx else "template"
-    return Corpus(persona, chunks, embedder_backend, contextual=contextual)
+    matrix = _pg_load_or_store(persona, chunking, embedder_backend, contextual, chunks)
+    return Corpus(persona, chunks, embedder_backend, contextual=contextual, matrix=matrix)
+
+
+def _pg_load_or_store(persona: str, chunking: str, embedder_backend: str, contextual: bool, chunks: list[dict]):
+    """pgvector is the persistent vector store (GIGBID_PGVECTOR=1): embeddings are written once per collection and
+    reloaded on later starts. At ~300 chunks per portfolio similarity is computed in-process over these vectors;
+    PgVectorIndex.search is the SQL path for larger collections."""
+    if not (env_flag("GIGBID_PGVECTOR") and os.environ.get("DATABASE_URL")):
+        return None
+    try:
+        from rag.embed import get_embedder
+        from rag.index.vector import PgVectorIndex
+        emb = get_embedder(embedder_backend)
+        idx = PgVectorIndex(dim=emb.dim)
+        coll = f"{chunking}:{emb.name}:{'ctx' if contextual else 'plain'}"
+        stored, mat = idx.load_all(persona, coll)
+        if [c["chunk_id"] for c in stored] == sorted(c["chunk_id"] for c in chunks) and len(stored) == len(chunks):
+            order = {c["chunk_id"]: i for i, c in enumerate(stored)}
+            return mat[[order[c["chunk_id"]] for c in chunks]]
+        texts = [((c.get("context") or "") + "\n" if contextual else "") + (f"{c.get('title', '')}\n" if c["type"] in ("code", "readme") else "") + c["text"]
+                 for c in chunks]
+        mat = emb.embed_cached(texts)
+        idx.upsert(persona, coll, chunks, mat)
+        return mat
+    except Exception as e:  # noqa: BLE001 - fall back to in-memory computation
+        import logging
+        logging.getLogger("gigbid.rag").warning("pgvector unavailable, computing in memory: %s", e)
+        return None
 
 
 def evidence_from_chunk(c: dict, score: float) -> dict:

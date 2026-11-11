@@ -55,6 +55,7 @@ async def lifespan(app: FastAPI):
             seed_users()
         except Exception as e:  # noqa: BLE001
             log.error("seeding users failed: %s", e)
+        await _ensure_gigsim_accounts()
         from agent.tracing import setup_tracing
         setup_tracing("gigbid-api")
         bg = []
@@ -63,6 +64,29 @@ async def lifespan(app: FastAPI):
         yield
         for t in bg:
             t.cancel()
+
+
+async def _ensure_gigsim_accounts() -> None:
+    """GigSim may have been reset (ephemeral disk on free hosting): re-provision every user's account with the same key."""
+    users = db.q("SELECT user_id, persona, gigsim_key FROM users WHERE gigsim_key LIKE 'gs-key-%%'")
+    if ALLINONE:
+        from gigsim.app import store as gstore
+        for u in users:
+            gstore.create_account(u["persona"], api_key=u["gigsim_key"], account_id="acct-" + u["user_id"][-10:])
+        return
+    for attempt in range(10):
+        try:
+            async with httpx.AsyncClient(timeout=5) as c:
+                for u in users:
+                    if u["gigsim_key"].startswith(f"gs-key-{u['persona']}"):
+                        continue
+                    await c.post(settings.get("marketplace.gigsim_url").rstrip("/") + "/v1/admin/accounts",
+                                 json={"persona": u["persona"], "api_key": u["gigsim_key"], "account_id": "acct-" + u["user_id"][-10:]},
+                                 headers={"X-Admin-Key": os.environ.get("GIGSIM_ADMIN_KEY", "gigsim-admin")})
+            return
+        except Exception as e:  # noqa: BLE001 - GigSim may still be starting
+            log.info("waiting for GigSim to re-provision accounts (%s)", e)
+            await asyncio.sleep(2)
 
 
 async def _worker_loop():

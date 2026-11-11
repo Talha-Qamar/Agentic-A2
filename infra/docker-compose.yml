@@ -1,0 +1,69 @@
+# `docker compose up` (from the repo root, via compose.yaml) brings up the whole system.
+# Open profile by default (GROQ_API_KEY in .env). `docker compose --profile local up` adds Ollama for the local profile.
+x-app: &app
+  build: {context: .., dockerfile: infra/docker/Dockerfile}
+  image: gigbid:latest
+  env_file: [../.env]
+  environment: &appenv
+    DATABASE_URL: postgresql://gigbid:gigbid@postgres:5432/gigbid
+    REDIS_URL: redis://redis:6379
+    GIGSIM_URL: http://gigsim:8100
+    PORTFOLIO_MCP_URL: http://portfolio-mcp:8201/mcp
+    MARKETPLACE_MCP_URL: http://marketplace-mcp:8202/mcp
+    WORKSPACE_MCP_URL: http://workspace-mcp:8203/mcp
+    OLLAMA_BASE_URL: http://ollama:11434/v1
+    PHOENIX_COLLECTOR_ENDPOINT: http://phoenix:6006
+    PHOENIX_PUBLIC_URL: http://localhost:6006
+    GIGBID_PGVECTOR: "1"
+  depends_on:
+    postgres: {condition: service_healthy}
+    redis: {condition: service_started}
+  restart: unless-stopped
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment: {POSTGRES_USER: gigbid, POSTGRES_PASSWORD: gigbid, POSTGRES_DB: gigbid}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U gigbid"], interval: 3s, retries: 30}
+    ports: ["5432:5432"]
+  redis:
+    image: redis:7-alpine
+  phoenix:
+    image: arizephoenix/phoenix:version-11.0.0
+    ports: ["6006:6006"]
+  ollama:
+    image: ollama/ollama:0.12.6
+    profiles: ["local"]
+    volumes: [ollama:/root/.ollama]
+    ports: ["11434:11434"]
+  gigsim:
+    <<: *app
+    command: uvicorn gigsim.app:app --host 0.0.0.0 --port 8100
+    environment: {<<: *appenv, GIGSIM_DB: /data/gigsim.db}
+    volumes: [gigsim:/data]
+    depends_on: []
+    ports: ["8100:8100"]
+  portfolio-mcp:
+    <<: *app
+    command: python -m mcp_servers.portfolio.server --transport http --port 8201
+    ports: ["8201:8201"]
+  marketplace-mcp:
+    <<: *app
+    command: python -m mcp_servers.marketplace.server --port 8202
+    depends_on: {gigsim: {condition: service_started}, postgres: {condition: service_healthy}}
+  workspace-mcp:
+    <<: *app
+    command: python -m mcp_servers.workspace.server --port 8203
+  worker:
+    <<: *app
+    command: arq worker.main.WorkerSettings
+    depends_on: {postgres: {condition: service_healthy}, redis: {condition: service_started}, marketplace-mcp: {condition: service_started}}
+  api:
+    <<: *app
+    command: uvicorn apps.api.main:app --host 0.0.0.0 --port 8000
+    ports: ["8000:8000"]
+    depends_on: {postgres: {condition: service_healthy}, gigsim: {condition: service_started}, portfolio-mcp: {condition: service_started},
+                 marketplace-mcp: {condition: service_started}, workspace-mcp: {condition: service_started}}
+
+volumes: {pgdata: {}, gigsim: {}, ollama: {}}

@@ -1,0 +1,27 @@
+[project]
+name = "gigbid"
+version = "1.0.0"
+description = "GigBid: a multi-agent freelancer copilot built with LangGraph and MCP (AI-4016 Assignment II)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Talha Qamar"}]
+# exact pins live in requirements-eval.txt (used by Docker and CI)
+dependencies = ["langgraph>=1.2", "langgraph-checkpoint-postgres>=3.2", "langchain-mcp-adapters>=0.3", "mcp>=1.30", "openai>=3",
+                "fastapi>=0.160", "uvicorn[standard]>=0.50", "sse-starlette>=3", "pydantic>=2.14", "psycopg[binary,pool]>=3.3",
+                "pgvector>=0.4", "redis>=5", "arq>=0.28", "rank-bm25>=0.2.2", "numpy>=2.4", "fastembed>=0.9", "pypdf>=7",
+                "pyyaml>=6", "httpx>=0.28", "cryptography>=50", "bcrypt>=5", "pyjwt>=2.15", "scipy>=1.17", "scikit-learn>=1.9"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+extend-exclude = ["apps/web", "data", "runs", "var"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E501", "B008", "B904", "E402"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "mcp_servers"]
+asyncio_mode = "auto"
+markers = ["integration: needs Postgres + local stack", "contract: MCP schema snapshot tests"]

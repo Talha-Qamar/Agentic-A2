@@ -1,0 +1,13 @@
+.git
+**/node_modules
+**/__pycache__
+.venv
+venv
+var
+runs
+apps/web/dist
+apps/web/test-results
+apps/web/playwright-report
+data/processed/emb_cache
+*.db
+.env

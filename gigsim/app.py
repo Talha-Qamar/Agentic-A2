@@ -470,12 +470,14 @@ def admin_fault(body: FaultIn):
 
 class AccountIn(BaseModel):
     persona: str = Field(pattern="^(ai_ml_engineer|fullstack_web_dev|data_analyst)$")
+    api_key: str | None = Field(None, pattern=r"^gs-key-[\w-]{4,40}$", description="re-provision an existing key (after a reset)")
+    account_id: str | None = Field(None, max_length=40)
 
 
 @app.post("/v1/admin/accounts", dependencies=[Depends(admin)])
 def admin_account(body: AccountIn):
-    key = "gs-key-" + uuid.uuid4().hex[:16]
-    return store.create_account(body.persona, api_key=key, account_id="acct-" + uuid.uuid4().hex[:8])
+    key = body.api_key or "gs-key-" + uuid.uuid4().hex[:16]
+    return store.create_account(body.persona, api_key=key, account_id=body.account_id or "acct-" + uuid.uuid4().hex[:8])
 
 
 @app.get("/v1/admin/proposals/{proposal_id}/decision", dependencies=[Depends(admin)])
