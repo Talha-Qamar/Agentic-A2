@@ -52,7 +52,7 @@ def main() -> None:
     grid = [round(x * 0.025, 3) for x in range(4, 33)]
     sweep = [f1(rows["tune"], t) for t in grid]
     best = max(sweep, key=lambda r: (r["f1"], -abs(r["t"] - 0.5)))
-    watch = round(max(0.0, best["t"] - 0.15), 3)
+    watch = round(0.6 * best["t"], 3)   # watch band only labels near-misses for the UI; it does not change bid F1
     check = f1(rows["check"], best["t"])
     default = f1(rows["check"], 0.55)
     gold_bid_fit = sorted(r["fit"] for r in rows["tune"] if r["gold"])

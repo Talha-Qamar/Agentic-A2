@@ -108,8 +108,8 @@ budgets:
     usd_per_proposal: 0.01
 
 thresholds:
-  fit_bid: ${GIGBID_FIT_BID:-0.55}
-  fit_watch: ${GIGBID_FIT_WATCH:-0.40}
+  fit_bid: ${GIGBID_FIT_BID:-0.175}       # set on the dev tune split: evals/results/fit_calibration.json (summary.fit_bid)
+  fit_watch: ${GIGBID_FIT_WATCH:-0.105}   # 0.6 x fit_bid; labels near-misses in the UI only (watch counts as skip in bid F1)
   risk_skip: 0.60
   scam_skip: 0.50
   min_requirement_coverage: 0.5
