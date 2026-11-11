@@ -5,6 +5,7 @@ import json
 import math
 import os
 import platform
+import re
 import subprocess
 import time
 from pathlib import Path
@@ -126,3 +127,35 @@ def write_result(name: str, payload: dict) -> Path:
 
 def job_text(job: dict) -> str:
     return f"{job['title']}\n\n{job['description']}"
+
+
+# --- resumable runs under free-tier daily token caps -------------------------------------------------------------
+QUOTA_RE = re.compile(r"(?i)tokens per day|\bTPD\b|requests per day|\bRPD\b|daily (token )?(quota|limit)")
+
+
+def quota_exhausted(err) -> bool:
+    """True when an error (string, dict or list) says a provider's DAILY quota is spent (retrying today is useless)."""
+    return bool(err) and bool(QUOTA_RE.search(json.dumps(err, default=str) if not isinstance(err, str) else err))
+
+
+class RowCache:
+    """Append-only JSONL of finished rows (var/eval_cache/<name>.jsonl). Rows that failed on a daily quota are never
+    cached, so the next run redoes exactly those. Delete the file to start a run from scratch."""
+
+    def __init__(self, name: str):
+        self.path = ROOT / "var" / "eval_cache" / f"{name}.jsonl"
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.rows: dict[str, dict] = {}
+        if self.path.exists():
+            for line in self.path.read_text().splitlines():
+                if line.strip():
+                    d = json.loads(line)
+                    self.rows[d["_key"]] = d["row"]
+
+    def get(self, key: str) -> dict | None:
+        return self.rows.get(key)
+
+    def put(self, key: str, row: dict) -> None:
+        self.rows[key] = row
+        with self.path.open("a") as f:
+            f.write(json.dumps({"_key": key, "row": row}, default=float) + "\n")

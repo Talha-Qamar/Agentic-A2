@@ -18,7 +18,7 @@ import sys
 import httpx
 from pydantic import BaseModel
 
-from evals.runners.common import load_dev, mean, pct, provenance, write_result
+from evals.runners.common import RowCache, load_dev, mean, pct, provenance, quota_exhausted, write_result
 from evals.runners.decision_eval import f1, run_one
 
 ADMIN = {"X-Admin-Key": os.environ.get("GIGSIM_ADMIN_KEY", "gigsim-admin")}
@@ -88,22 +88,35 @@ async def main_async(a) -> dict:
     from agent.mcp_client import load_tools
     from common.tokens import mint_mcp_token
     jobs = load_dev(limit_per_persona=a.limit)
-    rows = []
+    cache = RowCache(a.out.removesuffix(".json"))
+    rows, stopped = [], None
     for j in jobs:
+        if stopped:
+            break
         user = {"user_id": f"cmp-{j['persona']}", "persona": j["persona"], "gigsim_key": f"gs-key-{j['persona']}"}
         tools = await load_tools(user["user_id"], mint_mcp_token(user["user_id"], j["persona"], user["gigsim_key"]))
         for system in a.systems.split(","):
+            key = f"{system}{a.tag}:{j['job_id']}"
+            if cache.get(key):
+                rows.append(cache.get(key))
+                continue
             try:
                 if system == "gigbid_graph":
                     r = await run_one(j, user, None)
+                    err = r.get("error") or (r.get("errors") if r.get("status") in ("dead_letter", "needs_attention") else None)
                     res = {"decision": r["pred"], "cover_letter": r.get("cover_letter"), "price": r.get("price"), "latency_s": r["latency_s"],
-                           "tokens": r.get("tokens", 0), "cost_usd": r.get("cost_usd", 0.0), "tool_calls": None, "error": r.get("error")}
+                           "tokens": r.get("tokens", 0), "cost_usd": r.get("cost_usd", 0.0), "tool_calls": None,
+                           "error": json.dumps(err)[:300] if err else None}
                 elif system == "single_react":
                     res = await run_single_react(tools, j["job_id"])
                 else:
                     res = await run_supervisor(tools, j["job_id"])
             except Exception as e:  # noqa: BLE001
                 res = {"decision": "skip", "error": f"{type(e).__name__}: {str(e)[:200]}", "latency_s": 0, "tokens": 0, "cost_usd": 0}
+            if quota_exhausted(res.get("error")):
+                stopped = f"daily quota reached at {key}: {str(res.get('error'))[:160]}"
+                print("STOP:", stopped, flush=True)
+                break
             dec = clean_decision(res.get("decision"))
             letter = res.get("cover_letter") if dec == "bid" else None
             row = {"system": system, "job_id": j["job_id"], "persona": j["persona"], "gold": j["labels"]["gold_decision"], "pred": dec,
@@ -117,6 +130,10 @@ async def main_async(a) -> dict:
                 row["gigsim_proposal"] = submit_to_gigsim(key, j["job_id"], letter, res.get("price"), j["budget_type"])
             print(f"[{system}] {j['job_id']} gold={row['gold']} pred={dec} judge={row.get('judge')} uns={row.get('verify', {}).get('unsupported_rate')} "
                   f"{row['latency_s']}s ${row['cost_usd']} {row.get('error') or ''}", flush=True)
+            if row["has_letter"] and row.get("judge") is None and quota_exhausted(str(row.get("verify"))):
+                stopped = f"daily quota reached while judging {key}"
+                break
+            cache.put(key, row)
             rows.append(row)
     summary = {}
     for system in a.systems.split(","):
@@ -137,7 +154,8 @@ async def main_async(a) -> dict:
                            "p95_latency_s": round(pct([r["latency_s"] or 0 for r in rs], 95), 2), "mean_cost_usd": round(mean([r["cost_usd"] or 0 for r in rs]), 6),
                            "mean_tokens": round(mean([r["tokens"] or 0 for r in rs]), 1), "gigsim_submitted": sub,
                            "gigsim_reply_rate": round(rep / sub, 4) if sub else None}
-    return {"summary": summary, "rows": rows}
+    return {"summary": summary, "rows": rows, "complete": not stopped, "stopped": stopped,
+            "planned_rows": len(jobs) * len(a.systems.split(","))}
 
 
 def main() -> None:

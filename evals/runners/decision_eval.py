@@ -16,7 +16,7 @@ import os
 import sys
 import time
 
-from evals.runners.common import RESULTS, load_dev, mean, pct, provenance, write_result
+from evals.runners.common import RESULTS, RowCache, load_dev, mean, pct, provenance, quota_exhausted, write_result
 
 GATES = {"bid_f1_min": 0.55, "unsupported_after_max": 0.10}
 
@@ -112,18 +112,29 @@ def main() -> None:
         else:
             jobs = load_dev(a.persona, a.limit)
         sem = asyncio.Semaphore(a.concurrency)
+        cache = RowCache(a.out.removesuffix(".json"))
+        stop = {"why": None}
 
         async def guarded(j):
+            if cache.get(j["job_id"]):
+                return cache.get(j["job_id"])
             async with sem:
+                if stop["why"]:
+                    return None
                 user = {"user_id": f"eval-{j['persona']}", "persona": j["persona"], "gigsim_key": f"gs-key-{j['persona']}"}
                 r = await run_one(j, user, None)
+                if quota_exhausted(r.get("error")) or quota_exhausted(r.get("errors")):
+                    stop["why"] = f"daily quota reached at {j['job_id']}"
+                    print("STOP:", stop["why"], flush=True)
+                    return None
+                cache.put(j["job_id"], r)
                 print(f"{r['job_id']} gold={r['gold']} pred={r.get('raw_decision', r['pred'])} fit={r.get('fit')} scam={r.get('scam_score')} "
                       f"price={r.get('price')} band={r['band']} {r.get('latency_s', 0):.1f}s ${r.get('cost_usd', 0):.5f} {r.get('error', '')}", flush=True)
                 return r
 
         async def all_():
             return await asyncio.gather(*[guarded(j) for j in jobs])
-        rows = asyncio.run(all_())
+        rows = [r for r in asyncio.run(all_()) if r is not None]
     finally:
         if ps:
             run_stack.stop(ps)
@@ -132,7 +143,7 @@ def main() -> None:
     from agent import settings
     payload = {"provenance": provenance({"profile": settings.get("profile"), "rag_variant": settings.get("rag.variant"),
                                          "models": {k: settings.model_for(k) for k in ("analyst", "writer", "critic")}}),
-               "summary": summ, "by_persona": by_persona, "declared_budgets": settings.get("budgets.declared"), "rows": rows}
+               "summary": summ, "by_persona": by_persona, "complete": not stop["why"], "stopped": stop["why"], "planned_rows": len(jobs), "declared_budgets": settings.get("budgets.declared"), "rows": rows}
     write_result(a.out, payload)
     print(json.dumps(summ, indent=1))
     if a.gate:

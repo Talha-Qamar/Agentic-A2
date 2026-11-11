@@ -26,7 +26,7 @@ import time
 
 import httpx
 
-from evals.runners.common import DATASETS, mean, pct, provenance, write_result
+from evals.runners.common import DATASETS, RowCache, mean, pct, provenance, quota_exhausted, write_result
 
 PORTS = {"coarse": 8211, "fine": 8212, "bytype": 8213, "rewritten": 8214}
 EXPECTED = {
@@ -100,14 +100,18 @@ def success(task: dict, answer: str) -> bool:
     return yes == c["yes"]
 
 
-async def run_design(design: str, tasks: list[dict], model) -> list[dict]:
+async def run_design(design: str, tasks: list[dict], model, cache=None, tag: str = "") -> list[dict]:
     from langchain_core.callbacks import UsageMetadataCallbackHandler
     from langchain_mcp_adapters.client import MultiServerMCPClient
     from langgraph.prebuilt import create_react_agent
 
     from common.tokens import mint_mcp_token
     rows = []
-    for t in tasks:
+    for i, t in enumerate(tasks):
+        key = f"{tag}{design}:{i}"
+        if cache and cache.get(key):
+            rows.append(cache.get(key))
+            continue
         tok = mint_mcp_token("tool-study", t["persona"], None)
         client = MultiServerMCPClient({"p": {"transport": "streamable_http", "url": f"http://localhost:{PORTS[design]}/mcp",
                                              "headers": {"Authorization": f"Bearer {tok}"}}})
@@ -135,8 +139,18 @@ async def run_design(design: str, tasks: list[dict], model) -> list[dict]:
                      "calls": calls, "args": call_args, "n_calls": len(calls), "wrong_tool_calls": wrong, "latency_s": round(lat, 2), "tokens": tokens, "error": err,
                      "tool_selected_ok": bool(calls) and calls[0] in exp,
                      "args_ok": any(args_ok(t, calls[i], call_args[i]) for i in right) if right else False})
+        if quota_exhausted(err):
+            rows.pop()
+            print(f"STOP: daily quota reached at {key}", flush=True)
+            raise QuotaStop(key)
+        if cache:
+            cache.put(key, rows[-1])
         print(f"[{design}] {t['type']:8s} ok={rows[-1]['success']} calls={calls} {lat:.1f}s", flush=True)
     return rows
+
+
+class QuotaStop(Exception):
+    pass
 
 
 def main() -> None:
@@ -166,15 +180,23 @@ def main() -> None:
                     break
                 except Exception:  # noqa: BLE001
                     time.sleep(0.5)
-        rows = []
+        rows, stopped = [], None
+        cache = RowCache(a.out.removesuffix(".json") + "_" + a.model.replace("/", "_"))
         for d in a.designs.split(","):
-            rows += asyncio.run(run_design(d, tasks, model))
+            try:
+                rows += asyncio.run(run_design(d, tasks, model, cache))
+            except QuotaStop as e:
+                stopped = f"daily quota reached at {e}"
+                rows += [r for k, r in cache.rows.items() if k.startswith(f"{d}:")]
+                break
     finally:
         for p in procs:
             p.terminate()
     summary = {}
     for d in a.designs.split(","):
         rs = [r for r in rows if r["design"] == d]
+        if not rs:
+            continue
         calls = sum(r["n_calls"] for r in rs)
         ok = [r for r in rs if not r["error"]]
         summary[d] = {"tasks": len(rs), "success_rate": round(mean([1.0 if r["success"] else 0.0 for r in rs]), 4),
@@ -185,7 +207,8 @@ def main() -> None:
                       "p50_latency_s": round(pct([r["latency_s"] for r in rs], 50), 2), "p95_latency_s": round(pct([r["latency_s"] for r in rs], 95), 2),
                       "mean_tokens": round(mean([r["tokens"] for r in rs]), 1), "errors": sum(bool(r["error"]) for r in rs),
                       "by_type": {t: round(mean([1.0 if r["success"] else 0.0 for r in rs if r["type"] == t]), 3) for t in sorted({r["type"] for r in rs})}}
-    write_result(a.out, {"provenance": provenance({"model": a.model, "provider": a.provider, "tasks": len(tasks)}), "summary": summary, "rows": rows})
+    write_result(a.out, {"provenance": provenance({"model": a.model, "provider": a.provider, "tasks": len(tasks)}), "summary": summary, "rows": rows,
+                         "complete": not stopped, "stopped": stopped})
     print(json.dumps(summary, indent=1))
 
 
