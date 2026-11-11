@@ -13,6 +13,14 @@ def audit(server: str, tool: str, user_id: str | None, arguments: dict, result, 
     rec = {"user_id": user_id, "server": server, "tool": tool, "arguments": mask_obj(arguments),
            "result": mask_obj(result if isinstance(result, (dict, list)) else {"value": str(result)[:500]}),
            "status": status, "trace_id": trace_id}
+    import os
+    if not os.environ.get("DATABASE_URL"):
+        from pathlib import Path
+        f = Path(os.environ.get("GIGBID_AUDIT_FILE", "var/audit/audit.jsonl"))
+        f.parent.mkdir(parents=True, exist_ok=True)
+        with open(f, "a") as fh:  # append-only file when no database is configured (local eval runs)
+            fh.write(json.dumps(rec, default=str) + "\n")
+        return
     try:
         from common import db
         db.x("INSERT INTO audit_log(user_id, server, tool, arguments, result, status, trace_id) VALUES (%s,%s,%s,%s,%s,%s,%s)",

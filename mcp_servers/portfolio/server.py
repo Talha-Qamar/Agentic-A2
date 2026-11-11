@@ -22,10 +22,10 @@ INSTRUCTIONS = ("Read-only access to one freelancer's portfolio: case studies, r
                 "that these tools do not return.")
 
 
-def build_server(backend=None, **kw) -> FastMCP:
+def build_server(backend=None, toolset: str | None = None, **kw) -> FastMCP:
     backend = backend or make_backend()
     mcp = FastMCP("gigbid-portfolio", instructions=INSTRUCTIONS, stateless_http=True, json_response=True, **kw)
-    tools.register(mcp, backend)
+    tools.register(mcp, backend, toolset)
     resources.register(mcp, backend)
     prompts.register(mcp)
     mcp._gigbid_backend = backend

@@ -17,8 +17,8 @@ def get_store():
                 _store = InMemoryStore()
             else:
                 import psycopg
-                from psycopg.rows import dict_row
                 from langgraph.store.postgres import PostgresStore
+                from psycopg.rows import dict_row
                 conn = psycopg.connect(os.environ["DATABASE_URL"], autocommit=True, prepare_threshold=0, row_factory=dict_row)
                 _store = PostgresStore(conn)
                 _store.setup()

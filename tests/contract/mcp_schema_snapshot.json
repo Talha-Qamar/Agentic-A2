@@ -1,0 +1,2225 @@
+{
+ "marketplace": {
+  "create_proposal_draft": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": false
+   },
+   "input": {
+    "properties": {
+     "bid_amount": {
+      "exclusiveMinimum": 0,
+      "maximum": 100000,
+      "title": "Bid Amount",
+      "type": "number"
+     },
+     "bid_type": {
+      "default": "fixed",
+      "enum": [
+       "fixed",
+       "hourly"
+      ],
+      "title": "Bid Type",
+      "type": "string"
+     },
+     "cover_letter": {
+      "maxLength": 5000,
+      "minLength": 200,
+      "title": "Cover Letter",
+      "type": "string"
+     },
+     "dry_run": {
+      "default": false,
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "idempotency_key": {
+      "description": "client-generated key; repeating a call with the same key never acts twice",
+      "maxLength": 128,
+      "minLength": 16,
+      "pattern": "^[A-Za-z0-9:_\\-]+$",
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "job_id": {
+      "maxLength": 80,
+      "minLength": 3,
+      "title": "Job Id",
+      "type": "string"
+     },
+     "screening_answers": {
+      "items": {
+       "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Screening Answers",
+      "type": "array"
+     }
+    },
+    "required": [
+     "job_id",
+     "cover_letter",
+     "bid_amount",
+     "idempotency_key"
+    ],
+    "title": "create_proposal_draftArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "balance_after": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance After"
+     },
+     "connects_cost": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Cost"
+     },
+     "connects_spent": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Spent"
+     },
+     "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "message_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Message Id"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Note"
+     },
+     "policy_violations": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Policy Violations",
+      "type": "array"
+     },
+     "proposal_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Proposal Id"
+     },
+     "replay": {
+      "default": false,
+      "title": "Replay",
+      "type": "boolean"
+     },
+     "status": {
+      "title": "Status",
+      "type": "string"
+     },
+     "would_be_accepted": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Would Be Accepted"
+     },
+     "would_send": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Would Send"
+     }
+    },
+    "required": [
+     "dry_run",
+     "status"
+    ],
+    "title": "WriteResult",
+    "type": "object"
+   }
+  },
+  "get_client_history": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "client_id": {
+      "maxLength": 80,
+      "minLength": 3,
+      "title": "Client Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "client_id"
+    ],
+    "title": "get_client_historyArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "account_age_days": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Account Age Days"
+     },
+     "avg_rating": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Avg Rating"
+     },
+     "client_id": {
+      "title": "Client Id",
+      "type": "string"
+     },
+     "country": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Country"
+     },
+     "hires": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Hires"
+     },
+     "industry": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Industry"
+     },
+     "jobs_posted": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Jobs Posted"
+     },
+     "name": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Name"
+     },
+     "payment_verified": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Payment Verified"
+     },
+     "total_spent": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Total Spent"
+     }
+    },
+    "required": [
+     "client_id"
+    ],
+    "title": "ClientHistory",
+    "type": "object"
+   }
+  },
+  "get_connects_balance": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {},
+    "title": "get_connects_balanceArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "connects_balance": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Balance"
+     },
+     "daily_proposal_cap": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Daily Proposal Cap"
+     },
+     "proposals_last_24h": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Proposals Last 24H"
+     },
+     "weekly_allowance": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Weekly Allowance"
+     }
+    },
+    "title": "ConnectsBalance",
+    "type": "object"
+   }
+  },
+  "get_events": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "since_id": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Since Id",
+      "type": "integer"
+     }
+    },
+    "title": "get_eventsArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "events": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "title": "Events",
+      "type": "array"
+     }
+    },
+    "required": [
+     "events"
+    ],
+    "title": "EventList",
+    "type": "object"
+   }
+  },
+  "get_job": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "job_id": {
+      "maxLength": 80,
+      "minLength": 3,
+      "pattern": "^[\\w:.\\-]+$",
+      "title": "Job Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "job_id"
+    ],
+    "title": "get_jobArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "budget_max": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Budget Max"
+     },
+     "budget_min": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Budget Min"
+     },
+     "budget_type": {
+      "default": "fixed",
+      "title": "Budget Type",
+      "type": "string"
+     },
+     "category": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Category"
+     },
+     "client_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Client Id"
+     },
+     "connects_cost": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Cost"
+     },
+     "description": {
+      "description": "UNTRUSTED text written by the client",
+      "title": "Description",
+      "type": "string"
+     },
+     "duration_days": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Duration Days"
+     },
+     "job_id": {
+      "title": "Job Id",
+      "type": "string"
+     },
+     "posted_minute": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Posted Minute"
+     },
+     "proposals_count": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Proposals Count"
+     },
+     "screening_questions": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Screening Questions",
+      "type": "array"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "title": {
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "job_id",
+     "title",
+     "description"
+    ],
+    "title": "JobDetail",
+    "type": "object"
+   }
+  },
+  "get_market_stats": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "category": {
+      "anyOf": [
+       {
+        "maxLength": 80,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Category"
+     }
+    },
+    "title": "get_market_statsArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "category": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Category"
+     },
+     "fallback": {
+      "default": false,
+      "title": "Fallback",
+      "type": "boolean"
+     },
+     "fixed": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Fixed",
+      "type": "object"
+     },
+     "hourly": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Hourly",
+      "type": "object"
+     },
+     "source": {
+      "default": "",
+      "title": "Source",
+      "type": "string"
+     }
+    },
+    "title": "MarketStats",
+    "type": "object"
+   }
+  },
+  "get_policy": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {},
+    "title": "get_policyArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "changelog": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Changelog",
+      "type": "array"
+     },
+     "connects": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Connects",
+      "type": "object"
+     },
+     "limits": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Limits",
+      "type": "object"
+     },
+     "requirements": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Requirements",
+      "type": "object"
+     },
+     "rules": {
+      "default": [],
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "title": "Rules",
+      "type": "array"
+     },
+     "version": {
+      "title": "Version",
+      "type": "string"
+     }
+    },
+    "required": [
+     "version"
+    ],
+    "title": "Policy",
+    "type": "object"
+   }
+  },
+  "list_messages": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "thread_id": {
+      "maxLength": 80,
+      "minLength": 3,
+      "title": "Thread Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "thread_id"
+    ],
+    "title": "list_messagesArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "messages": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "title": "Messages",
+      "type": "array"
+     },
+     "thread": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Thread",
+      "type": "object"
+     }
+    },
+    "required": [
+     "messages"
+    ],
+    "title": "MessageList",
+    "type": "object"
+   }
+  },
+  "list_proposals": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "status": {
+      "anyOf": [
+       {
+        "maxLength": 20,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Status"
+     }
+    },
+    "title": "list_proposalsArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "proposals": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "title": "Proposals",
+      "type": "array"
+     }
+    },
+    "required": [
+     "proposals"
+    ],
+    "title": "ProposalList",
+    "type": "object"
+   }
+  },
+  "list_threads": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {},
+    "title": "list_threadsArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "threads": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "title": "Threads",
+      "type": "array"
+     }
+    },
+    "required": [
+     "threads"
+    ],
+    "title": "ThreadList",
+    "type": "object"
+   }
+  },
+  "search_jobs": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "category": {
+      "anyOf": [
+       {
+        "maxLength": 80,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Category"
+     },
+     "limit": {
+      "default": 20,
+      "maximum": 50,
+      "minimum": 1,
+      "title": "Limit",
+      "type": "integer"
+     },
+     "pool": {
+      "default": "stream",
+      "enum": [
+       "stream",
+       "dev"
+      ],
+      "title": "Pool",
+      "type": "string"
+     },
+     "query": {
+      "default": "",
+      "maxLength": 200,
+      "title": "Query",
+      "type": "string"
+     },
+     "since_minute": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Since Minute"
+     }
+    },
+    "title": "search_jobsArguments",
+    "type": "object"
+   },
+   "output": {
+    "$defs": {
+     "JobSummary": {
+      "properties": {
+       "budget_max": {
+        "anyOf": [
+         {
+          "type": "number"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Budget Max"
+       },
+       "budget_type": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Budget Type"
+       },
+       "category": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Category"
+       },
+       "client_id": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Client Id"
+       },
+       "job_id": {
+        "title": "Job Id",
+        "type": "string"
+       },
+       "posted_minute": {
+        "anyOf": [
+         {
+          "type": "number"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Posted Minute"
+       },
+       "skills": {
+        "default": [],
+        "items": {
+         "type": "string"
+        },
+        "title": "Skills",
+        "type": "array"
+       },
+       "snippet": {
+        "default": "",
+        "title": "Snippet",
+        "type": "string"
+       },
+       "title": {
+        "title": "Title",
+        "type": "string"
+       }
+      },
+      "required": [
+       "job_id",
+       "title"
+      ],
+      "title": "JobSummary",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "jobs": {
+      "items": {
+       "$ref": "#/$defs/JobSummary"
+      },
+      "title": "Jobs",
+      "type": "array"
+     },
+     "sim_minutes": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Sim Minutes"
+     },
+     "total": {
+      "title": "Total",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "total",
+     "jobs"
+    ],
+    "title": "JobSearchResult",
+    "type": "object"
+   }
+  },
+  "send_message": {
+   "annotations": {
+    "destructiveHint": true,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": false
+   },
+   "input": {
+    "properties": {
+     "approval_token": {
+      "anyOf": [
+       {
+        "maxLength": 128,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Approval Token"
+     },
+     "dry_run": {
+      "default": true,
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "idempotency_key": {
+      "description": "client-generated key; repeating a call with the same key never acts twice",
+      "maxLength": 128,
+      "minLength": 16,
+      "pattern": "^[A-Za-z0-9:_\\-]+$",
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "text": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+     },
+     "thread_id": {
+      "maxLength": 80,
+      "minLength": 3,
+      "title": "Thread Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "thread_id",
+     "text",
+     "idempotency_key"
+    ],
+    "title": "send_messageArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "balance_after": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance After"
+     },
+     "connects_cost": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Cost"
+     },
+     "connects_spent": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Spent"
+     },
+     "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "message_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Message Id"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Note"
+     },
+     "policy_violations": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Policy Violations",
+      "type": "array"
+     },
+     "proposal_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Proposal Id"
+     },
+     "replay": {
+      "default": false,
+      "title": "Replay",
+      "type": "boolean"
+     },
+     "status": {
+      "title": "Status",
+      "type": "string"
+     },
+     "would_be_accepted": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Would Be Accepted"
+     },
+     "would_send": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Would Send"
+     }
+    },
+    "required": [
+     "dry_run",
+     "status"
+    ],
+    "title": "WriteResult",
+    "type": "object"
+   }
+  },
+  "submit_proposal": {
+   "annotations": {
+    "destructiveHint": true,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": false
+   },
+   "input": {
+    "properties": {
+     "approval_token": {
+      "anyOf": [
+       {
+        "maxLength": 128,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Approval Token"
+     },
+     "dry_run": {
+      "default": true,
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "idempotency_key": {
+      "description": "client-generated key; repeating a call with the same key never acts twice",
+      "maxLength": 128,
+      "minLength": 16,
+      "pattern": "^[A-Za-z0-9:_\\-]+$",
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "proposal_id": {
+      "maxLength": 80,
+      "minLength": 3,
+      "title": "Proposal Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "proposal_id",
+     "idempotency_key"
+    ],
+    "title": "submit_proposalArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "balance_after": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance After"
+     },
+     "connects_cost": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Cost"
+     },
+     "connects_spent": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Spent"
+     },
+     "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "message_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Message Id"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Note"
+     },
+     "policy_violations": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Policy Violations",
+      "type": "array"
+     },
+     "proposal_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Proposal Id"
+     },
+     "replay": {
+      "default": false,
+      "title": "Replay",
+      "type": "boolean"
+     },
+     "status": {
+      "title": "Status",
+      "type": "string"
+     },
+     "would_be_accepted": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Would Be Accepted"
+     },
+     "would_send": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Would Send"
+     }
+    },
+    "required": [
+     "dry_run",
+     "status"
+    ],
+    "title": "WriteResult",
+    "type": "object"
+   }
+  }
+ },
+ "portfolio": {
+  "get_case_study": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "id": {
+      "description": "case-study or project id",
+      "maxLength": 80,
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "id"
+    ],
+    "title": "get_case_studyArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "client_industry": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Client Industry"
+     },
+     "date": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Date"
+     },
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "repo": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Repo"
+     },
+     "source": {
+      "title": "Source",
+      "type": "string"
+     },
+     "text": {
+      "title": "Text",
+      "type": "string"
+     },
+     "title": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Title"
+     }
+    },
+    "required": [
+     "id",
+     "text",
+     "source"
+    ],
+    "title": "CaseStudy",
+    "type": "object"
+   }
+  },
+  "list_skills": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {},
+    "title": "list_skillsArguments",
+    "type": "object"
+   },
+   "output": {
+    "$defs": {
+     "SkillCount": {
+      "properties": {
+       "example_item": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Example Item"
+       },
+       "mentions": {
+        "title": "Mentions",
+        "type": "integer"
+       },
+       "skill": {
+        "title": "Skill",
+        "type": "string"
+       }
+      },
+      "required": [
+       "skill",
+       "mentions"
+      ],
+      "title": "SkillCount",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "skills": {
+      "items": {
+       "$ref": "#/$defs/SkillCount"
+      },
+      "title": "Skills",
+      "type": "array"
+     }
+    },
+    "required": [
+     "skills"
+    ],
+    "title": "SkillList",
+    "type": "object"
+   }
+  },
+  "match_requirements": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false,
+    "readOnlyHint": true
+   },
+   "input": {
+    "$defs": {
+     "RequirementIn": {
+      "properties": {
+       "id": {
+        "maxLength": 16,
+        "title": "Id",
+        "type": "string"
+       },
+       "text": {
+        "maxLength": 400,
+        "minLength": 3,
+        "title": "Text",
+        "type": "string"
+       }
+      },
+      "required": [
+       "id",
+       "text"
+      ],
+      "title": "RequirementIn",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "job_text": {
+      "description": "the job post (untrusted text)",
+      "maxLength": 12000,
+      "minLength": 10,
+      "title": "Job Text",
+      "type": "string"
+     },
+     "k": {
+      "default": 5,
+      "maximum": 15,
+      "minimum": 1,
+      "title": "K",
+      "type": "integer"
+     },
+     "requirements": {
+      "items": {
+       "$ref": "#/$defs/RequirementIn"
+      },
+      "maxItems": 12,
+      "title": "Requirements",
+      "type": "array"
+     }
+    },
+    "required": [
+     "job_text"
+    ],
+    "title": "match_requirementsArguments",
+    "type": "object"
+   },
+   "output": {
+    "$defs": {
+     "EvidenceOut": {
+      "properties": {
+       "date": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Date"
+       },
+       "evidence_id": {
+        "title": "Evidence Id",
+        "type": "string"
+       },
+       "outcome": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Outcome"
+       },
+       "project": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Project"
+       },
+       "score": {
+        "title": "Score",
+        "type": "number"
+       },
+       "source": {
+        "title": "Source",
+        "type": "string"
+       },
+       "text": {
+        "title": "Text",
+        "type": "string"
+       },
+       "title": {
+        "default": "",
+        "title": "Title",
+        "type": "string"
+       },
+       "type": {
+        "title": "Type",
+        "type": "string"
+       }
+      },
+      "required": [
+       "evidence_id",
+       "type",
+       "source",
+       "text",
+       "score"
+      ],
+      "title": "EvidenceOut",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "items": {
+      "items": {
+       "$ref": "#/$defs/EvidenceOut"
+      },
+      "title": "Items",
+      "type": "array"
+     },
+     "per_requirement": {
+      "additionalProperties": {
+       "items": {
+        "$ref": "#/$defs/EvidenceOut"
+       },
+       "type": "array"
+      },
+      "title": "Per Requirement",
+      "type": "object"
+     },
+     "unsupported_requirements": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Unsupported Requirements",
+      "type": "array"
+     },
+     "variant": {
+      "title": "Variant",
+      "type": "string"
+     }
+    },
+    "required": [
+     "variant",
+     "per_requirement",
+     "unsupported_requirements",
+     "items"
+    ],
+    "title": "MatchResult",
+    "type": "object"
+   }
+  },
+  "search_evidence": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false,
+    "readOnlyHint": true
+   },
+   "input": {
+    "$defs": {
+     "EvidenceFilters": {
+      "properties": {
+       "outcomes": {
+        "anyOf": [
+         {
+          "items": {
+           "enum": [
+            "won",
+            "replied",
+            "ignored"
+           ],
+           "type": "string"
+          },
+          "type": "array"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "for past proposals: only these outcomes",
+        "title": "Outcomes"
+       },
+       "project": {
+        "anyOf": [
+         {
+          "maxLength": 80,
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Project"
+       },
+       "since": {
+        "anyOf": [
+         {
+          "pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$",
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "ISO date lower bound, e.g. 2024-06",
+        "title": "Since"
+       },
+       "types": {
+        "anyOf": [
+         {
+          "items": {
+           "enum": [
+            "case_study",
+            "readme",
+            "code",
+            "cv",
+            "review",
+            "proposal"
+           ],
+           "type": "string"
+          },
+          "type": "array"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "description": "only these evidence types",
+        "title": "Types"
+       }
+      },
+      "title": "EvidenceFilters",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "filters": {
+      "anyOf": [
+       {
+        "$ref": "#/$defs/EvidenceFilters"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null
+     },
+     "k": {
+      "default": 5,
+      "maximum": 20,
+      "minimum": 1,
+      "title": "K",
+      "type": "integer"
+     },
+     "requirement": {
+      "description": "one client requirement, in plain words",
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Requirement",
+      "type": "string"
+     }
+    },
+    "required": [
+     "requirement"
+    ],
+    "title": "search_evidenceArguments",
+    "type": "object"
+   },
+   "output": {
+    "$defs": {
+     "EvidenceOut": {
+      "properties": {
+       "date": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Date"
+       },
+       "evidence_id": {
+        "title": "Evidence Id",
+        "type": "string"
+       },
+       "outcome": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Outcome"
+       },
+       "project": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Project"
+       },
+       "score": {
+        "title": "Score",
+        "type": "number"
+       },
+       "source": {
+        "title": "Source",
+        "type": "string"
+       },
+       "text": {
+        "title": "Text",
+        "type": "string"
+       },
+       "title": {
+        "default": "",
+        "title": "Title",
+        "type": "string"
+       },
+       "type": {
+        "title": "Type",
+        "type": "string"
+       }
+      },
+      "required": [
+       "evidence_id",
+       "type",
+       "source",
+       "text",
+       "score"
+      ],
+      "title": "EvidenceOut",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "items": {
+      "items": {
+       "$ref": "#/$defs/EvidenceOut"
+      },
+      "title": "Items",
+      "type": "array"
+     },
+     "requirement": {
+      "title": "Requirement",
+      "type": "string"
+     }
+    },
+    "required": [
+     "requirement",
+     "items"
+    ],
+    "title": "SearchEvidenceResult",
+    "type": "object"
+   }
+  }
+ },
+ "workspace": {
+  "create_email_draft": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false,
+    "readOnlyHint": false
+   },
+   "input": {
+    "properties": {
+     "body": {
+      "maxLength": 5000,
+      "title": "Body",
+      "type": "string"
+     },
+     "dry_run": {
+      "default": false,
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "idempotency_key": {
+      "maxLength": 128,
+      "minLength": 16,
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "subject": {
+      "maxLength": 200,
+      "title": "Subject",
+      "type": "string"
+     },
+     "to_alias": {
+      "description": "recipient name or alias, not an address",
+      "maxLength": 120,
+      "title": "To Alias",
+      "type": "string"
+     }
+    },
+    "required": [
+     "to_alias",
+     "subject",
+     "body",
+     "idempotency_key"
+    ],
+    "title": "create_email_draftArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "draft_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Draft Id"
+     },
+     "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "replay": {
+      "default": false,
+      "title": "Replay",
+      "type": "boolean"
+     },
+     "subject": {
+      "title": "Subject",
+      "type": "string"
+     }
+    },
+    "required": [
+     "dry_run",
+     "subject"
+    ],
+    "title": "DraftResult",
+    "type": "object"
+   }
+  },
+  "create_interview_hold": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false,
+    "readOnlyHint": false
+   },
+   "input": {
+    "properties": {
+     "dry_run": {
+      "default": false,
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "duration_min": {
+      "default": 30,
+      "maximum": 120,
+      "minimum": 15,
+      "title": "Duration Min",
+      "type": "integer"
+     },
+     "idempotency_key": {
+      "maxLength": 128,
+      "minLength": 16,
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "start": {
+      "description": "ISO 8601 start from free_slots",
+      "title": "Start",
+      "type": "string"
+     },
+     "title": {
+      "maxLength": 120,
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "start",
+     "title",
+     "idempotency_key"
+    ],
+    "title": "create_interview_holdArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "end": {
+      "title": "End",
+      "type": "string"
+     },
+     "event_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Event Id"
+     },
+     "replay": {
+      "default": false,
+      "title": "Replay",
+      "type": "boolean"
+     },
+     "start": {
+      "title": "Start",
+      "type": "string"
+     },
+     "title": {
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "dry_run",
+     "start",
+     "end",
+     "title"
+    ],
+    "title": "HoldResult",
+    "type": "object"
+   }
+  },
+  "free_slots": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "days": {
+      "default": 5,
+      "maximum": 14,
+      "minimum": 1,
+      "title": "Days",
+      "type": "integer"
+     },
+     "duration_min": {
+      "default": 30,
+      "maximum": 120,
+      "minimum": 15,
+      "title": "Duration Min",
+      "type": "integer"
+     },
+     "max_slots": {
+      "default": 6,
+      "maximum": 12,
+      "minimum": 1,
+      "title": "Max Slots",
+      "type": "integer"
+     }
+    },
+    "title": "free_slotsArguments",
+    "type": "object"
+   },
+   "output": {
+    "$defs": {
+     "Slot": {
+      "properties": {
+       "end": {
+        "title": "End",
+        "type": "string"
+       },
+       "label": {
+        "description": "human-readable, in the freelancer's time zone",
+        "title": "Label",
+        "type": "string"
+       },
+       "start": {
+        "description": "ISO 8601 with offset",
+        "title": "Start",
+        "type": "string"
+       }
+      },
+      "required": [
+       "start",
+       "end",
+       "label"
+      ],
+      "title": "Slot",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "slots": {
+      "items": {
+       "$ref": "#/$defs/Slot"
+      },
+      "title": "Slots",
+      "type": "array"
+     },
+     "timezone": {
+      "title": "Timezone",
+      "type": "string"
+     }
+    },
+    "required": [
+     "timezone",
+     "slots"
+    ],
+    "title": "Slots",
+    "type": "object"
+   }
+  }
+ }
+}

@@ -87,8 +87,8 @@ class SimpleSearch:
         self.bm = BM25Okapi([TOKEN.findall((i.title + " " + i.text).lower()) or ["_"] for i in items])
         self.dense = None
         try:
-            from fastembed import TextEmbedding
             import numpy as np
+            from fastembed import TextEmbedding
             self.np = np
             self.model = TextEmbedding("BAAI/bge-small-en-v1.5")
             m = np.array(list(self.model.embed([i.title + "\n" + i.text[:1500] for i in items])))

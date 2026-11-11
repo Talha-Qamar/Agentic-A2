@@ -167,8 +167,9 @@ async def upload(files: list[UploadFile] = File(...), user=UserDep):
 
 @router.get("/auth/upwork/start")
 async def upwork_start(user=UserDep):
-    from mcp_servers.marketplace.adapters.upwork_live import start_oauth
     import os
+
+    from mcp_servers.marketplace.adapters.upwork_live import start_oauth
     redirect = os.environ.get("PUBLIC_URL", "http://localhost:8000").rstrip("/") + "/api/auth/upwork/callback"
     try:
         url = await start_oauth(user["user_id"], redirect)

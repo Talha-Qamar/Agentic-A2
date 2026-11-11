@@ -94,6 +94,7 @@ async def _worker_loop():
     await asyncio.sleep(5)
     if os.environ.get("REDIS_URL"):
         from arq.worker import Worker
+
         from worker.main import WorkerSettings
         w = Worker(functions=WorkerSettings.functions, cron_jobs=WorkerSettings.cron_jobs, redis_settings=WorkerSettings.redis_settings,
                    max_jobs=2, job_timeout=900, handle_signals=False)

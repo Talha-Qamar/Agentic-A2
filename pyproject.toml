@@ -19,7 +19,7 @@ extend-exclude = ["apps/web", "data", "runs", "var"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B"]
-ignore = ["E501", "B008", "B904", "E402"]
+ignore = ["E501", "B008", "B904", "E402", "B007", "B905", "B039", "E731", "B018"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests", "mcp_servers"]

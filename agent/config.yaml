@@ -16,6 +16,11 @@ profiles:
     strong: {provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}
     fallback_small: {provider: groq, model: qwen/qwen3.8-27b}
     fallback_strong: {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
+  open_small:    # comparison config: every node on the small open model (no strong-model routing)
+    small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
+    strong: {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
+    fallback_small: {provider: groq, model: qwen/qwen3.8-27b}
+    fallback_strong: {provider: groq, model: qwen/qwen3.8-27b}
   local:         # open-weight models served locally by Ollama (docker compose `ollama` service, CI runners)
     small:  {provider: ollama, model: "${OLLAMA_SMALL:-qwen3:4b}", think: false}
     strong: {provider: ollama, model: "${OLLAMA_STRONG:-qwen3:4b}", think: false}

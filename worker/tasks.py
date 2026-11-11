@@ -48,8 +48,8 @@ def dedup_key(job: dict) -> str:
 
 
 async def port_for(user: dict, servers=("marketplace",)):
-    from agent.mcp_client import load_tools
     from agent.marketplace_port import McpMarketplace
+    from agent.mcp_client import load_tools
     from common.tokens import mint_mcp_token
     tools = await load_tools(user["user_id"], mint_mcp_token(user["user_id"], user["persona"], user.get("gigsim_key"),
                                                             user.get("marketplace_mode", "gigsim")), servers=servers)

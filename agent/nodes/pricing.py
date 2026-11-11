@@ -2,8 +2,6 @@
 the client's budget and the Connects cost -> a price with a rationale and an expected-value check."""
 from __future__ import annotations
 
-import math
-
 from langgraph.graph import END
 from langgraph.types import Command
 

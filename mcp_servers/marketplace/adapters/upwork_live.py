@@ -32,6 +32,7 @@ class EncryptedTokenStorage:
 
     async def get_tokens(self):
         from mcp.shared.auth import OAuthToken
+
         from common.crypto import load_token
         d = load_token(self.user_id, "upwork")
         return OAuthToken(**d["tokens"]) if d and d.get("tokens") else None
@@ -44,6 +45,7 @@ class EncryptedTokenStorage:
 
     async def get_client_info(self):
         from mcp.shared.auth import OAuthClientInformationFull
+
         from common.crypto import load_token
         d = load_token(self.user_id, "upwork")
         return OAuthClientInformationFull(**d["client"]) if d and d.get("client") else None

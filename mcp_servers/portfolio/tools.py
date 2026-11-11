@@ -92,7 +92,57 @@ def _ev(d: dict) -> EvidenceOut:
                           "source": d.get("source", ""), "evidence_id": d["evidence_id"]})
 
 
-def register(mcp, backend) -> None:
+TOOLSETS = {
+    "default": {"search_evidence", "match_requirements", "get_case_study", "list_skills"},
+    "fine": {"search_evidence", "get_case_study", "list_skills"},
+    "coarse": {"match_requirements"},
+    "bytype": {"search_case_studies", "search_repositories", "search_past_proposals", "search_reviews_and_cv", "get_case_study", "list_skills"},
+}
+
+
+def register(mcp, backend, toolset: str | None = None) -> None:
+    import os
+    enabled = TOOLSETS[toolset or os.environ.get("PORTFOLIO_TOOLSET", "default")]
+    real_tool = mcp.tool
+
+    def tool(*a, **kw):
+        def deco(fn):
+            return real_tool(*a, **kw)(fn) if fn.__name__ in enabled else fn
+        return deco
+    mcp.tool = tool
+    try:
+        _register(mcp, backend)
+    finally:
+        mcp.tool = real_tool
+
+
+def _by_type(backend, ctx, query: str, k: int, types: list[str], outcomes: list[str] | None = None) -> SearchEvidenceResult:
+    flt = {"types": types} | ({"outcomes": outcomes} if outcomes else {})
+    return SearchEvidenceResult(requirement=query, items=[_ev(i) for i in backend.search(query, k, flt, _user(ctx))])
+
+
+def _register(mcp, backend) -> None:
+    @mcp.tool(annotations=READ_ONLY, title="Search case studies")
+    def search_case_studies(query: str = Field(min_length=3, max_length=500), k: int = Field(5, ge=1, le=20), ctx: Context = None) -> SearchEvidenceResult:
+        """Search only the freelancer's written case studies."""
+        return _by_type(backend, ctx, query, k, ["case_study"])
+
+    @mcp.tool(annotations=READ_ONLY, title="Search repositories")
+    def search_repositories(query: str = Field(min_length=3, max_length=500), k: int = Field(5, ge=1, le=20), ctx: Context = None) -> SearchEvidenceResult:
+        """Search only repository READMEs and source code."""
+        return _by_type(backend, ctx, query, k, ["readme", "code"])
+
+    @mcp.tool(annotations=READ_ONLY, title="Search past proposals")
+    def search_past_proposals(query: str = Field(min_length=3, max_length=500), outcome: Literal["won", "replied", "ignored"] | None = None,
+                              k: int = Field(5, ge=1, le=20), ctx: Context = None) -> SearchEvidenceResult:
+        """Search only past proposals; optionally only those with a given outcome."""
+        return _by_type(backend, ctx, query, k, ["proposal"], [outcome] if outcome else None)
+
+    @mcp.tool(annotations=READ_ONLY, title="Search reviews and CV")
+    def search_reviews_and_cv(query: str = Field(min_length=3, max_length=500), k: int = Field(5, ge=1, le=20), ctx: Context = None) -> SearchEvidenceResult:
+        """Search only client reviews and CV lines."""
+        return _by_type(backend, ctx, query, k, ["review", "cv"])
+
     @mcp.tool(annotations=READ_ONLY, title="Search portfolio evidence")
     def search_evidence(requirement: str = Field(min_length=3, max_length=500, description="one client requirement, in plain words"),
                         k: int = Field(5, ge=1, le=20), filters: EvidenceFilters | None = None,

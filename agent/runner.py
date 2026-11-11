@@ -34,7 +34,6 @@ async def checkpointer_ctx():
             await cp.setup()
             yield cp
     else:
-        from langgraph.checkpoint.memory import InMemorySaver
         yield _MEMORY_SAVER
 
 

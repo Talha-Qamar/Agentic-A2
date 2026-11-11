@@ -10,12 +10,23 @@ from __future__ import annotations
 
 import argparse
 import csv
-import json
 import time
 from collections import defaultdict
 
-from evals.runners.common import (RESULTS, GoldMapper, capped_recall_at, job_text, load_dev, mean, mrr, ndcg_at, pct,
-                                  provenance, recall_at, write_result)
+from evals.runners.common import (
+    RESULTS,
+    GoldMapper,
+    capped_recall_at,
+    job_text,
+    load_dev,
+    mean,
+    mrr,
+    ndcg_at,
+    pct,
+    provenance,
+    recall_at,
+    write_result,
+)
 from rag.retriever import VARIANTS, variant_class
 
 NO_LLM = ["v0_naive", "v1_decomposition", "v2_hybrid", "v3_rerank", "v4_outcome_aware", "v5_multivector",

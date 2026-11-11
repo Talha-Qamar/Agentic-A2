@@ -56,6 +56,7 @@ def create_user(email: str, password: str, name: str, persona: str = "ai_ml_engi
 def provision_gigsim_account(persona: str) -> str:
     """Each GigBid user gets their own GigSim account (own Connects, proposals, threads)."""
     import httpx
+
     from agent import settings
     try:
         r = httpx.post(settings.get("marketplace.gigsim_url").rstrip("/") + "/v1/admin/accounts", json={"persona": persona},
