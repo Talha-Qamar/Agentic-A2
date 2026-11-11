@@ -2037,15 +2037,33 @@
     "summary": "Demo Fault",
     "description": "Demo control: take GigSim down/up to show degraded mode (marketplace admin key held server-side).",
     "operationId": "demo_fault_api_demo_fault_post",
+    "parameters": [
+     {
+      "name": "gb_session",
+      "in": "cookie",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Gb Session"
+      }
+     }
+    ],
     "requestBody": {
+     "required": true,
      "content": {
       "application/json": {
        "schema": {
         "$ref": "#/components/schemas/FaultIn"
        }
       }
-     },
-     "required": true
+     }
     },
     "responses": {
      "200": {
@@ -2074,15 +2092,33 @@
     "summary": "Demo Advance",
     "description": "Demo control: advance the simulated marketplace clock (new jobs appear, clients react).",
     "operationId": "demo_advance_api_demo_advance_post",
+    "parameters": [
+     {
+      "name": "gb_session",
+      "in": "cookie",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Gb Session"
+      }
+     }
+    ],
     "requestBody": {
+     "required": true,
      "content": {
       "application/json": {
        "schema": {
         "$ref": "#/components/schemas/AdvanceIn"
        }
       }
-     },
-     "required": true
+     }
     },
     "responses": {
      "200": {

@@ -20,6 +20,7 @@ from pydantic import BaseModel
 
 from agent import settings
 from apps.api.auth.session import create_user, seed_searches
+from apps.api.auth.session import UserDep
 from apps.api.routers import approvals, auth, jobs, panel, runs, workspace
 from common import db
 
@@ -154,7 +155,7 @@ def create_app() -> FastAPI:
         return out
 
     @app.post("/api/demo/fault")
-    async def demo_fault(body: FaultIn):
+    async def demo_fault(body: FaultIn, user=UserDep):
         """Demo control: take GigSim down/up to show degraded mode (marketplace admin key held server-side)."""
         async with httpx.AsyncClient(timeout=5) as c:
             r = await c.post(settings.get("marketplace.gigsim_url").rstrip("/") + "/v1/admin/fault", json={"down": body.down},
@@ -162,7 +163,7 @@ def create_app() -> FastAPI:
         return r.json()
 
     @app.post("/api/demo/advance")
-    async def demo_advance(body: AdvanceIn):
+    async def demo_advance(body: AdvanceIn, user=UserDep):
         """Demo control: advance the simulated marketplace clock (new jobs appear, clients react)."""
         async with httpx.AsyncClient(timeout=10) as c:
             r = await c.post(settings.get("marketplace.gigsim_url").rstrip("/") + "/v1/admin/advance", json={"minutes": min(body.minutes, 2880)},

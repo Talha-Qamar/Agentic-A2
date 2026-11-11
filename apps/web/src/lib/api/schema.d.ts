@@ -2220,7 +2220,9 @@ export interface operations {
             query?: never;
             header?: never;
             path?: never;
-            cookie?: never;
+            cookie?: {
+                gb_session?: string | null;
+            };
         };
         requestBody: {
             content: {
@@ -2253,7 +2255,9 @@ export interface operations {
             query?: never;
             header?: never;
             path?: never;
-            cookie?: never;
+            cookie?: {
+                gb_session?: string | null;
+            };
         };
         requestBody: {
             content: {
