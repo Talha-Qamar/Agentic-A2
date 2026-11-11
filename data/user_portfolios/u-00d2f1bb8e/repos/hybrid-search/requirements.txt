@@ -1,0 +1,6 @@
+elasticsearch
+faiss
+fastapi
+locust
+numpy
+sentence-transformers

@@ -65,8 +65,9 @@ class Corpus:
     @classmethod
     def from_persona(cls, persona: str, chunking: str = "structured", embedder_backend: str | None = None,
                      contextual: bool = False, base: Path | None = None) -> "Corpus":
+        b = Path(base or PERSONA_DIR / persona)
         return _cached_corpus(persona, chunking, embedder_backend or settings.get("embeddings.backend"), contextual,
-                              str(base or PERSONA_DIR / persona))
+                              str(b), portfolio_signature(b))
 
     @classmethod
     def from_rows(cls, persona: str, chunks: list[dict], matrix: np.ndarray, embedder_backend: str | None = None) -> "Corpus":
@@ -98,8 +99,15 @@ class Corpus:
         return self._win_rate.get(project) if project else None
 
 
+def portfolio_signature(base: Path) -> str:
+    """Changes whenever a file is added, removed or edited under the portfolio dir. Part of the corpus cache key, so
+    work added in the UI is picked up on the next query; unchanged chunks reuse cached embeddings (incremental)."""
+    files = [f for f in Path(base).rglob("*") if f.is_file()] if Path(base).exists() else []
+    return f"{len(files)}:{max((f.stat().st_mtime_ns for f in files), default=0)}"
+
+
 @lru_cache(maxsize=24)
-def _cached_corpus(persona: str, chunking: str, embedder_backend: str, contextual: bool, base: str) -> Corpus:
+def _cached_corpus(persona: str, chunking: str, embedder_backend: str, contextual: bool, base: str, sig: str = "") -> Corpus:
     docs = load_persona_dir(Path(base), persona)
     if chunking == "fixed":
         chs = chunkers.fixed(docs, settings.get("rag.chunk_chars", 900), settings.get("rag.chunk_overlap", 150))
@@ -134,7 +142,20 @@ def _pg_load_or_store(persona: str, chunking: str, embedder_backend: str, contex
             return mat[[order[c["chunk_id"]] for c in chunks]]
         texts = [((c.get("context") or "") + "\n" if contextual else "") + (f"{c.get('title', '')}\n" if c["type"] in ("code", "readme") else "") + c["text"]
                  for c in chunks]
-        mat = emb.embed_cached(texts)
+        # incremental: chunks already stored keep their vectors; only new/changed chunk ids are embedded
+        old = {c["chunk_id"]: mat[i] for i, c in enumerate(stored)} if len(stored) else {}
+        same = {c["chunk_id"] for c in stored} & {c["chunk_id"] for c in chunks if any(s["chunk_id"] == c["chunk_id"] and s["text"] == c["text"] for s in stored)}
+        old = {k: v for k, v in old.items() if k in same}
+        todo = [i for i, c in enumerate(chunks) if c["chunk_id"] not in old]
+        new = emb.embed([texts[i] for i in todo]) if todo else None
+        rows, j = [], 0
+        for i, c in enumerate(chunks):
+            if c["chunk_id"] in old:
+                rows.append(old[c["chunk_id"]])
+            else:
+                rows.append(new[j])
+                j += 1
+        mat = np.stack(rows).astype(np.float32) if rows else np.zeros((0, emb.dim), np.float32)
         idx.upsert(persona, coll, chunks, mat)
         return mat
     except Exception as e:  # noqa: BLE001 - fall back to in-memory computation

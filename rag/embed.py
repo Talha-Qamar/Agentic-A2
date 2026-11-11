@@ -26,6 +26,9 @@ def _norm(m: np.ndarray) -> np.ndarray:
     return (m / n).astype(np.float32)
 
 
+_TEXT_VECS: dict[str, dict[str, np.ndarray]] = {}
+
+
 class Embedder:
     name: str
     dim: int
@@ -34,13 +37,27 @@ class Embedder:
         raise NotImplementedError
 
     def embed_cached(self, texts: list[str]) -> np.ndarray:
+        """Whole-collection file cache plus a per-text memory cache: after a portfolio edit only new or changed
+        chunks are embedded (incremental re-index)."""
         CACHE.mkdir(parents=True, exist_ok=True)
         key = hashlib.sha1((self.name + "\x00".join(texts)).encode()).hexdigest()[:20]
         f = CACHE / f"{key}.npy"
+        mem = _TEXT_VECS.setdefault(self.name, {})
         if f.exists():
-            return np.load(f)
-        m = self.embed(texts)
-        np.save(f, m)
+            m = np.load(f)
+            self.last_embedded = 0
+        else:
+            hs = [hashlib.sha1(t.encode()).hexdigest() for t in texts]
+            todo = [i for i, h in enumerate(hs) if h not in mem]
+            if todo:
+                new = self.embed([texts[i] for i in todo])
+                for j, i in enumerate(todo):
+                    mem[hs[i]] = new[j]
+            self.last_embedded = len(todo)
+            m = np.stack([mem[h] for h in hs]) if hs else np.zeros((0, self.dim), np.float32)
+            np.save(f, m)
+        for t, v in zip(texts, m):
+            mem.setdefault(hashlib.sha1(t.encode()).hexdigest(), v)
         return m
 
 

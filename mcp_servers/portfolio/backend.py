@@ -98,14 +98,15 @@ class GigBidBackend:
 
     def retriever(self, user: str | None):
         user = user or self.default
+        from rag.corpus import Corpus, portfolio_signature
+        sig = portfolio_signature(self._base(user))
         with self._lock:
-            if user not in self._retr:
-                from rag.corpus import Corpus
+            if user not in self._retr or self._retr[user][0] != sig:   # incremental re-index on portfolio change
                 from rag.retriever import variant_class
                 cls = variant_class(self.settings.get("rag.variant"))
                 corpus = Corpus.from_persona(user, cls.chunking, None, cls.contextual, base=self._base(user))
-                self._retr[user] = cls(user, corpus=corpus)
-            return self._retr[user]
+                self._retr[user] = (sig, cls(user, corpus=corpus))
+            return self._retr[user][1]
 
     def reindex(self, user: str) -> int:
         from rag import corpus as corpus_mod

@@ -1615,6 +1615,112 @@
     }
    }
   },
+  "/api/portfolio/from-github": {
+   "post": {
+    "tags": [
+     "workspace"
+    ],
+    "summary": "Portfolio From Github",
+    "description": "X3: fetch a repo through the GitHub MCP server, draft a case study from it, verify every claim against the\ncode, save the verified version into the user's portfolio (picked up by the next portfolio query).",
+    "operationId": "portfolio_from_github_api_portfolio_from_github_post",
+    "parameters": [
+     {
+      "name": "gb_session",
+      "in": "cookie",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Gb Session"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/FromGithubIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/portfolio/suggestions": {
+   "get": {
+    "tags": [
+     "workspace"
+    ],
+    "summary": "Portfolio Suggestions",
+    "description": "X3: which case study to write next - gaps on skipped/watched jobs x hidden strengths in code.",
+    "operationId": "portfolio_suggestions_api_portfolio_suggestions_get",
+    "parameters": [
+     {
+      "name": "gb_session",
+      "in": "cookie",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Gb Session"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
   "/api/auth/upwork/start": {
    "get": {
     "tags": [
@@ -2105,6 +2211,45 @@
      "down"
     ],
     "title": "FaultIn"
+   },
+   "FromGithubIn": {
+    "properties": {
+     "owner": {
+      "type": "string",
+      "maxLength": 100,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Owner"
+     },
+     "repo": {
+      "type": "string",
+      "maxLength": 100,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Repo"
+     },
+     "path": {
+      "type": "string",
+      "maxLength": 300,
+      "title": "Path",
+      "default": ""
+     },
+     "branch": {
+      "type": "string",
+      "maxLength": 100,
+      "title": "Branch",
+      "default": "main"
+     },
+     "use_llm": {
+      "type": "boolean",
+      "title": "Use Llm",
+      "default": true
+     }
+    },
+    "type": "object",
+    "required": [
+     "owner",
+     "repo"
+    ],
+    "title": "FromGithubIn"
    },
    "HTTPValidationError": {
     "properties": {

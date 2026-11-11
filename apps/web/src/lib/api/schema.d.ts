@@ -489,6 +489,47 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/portfolio/from-github": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Portfolio From Github
+         * @description X3: fetch a repo through the GitHub MCP server, draft a case study from it, verify every claim against the
+         *     code, save the verified version into the user's portfolio (picked up by the next portfolio query).
+         */
+        post: operations["portfolio_from_github_api_portfolio_from_github_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/portfolio/suggestions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Portfolio Suggestions
+         * @description X3: which case study to write next - gaps on skipped/watched jobs x hidden strengths in code.
+         */
+        get: operations["portfolio_suggestions_api_portfolio_suggestions_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/auth/upwork/start": {
         parameters: {
             query?: never;
@@ -692,6 +733,28 @@ export interface components {
         FaultIn: {
             /** Down */
             down: boolean;
+        };
+        /** FromGithubIn */
+        FromGithubIn: {
+            /** Owner */
+            owner: string;
+            /** Repo */
+            repo: string;
+            /**
+             * Path
+             * @default
+             */
+            path: string;
+            /**
+             * Branch
+             * @default main
+             */
+            branch: string;
+            /**
+             * Use Llm
+             * @default true
+             */
+            use_llm: boolean;
         };
         /** HTTPValidationError */
         HTTPValidationError: {
@@ -1832,6 +1895,72 @@ export interface operations {
                 "multipart/form-data": components["schemas"]["Body_upload_api_portfolio_upload_post"];
             };
         };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    portfolio_from_github_api_portfolio_from_github_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: {
+                gb_session?: string | null;
+            };
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FromGithubIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    portfolio_suggestions_api_portfolio_suggestions_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: {
+                gb_session?: string | null;
+            };
+        };
+        requestBody?: never;
         responses: {
             /** @description Successful Response */
             200: {

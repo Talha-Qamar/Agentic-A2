@@ -1,0 +1,7 @@
+docker
+donut
+fastapi
+pdf2image
+pydantic
+pytorch
+transformers

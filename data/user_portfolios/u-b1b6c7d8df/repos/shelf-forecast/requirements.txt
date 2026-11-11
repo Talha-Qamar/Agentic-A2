@@ -1,0 +1,6 @@
+airflow
+boto3
+lightgbm
+optuna
+pandas
+scikit-learn

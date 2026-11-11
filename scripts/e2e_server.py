@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import run_stack  # noqa: E402
 
 ENV = {"GIGBID_PROFILE": "stub", "GIGBID_EMBEDDER": os.environ.get("GIGBID_EMBEDDER", "hash"),
-       "GIGBID_RERANKER": os.environ.get("GIGBID_RERANKER", "overlap"), "GIGSIM_ERROR_RATE": "0",
+       "GIGBID_RERANKER": os.environ.get("GIGBID_RERANKER", "overlap"), "GIGSIM_ERROR_RATE": "0", "GITHUB_MCP_COMMAND": "/bin/false",
        "GIGBID_FIT_BID": "0", "GIGBID_FIT_WATCH": "0", "GIGSIM_DB": str(ROOT / "var" / "e2e_gigsim.db"),
        "DATABASE_URL": os.environ.get("DATABASE_URL", "postgresql://gigbid:gigbid@localhost:5432/gigbid")}
 

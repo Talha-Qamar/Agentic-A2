@@ -1,0 +1,18 @@
+{
+ "name": "Hira Siddiqui",
+ "headline": "Applied ML engineer: LLM agents, retrieval systems and production ML",
+ "location": "Lahore, Pakistan (UTC+5)",
+ "hourly_floor": 35,
+ "target_rate": 55,
+ "years": 6,
+ "education": "BS Computer Science, FAST-NUCES (2019)",
+ "summary": "I build retrieval-augmented assistants, multi-step LLM agents and the boring infrastructure that keeps models honest in production: evaluation harnesses, tracing, cost controls and fallbacks.",
+ "categories": [
+  "Machine Learning",
+  "Scripting & Automation",
+  "Deep Learning",
+  "Back-End Development"
+ ],
+ "persona_id": "ai_ml_engineer",
+ "synthetic": true
+}

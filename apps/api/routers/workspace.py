@@ -146,10 +146,7 @@ ALLOWED = {".pdf", ".md", ".txt", ".json", ".jsonl", ".py", ".ts", ".js"}
 @router.post("/portfolio/upload")
 async def upload(files: list[UploadFile] = File(...), user=UserDep):
     """Own-profile mode: add files to the user's portfolio and re-index only that user's collection (incremental)."""
-    base = settings.ROOT / "data" / "user_portfolios" / user["user_id"]
-    if not base.exists():
-        src = settings.ROOT / "data" / "personas" / user["persona"]
-        shutil.copytree(src, base)
+    base = _user_portfolio(user)
     saved = []
     for f in files[:20]:
         ext = Path(f.filename or "").suffix.lower()
@@ -162,7 +159,65 @@ async def upload(files: list[UploadFile] = File(...), user=UserDep):
         saved.append(str(dest.relative_to(base)))
     s = dict(user["settings"] or {}, own_portfolio=True)
     db.x("UPDATE users SET settings=%s, onboarded=true WHERE user_id=%s", (json.dumps(s), user["user_id"]))
-    return {"saved": saved, "reindex": "next portfolio query rebuilds this user's index"}
+    return {"saved": saved, "reindex": "incremental: the next portfolio query re-indexes this user's collection (only new chunks are embedded)"}
+
+
+def _user_portfolio(user: dict) -> Path:
+    base = settings.ROOT / "data" / "user_portfolios" / user["user_id"]
+    if not base.exists():
+        shutil.copytree(settings.ROOT / "data" / "personas" / user["persona"], base)
+    return base
+
+
+class FromGithubIn(BaseModel):
+    owner: str = Field(..., max_length=100, pattern=r"^[A-Za-z0-9_.-]+$")
+    repo: str = Field(..., max_length=100, pattern=r"^[A-Za-z0-9_.-]+$")
+    path: str = Field("", max_length=300)
+    branch: str = Field("main", max_length=100)
+    use_llm: bool = True
+
+
+@router.post("/portfolio/from-github")
+async def portfolio_from_github(body: FromGithubIn, user=UserDep):
+    """X3: fetch a repo through the GitHub MCP server, draft a case study from it, verify every claim against the
+    code, save the verified version into the user's portfolio (picked up by the next portfolio query)."""
+    from agent.case_study_builder import build, save
+    from rag.ingest.github_mcp import fetch_tree
+    path = body.path.strip("/")
+    name = path.rsplit("/", 1)[-1] if path else body.repo
+    source = f"github-mcp://{body.owner}/{body.repo}/{path}"
+    try:
+        files = await fetch_tree(body.owner, body.repo, path, body.branch, max_files=60)
+    except Exception as e:  # noqa: BLE001
+        local = settings.ROOT / path
+        own = (body.owner.lower(), body.repo.lower()) == ("talha-qamar", "agentic-a2") and path.startswith("data/personas/") and local.is_dir()
+        if not own:
+            raise HTTPException(502, f"GitHub MCP server unavailable: {str(e)[:200]}")
+        files = {str(f.relative_to(local)): f.read_text(errors="ignore") for f in local.rglob("*") if f.is_file()}
+        source = f"local-checkout (GitHub MCP unavailable: {type(e).__name__})"
+    if not files:
+        raise HTTPException(404, "no README or code files found at that path")
+    try:
+        r = await build(name, files, use_llm=body.use_llm, source=source)
+    except Exception:  # noqa: BLE001 - model unavailable: deterministic draft, same verification
+        r = await build(name, files, use_llm=False, source=source)
+    p = save(r, _user_portfolio(user))
+    s = dict(user["settings"] or {}, own_portfolio=True)
+    db.x("UPDATE users SET settings=%s WHERE user_id=%s", (json.dumps(s), user["user_id"]))
+    return {"saved": str(p.relative_to(_user_portfolio(user))), "source": source, "files_read": len(files), **{k: r[k] for k in ("title", "markdown", "draft", "verification", "checks", "skills")}}
+
+
+@router.get("/portfolio/suggestions")
+def portfolio_suggestions(user=UserDep):
+    """X3: which case study to write next - gaps on skipped/watched jobs x hidden strengths in code."""
+    from agent.portfolio_builder import suggest
+    from mcp_servers.portfolio.backend import GigBidBackend
+    jobs = [dict(r["summary"], job_id=r["job_id"], job=r["data"]) for r in
+            db.q("SELECT job_id, data, summary FROM jobs WHERE user_id=%s AND summary IS NOT NULL ORDER BY created_at DESC LIMIT 200", (user["user_id"],))]
+    s = user["settings"] or {}
+    who = f"user:{user['user_id']}" if s.get("own_portfolio") else user["persona"]
+    chunks = GigBidBackend(user["persona"]).retriever(who).corpus.chunks
+    return {"jobs_considered": len(jobs), "suggestions": suggest(jobs, chunks, top=6)}
 
 
 @router.get("/auth/upwork/start")

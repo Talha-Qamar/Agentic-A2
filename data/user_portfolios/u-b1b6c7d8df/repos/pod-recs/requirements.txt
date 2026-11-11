@@ -1,0 +1,7 @@
+annoy
+fastapi
+implicit
+numpy
+pyspark
+redis
+spark

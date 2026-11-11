@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../../lib/api/client";
+import PortfolioBuilder from "./PortfolioBuilder";
 
 export default function SettingsPage() {
   const [s, setS] = useState<any>(null);
@@ -53,6 +54,7 @@ export default function SettingsPage() {
           {(mem?.candidates || []).filter((c: any) => !c.promoted).map((c: any) => <div key={c.key} className="sub">{c.kind}: {c.key} x{c.occurrences}</div>)}
         </div>
       </div>
+      <PortfolioBuilder persona={s.persona} />
     </div>
   );
 }
