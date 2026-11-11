@@ -53,7 +53,7 @@ def _flow(settings, ROOT):
     th = httpx.get("http://localhost:8100/v1/threads", headers=H).json()["threads"]
     if th:
         c = asyncio.run(run_conversation(user, th[0]["thread_id"]))
-        assert c["status"] in ("awaiting_approval", "blocked")
+        assert c["status"] in ("awaiting_approval", "blocked"), (c["status"], c.get("errors"))
         if c["pending_approval"]:
             sent = asyncio.run(resume_conversation(user, c["thread_id"], {"action": "approve", "approval_token": message_token_for("u-it", c["pending_approval"])}))
             assert sent["status"] == "sent"
