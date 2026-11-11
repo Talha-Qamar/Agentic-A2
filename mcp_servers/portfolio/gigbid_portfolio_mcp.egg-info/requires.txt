@@ -1,0 +1,9 @@
+mcp<2,>=1.30
+pydantic>=2.7
+rank-bm25>=0.2.2
+pypdf>=4
+uvicorn>=0.30
+
+[dense]
+fastembed>=0.4
+numpy>=1.26

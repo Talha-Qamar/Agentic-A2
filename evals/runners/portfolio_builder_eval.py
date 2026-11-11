@@ -3,19 +3,21 @@
     python -m evals.runners.portfolio_builder_eval
 
 Protocol (per persona, no LLM): run the Fit Matcher logic (deployed retrieval + cross-encoder grading) on the first
-half of the dev set -> builder suggestions -> add the top-3 suggested write-ups (outline built only from the repo's
-own text, i.e. no new facts) to a copy of the portfolio -> re-run on the HELD-OUT second half -> compare requirement
+half of the dev set -> builder suggestions -> build case studies for the repos behind the top-3 suggestions with
+the X3 pipeline (agent/case_study_builder.py: repo text only, claims verified against the code, no LLM here) to a copy of the portfolio -> re-run on the HELD-OUT second half -> compare requirement
 coverage and fit for jobs that need the suggested skills, and how many jobs cross the bid threshold.
 """
 from __future__ import annotations
 
+import asyncio
 import shutil
 import tempfile
 from pathlib import Path
 
 from agent import settings
+from agent.case_study_builder import build, save
 from agent.nodes.matcher import fit_from
-from agent.portfolio_builder import outline_from_repo, suggest
+from agent.portfolio_builder import suggest
 from evals.runners.common import job_text, load_dev, mean, provenance, write_result
 from rag.corpus import Corpus
 from rag.ingest.loaders import extract_skills
@@ -37,29 +39,54 @@ def analyse(retr, jobs):
     return out
 
 
+def llm_drafts() -> dict:
+    """LLM case studies for every repo that has no case study (picked from the gold manifest, evaluation side only):
+    how many claims the model makes, how many the code check supports, how many verification removes."""
+    import json
+    out = {}
+    for persona in ("ai_ml_engineer", "fullstack_web_dev", "data_analyst"):
+        m = json.loads((ROOT / "evals" / "datasets" / "gold" / f"{persona}_corpus_manifest.json").read_text())
+        repos = sorted({d["path"].split("/")[1] for d in m["documents"] if d["type"] == "readme" and d["project"] in m["no_case_study"]})
+        for repo in repos:
+            rdir = ROOT / "data" / "personas" / persona / "repos" / repo
+            files = {str(f.relative_to(rdir)): f.read_text(errors="ignore") for f in rdir.rglob("*") if f.is_file()}
+            r = asyncio.run(build(repo, files, use_llm=True, source="eval-llm"))
+            out[f"{persona}/{repo}"] = {"verification": r["verification"], "checks": r["checks"], "draft": r["draft"], "final": r["markdown"]}
+            print(repo, r["verification"], flush=True)
+    claims = sum(v["verification"]["claims"] for v in out.values())
+    uns = sum(v["verification"]["unsupported"] for v in out.values())
+    sup = sum(v["verification"]["supported"] for v in out.values())
+    return {"repos": len(out), "claims": claims, "supported": sup, "unsupported_removed": uns,
+            "unsupported_rate_before_verification": round(uns / claims, 4) if claims else None, "unsupported_rate_after": 0.0, "items": out}
+
+
 def main() -> None:
+    import sys
     cls = variant_class(settings.get("rag.variant"))
     report = {}
     for persona in ("ai_ml_engineer", "fullstack_web_dev", "data_analyst"):
         jobs = [j for j in load_dev(persona) if not j["labels"]["scam"]]
         train, test = jobs[: len(jobs) // 2], jobs[len(jobs) // 2:]
         base_retr = cls(persona)
-        sugg = suggest(analyse(base_retr, train), base_retr.corpus.chunks, top=5)
+        sugg = suggest(analyse(base_retr, train), base_retr.corpus.chunks, top=50)
         picks = [s for s in sugg if s["hidden_evidence"]][:3]
         tmp = Path(tempfile.mkdtemp())
         shutil.copytree(ROOT / "data" / "personas" / persona, tmp / persona)
-        for s in picks:
-            repo = s["hidden_evidence"][0]["repo"]
-            (tmp / persona / "case_studies" / f"builder-{repo}-{s['skill'].replace(' ', '_')}.md").write_text(
-                f"---\nrepo: {repo}\n---\n" + outline_from_repo(s["skill"], base_retr.corpus.chunks, repo))
+        built = []
+        for repo in dict.fromkeys(s["hidden_evidence"][0]["repo"] for s in picks):
+            rdir = tmp / persona / "repos" / repo
+            files = {str(f.relative_to(rdir)): f.read_text(errors="ignore") for f in rdir.rglob("*") if f.is_file()}
+            r = asyncio.run(build(repo, files, use_llm=False, source="eval"))   # same pipeline as the UI, no model
+            save(r, tmp / persona)
+            built.append({"repo": repo, "verification": r["verification"], "skills": r["skills"]})
         new_corpus = Corpus.from_persona(persona, cls.chunking, None, cls.contextual, base=tmp / persona)
         new_retr = cls(persona, corpus=new_corpus)
         skills = {s["skill"] for s in picks}
         affected = [j for j in test if any(sk in skills for r in extract_requirements(job_text(j)) for sk in extract_skills(r["text"]))]
         before, after = analyse(base_retr, affected), analyse(new_retr, affected)
         report[persona] = {
-            "suggestions": [{k: s[k] for k in ("skill", "score", "jobs_affected", "budget_at_stake", "action")} for s in sugg],
-            "added_case_studies": [s["skill"] for s in picks], "heldout_jobs_affected": len(affected),
+            "suggestions": [{k: s[k] for k in ("skill", "score", "jobs_affected", "budget_at_stake", "action")} for s in sugg[:8]],
+            "added_case_studies": [s["skill"] for s in picks], "built": built, "heldout_jobs_affected": len(affected),
             "coverage_before": round(mean([a["fit"]["coverage"] for a in before]), 4) if before else None,
             "coverage_after": round(mean([a["fit"]["coverage"] for a in after]), 4) if after else None,
             "fit_before": round(mean([a["fit"]["fit_score"] for a in before]), 4) if before else None,
@@ -68,7 +95,9 @@ def main() -> None:
             "gold_bid_among_affected": sum(j["labels"]["gold_decision"] == "bid" for j in affected)}
         print(persona, {k: v for k, v in report[persona].items() if k != "suggestions"}, flush=True)
         shutil.rmtree(tmp)
-    write_result("portfolio_builder_eval.json", {"provenance": provenance({"variant": cls.name}), "summary": report})
+    llm = llm_drafts() if "--llm" in sys.argv else None
+    write_result("portfolio_builder_eval.json", {"provenance": provenance({"variant": cls.name, "llm_drafts": bool(llm)}), "summary": report,
+                                                 "llm_case_studies": llm})
 
 
 if __name__ == "__main__":

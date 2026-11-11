@@ -14,6 +14,7 @@ import math
 import re
 from collections import defaultdict
 
+from rag.index.graph import canon
 from rag.ingest.loaders import extract_skills
 
 GENERIC = {"bash", "json", "yaml", "make", "npm", "pip", "python", "sql", "typescript", "javascript", "api", "rest api", "llm", "agents", "performance", "evaluation", "caching"}
@@ -21,15 +22,16 @@ GENERIC = {"bash", "json", "yaml", "make", "npm", "pip", "python", "sql", "types
 
 def hidden_strengths(chunks: list[dict]) -> dict[str, list[dict]]:
     prose = set()
+    repos = {(c.get("repo") or "").lower() for c in chunks}
     for c in chunks:
         if c["type"] in ("case_study", "cv", "review"):
-            prose |= {s.lower() for s in c.get("skills", [])}
+            prose |= {canon(s) for s in c.get("skills", [])} | {canon(s) for s in extract_skills(c.get("text", ""))}
     out: dict[str, list[dict]] = defaultdict(list)
     for c in chunks:
         if c["type"] in ("code", "readme"):
             for s in c.get("skills", []):
-                s = s.lower()
-                if s not in prose and s not in GENERIC and len(s) > 2:
+                s = canon(s)
+                if s not in prose and s not in GENERIC and len(s) > 2 and s not in repos and s not in ("service", "regex"):
                     out[s].append({"repo": c.get("repo"), "source": c["source"], "project": c.get("project")})
     return out
 
@@ -46,7 +48,7 @@ def mine_gaps(job_summaries: list[dict]) -> dict[str, dict]:
         for m in (j.get("fit") or {}).get("matches", []):
             if m["support"] == "strong":
                 continue
-            for s in extract_skills(m["requirement"]) or []:
+            for s in {canon(x) for x in extract_skills(m["requirement"]) or []}:
                 if s in GENERIC:
                     continue
                 g = gaps[s]
