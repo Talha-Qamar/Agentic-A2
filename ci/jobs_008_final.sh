@@ -7,8 +7,11 @@ pip install -q -r requirements-eval.txt
 set +x
 [ -f ~/.gigbid_reviewer.env ] && set -a && . ~/.gigbid_reviewer.env && set +a
 set -x
-OUT=runs/out/007_final; mkdir -p $OUT/results
+OUT=runs/out/008_final; mkdir -p $OUT/results
 export EMBED_THREADS=6 GIGBID_PROFILE=open
+if [ -n "${MISTRAL_API_KEY:-}" ]; then export GIGBID_PROFILE=mx; TS_ARGS="--provider mistral --model mistral-small-latest"; else TS_ARGS="--provider groq --model qwen/qwen3.8-27b"; fi
+echo "profile=$GIGBID_PROFILE"
+[ -n "${REVIEWER_EMAIL:-}" ] && echo "reviewer email set" || echo "REVIEWER_EMAIL missing in ~/.gigbid_reviewer.env"
 export GIGBID_FIT_BID=$(python -c "import json;print(json.load(open('evals/results/fit_calibration.json'))['summary']['fit_bid'])")
 export GIGBID_FIT_WATCH=$(python -c "import json;print(round(0.6*json.load(open('evals/results/fit_calibration.json'))['summary']['fit_bid'],4))")
 
@@ -29,7 +32,7 @@ cp docs/examples/single_agent_proposal.* $OUT/results/ 2>/dev/null
 cp evals/results/rerank_analysis.json $OUT/results/ 2>/dev/null
 
 # 3. experiments, fresh caches once
-if [ ! -f var/.fresh_007 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_007; fi
+if [ ! -f var/.fresh_008 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_008; fi
 [ -f ~/.gigbid_hidden_seed ] || python -c "import secrets;print(secrets.token_hex(8))" > ~/.gigbid_hidden_seed
 complete() { python - "$@" <<'PY'
 import json,sys,os
@@ -41,7 +44,7 @@ for round in $(seq 1 60); do
   echo "=== round $round $(date)"
   python scripts/quota_probe.py
   if ! complete tool_granularity.json; then
-    ( python -m evals.runners.tool_granularity --tasks 40 --provider groq --model qwen/qwen3.8-27b > $OUT/tool_study_r$round.log 2>&1 ) &
+    ( python -m evals.runners.tool_granularity --tasks 40 $TS_ARGS > $OUT/tool_study_r$round.log 2>&1 ) &
     TS=$!
   else TS=""; fi
   complete multiagent_comparison.json || python -m evals.runners.multiagent_comparison --limit 2
@@ -62,5 +65,5 @@ for round in $(seq 1 60); do
   if complete tool_granularity.json multiagent_comparison.json injection_eval.json rag_e2e_v0.json change_request_before.json change_request_after.json hidden_test_results.json; then
     echo ALL_DONE; break
   fi
-  echo "quota reached; sleeping 40 min"; sleep 2400
+  echo "quota reached; sleeping 20 min"; sleep 1200
 done

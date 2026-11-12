@@ -8,6 +8,7 @@ providers:
   ollama: {base_url: "${OLLAMA_BASE_URL:-http://localhost:11434/v1}", api_key_env: null}
   openrouter: {base_url: "https://openrouter.ai/api/v1", api_key_env: OPENROUTER_API_KEY}
   cerebras: {base_url: "https://api.cerebras.ai/v1", api_key_env: CEREBRAS_API_KEY}   # same open weights, separate free quota
+  mistral: {base_url: "https://api.mistral.ai/v1", api_key_env: MISTRAL_API_KEY}      # open-weight Mistral Small (Apache 2.0), free Experiment plan
   stub: {base_url: null, api_key_env: null}   # deterministic offline model for tests/CI only; never reported as a result
 
 # Model tiers per profile. Cheap, frequent nodes use `small`; Writer/Critic/Liaison use `strong`.
@@ -17,8 +18,13 @@ profiles:
   open:          # REQUIRED profile: open-weight models via a hosted open-model provider (deployed link uses this)
     small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
     strong: {provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}
-    fallback_small: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: qwen/qwen3.8-27b}]
-    fallback_strong: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}]
+    fallback_small: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: qwen/qwen3.8-27b}, {provider: mistral, model: mistral-small-latest}]
+    fallback_strong: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}, {provider: mistral, model: mistral-small-latest}]
+  mx:            # experiment profile on Mistral's free tier: open-weight Mistral Small on every node, Groq as fallback
+    small:  {provider: mistral, model: mistral-small-latest}
+    strong: {provider: mistral, model: mistral-small-latest}
+    fallback_small: [{provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}]
+    fallback_strong: [{provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}]
   open_cx:       # experiment profile: same models, strong tier served by Cerebras (Groq's 200K tokens/day cap per model)
     small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
     strong: {provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}
@@ -73,6 +79,7 @@ pricing_usd_per_mtok:
   openai/gpt-oss-120b: {input: 0.15, output: 0.60}
   gpt-oss-120b: {input: 0.35, output: 0.75}       # Cerebras list price (free tier used; cost reported at list price)
   qwen/qwen3.8-27b: {input: 0.80, output: 4.00}
+  mistral-small-latest: {input: 0.10, output: 0.30}   # Mistral list price; free Experiment plan used, cost reported at list price
   meta-llama/llama-prompt-guard-2-86m: {input: 0.04, output: 0.04}
   default: {input: 0.0, output: 0.0}
 
