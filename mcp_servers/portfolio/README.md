@@ -81,6 +81,23 @@ Resources: `portfolio://case/{id}`, `portfolio://proposal/{id}`, `portfolio://re
 Prompts: answer a screening question, write a specific opening line, requirement-by-requirement fit check,
 summarise the portfolio.
 
+## MCP Inspector
+
+Checked with the official MCP Inspector (v2.12.0) over streamable HTTP
+(`python -m mcp_servers.portfolio.server --transport http --port 8301`, then add `http://127.0.0.1:8301/mcp`):
+
+| | |
+|---|---|
+| ![connected](../../docs/images/inspector/01_connected.jpg) | ![tools](../../docs/images/inspector/02_tools_list.jpg) |
+| connected; list calls succeed | the four tools |
+| ![annotations](../../docs/images/inspector/03_match_requirements_schema_annotations.jpg) | ![result](../../docs/images/inspector/04_match_requirements_result.jpg) |
+| `match_requirements`: read-only + idempotent annotations, typed input | a real call: per-requirement evidence (V9 skill graph) |
+| ![resource](../../docs/images/inspector/05_resource_profile.jpg) | ![prompts](../../docs/images/inspector/06_prompts.jpg) |
+| `portfolio://profile` resource | the four prompts |
+
+The same surface is pinned by `tests/contract/test_mcp_schemas.py` (schema snapshot) and exercised through an in-memory
+client in `mcp_servers/portfolio/tests/test_standalone.py`.
+
 ## Security
 
 The server only reads the folder you point it at. Repository and proposal text is returned as data; clients should
