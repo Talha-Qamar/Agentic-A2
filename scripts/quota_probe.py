@@ -14,7 +14,9 @@ for m in (MODELS if os.environ.get("GROQ_API_KEY") else []):
     h = {k: v for k, v in r.headers.items() if k.startswith("x-ratelimit")}
     body = "" if r.status_code == 200 else r.text[:400]
     print(f"{m}: HTTP {r.status_code} {h} {body}", flush=True)
-if os.environ.get("MISTRAL_API_KEY"):
-    r = httpx.post("https://api.mistral.ai/v1/chat/completions", timeout=30, headers={"Authorization": f"Bearer {os.environ['MISTRAL_API_KEY']}"},
-                   json={"model": "mistral-large-2512", "messages": [{"role": "user", "content": "ok"}], "max_tokens": 1})
-    print(f"mistral-large-2512: HTTP {r.status_code} {({k: v for k, v in r.headers.items() if 'ratelimit' in k.lower()})} {'' if r.status_code == 200 else r.text[:300]}")
+if os.environ.get("NVIDIA_API_KEY"):
+    for m in ("openai/gpt-oss-20b", "openai/gpt-oss-120b"):
+        r = httpx.post("https://integrate.api.nvidia.com/v1/chat/completions", timeout=60,
+                       headers={"Authorization": f"Bearer {os.environ['NVIDIA_API_KEY']}"},
+                       json={"model": m, "messages": [{"role": "user", "content": 'Reply with JSON {"ok": true}'}], "max_tokens": 64})
+        print(f"nvidia {m}: HTTP {r.status_code} {r.text[:200]}", flush=True)

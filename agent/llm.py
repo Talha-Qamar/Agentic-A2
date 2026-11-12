@@ -70,8 +70,8 @@ async def _call(node: str, spec: dict, messages: list[dict], json_mode: bool, ma
     kwargs: dict = dict(model=spec["model"], messages=msgs,
                         temperature=settings.get("llm.temperature", 0.2) if temperature is None else temperature,
                         max_tokens=max_tokens or settings.get("llm.max_output_tokens", 1200))
-    if json_mode:
-        kwargs["response_format"] = {"type": "json_object"}
+    if json_mode and settings.get(f"providers.{spec['provider']}").get("json_mode", True):
+        kwargs["response_format"] = {"type": "json_object"}   # else: prompt asks for JSON and parse_json extracts it
     if spec.get("reasoning_effort"):
         kwargs["reasoning_effort"] = spec["reasoning_effort"]
     resp = await client.chat.completions.create(**kwargs)

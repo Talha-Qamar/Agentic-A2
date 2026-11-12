@@ -9,7 +9,7 @@ set +x
 set -x
 OUT=runs/out/008_final; mkdir -p $OUT/results
 export EMBED_THREADS=6 GIGBID_PROFILE=open
-if [ -n "${MISTRAL_API_KEY:-}" ]; then export GIGBID_PROFILE=mx; TS_ARGS="--provider mistral --model mistral-large-2512"; else TS_ARGS="--provider groq --model qwen/qwen3.8-27b"; fi
+if [ -n "${NVIDIA_API_KEY:-}" ]; then export GIGBID_PROFILE=nv; TS_ARGS="--provider nvidia --model openai/gpt-oss-20b"; else TS_ARGS="--provider groq --model qwen/qwen3.8-27b"; fi
 echo "profile=$GIGBID_PROFILE"
 [ -n "${REVIEWER_EMAIL:-}" ] && echo "reviewer email set" || echo "REVIEWER_EMAIL missing in ~/.gigbid_reviewer.env"
 export GIGBID_FIT_BID=$(python -c "import json;print(json.load(open('evals/results/fit_calibration.json'))['summary']['fit_bid'])")
