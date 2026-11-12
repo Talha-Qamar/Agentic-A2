@@ -18,11 +18,11 @@ profiles:
   open:          # REQUIRED profile: open-weight models via a hosted open-model provider (deployed link uses this)
     small:  {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}
     strong: {provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}
-    fallback_small: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: qwen/qwen3.8-27b}, {provider: mistral, model: mistral-small-latest}]
-    fallback_strong: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}, {provider: mistral, model: mistral-small-latest}]
-  mx:            # experiment profile on Mistral's free tier: open-weight Mistral Small on every node, Groq as fallback
-    small:  {provider: mistral, model: mistral-small-latest}
-    strong: {provider: mistral, model: mistral-small-latest}
+    fallback_small: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: qwen/qwen3.8-27b}, {provider: mistral, model: mistral-small-2603}]
+    fallback_strong: [{provider: cerebras, model: gpt-oss-120b, reasoning_effort: low}, {provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}, {provider: mistral, model: mistral-large-2512}]
+  mx:            # experiment profile on Mistral's free tier (open weights, Apache 2.0): Small 4 for cheap nodes, Large 3 for writer/critic
+    small:  {provider: mistral, model: mistral-small-2603}
+    strong: {provider: mistral, model: mistral-large-2512}
     fallback_small: [{provider: groq, model: openai/gpt-oss-20b, reasoning_effort: low}]
     fallback_strong: [{provider: groq, model: openai/gpt-oss-120b, reasoning_effort: low}]
   open_cx:       # experiment profile: same models, strong tier served by Cerebras (Groq's 200K tokens/day cap per model)
@@ -79,7 +79,8 @@ pricing_usd_per_mtok:
   openai/gpt-oss-120b: {input: 0.15, output: 0.60}
   gpt-oss-120b: {input: 0.35, output: 0.75}       # Cerebras list price (free tier used; cost reported at list price)
   qwen/qwen3.8-27b: {input: 0.80, output: 4.00}
-  mistral-small-latest: {input: 0.10, output: 0.30}   # Mistral list price; free Experiment plan used, cost reported at list price
+  mistral-small-2603: {input: 0.10, output: 0.30}   # Mistral list prices; free tier (USD 10/month included) used, cost reported at list price
+  mistral-large-2512: {input: 0.50, output: 1.50}
   meta-llama/llama-prompt-guard-2-86m: {input: 0.04, output: 0.04}
   default: {input: 0.0, output: 0.0}
 
