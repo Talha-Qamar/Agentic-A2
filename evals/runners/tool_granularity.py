@@ -100,7 +100,7 @@ def success(task: dict, answer: str) -> bool:
     return yes == c["yes"]
 
 
-async def run_design(design: str, tasks: list[dict], model, cache=None, tag: str = "") -> list[dict]:
+async def run_design(design: str, tasks: list[dict], model, cache=None, tag: str = "", start: int = 0) -> list[dict]:
     from langchain_core.callbacks import UsageMetadataCallbackHandler
     from langchain_mcp_adapters.client import MultiServerMCPClient
     from langgraph.prebuilt import create_react_agent
@@ -108,7 +108,7 @@ async def run_design(design: str, tasks: list[dict], model, cache=None, tag: str
     from common.tokens import mint_mcp_token
     rows = []
     for i, t in enumerate(tasks):
-        key = f"{tag}{design}:{i}"
+        key = f"{tag}{design}:{start + i}"
         if cache and cache.get(key):
             rows.append(cache.get(key))
             continue
@@ -182,16 +182,22 @@ def main() -> None:
                     time.sleep(0.5)
         rows, stopped = [], None
         cache = RowCache(a.out.removesuffix(".json") + "_" + a.model.replace("/", "_"))
-        for d in a.designs.split(","):
-            try:
-                rows += asyncio.run(run_design(d, tasks, model, cache))
-            except QuotaStop as e:
-                stopped = f"daily quota reached at {e}"
-                rows += [r for k, r in cache.rows.items() if k.startswith(f"{d}:")]
-                break
+        # interleaved (task i on every design before task i+1) so a run cut short by a daily cap stays balanced
+        try:
+            for i, t in enumerate(tasks):
+                for d in a.designs.split(","):
+                    rows += asyncio.run(run_design(d, [t], model, cache, start=i))
+        except QuotaStop as e:
+            stopped = f"daily quota reached at {e}"
+            done = {(r["design"], r["q"]) for r in rows}
+            rows += [r for r in cache.rows.values() if (r["design"], r["q"]) not in done]
     finally:
         for p in procs:
             p.terminate()
+    paired = None
+    if stopped:  # compare designs on the same tasks only
+        common = set.intersection(*[{r["q"] for r in rows if r["design"] == d} for d in a.designs.split(",")]) if rows else set()
+        rows, paired = [r for r in rows if r["q"] in common], len(common)
     summary = {}
     for d in a.designs.split(","):
         rs = [r for r in rows if r["design"] == d]
@@ -208,7 +214,7 @@ def main() -> None:
                       "mean_tokens": round(mean([r["tokens"] for r in rs]), 1), "errors": sum(bool(r["error"]) for r in rs),
                       "by_type": {t: round(mean([1.0 if r["success"] else 0.0 for r in rs if r["type"] == t]), 3) for t in sorted({r["type"] for r in rs})}}
     write_result(a.out, {"provenance": provenance({"model": a.model, "provider": a.provider, "tasks": len(tasks)}), "summary": summary, "rows": rows,
-                         "complete": not stopped, "stopped": stopped})
+                         "complete": not stopped, "stopped": stopped, "paired_tasks": paired})
     print(json.dumps(summary, indent=1))
 
 
