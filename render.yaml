@@ -27,6 +27,7 @@ services:
       - {key: GIGBID_SECRET, generateValue: true}
       - {key: GIGSIM_ADMIN_KEY, generateValue: true}
       - {key: GROQ_API_KEY, sync: false}
+      - {key: MISTRAL_API_KEY, sync: false}
       - {key: REVIEWER_EMAIL, sync: false}
       - {key: REVIEWER_PASSWORD, sync: false}
       - key: DATABASE_URL
