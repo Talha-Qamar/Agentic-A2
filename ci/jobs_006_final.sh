@@ -19,7 +19,11 @@ if [ ! -f $OUT/gigbid_demo.mp4 ]; then
   tail -5 $OUT/demo.log
 fi
 
-# 2. experiments, fresh caches once
+# 2. no-LLM analysis
+[ -f evals/results/rerank_analysis.json ] || python -m evals.runners.rerank_analysis --limit 40 > $OUT/rerank.log 2>&1
+cp evals/results/rerank_analysis.json $OUT/results/ 2>/dev/null
+
+# 3. experiments, fresh caches once
 if [ ! -f var/.fresh_006 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_006; fi
 [ -f ~/.gigbid_hidden_seed ] || python -c "import secrets;print(secrets.token_hex(8))" > ~/.gigbid_hidden_seed
 complete() { python - "$@" <<'PY'
