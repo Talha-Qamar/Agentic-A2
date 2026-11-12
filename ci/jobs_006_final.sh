@@ -19,6 +19,10 @@ if [ ! -f $OUT/gigbid_demo.mp4 ]; then
   tail -5 $OUT/demo.log
 fi
 
+# 1b. Part A: one agent drafts one grounded proposal for a GigSim job
+[ -f docs/examples/single_agent_proposal.md ] || python scripts/single_agent_proposal.py > $OUT/single_agent.log 2>&1
+cp docs/examples/single_agent_proposal.* $OUT/results/ 2>/dev/null
+
 # 2. no-LLM analysis
 [ -f evals/results/rerank_analysis.json ] || python -m evals.runners.rerank_analysis --limit 40 > $OUT/rerank.log 2>&1
 cp evals/results/rerank_analysis.json $OUT/results/ 2>/dev/null
