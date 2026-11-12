@@ -45,12 +45,10 @@ def main() -> None:
     dev = (sd / "dev_jobs.jsonl").read_text()
     clients = (sd / "clients.jsonl").read_text()
     try:
-        with open(sd / "dev_jobs.jsonl", "a") as f:
-            for j in jobs:
-                f.write("\n" + json.dumps({k: v for k, v in j.items() if k not in ("labels", "requirements")}))
-        with open(sd / "clients.jsonl", "a") as f:
-            for j in jobs:
-                f.write("\n" + json.dumps(j["client"]))
+        # rewrite (not append) so no blank line can appear between records
+        (sd / "dev_jobs.jsonl").write_text(dev.rstrip("\n") + "\n" + "\n".join(
+            json.dumps({k: v for k, v in j.items() if k not in ("labels", "requirements")}) for j in jobs) + "\n")
+        (sd / "clients.jsonl").write_text(clients.rstrip("\n") + "\n" + "\n".join(json.dumps(j["client"]) for j in jobs) + "\n")
         os.environ["GIGSIM_DB"] = str(var / "hidden_gigsim.db")
         for p in var.glob("hidden_gigsim.db*"):
             p.unlink()

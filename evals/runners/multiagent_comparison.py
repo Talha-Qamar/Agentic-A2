@@ -76,7 +76,8 @@ def submit_to_gigsim(key: str, job_id: str, letter: str, price: float | None, bi
 
 def outcomes(key: str) -> dict:
     httpx.post(f"{GS}/v1/admin/flush", headers=ADMIN)
-    props = httpx.get(f"{GS}/v1/proposals", headers={"X-GigSim-Key": key}).json()["proposals"]
+    r = httpx.get(f"{GS}/v1/proposals", headers={"X-GigSim-Key": key})
+    props = r.json().get("proposals", []) if r.status_code == 200 else []  # account never created = nothing submitted
     st = [p["status"] for p in props if p["status"] != "draft"]
     n = len(st)
     return {"submitted": n, "replied_or_better": sum(s in ("replied", "interview", "hired") for s in st),
@@ -112,7 +113,7 @@ async def main_async(a) -> dict:
                 else:
                     res = await run_supervisor(tools, j["job_id"])
             except Exception as e:  # noqa: BLE001
-                res = {"decision": "skip", "error": f"{type(e).__name__}: {str(e)[:200]}", "latency_s": 0, "tokens": 0, "cost_usd": 0}
+                res = {"decision": "skip", "error": f"{type(e).__name__}: {str(e)[:500]}", "latency_s": 0, "tokens": 0, "cost_usd": 0}
             if quota_exhausted(res.get("error")):
                 stopped = f"daily quota reached at {key}: {str(res.get('error'))[:160]}"
                 print("STOP:", stopped, flush=True)

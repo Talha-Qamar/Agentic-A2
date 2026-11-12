@@ -100,9 +100,12 @@ async def complete(node: str, system: str, user: str, *, json_mode: bool = False
                    temperature: float | None = None) -> str:
     messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     last_err: Exception | None = None
+    skipped: list[str] = []
     for spec in settings.model_candidates(node):
         use_fallback = spec["fallback"]
         if not available(spec):
+            why = "daily quota (TPD) exhausted earlier" if (spec["provider"], spec["model"]) in _EXHAUSTED else "no API key"
+            skipped.append(f"{spec['provider']}/{spec['model']}: {why}")
             continue
         retries = settings.get("llm.max_retries", 2)
         for attempt in range(retries + 1):
@@ -132,7 +135,7 @@ async def complete(node: str, system: str, user: str, *, json_mode: bool = False
                 if status == 429:
                     wait = max(wait, 8.0)
                 await asyncio.sleep(min(wait, 30))
-    raise LLMError(f"{node}: all models failed: {last_err}")
+    raise LLMError(f"{node}: all models failed: {str(last_err)[:400] if last_err else ''} skipped: {'; '.join(skipped) or '-'}")
 
 
 async def complete_json(node: str, system: str, user: str, schema: type[T], *, max_tokens: int | None = None) -> T:

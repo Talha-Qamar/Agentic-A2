@@ -7,15 +7,16 @@ pip install -q -r requirements-eval.txt
 set +x
 [ -f ~/.gigbid_reviewer.env ] && set -a && . ~/.gigbid_reviewer.env && set +a
 set -x
-OUT=runs/out/006_final; mkdir -p $OUT/results
+OUT=runs/out/007_final; mkdir -p $OUT/results
 export EMBED_THREADS=6 GIGBID_PROFILE=open
 export GIGBID_FIT_BID=$(python -c "import json;print(json.load(open('evals/results/fit_calibration.json'))['summary']['fit_bid'])")
 export GIGBID_FIT_WATCH=$(python -c "import json;print(round(0.6*json.load(open('evals/results/fit_calibration.json'))['summary']['fit_bid'],4))")
 
+python scripts/quota_probe.py
 # 1. demo video against the live deployment (narration with macOS `say`)
 python -m playwright install chromium >/dev/null 2>&1
 if [ ! -f $OUT/gigbid_demo.mp4 ]; then
-  timeout 3000 python scripts/demo_video.py --url https://gigbid-d3l2.onrender.com --out $OUT/gigbid_demo.mp4 > $OUT/demo.log 2>&1
+  python scripts/demo_video.py --url https://gigbid-d3l2.onrender.com --out $OUT/gigbid_demo.mp4 > $OUT/demo.log 2>&1
   tail -5 $OUT/demo.log
 fi
 
@@ -28,16 +29,17 @@ cp docs/examples/single_agent_proposal.* $OUT/results/ 2>/dev/null
 cp evals/results/rerank_analysis.json $OUT/results/ 2>/dev/null
 
 # 3. experiments, fresh caches once
-if [ ! -f var/.fresh_006 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_006; fi
+if [ ! -f var/.fresh_007 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_007; fi
 [ -f ~/.gigbid_hidden_seed ] || python -c "import secrets;print(secrets.token_hex(8))" > ~/.gigbid_hidden_seed
 complete() { python - "$@" <<'PY'
 import json,sys,os
-ok=all(os.path.exists(f"evals/results/{f}") and json.load(open(f"evals/results/{f}")).get("complete", True) for f in sys.argv[1:])
+ok=all(os.path.exists(f"evals/results/{f}") and json.load(open(f"evals/results/{f}")).get("complete", False) for f in sys.argv[1:])
 sys.exit(0 if ok else 1)
 PY
 }
 for round in $(seq 1 60); do
   echo "=== round $round $(date)"
+  python scripts/quota_probe.py
   if ! complete tool_granularity.json; then
     ( python -m evals.runners.tool_granularity --tasks 40 --provider groq --model qwen/qwen3.8-27b > $OUT/tool_study_r$round.log 2>&1 ) &
     TS=$!
