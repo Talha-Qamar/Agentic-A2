@@ -1,0 +1,53 @@
+{
+ "provenance": {
+  "git_sha": "5533252",
+  "timestamp": "2026-11-12T23:50:57+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "jobs": 51
+ },
+ "summary": {
+  "v2_hybrid": {
+   "chunks": 1245,
+   "type_share": {
+    "proposal": 0.7325,
+    "code": 0.1076,
+    "case_study": 0.0707,
+    "cv": 0.0426,
+    "readme": 0.0281,
+    "review": 0.0185
+   },
+   "gold_project_share": 0.4988,
+   "gold_hit_types": {
+    "proposal": 0.6055,
+    "code": 0.1884,
+    "case_study": 0.1095,
+    "readme": 0.0483,
+    "cv": 0.0322,
+    "review": 0.0161
+   }
+  },
+  "v3_rerank": {
+   "chunks": 1245,
+   "type_share": {
+    "proposal": 0.7912,
+    "case_study": 0.0827,
+    "code": 0.0562,
+    "cv": 0.0426,
+    "readme": 0.0185,
+    "review": 0.0088
+   },
+   "gold_project_share": 0.4586,
+   "gold_hit_types": {
+    "proposal": 0.676,
+    "case_study": 0.1349,
+    "code": 0.1103,
+    "readme": 0.0333,
+    "cv": 0.0315,
+    "review": 0.014
+   }
+  }
+ }
+}

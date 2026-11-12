@@ -32,7 +32,7 @@ Recall@5 went **down**, from 0.574 to 0.514. A different, much smaller embedding
 ordering, 0.606 to 0.526, so it was not one model's quirk. Adding the reranker to my best variant also cost recall
 (0.676 to 0.660 in the ablation).
 
-When I looked at what the reranker promoted, the reason was obvious in hindsight. {{rerank_finding}} A past
+When I looked at what the reranker promoted, the reason was obvious in hindsight. Over the top five results for 1,245 requirement slots, the reranker raised the share of past proposals from 73% to 79% and halved the share of code (11% to 6%), while the share of results that belonged to a gold project fell from 50% to 46%. A past
 proposal that says "I have built RAG pipelines with LangChain" is an almost perfect paraphrase of the requirement
 "experience building RAG pipelines with LangChain". A repository file that imports `langchain`, builds a retriever
 and evaluates it is not a paraphrase of anything. It reads like code. The cross-encoder was trained to judge whether
