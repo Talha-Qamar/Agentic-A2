@@ -182,7 +182,7 @@ async def record(url: str, email: str, password: str, workdir: Path, durations: 
         t0 = time.monotonic(); await cap(9)
         await page.goto(url + "/pipeline"); await cap(9)
         await page.get_by_test_id("advance-sync").click()
-        for _ in range(4):
+        for _ in range(8):
             ra = [a for a in await (await api.get(url + "/api/approvals")).json() if a["kind"] != "proposal_approval"]
             if ra:
                 break
@@ -267,7 +267,7 @@ def prepare(url: str, email: str, password: str, timeout_s: int = 600) -> None:
         time.sleep(15)
     # unrecorded: approve one proposal and let simulated time pass until a client reply is waiting for approval,
     # so the recorded "client reply handled" scene does not have to wait for the simulator
-    for _ in range(int(os.environ.get("PREP_REPLY_ROUNDS", "8"))):
+    for _ in range(int(os.environ.get("PREP_REPLY_ROUNDS", "20"))):
         replies = [a for a in c.get("/api/approvals").json() if a["kind"] == "message_approval"]
         if replies:
             print("prep: client reply waiting for approval", flush=True)
