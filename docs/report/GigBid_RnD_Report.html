@@ -549,4 +549,11 @@ patterns score below the scam threshold when the budget and client history look 
 </tbody>
 </table>
 <p>Quality on the same run (decision_eval.json (hidden test pending), n=21, profile open): bid F1 0.870, scam recall 1.000, price in band 0.727, unsupported claims after verification 0.000, dead letter 3.</p>
-<p><em>Interpretation pending: the results file for this section is still being produced.</em></p></body></html>
+<p>Optimisation that helped - skip early: a job that the deterministic rule skips stops before the writer and costs 1050 tokens / USD 0.00014 on average (n=10), against 11902 tokens / USD 0.00277 for a job that gets a proposal (n=9); routing and risk run on the small model.</p>
+<p>Latency budgets are missed and cost budgets are met. The p95 latency is several times the 25 s declared; the trace
+timings show where it goes: on Groq's free tier each model is limited to 8,000 tokens per minute, so a proposal
+(about 12K tokens across writer, verifier, critic and compliance) waits for the per-minute window to reopen, and the
+three parallel analysis branches queue behind each other. Model compute itself is a few seconds per node. The
+declared budget assumed an unthrottled endpoint; on this tier the honest numbers are the ones in the table. What
+would meet it: a paid tier (no per-minute cap), or the local profile for the analysis branches. Cost stays under
+budget because a skipped job stops before any strong-model call.</p></body></html>

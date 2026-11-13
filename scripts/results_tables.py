@@ -163,8 +163,17 @@ def budgets_table() -> str:
         out.append(f"| {name} | {dec} | {f(meas, 4) if isinstance(meas, float) else f(meas)} | {met} |")
     q = [("bid F1", s.get("bid_f1")), ("scam recall", s.get("scam_recall")), ("price in band", s.get("price_in_band")),
          ("unsupported claims after verification", s.get("unsupported_claim_rate_after")), ("dead letter", s.get("dead_letter"))]
+    rows = d.get("rows") or []
+    sk = [r for r in rows if r.get("pred") != "bid"]
+    pr = [r for r in rows if r.get("pred") == "bid" and r.get("cover_letter")]
+    opt = ""
+    if sk and pr:
+        m = lambda rs, k: sum((r.get(k) or 0) for r in rs) / len(rs)  # noqa: E731
+        opt = (f"\n\nOptimisation that helped - skip early: a job that the deterministic rule skips stops before the writer and costs "
+               f"{m(sk, 'tokens'):.0f} tokens / USD {m(sk, 'cost_usd'):.5f} on average (n={len(sk)}), against {m(pr, 'tokens'):.0f} tokens / "
+               f"USD {m(pr, 'cost_usd'):.5f} for a job that gets a proposal (n={len(pr)}); routing and risk run on the small model.\n")
     return ("\n".join(out) + f"\n\nQuality on the same run ({src}, n={s['n']}, profile {d['provenance'].get('profile')}): "
-            + ", ".join(f"{k} {f(v)}" for k, v in q) + ".\n")
+            + ", ".join(f"{k} {f(v)}" for k, v in q) + "." + opt + "\n")
 
 
 FIX = {"wrong skip (fit too low)": ("Matcher counted past proposals as proof and ignored code-only skills; threshold 0.55 set by hand",
