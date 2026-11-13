@@ -198,8 +198,10 @@ async def record(url: str, email: str, password: str, workdir: Path, durations: 
         # 10 degraded
         t0 = time.monotonic(); await cap(10)
         await api.post(url + "/api/demo/fault", data={"down": True})
-        await page.goto(url + "/inbox"); await page.wait_for_timeout(2500); await cap(10)
-        await api.post(url + "/api/demo/fault", data={"down": False})
+        try:
+            await page.goto(url + "/inbox"); await page.wait_for_timeout(2500); await cap(10)
+        finally:   # never leave the live deployment in degraded mode
+            await api.post(url + "/api/demo/fault", data={"down": False})
         await hold(10, t0)
         # 11 trace
         t0 = time.monotonic(); await cap(11)
@@ -249,6 +251,7 @@ def prepare(url: str, email: str, password: str, timeout_s: int = 600) -> None:
         except Exception:  # noqa: BLE001 - free instance waking up
             time.sleep(10)
     c.post("/api/auth/login", json={"email": email, "password": password}).raise_for_status()
+    c.post("/api/demo/fault", json={"down": False})   # clear a degraded state left by an interrupted earlier recording
     c.post("/api/demo/advance", json={"minutes": 240})
     c.post("/api/scout/run")
     for jid in (SCAM_JOB, INJECTION_JOB):
