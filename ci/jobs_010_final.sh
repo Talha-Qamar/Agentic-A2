@@ -18,7 +18,7 @@ export GIGBID_FIT_WATCH=$(python -c "import json;print(round(0.6*json.load(open(
 python scripts/quota_probe.py
 # 1. demo video against the live deployment (narration with macOS `say`)
 python -m playwright install chromium >/dev/null 2>&1
-if [ ! -f $OUT/gigbid_demo.mp4 ]; then
+if [ ! -f $OUT/gigbid_demo.mp4 ] && [ ! -f docs/demo/gigbid_demo.mp4 ]; then
   python scripts/demo_video.py --url https://gigbid-d3l2.onrender.com --out $OUT/gigbid_demo.mp4 > $OUT/demo.log 2>&1
   tail -5 $OUT/demo.log
 fi
@@ -36,7 +36,7 @@ cp evals/results/rerank_analysis.json $OUT/results/ 2>/dev/null
 cp evals/results/portfolio_builder_eval.json $OUT/results/ 2>/dev/null
 
 # 3. experiments, fresh caches once
-if [ ! -f var/.fresh_010 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_008; fi
+if [ ! -f var/.fresh_010 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_010; fi
 [ -f ~/.gigbid_hidden_seed ] || python -c "import secrets;print(secrets.token_hex(8))" > ~/.gigbid_hidden_seed
 complete() { python - "$@" <<'PY'
 import json,sys,os
