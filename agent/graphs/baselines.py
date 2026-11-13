@@ -52,7 +52,7 @@ def _final_json(messages) -> dict:
     return {"decision": "skip", "reasons": ["no parseable final answer"], "cover_letter": None, "price": None}
 
 
-TOOL_RESULT_CHARS = 3000   # Groq free tier rejects any single request above 8K tokens (HTTP 413), so long tool results are cut
+TOOL_RESULT_CHARS = int(os.environ.get("TOOL_RESULT_CHARS", "2000"))   # Groq free tier rejects any single request above 8K tokens (HTTP 413)
 
 
 def trim_tool_results(state: dict) -> dict:

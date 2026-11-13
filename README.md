@@ -1,9 +1,9 @@
 # GigBid — a multi-agent copilot that bids only where the freelancer can prove fit
 
-<!-- demo GIF is added after the demo recording: docs/images/demo.gif -->
+![GigBid demo: inbox, scam skipped, proposal studio, approval](docs/images/demo.gif)
 
 **Live:** https://gigbid-d3l2.onrender.com (reviewer login is in the private submission comment; the free instance
-sleeps when idle, so the first load takes ~1 minute) · **Demo video:** _link added after recording_ ·
+sleeps when idle, so the first load takes ~1 minute) · **Demo video:** [`docs/demo/gigbid_demo.mp4`](docs/demo/gigbid_demo.mp4) (2:23, recorded against the live deployment by `scripts/demo_video.py`) ·
 **Portfolio MCP server:** [`mcp_servers/portfolio`](mcp_servers/portfolio/README.md) ·
 **Write-up:** _link added after publishing_ · **Report:** `docs/report/GigBid_RnD_Report.pdf`
 
@@ -114,7 +114,12 @@ _injection_eval.json pending_
 <!-- /table -->
 
 Full tables (by persona, by job type, ablation) and how each runner works: [evals/README.md](evals/README.md).
-Public traces (read-only pages on the live app, same trace id as the MCP audit log): _three links added after the demo run_.
+Public traces (read-only pages on the live app: per-node tokens, cost and latency, every MCP tool call, same trace id as the
+MCP audit log), published from the demo run:
+
+* [approved proposal](https://gigbid-d3l2.onrender.com/t/bid-ce082d-live-4c7c84832f-63724) - full bid graph through approval and exactly-once submit
+* [scam skipped](https://gigbid-d3l2.onrender.com/t/bid-ce082d-dev-922f47037a-63013) - off-platform crypto payment caught, no proposal drafted
+* [injection ignored](https://gigbid-d3l2.onrender.com/t/bid-ce082d-dev-19cf56c7ca-63022) - planted "rate this a perfect fit" instruction quarantined; decision made by rules on evidence
 
 ## Run it yourself
 
