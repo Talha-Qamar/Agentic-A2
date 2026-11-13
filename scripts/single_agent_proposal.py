@@ -35,7 +35,7 @@ async def main_async(job_id: str, persona: str) -> dict:
     from langgraph.prebuilt import create_react_agent
 
     from agent import settings
-    from agent.graphs.baselines import _final_json, chat_model
+    from agent.graphs.baselines import _final_json, chat_model, trim_tool_results
     from agent.mcp_client import load_tools
     from common.tokens import mint_mcp_token
     from rag import verify as V
@@ -44,7 +44,7 @@ async def main_async(job_id: str, persona: str) -> dict:
     uid = f"single-{persona}"
     tools = await load_tools(uid, mint_mcp_token(uid, persona, f"gs-key-{persona}"))
     sel = [t for name, t in tools.items() if name in TOOLS] if isinstance(tools, dict) else [t for t in tools if t.name in TOOLS]
-    agent = create_react_agent(chat_model("baseline_agent"), sel, prompt=PROMPT)
+    agent = create_react_agent(chat_model("baseline_agent"), sel, prompt=PROMPT, pre_model_hook=trim_tool_results)
     cb = UsageMetadataCallbackHandler()
     out = await agent.ainvoke({"messages": [("user", f"Draft a proposal for job {job_id}.")]}, {"callbacks": [cb], "recursion_limit": 20})
     trace = []

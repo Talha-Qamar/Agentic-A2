@@ -17,6 +17,8 @@ import time
 import wave
 from pathlib import Path
 
+import httpx
+
 CAPTION_JS = """(t) => { let d = document.getElementById('__cap'); if (!d) { d = document.createElement('div'); d.id='__cap';
  d.style.cssText='position:fixed;left:50%;bottom:18px;transform:translateX(-50%);max-width:86%;background:rgba(15,23,42,.88);color:#fff;'+
  'font:600 17px/1.4 Inter,system-ui,sans-serif;padding:10px 16px;border-radius:10px;z-index:99999;box-shadow:0 6px 24px rgba(0,0,0,.25)';
@@ -225,10 +227,21 @@ def build_audio(workdir: Path, wavs: list[Path], starts: dict[int, float]) -> Pa
     return out
 
 
+class _RetryClient(httpx.Client):
+    """The free instance can restart or answer 502 for a moment; retry instead of failing the recording."""
+
+    def request(self, *a, **kw):
+        for i in range(6):
+            r = super().request(*a, **kw)
+            if r.status_code < 500 and (r.headers.get("content-type", "").startswith("application/json") or r.request.method != "GET"):
+                return r
+            time.sleep(10 * (i + 1))
+        return r
+
+
 def prepare(url: str, email: str, password: str, timeout_s: int = 600) -> None:
     """Unrecorded warm-up: wake the instance, scout, and wait until analysed jobs and one pending approval exist."""
-    import httpx
-    c = httpx.Client(base_url=url, timeout=120)
+    c = _RetryClient(base_url=url, timeout=120)
     for _ in range(30):
         try:
             if c.get("/api/health").status_code == 200:

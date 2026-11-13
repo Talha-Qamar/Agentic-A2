@@ -7,7 +7,7 @@ pip install -q -r requirements-eval.txt
 set +x
 [ -f ~/.gigbid_reviewer.env ] && set -a && . ~/.gigbid_reviewer.env && set +a
 set -x
-OUT=runs/out/008_final; mkdir -p $OUT/results
+OUT=runs/out/009_final; mkdir -p $OUT/results
 export EMBED_THREADS=6 GIGBID_PROFILE=open
 if [ -n "${NVIDIA_API_KEY:-}" ]; then export GIGBID_PROFILE=nv; TS_ARGS="--provider nvidia --model openai/gpt-oss-20b"; else TS_ARGS="--provider groq --model qwen/qwen3.8-27b"; fi
 echo "profile=$GIGBID_PROFILE"
@@ -36,7 +36,7 @@ cp evals/results/rerank_analysis.json $OUT/results/ 2>/dev/null
 cp evals/results/portfolio_builder_eval.json $OUT/results/ 2>/dev/null
 
 # 3. experiments, fresh caches once
-if [ ! -f var/.fresh_008 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_008; fi
+if [ ! -f var/.fresh_009 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_008; fi
 [ -f ~/.gigbid_hidden_seed ] || python -c "import secrets;print(secrets.token_hex(8))" > ~/.gigbid_hidden_seed
 complete() { python - "$@" <<'PY'
 import json,sys,os

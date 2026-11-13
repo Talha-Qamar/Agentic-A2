@@ -105,6 +105,7 @@ async def run_design(design: str, tasks: list[dict], model, cache=None, tag: str
     from langchain_mcp_adapters.client import MultiServerMCPClient
     from langgraph.prebuilt import create_react_agent
 
+    from agent.graphs.baselines import trim_tool_results
     from common.tokens import mint_mcp_token
     rows = []
     for i, t in enumerate(tasks):
@@ -116,20 +117,30 @@ async def run_design(design: str, tasks: list[dict], model, cache=None, tag: str
         client = MultiServerMCPClient({"p": {"transport": "streamable_http", "url": f"http://localhost:{PORTS[design]}/mcp",
                                              "headers": {"Authorization": f"Bearer {tok}"}}})
         tools = await client.get_tools()
-        agent = create_react_agent(model, tools, prompt="You answer questions about the user's freelance portfolio using the tools. "
-                                                         "Be brief; answer in one or two sentences.")
+        agent = create_react_agent(model, tools, pre_model_hook=trim_tool_results,
+                                   prompt="You answer questions about the user's freelance portfolio using the tools. Be brief; answer in one or two sentences.")
         cb = UsageMetadataCallbackHandler()
         t0 = time.perf_counter()
-        try:
-            out = await agent.ainvoke({"messages": [("user", t["q"])]}, {"callbacks": [cb], "recursion_limit": 14})
+        out, err = None, None
+        for attempt in range(4):   # a per-minute rate limit is the provider's, not the tool design's: wait and retry
+            try:
+                out = await agent.ainvoke({"messages": [("user", t["q"])]}, {"callbacks": [cb], "recursion_limit": 14})
+                break
+            except Exception as e:  # noqa: BLE001
+                if attempt < 3 and "429" in str(e) and not quota_exhausted(str(e)):
+                    await asyncio.sleep(65)
+                    cb, t0 = UsageMetadataCallbackHandler(), time.perf_counter()
+                    continue
+                err = f"{type(e).__name__}: {str(e)[:300]}"
+                break
+        if out is not None:
             msgs = out["messages"]
             answer = msgs[-1].content if isinstance(msgs[-1].content, str) else str(msgs[-1].content)
             tcs = [tc for m in msgs for tc in (getattr(m, "tool_calls", None) or [])]
             calls = [tc["name"] for tc in tcs]
             call_args = [tc.get("args") or {} for tc in tcs]
-            err = None
-        except Exception as e:  # noqa: BLE001
-            answer, calls, call_args, err = "", [], [], f"{type(e).__name__}: {str(e)[:160]}"
+        else:
+            answer, calls, call_args = "", [], []
         lat = time.perf_counter() - t0
         exp = EXPECTED[design][t["type"]]
         wrong = sum(c not in exp for c in calls)
@@ -145,7 +156,7 @@ async def run_design(design: str, tasks: list[dict], model, cache=None, tag: str
             raise QuotaStop(key)
         if cache:
             cache.put(key, rows[-1])
-        print(f"[{design}] {t['type']:8s} ok={rows[-1]['success']} calls={calls} {lat:.1f}s", flush=True)
+        print(f"[{design}] {t['type']:8s} ok={rows[-1]['success']} calls={calls} {lat:.1f}s{' ERR ' + err[:200] if err else ''}", flush=True)
     return rows
 
 
