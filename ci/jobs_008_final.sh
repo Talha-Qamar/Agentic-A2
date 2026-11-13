@@ -31,6 +31,10 @@ cp docs/examples/single_agent_proposal.* $OUT/results/ 2>/dev/null
 [ -f evals/results/rerank_analysis.json ] || python -m evals.runners.rerank_analysis --limit 40 > $OUT/rerank.log 2>&1
 cp evals/results/rerank_analysis.json $OUT/results/ 2>/dev/null
 
+# X3 evaluation, no model needed
+[ -f evals/results/portfolio_builder_eval.json ] || python -m evals.runners.portfolio_builder_eval > $OUT/builder.log 2>&1
+cp evals/results/portfolio_builder_eval.json $OUT/results/ 2>/dev/null
+
 # 3. experiments, fresh caches once
 if [ ! -f var/.fresh_008 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_008; fi
 [ -f ~/.gigbid_hidden_seed ] || python -c "import secrets;print(secrets.token_hex(8))" > ~/.gigbid_hidden_seed
