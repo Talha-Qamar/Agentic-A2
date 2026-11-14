@@ -7,10 +7,8 @@ pip install -q -r requirements-eval.txt
 set +x
 [ -f ~/.gigbid_reviewer.env ] && set -a && . ~/.gigbid_reviewer.env && set +a
 set -x
-OUT=runs/out/011_saturday; mkdir -p $OUT/results
+OUT=runs/out/011_sunday; mkdir -p $OUT/results
 export EMBED_THREADS=6 GIGBID_PROFILE=open   # same routing as the live site: gpt-oss-20b for light nodes, 120b for writer/critic/baselines
-# Saturday plan: wait until Groq's daily pools have refilled (usage on Friday ended ~15:40 PKT)
-until [ "$(TZ=Asia/Karachi date +%Y%m%d%H%M)" -ge 202611141530 ]; do sleep 300; done
 if [ -n "${NVIDIA_API_KEY:-}" ]; then export GIGBID_PROFILE=nv; TS_ARGS="--provider nvidia --model openai/gpt-oss-20b"; else TS_ARGS="--provider groq --model qwen/qwen3.8-27b"; fi
 echo "profile=$GIGBID_PROFILE"
 [ -n "${REVIEWER_EMAIL:-}" ] && echo "reviewer email set" || echo "REVIEWER_EMAIL missing in ~/.gigbid_reviewer.env"
