@@ -1,0 +1,314 @@
+{
+ "provenance": {
+  "git_sha": "44cc6a2",
+  "timestamp": "2026-11-13T15:08:00+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "variant": "v9_skill_graph",
+  "llm_drafts": false
+ },
+ "summary": {
+  "ai_ml_engineer": {
+   "suggestions": [
+    {
+     "skill": "swift",
+     "score": 22.17,
+     "jobs_affected": 8,
+     "budget_at_stake": 2438.0,
+     "action": "You have no evidence for swift; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "seo",
+     "score": 19.0,
+     "jobs_affected": 7,
+     "budget_at_stake": 2276.0,
+     "action": "You have no evidence for seo; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "flutter",
+     "score": 17.29,
+     "jobs_affected": 7,
+     "budget_at_stake": 1676.0,
+     "action": "You have no evidence for flutter; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "wordpress",
+     "score": 14.61,
+     "jobs_affected": 5,
+     "budget_at_stake": 2918.0,
+     "action": "You have no evidence for wordpress; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "shopify",
+     "score": 13.09,
+     "jobs_affected": 5,
+     "budget_at_stake": 2024.0,
+     "action": "You have no evidence for shopify; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "summarization",
+     "score": 8.42,
+     "jobs_affected": 3,
+     "budget_at_stake": 2540.0,
+     "action": "You have no evidence for summarization; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "llm-as-judge",
+     "score": 6.15,
+     "jobs_affected": 3,
+     "budget_at_stake": 930.0,
+     "action": "You have no evidence for llm-as-judge; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "regression",
+     "score": 4.84,
+     "jobs_affected": 3,
+     "budget_at_stake": 424.0,
+     "action": "You have no evidence for regression; consider a small project or drop it from searches."
+    }
+   ],
+   "added_case_studies": [
+    "pydantic",
+    "presidio",
+    "sqlalchemy"
+   ],
+   "built": [
+    {
+     "repo": "agent-redteam",
+     "verification": {
+      "claims": 2,
+      "supported": 2,
+      "partial": 0,
+      "unsupported": 0,
+      "unsupported_rate": 0.0
+     },
+     "skills": [
+      "pydantic",
+      "guardrails",
+      "langgraph",
+      "pytest",
+      "presidio",
+      "regex",
+      "tool"
+     ]
+    },
+    {
+     "repo": "bnpl-fraud",
+     "verification": {
+      "claims": 2,
+      "supported": 1,
+      "partial": 1,
+      "unsupported": 0,
+      "unsupported_rate": 0.0
+     },
+     "skills": [
+      "scikit-learn",
+      "shap",
+      "sqlalchemy",
+      "mlflow",
+      "postgresql",
+      "xgboost",
+      "imbalanced-learn",
+      "sklearn"
+     ]
+    }
+   ],
+   "heldout_jobs_affected": 2,
+   "coverage_before": 0.75,
+   "coverage_after": 0.75,
+   "fit_before": 0.7143,
+   "fit_after": 0.7143,
+   "bids_before": 2,
+   "bids_after": 2,
+   "gold_bid_among_affected": 2
+  },
+  "fullstack_web_dev": {
+   "suggestions": [
+    {
+     "skill": "rust",
+     "score": 18.71,
+     "jobs_affected": 7,
+     "budget_at_stake": 2162.0,
+     "action": "You have no evidence for rust; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "tableau",
+     "score": 14.15,
+     "jobs_affected": 5,
+     "budget_at_stake": 2615.0,
+     "action": "You have no evidence for tableau; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "kubernetes",
+     "score": 11.41,
+     "jobs_affected": 4,
+     "budget_at_stake": 2690.0,
+     "action": "You have no evidence for kubernetes; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "pytorch",
+     "score": 9.98,
+     "jobs_affected": 6,
+     "budget_at_stake": 471.0,
+     "action": "You have no evidence for pytorch; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "swift",
+     "score": 6.9,
+     "jobs_affected": 3,
+     "budget_at_stake": 1332.0,
+     "action": "You have no evidence for swift; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "rbac",
+     "score": 1.92,
+     "jobs_affected": 1,
+     "budget_at_stake": 750.0,
+     "action": "You have no evidence for rbac; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "seo",
+     "score": 1.08,
+     "jobs_affected": 1,
+     "budget_at_stake": 43.0,
+     "action": "You have no evidence for seo; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "aria",
+     "score": 0.5,
+     "jobs_affected": 0,
+     "budget_at_stake": 0,
+     "action": "Hidden strength: aria appears only in code (a11y-fixes). A short write-up makes it findable."
+    }
+   ],
+   "added_case_studies": [
+    "aria",
+    "storybook",
+    "jest-axe"
+   ],
+   "built": [
+    {
+     "repo": "a11y-fixes",
+     "verification": {
+      "claims": 2,
+      "supported": 1,
+      "partial": 1,
+      "unsupported": 0,
+      "unsupported_rate": 0.0
+     },
+     "skills": [
+      "aria",
+      "storybook",
+      "accessibility",
+      "jest-axe",
+      "type"
+     ]
+    }
+   ],
+   "heldout_jobs_affected": 5,
+   "coverage_before": 0.66,
+   "coverage_after": 0.66,
+   "fit_before": 0.6255,
+   "fit_after": 0.6255,
+   "bids_before": 5,
+   "bids_after": 5,
+   "gold_bid_among_affected": 2
+  },
+  "data_analyst": {
+   "suggestions": [
+    {
+     "skill": "next.js",
+     "score": 18.21,
+     "jobs_affected": 7,
+     "budget_at_stake": 1979.0,
+     "action": "You have no evidence for next.js; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "kubernetes",
+     "score": 17.4,
+     "jobs_affected": 7,
+     "budget_at_stake": 1708.0,
+     "action": "You have no evidence for kubernetes; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "react",
+     "score": 14.43,
+     "jobs_affected": 6,
+     "budget_at_stake": 1538.0,
+     "action": "You have no evidence for react; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "swift",
+     "score": 13.04,
+     "jobs_affected": 5,
+     "budget_at_stake": 1997.0,
+     "action": "You have no evidence for swift; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "pytorch",
+     "score": 8.82,
+     "jobs_affected": 4,
+     "budget_at_stake": 1169.0,
+     "action": "You have no evidence for pytorch; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "flutter",
+     "score": 3.65,
+     "jobs_affected": 3,
+     "budget_at_stake": 121.0,
+     "action": "You have no evidence for flutter; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "regression",
+     "score": 3.45,
+     "jobs_affected": 2,
+     "budget_at_stake": 530.0,
+     "action": "You have no evidence for regression; consider a small project or drop it from searches."
+    },
+    {
+     "skill": "clustering",
+     "score": 1.46,
+     "jobs_affected": 1,
+     "budget_at_stake": 290.0,
+     "action": "You have no evidence for clustering; consider a small project or drop it from searches."
+    }
+   ],
+   "added_case_studies": [
+    "guardrails",
+    "testing",
+    "scipy"
+   ],
+   "built": [
+    {
+     "repo": "ab-toolkit",
+     "verification": {
+      "claims": 3,
+      "supported": 2,
+      "partial": 1,
+      "unsupported": 0,
+      "unsupported_rate": 0.0
+     },
+     "skills": [
+      "scipy",
+      "statsmodels",
+      "bigquery",
+      "analysis",
+      "power",
+      "sql"
+     ]
+    }
+   ],
+   "heldout_jobs_affected": 2,
+   "coverage_before": 0.4,
+   "coverage_after": 0.4,
+   "fit_before": 0.3803,
+   "fit_after": 0.3803,
+   "bids_before": 2,
+   "bids_after": 2,
+   "gold_bid_among_affected": 2
+  }
+ },
+ "llm_case_studies": null
+}

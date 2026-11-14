@@ -426,7 +426,52 @@ unsupported sentences deleted → saved into the user's portfolio, which the Por
 A second half mines skill gaps from skipped jobs and finds "hidden strengths" (skills present in code but in no
 prose) to say which case study to write next. Evaluation (<code>portfolio_builder_eval.json</code>): suggestions computed on
 the first half of the dev set, write-ups added, coverage and decisions re-measured on the held-out half.</p>
-<p><em>portfolio_builder_eval.json pending</em></p>
+<table>
+<thead>
+<tr>
+<th>persona</th>
+<th>case studies built</th>
+<th>claims checked</th>
+<th>unsupported removed</th>
+<th>held-out jobs affected</th>
+<th>coverage before -&gt; after</th>
+<th>fit before -&gt; after</th>
+<th>bids before -&gt; after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ai_ml_engineer</td>
+<td>2 (agent-redteam, bnpl-fraud)</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>0.750 -&gt; 0.750</td>
+<td>0.714 -&gt; 0.714</td>
+<td>2 -&gt; 2</td>
+</tr>
+<tr>
+<td>fullstack_web_dev</td>
+<td>1 (a11y-fixes)</td>
+<td>2</td>
+<td>0</td>
+<td>5</td>
+<td>0.660 -&gt; 0.660</td>
+<td>0.625 -&gt; 0.625</td>
+<td>5 -&gt; 5</td>
+</tr>
+<tr>
+<td>data_analyst</td>
+<td>1 (ab-toolkit)</td>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>0.400 -&gt; 0.400</td>
+<td>0.380 -&gt; 0.380</td>
+<td>2 -&gt; 2</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Result, stated plainly:</strong> the builder's drafts were grounded (no unsupported claim survived verification), but on
 the held-out jobs coverage, fit and bid decisions did not change. The suggested skills were rarely the deciding
 requirement in those jobs, and V9 already finds code-level evidence through the skill graph, so a prose write-up of
