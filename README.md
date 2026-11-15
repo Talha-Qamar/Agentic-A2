@@ -139,7 +139,7 @@ Full tables (by persona, by job type, ablation) and how each runner works: [eval
 Public traces (read-only pages on the live app: per-node tokens, cost and latency, every MCP tool call, same trace id as the
 MCP audit log), published from the demo run:
 
-* [approved proposal](https://gigbid-d3l2.onrender.com/t/bid-ce082d-live-4c7c84832f-63724) - full bid graph through approval and exactly-once submit
+* [approved proposal, then dead letter](https://gigbid-d3l2.onrender.com/t/bid-ce082d-live-4c7c84832f-63724) - full bid graph through the human approval; the submit then failed because the free host had restarted and its in-memory GigSim no longer had the job, so the run went to the dead-letter queue with the reason shown (the exactly-once submit path is in the demo video and `tests/integration/test_graph_e2e.py`)
 * [scam skipped](https://gigbid-d3l2.onrender.com/t/bid-ce082d-dev-922f47037a-63013) - off-platform crypto payment caught, no proposal drafted
 * [injection ignored](https://gigbid-d3l2.onrender.com/t/bid-ce082d-dev-19cf56c7ca-63022) - planted "rate this a perfect fit" instruction quarantined; decision made by rules on evidence
 

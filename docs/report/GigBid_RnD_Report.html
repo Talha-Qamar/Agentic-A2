@@ -793,4 +793,7 @@ timings show where it goes: on Groq's free tier each model is limited to 8,000 t
 three parallel analysis branches queue behind each other. Model compute itself is a few seconds per node. The
 declared budget assumed an unthrottled endpoint; on this tier the honest numbers are the ones in the table. What
 would meet it: a paid tier (no per-minute cap), or the local profile for the analysis branches. Cost stays under
-budget because a skipped job stops before any strong-model call.</p></body></html>
+budget because a skipped job stops before any strong-model call. One failure is specific to the free host: GigSim's state lives
+in the instance's temporary disk, so when the instance restarts between drafting and approval the job no longer
+exists and the approved run goes to the dead-letter queue (public trace <code>bid-ce082d-live-4c7c84832f-63724</code>). The
+fix is a persistent disk for the simulator, which the free tier does not offer.</p></body></html>
