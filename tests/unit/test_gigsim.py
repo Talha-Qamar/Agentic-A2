@@ -46,3 +46,46 @@ def test_policy_update_requires_disclosure():
 def test_rate_limit_and_auth():
     with TestClient(app) as c:
         assert c.get("/v1/account", headers={"X-GigSim-Key": "nope"}).status_code == 401
+
+
+def test_scout_recovers_when_marketplace_clock_restarts(monkeypatch):
+    """Saved-search watermark ahead of a restarted GigSim clock must not hide new jobs forever."""
+    import asyncio
+
+    from worker import tasks
+
+    calls = []
+
+    class Port:
+        async def search_jobs(self, **kw):
+            calls.append(kw["since_minute"])
+            return {"jobs": [], "sim_minutes": 12.0} if kw["since_minute"] else {"jobs": [{"job_id": "j1", "title": "t", "posted_minute": 5}], "sim_minutes": 12.0}
+
+    async def port_for(_u):
+        return Port()
+
+    store = {"jobs": {}, "searches": [{"search_id": "s1", "query": "", "category": None, "last_seen_minute": 7864}]}
+
+    class DB:
+        def q(self, sql, args=()):
+            return store["searches"]
+
+        def one(self, sql, args=()):
+            return None
+
+        def x(self, sql, args=()):
+            if sql.startswith("INSERT INTO jobs"):
+                store["jobs"][args[1]] = True
+            return 1
+
+    queued = []
+
+    async def enqueue(*a):
+        queued.append(a)
+
+    monkeypatch.setattr(tasks, "user_row", lambda uid: {"user_id": uid})
+    monkeypatch.setattr(tasks, "port_for", port_for)
+    monkeypatch.setattr(tasks, "db", DB())
+    monkeypatch.setattr(tasks, "enqueue", enqueue)
+    out = asyncio.run(tasks.scout(None, "u1"))
+    assert calls == [7864, None] and out["new"] == 1 and queued

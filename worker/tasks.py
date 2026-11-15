@@ -154,6 +154,12 @@ async def scout(ctx, user_id: str, search_id: str | None = None) -> dict:
     for s in searches:
         res = await port.search_jobs(query=s["query"], category=s.get("category"), limit=25, since_minute=s.get("last_seen_minute"))
         maxm = s.get("last_seen_minute") or 0
+        sim_now = res.get("sim_minutes")
+        if s.get("last_seen_minute") and not res.get("jobs") and (sim_now is None or sim_now < s["last_seen_minute"]):
+            # the marketplace clock restarted (GigSim keeps its state in /tmp on the free host): the saved watermark is
+            # ahead of the new clock, so re-read from the start; already-seen job ids are skipped below
+            res = await port.search_jobs(query=s["query"], category=s.get("category"), limit=25, since_minute=None)
+            maxm = 0
         for j in res.get("jobs", []):
             maxm = max(maxm, j.get("posted_minute") or 0)
             if db.one("SELECT 1 FROM jobs WHERE user_id=%s AND job_id=%s", (user_id, j["job_id"])):
