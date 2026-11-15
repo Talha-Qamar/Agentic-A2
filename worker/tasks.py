@@ -173,9 +173,16 @@ async def scout(ctx, user_id: str, search_id: str | None = None) -> dict:
             else:
                 new.append(j["job_id"])
         db.x("UPDATE saved_searches SET last_run_at=now(), last_seen_minute=%s WHERE search_id=%s", (maxm, s["search_id"]))
-    for jid in new[: int(os.environ.get("SCOUT_MAX_PER_RUN", "6"))]:
+    cap = int(os.environ.get("SCOUT_MAX_PER_RUN", "6"))
+    picked = new[:cap]
+    if len(picked) < cap:   # drain the backlog: jobs seen in an earlier run but never analysed because of the per-run cap
+        rest = db.q("SELECT job_id FROM jobs WHERE user_id=%s AND status='queued' AND duplicate_of IS NULL "
+                    "ORDER BY (data->>'posted_minute')::float NULLS LAST, created_at LIMIT %s", (user_id, cap))
+        picked += [r["job_id"] for r in rest if r["job_id"] not in picked][: cap - len(picked)]
+    for jid in picked:
+        db.x("UPDATE jobs SET status='scheduled', updated_at=now() WHERE user_id=%s AND job_id=%s AND status='queued'", (user_id, jid))
         await enqueue("analyse_job", user_id, jid)
-    return {"new": len(new), "duplicates": dupes}
+    return {"new": len(new), "duplicates": dupes, "scheduled": len(picked)}
 
 
 async def sync_pipeline(ctx, user_id: str) -> dict:

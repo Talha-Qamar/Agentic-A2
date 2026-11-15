@@ -68,7 +68,7 @@ def test_scout_recovers_when_marketplace_clock_restarts(monkeypatch):
 
     class DB:
         def q(self, sql, args=()):
-            return store["searches"]
+            return store["searches"] if "saved_searches" in sql else []
 
         def one(self, sql, args=()):
             return None
