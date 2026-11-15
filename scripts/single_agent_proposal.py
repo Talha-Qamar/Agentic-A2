@@ -56,6 +56,11 @@ async def main_async(job_id: str, persona: str) -> dict:
         if getattr(m, "type", "") == "tool":
             trace.append({"result_of": m.name, "chars": len(str(m.content))})
     res = _final_json(out["messages"])
+    if not res.get("cover_letter"):   # the agent saved its draft with the tool and ended without the JSON summary
+        for m in out["messages"]:
+            for tc in getattr(m, "tool_calls", None) or []:
+                if tc["name"] == "create_proposal_draft":
+                    res = {"cover_letter": tc["args"].get("cover_letter"), "bid_amount": tc["args"].get("bid_amount"), "draft_id": None}
     letter = res.get("cover_letter") or ""
     retr = variant_class(settings.get("rag.variant"))(persona)
 

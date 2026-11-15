@@ -154,7 +154,7 @@ async def run_design(design: str, tasks: list[dict], model, cache=None, tag: str
             rows.pop()
             print(f"STOP: daily quota reached at {key}", flush=True)
             raise QuotaStop(key)
-        if cache:
+        if cache and not (err and ("Event loop is closed" in err or "ConnectError" in err)):
             cache.put(key, rows[-1])
         print(f"[{design}] {t['type']:8s} ok={rows[-1]['success']} calls={calls} {lat:.1f}s{' ERR ' + err[:200] if err else ''}", flush=True)
     return rows
@@ -194,10 +194,14 @@ def main() -> None:
         rows, stopped = [], None
         cache = RowCache(a.out.removesuffix(".json") + "_" + a.model.replace("/", "_"))
         # interleaved (task i on every design before task i+1) so a run cut short by a daily cap stays balanced
-        try:
+        async def interleaved():   # one event loop for the whole run: the model's async HTTP client is bound to it
+            out = []
             for i, t in enumerate(tasks):
                 for d in a.designs.split(","):
-                    rows += asyncio.run(run_design(d, [t], model, cache, start=i))
+                    out += await run_design(d, [t], model, cache, start=i)
+            return out
+        try:
+            rows += asyncio.run(interleaved())
         except QuotaStop as e:
             stopped = f"daily quota reached at {e}"
             done = {(r["design"], r["q"]) for r in rows}
