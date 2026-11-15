@@ -8,7 +8,7 @@ services:
     region: singapore
     dockerfilePath: ./infra/docker/Dockerfile
     dockerContext: .
-    healthCheckPath: /api/health
+    healthCheckPath: /api/live
     autoDeploy: true
     envVars:
       - {key: GIGBID_ALLINONE, value: "1"}

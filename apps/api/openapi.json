@@ -2016,6 +2016,23 @@
     }
    }
   },
+  "/api/live": {
+   "get": {
+    "summary": "Live",
+    "description": "Liveness for the host's deploy check: answers without touching the database or the marketplace.",
+    "operationId": "live_api_live_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
   "/api/health": {
    "get": {
     "summary": "Health",

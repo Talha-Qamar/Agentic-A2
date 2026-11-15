@@ -91,7 +91,8 @@ async def _ensure_gigsim_accounts() -> None:
 
 async def _worker_loop():
     """Single-process deployments: Arq worker on Redis if REDIS_URL is set, otherwise a periodic in-process ticker."""
-    await asyncio.sleep(5)
+    # start after the host's health check has passed: on a 0.1-CPU instance a backlog of analyses starves it
+    await asyncio.sleep(int(os.environ.get("WORKER_START_DELAY", "90")))
     if os.environ.get("REDIS_URL"):
         from arq.worker import Worker
 
@@ -133,6 +134,11 @@ def create_app() -> FastAPI:
             m = builder()
             app.state.mcp_servers.append(m)
             app.mount(f"/mcp/{name}", m.streamable_http_app())
+
+    @app.get("/api/live")
+    async def live():
+        """Liveness for the host's deploy check: answers without touching the database or the marketplace."""
+        return {"live": True}
 
     @app.get("/api/health")
     async def health():
