@@ -55,4 +55,9 @@ have bid on: the evidence V0 returns for each requirement is too weak for the ma
 the fit score stayed under the threshold and no proposal was written. With V9 the same graph bid on three jobs
 (two correct) and every submitted draft drew a simulated client reply; the independent claim check is discussed in §5.
 Six jobs is a small sample; the result is that retrieval quality decides whether the agent bids at all, which the
-offline Recall@5 gap (0.441 against 0.672) predicts.
+offline Recall@5 gap (0.441 against 0.672) predicts. Where better retrieval did *not* show up is the simulated reply rate: every submitted V9
+draft drew a reply, but so did two of three supervisor drafts whose claims were mostly unsupported (§5). GigSim's
+reply model (`gigsim/engine.py`) scores whether the letter names the client's must-have skills, how many figures
+it contains, the opening line and the price; it cannot tell a proven figure from an invented one, so an unsupported
+"cut latency by 60%" earns the same specificity credit as a cited one. At this sample size retrieval quality
+changes whether the agent bids, not whether the simulated client replies.
