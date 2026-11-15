@@ -1,0 +1,914 @@
+{
+ "provenance": {
+  "git_sha": "04562a8",
+  "timestamp": "2026-11-15T11:31:42+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "model": "qwen/qwen3.8-27b",
+  "provider": "groq",
+  "tasks": 39
+ },
+ "summary": {
+  "coarse": {
+   "tasks": 13,
+   "success_rate": 0.3077,
+   "tool_selection_accuracy": 0.6667,
+   "argument_accuracy": 1.0,
+   "mean_calls": 0.31,
+   "wrong_tool_rate": 0.0,
+   "p50_latency_s": 5.03,
+   "p95_latency_s": 25.12,
+   "mean_tokens": 1240.6,
+   "errors": 7,
+   "by_type": {
+    "evidence": 0.167,
+    "outcome": 0.0,
+    "result": 0.5,
+    "skill": 0.667
+   }
+  },
+  "bytype": {
+   "tasks": 13,
+   "success_rate": 0.6923,
+   "tool_selection_accuracy": 1.0,
+   "argument_accuracy": 1.0,
+   "mean_calls": 1.62,
+   "wrong_tool_rate": 0.3333,
+   "p50_latency_s": 18.26,
+   "p95_latency_s": 37.79,
+   "mean_tokens": 2353.5,
+   "errors": 4,
+   "by_type": {
+    "evidence": 0.5,
+    "outcome": 0.0,
+    "result": 1.0,
+    "skill": 1.0
+   }
+  },
+  "rewritten": {
+   "tasks": 12,
+   "success_rate": 0.5,
+   "tool_selection_accuracy": 1.0,
+   "argument_accuracy": 1.0,
+   "mean_calls": 0.67,
+   "wrong_tool_rate": 0.0,
+   "p50_latency_s": 34.98,
+   "p95_latency_s": 77.25,
+   "mean_tokens": 4596.2,
+   "errors": 6,
+   "by_type": {
+    "evidence": 0.2,
+    "outcome": 0.5,
+    "result": 0.5,
+    "skill": 1.0
+   }
+  }
+ },
+ "rows": [
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for FixIt.pk? Quote the figure.",
+   "answer": "For FixIt.pk you \"launched with 180 providers in two cities,\" and the company raised its seed round on the MVP.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "args": [
+    {
+     "job_text": "What measurable result did I achieve for FixIt.pk? Quote the figure."
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 1.97,
+   "tokens": 5166,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "rewritten",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for FixIt.pk? Quote the figure.",
+   "answer": "For FixIt.pk you \"launched with 180 providers in two cities\" (and the company raised its seed round on the MVP).",
+   "success": true,
+   "calls": [
+    "get_case_study",
+    "search_evidence"
+   ],
+   "args": [
+    {
+     "id": "FixIt.pk"
+    },
+    {
+     "requirement": "FixIt.pk"
+    }
+   ],
+   "n_calls": 2,
+   "wrong_tool_calls": 0,
+   "latency_s": 33.81,
+   "tokens": 5176,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "bytype",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs FP&A. Which of my past clients did I do FP&A work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 18.26,
+   "tokens": 931,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: parameters for tool search_past_proposals did not match schema: errors: [missing properties: 'query']",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using COBOL? Answer yes or no.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 4.65,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: parameters for tool match_requirements did not match schema: errors: [missing properties: 'job_text']",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "rewritten",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using COBOL? Answer yes or no.",
+   "answer": "No.",
+   "success": true,
+   "calls": [
+    "list_skills"
+   ],
+   "args": [
+    {}
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 50.31,
+   "tokens": 5393,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "bytype",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 15.8,
+   "tokens": 928,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: attempted to call tool 'search_past_prposals' which was not in request.tools",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs price monitoring. Which of my past clients did I do price monitoring work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 4.32,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: attempted to call tool '_exit' which was not in request.tools",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "rewritten",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs price monitoring. Which of my past clients did I do price monitoring work for? Name the client.",
+   "answer": "You did price monitoring work for **PriceWatch.pk** (e-commerce) \u2014 a daily pipeline pulling partner product feeds via official APIs, expanding coverage from 50 to 8,000 products.",
+   "success": true,
+   "calls": [
+    "search_evidence"
+   ],
+   "args": [
+    {
+     "requirement": "done price monitoring work for a client"
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 36.14,
+   "tokens": 4256,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "bytype",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs risk analytics. Which of my past clients did I do risk analytics work for? Name the client.",
+   "answer": "You did risk analytics work for **Akhuwat Finance** (2024), building automated PAR, roll-rate, and vintage analysis with a Power BI dashboard for their risk committee.",
+   "success": true,
+   "calls": [
+    "search_case_studies"
+   ],
+   "args": [
+    {
+     "query": "risk analytics"
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 26.05,
+   "tokens": 3110,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for Ticketly? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 4.52,
+   "tokens": 581,
+   "error": "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "bytype",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for Ticketly? Quote the figure.",
+   "answer": "For Ticketly, the median first response time dropped from 9.2 hours to 47 minutes, and 63% of drafted replies were sent with no edits.",
+   "success": true,
+   "calls": [
+    "search_case_studies"
+   ],
+   "args": [
+    {
+     "query": "Ticketly"
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 1.78,
+   "tokens": 2231,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Tableau? Answer yes or no.",
+   "answer": "Yes \u2014 Tableau appears in your portfolio (e.g., listed in the elasticity-study and snackbox-churn project requirements).",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "args": [
+    {
+     "job_text": "Job requiring Tableau: Experience with Tableau for data visualization and dashboard creation is required.",
+     "requirements": [
+      {
+       "id": "tableau",
+       "text": "Experience using Tableau for data visualization and dashboards"
+      }
+     ]
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 5.03,
+   "tokens": 4388,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "rewritten",
+   "persona": "data_analyst",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Tableau? Answer yes or no.",
+   "answer": "Yes \u2014 Tableau appears 8 times in your portfolio (e.g., project da-p03).",
+   "success": true,
+   "calls": [
+    "list_skills"
+   ],
+   "args": [
+    {}
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 45.28,
+   "tokens": 5352,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "bytype",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Python? Answer yes or no.",
+   "answer": "Yes \u2014 Python appears 33 times across your portfolio (e.g., case study aiml-p02).",
+   "success": true,
+   "calls": [
+    "list_skills"
+   ],
+   "args": [
+    {}
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 41.14,
+   "tokens": 4742,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "bytype",
+   "persona": "fullstack_web_dev",
+   "type": "evidence",
+   "q": "A client needs RAG. Which of my past clients did I do RAG work for? Name the client.",
+   "answer": "You did RAG work for **Docstack** \u2014 an embedded chat widget with streaming answers grounded in help articles (and human handoff), rated 4.4/5 for helpfulness.",
+   "success": true,
+   "calls": [
+    "search_case_studies",
+    "search_repositories",
+    "search_past_proposals",
+    "search_reviews_and_cv"
+   ],
+   "args": [
+    {
+     "query": "RAG"
+    },
+    {
+     "query": "RAG"
+    },
+    {
+     "query": "RAG"
+    },
+    {
+     "query": "RAG"
+    }
+   ],
+   "n_calls": 4,
+   "wrong_tool_calls": 1,
+   "latency_s": 35.55,
+   "tokens": 4321,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "bytype",
+   "persona": "data_analyst",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using COBOL? Answer yes or no.",
+   "answer": "No.",
+   "success": true,
+   "calls": [
+    "search_case_studies",
+    "search_repositories",
+    "search_past_proposals",
+    "search_reviews_and_cv"
+   ],
+   "args": [
+    {
+     "query": "COBOL"
+    },
+    {
+     "query": "COBOL"
+    },
+    {
+     "query": "COBOL"
+    },
+    {
+     "query": "COBOL"
+    }
+   ],
+   "n_calls": 4,
+   "wrong_tool_calls": 2,
+   "latency_s": 16.11,
+   "tokens": 3036,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 39.11,
+   "tokens": 593,
+   "error": "OpenAIConnectionError: Connection error.",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "bytype",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 3.57,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: attempted to call tool 'search_past gender' which was not in request.tools",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "I don't have access to your proposal history or any tool that lists past proposals, so I can't provide a won proposal ID.",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 15.79,
+   "tokens": 536,
+   "error": null,
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "rewritten",
+   "persona": "data_analyst",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "One won proposal is `1914ec229abd` (data-prop-131, \"Required project for a retail client\", 2024-03-21).",
+   "success": true,
+   "calls": [
+    "search_evidence",
+    "search_evidence"
+   ],
+   "args": [
+    {
+     "filters": {
+      "outcomes': ['won']}": null,
+      "types": [
+       "proposal"
+      ]
+     },
+     "requirement": "past proposal that was won"
+    },
+    {
+     "filters": {
+      "outcomes": [
+       "won"
+      ],
+      "types": [
+       "proposal"
+      ]
+     },
+     "requirement": "won proposal"
+    }
+   ],
+   "n_calls": 2,
+   "wrong_tool_calls": 0,
+   "latency_s": 3.25,
+   "tokens": 5654,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs RAG. Which of my past clients did I do RAG work for? Name the client.",
+   "answer": "Based on your portfolio, the clearest RAG work was for **PeopleFirst** \u2014 a Teams bot that answers from the policy wiki and filters documents by the employee's country and grade (with no cross-region policy leakage in the audit).\n\nA secondary RAG-adjacent example is **Clausewise**, where you delivered a retrieval pipeline that chunks contracts by clause heading with 94% answer-citation accuracy.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "args": [
+    {
+     "job_text": "Client needs RAG (Retrieval-Augmented Generation) implementation. Which past clients did I do RAG work for? Name the client.",
+     "requirements": [
+      {
+       "id": "rag",
+       "text": "RAG (Retrieval-Augmented Generation) implementation or experience"
+      }
+     ]
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 15.07,
+   "tokens": 1890,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "rewritten",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs RAG. Which of my past clients did I do RAG work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 26.1,
+   "tokens": 1265,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: attempted to call tool 'search_e Dining' which was not in request.tools",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "bytype",
+   "persona": "ai_ml_engineer",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 7.5,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: attempted to call tool 'search_past.toUpperCase' which was not in request.tools",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "coarse",
+   "persona": "fullstack_web_dev",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "I don't have access to your proposal history or any tool that lists past proposals, so I can't provide a won proposal ID.",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 5.42,
+   "tokens": 536,
+   "error": null,
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "rewritten",
+   "persona": "fullstack_web_dev",
+   "type": "outcome",
+   "q": "Give the id of one past proposal of mine that was won.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 18.06,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "bytype",
+   "persona": "fullstack_web_dev",
+   "type": "result",
+   "q": "What measurable result did I achieve for FixIt.pk? Quote the figure.",
+   "answer": "For FixIt.pk, the MVP launched with **180 providers in two cities**, and the company raised its seed round on the MVP.",
+   "success": true,
+   "calls": [
+    "search_case_studies"
+   ],
+   "args": [
+    {
+     "query": "FixIt.pk"
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 1.74,
+   "tokens": 2210,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs FP&A. Which of my past clients did I do FP&A work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 0.25,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: parameters for tool match_requirements did not match schema: errors: [missing properties: 'job_text']",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "rewritten",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs FP&A. Which of my past clients did I do FP&A work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 75.79,
+   "tokens": 12844,
+   "error": "GraphRecursionError: Recursion limit of 14 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "bytype",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using COBOL? Answer yes or no.",
+   "answer": "No.",
+   "success": true,
+   "calls": [
+    "search_case_studies",
+    "search_repositories",
+    "search_past_proposals",
+    "search_reviews_and_cv"
+   ],
+   "args": [
+    {
+     "query": "COBOL"
+    },
+    {
+     "query": "COBOL"
+    },
+    {
+     "query": "COBOL"
+    },
+    {
+     "query": "COBOL"
+    }
+   ],
+   "n_calls": 4,
+   "wrong_tool_calls": 2,
+   "latency_s": 31.2,
+   "tokens": 3717,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 3.36,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: parameters for tool match_requirements did not match schema: errors: [missing properties: 'job_text']",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "rewritten",
+   "persona": "ai_ml_engineer",
+   "type": "evidence",
+   "q": "A client needs classification. Which of my past clients did I do classification work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 79.04,
+   "tokens": 9357,
+   "error": "GraphRecursionError: Recursion limit of 14 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "bytype",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs price monitoring. Which of my past clients did I do price monitoring work for? Name the client.",
+   "answer": "You did price monitoring work for **PriceWatch.pk** (an e-commerce client), building a daily API-based pipeline that expanded coverage from 50 to 8,000 products.",
+   "success": true,
+   "calls": [
+    "search_case_studies"
+   ],
+   "args": [
+    {
+     "query": "price monitoring"
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 18.85,
+   "tokens": 2253,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "coarse",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs risk analytics. Which of my past clients did I do risk analytics work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 14.33,
+   "tokens": 599,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: parameters for tool match_requirements did not match schema: errors: [missing properties: 'job_text']",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "rewritten",
+   "persona": "data_analyst",
+   "type": "evidence",
+   "q": "A client needs risk analytics. Which of my past clients did I do risk analytics work for? Name the client.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 10.41,
+   "tokens": 0,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: attempted to call tool 'search_evenue' which was not in request.tools",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "rewritten",
+   "persona": "ai_ml_engineer",
+   "type": "result",
+   "q": "What measurable result did I achieve for Ticketly? Quote the figure.",
+   "answer": "",
+   "success": false,
+   "calls": [],
+   "args": [],
+   "n_calls": 0,
+   "wrong_tool_calls": 0,
+   "latency_s": 38.51,
+   "tokens": 2570,
+   "error": "OpenAIInvalidRequestError: Error code: 400 - tool call validation failed: parameters for tool search_evidence did not match schema: errors: [missing properties: 'requirement']",
+   "tool_selected_ok": false,
+   "args_ok": false
+  },
+  {
+   "design": "bytype",
+   "persona": "data_analyst",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Tableau? Answer yes or no.",
+   "answer": "Yes \u2014 Tableau appears in the requirements.txt of two repositories (elasticity-study and snackbox-churn).",
+   "success": true,
+   "calls": [
+    "search_case_studies",
+    "search_repositories",
+    "search_past_proposals",
+    "search_reviews_and_cv"
+   ],
+   "args": [
+    {
+     "query": "Tableau"
+    },
+    {
+     "query": "Tableau"
+    },
+    {
+     "query": "Tableau"
+    },
+    {
+     "query": "Tableau"
+    }
+   ],
+   "n_calls": 4,
+   "wrong_tool_calls": 2,
+   "latency_s": 25.25,
+   "tokens": 3117,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "coarse",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Python? Answer yes or no.",
+   "answer": "Yes \u2014 your portfolio includes Python evidence, such as the \"LLM cost and latency optimisation\" case study (aiml-p13) and Python code in the prelabel repo.",
+   "success": true,
+   "calls": [
+    "match_requirements"
+   ],
+   "args": [
+    {
+     "job_text": "Job requiring Python programming skills for data processing and automation tasks.",
+     "requirements": [
+      {
+       "id": "python",
+       "text": "Experience using Python for scripting, data processing, or automation"
+      }
+     ]
+    }
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 14.89,
+   "tokens": 1839,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  },
+  {
+   "design": "rewritten",
+   "persona": "ai_ml_engineer",
+   "type": "skill",
+   "q": "Do I have portfolio evidence of using Python? Answer yes or no.",
+   "answer": "Yes \u2014 Python is listed with 33 mentions across your portfolio.",
+   "success": true,
+   "calls": [
+    "list_skills"
+   ],
+   "args": [
+    {}
+   ],
+   "n_calls": 1,
+   "wrong_tool_calls": 0,
+   "latency_s": 28.03,
+   "tokens": 3288,
+   "error": null,
+   "tool_selected_ok": true,
+   "args_ok": true
+  }
+ ],
+ "complete": false,
+ "stopped": "daily quota reached at bytype:9",
+ "paired_tasks": 11
+}

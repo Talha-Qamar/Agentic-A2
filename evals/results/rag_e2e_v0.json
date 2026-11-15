@@ -1,0 +1,117 @@
+{
+ "provenance": {
+  "git_sha": "fa080b8",
+  "timestamp": "2026-11-13T00:20:17+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "baseline_model": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "reasoning_effort": "low",
+   "profile": "open",
+   "tier": "strong"
+  },
+  "rag_variant": "v0_naive",
+  "tag": "v0"
+ },
+ "summary": {
+  "gigbid_graph": {
+   "n": 6,
+   "errors": 0,
+   "bid_f1": 0.0,
+   "proposals": 0,
+   "unsupported_claim_rate": null,
+   "judge_mean": null,
+   "p95_latency_s": 14.12,
+   "mean_cost_usd": 0.0,
+   "mean_tokens": 0.0,
+   "gigsim_submitted": 0,
+   "gigsim_reply_rate": null
+  }
+ },
+ "rows": [
+  {
+   "system": "gigbid_graph",
+   "job_id": "dev-fe57fd3998",
+   "persona": "ai_ml_engineer",
+   "gold": "bid",
+   "pred": "skip",
+   "latency_s": 18.25,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "tool_calls": null,
+   "error": null,
+   "has_letter": false
+  },
+  {
+   "system": "gigbid_graph",
+   "job_id": "dev-3a835b2c40",
+   "persona": "ai_ml_engineer",
+   "gold": "skip",
+   "pred": "skip",
+   "latency_s": 1.74,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "tool_calls": null,
+   "error": null,
+   "has_letter": false
+  },
+  {
+   "system": "gigbid_graph",
+   "job_id": "dev-d2b679d112",
+   "persona": "data_analyst",
+   "gold": "bid",
+   "pred": "skip",
+   "latency_s": 1.656,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "tool_calls": null,
+   "error": null,
+   "has_letter": false
+  },
+  {
+   "system": "gigbid_graph",
+   "job_id": "dev-a1268a5ea6",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "pred": "skip",
+   "latency_s": 1.666,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "tool_calls": null,
+   "error": null,
+   "has_letter": false
+  },
+  {
+   "system": "gigbid_graph",
+   "job_id": "dev-f8e549af1e",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "pred": "skip",
+   "latency_s": 1.667,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "tool_calls": null,
+   "error": null,
+   "has_letter": false
+  },
+  {
+   "system": "gigbid_graph",
+   "job_id": "dev-324595103c",
+   "persona": "fullstack_web_dev",
+   "gold": "bid",
+   "pred": "skip",
+   "latency_s": 1.703,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "tool_calls": null,
+   "error": null,
+   "has_letter": false
+  }
+ ],
+ "complete": true,
+ "stopped": null,
+ "planned_rows": 6
+}

@@ -105,14 +105,30 @@ def tool_table() -> str:
     for k, s in d["summary"].items():
         out.append(f"| {k} | {s['tasks']} | {f(s['success_rate'])} | {f(s.get('tool_selection_accuracy'))} | {f(s.get('argument_accuracy'))} | {f(s['mean_calls'], 2)} | "
                    f"{f(s['mean_tokens'], 0)} | {f(s['p95_latency_s'], 1)} | {s['errors']} |")
-    return "\n".join(out) + f"\n\nmodel: {d['provenance'].get('provider', 'groq')} {d['provenance']['model']}\n"
+    part = "" if d.get("complete") else f" · partial run ({d.get('stopped')}); every design saw the same tasks in the same order"
+    return "\n".join(out) + f"\n\nmodel: {d['provenance'].get('provider', 'groq')} {d['provenance']['model']}{part}\n"
 
 
 def injection_table() -> str:
-    d = load("injection_eval.json")
-    if not d:
-        return "_injection_eval.json pending_\n"
-    return "```json\n" + json.dumps(d["summary"], indent=1)[:1500] + "\n```\n"
+    sc, d = load("injection_screen_eval.json"), load("injection_eval.json")
+    out = []
+    if sc:
+        s = sc["summary"]
+        out += ["Deterministic layers on the held-out red-team set (`injection_screen_eval.json`, no model call):", "",
+                "| layer | measured on | result |", "|---|---|---|",
+                f"| input screen (patterns) | {s['attacks']} paraphrased attacks | detected {f(s['input_detection_rate'])} |",
+                f"| input screen (patterns) | {s['benign']} benign posts, same vocabulary | false positives {f(s['input_false_positive_rate'])} |",
+                f"| output guard (compliance rules) | {s['text_payloads']} payloads a compromised draft would contain | stripped {f(s['output_guard_strip_rate'])} |",
+                f"| screen or guard | same {s['text_payloads']} | caught {f(s['caught_by_screen_or_guard'])} (missed: {', '.join(s['missed_by_both']) or 'none'}) |",
+                f"| output guard | {s['real_letters_checked']} real drafted letters | false positives {f(s['output_false_positive_rate'])} |",
+                "", "Detection by phrasing: " + ", ".join(f"{k} {v}" for k, v in s["detection_by_style"].items()) + ".", ""]
+    if d:
+        s = d["summary"]
+        n_off, n_on = len(d.get("rows_off") or []), len(d.get("rows_on") or [])
+        state = "complete" if d.get("complete") else f"partial ({d.get('stopped')})"
+        out += [f"End to end through the full graph (`injection_eval.json`, {state}): defences off {n_off} attacks run, ASR raw "
+                f"{f(s['asr_defences_off_raw'])} / final {f(s['asr_defences_off_final'])}; defences on {n_on} run, ASR final {f(s['asr_defences_on_final'])}."]
+    return "\n".join(out) + "\n" if out else "_injection results pending_\n"
 
 
 def change_table() -> str:
@@ -148,10 +164,12 @@ def builder_table() -> str:
 
 
 def budgets_table() -> str:
-    d = load("hidden_test.json") or load("decision_eval.json")
+    h = load("hidden_test_results.json")
+    full = bool(h and h.get("complete"))
+    d = h if full else load("decision_eval.json")
     if not d:
-        return "_hidden_test.json pending_\n"
-    src = "hidden_test.json" if load("hidden_test.json") else "decision_eval.json (hidden test pending)"
+        return "_hidden_test_results.json pending_\n"
+    src = "hidden_test_results.json" if full else "decision_eval.json"
     s, b = d["summary"], d.get("declared_budgets") or {}
     rows = [("p95 latency per job analysed (s)", b.get("p95_latency_s_job_analysed"), s.get("p95_latency_s")),
             ("p95 latency per proposal (s)", b.get("p95_latency_s_proposal"), s.get("p95_latency_s_proposal")),
@@ -172,8 +190,14 @@ def budgets_table() -> str:
         opt = (f"\n\nOptimisation that helped - skip early: a job that the deterministic rule skips stops before the writer and costs "
                f"{m(sk, 'tokens'):.0f} tokens / USD {m(sk, 'cost_usd'):.5f} on average (n={len(sk)}), against {m(pr, 'tokens'):.0f} tokens / "
                f"USD {m(pr, 'cost_usd'):.5f} for a job that gets a proposal (n={len(pr)}); routing and risk run on the small model.\n")
+    hid = ""
+    if h and not full:
+        hs = h["summary"]
+        hid = (f"\n\nSimulated hidden test (`hidden_test_results.json`, jobs generated from a secret seed): partial, {hs['n']} jobs scored before "
+               f"the daily token cap ({h.get('stopped')}); on those, accuracy {f(hs['accuracy'])}, scam recall {f(hs['scam_recall'])}, "
+               f"p95 {f(hs['p95_latency_s'], 1)} s. The budget rows above therefore come from the dev run.\n")
     return ("\n".join(out) + f"\n\nQuality on the same run ({src}, n={s['n']}, profile {d['provenance'].get('profile')}): "
-            + ", ".join(f"{k} {f(v)}" for k, v in q) + "." + opt + "\n")
+            + ", ".join(f"{k} {f(v)}" for k, v in q) + "." + opt + hid + "\n")
 
 
 FIX = {"wrong skip (fit too low)": ("Matcher counted past proposals as proof and ignored code-only skills; threshold 0.55 set by hand",

@@ -81,7 +81,7 @@ n = 247 dev jobs with gold evidence; commit ea06a77; embedder fastembed.
 <!-- table:b5 -->
 | variant | Evidence Recall@5 | nDCG@10 | unsupported claim rate (after verification) | judge score (1-10) | GigSim reply rate | p95 latency (s) | cost per job (USD) |
 |---|---|---|---|---|---|---|---|
-| V0 naive | 0.441 | 0.534 | pending | pending | pending | pending | pending |
+| V0 naive | 0.441 | 0.534 | - | - | - | 14.1 | 0.00000 |
 | V9 skill graph (shipped) | 0.672 | 0.778 | 0.500 | 5.67 | 1.000 | 136.4 | 0.00197 |
 <!-- /table -->
 
@@ -108,13 +108,31 @@ n = 247 dev jobs with gold evidence; commit ea06a77; embedder fastembed.
 ### Tool granularity (A)
 
 <!-- table:tools -->
-_tool_granularity.json pending_
+| design | tasks | success | tool-selection accuracy | argument accuracy | mean calls | mean tokens | p95 latency (s) | errors |
+|---|---|---|---|---|---|---|---|---|
+| coarse | 13 | 0.308 | 0.667 | 1.000 | 0.31 | 1241 | 25.1 | 7 |
+| bytype | 13 | 0.692 | 1.000 | 1.000 | 1.62 | 2354 | 37.8 | 4 |
+| rewritten | 12 | 0.500 | 1.000 | 1.000 | 0.67 | 4596 | 77.2 | 6 |
+
+model: groq qwen/qwen3.8-27b · partial run (daily quota reached at bytype:9); every design saw the same tasks in the same order
 <!-- /table -->
 
 ### Prompt injection (E4)
 
 <!-- table:injection -->
-_injection_eval.json pending_
+Deterministic layers on the held-out red-team set (`injection_screen_eval.json`, no model call):
+
+| layer | measured on | result |
+|---|---|---|
+| input screen (patterns) | 30 paraphrased attacks | detected 0.267 |
+| input screen (patterns) | 20 benign posts, same vocabulary | false positives 0.000 |
+| output guard (compliance rules) | 20 payloads a compromised draft would contain | stripped 0.850 |
+| screen or guard | same 20 | caught 0.900 (missed: rt25, rt30) |
+| output guard | 9 real drafted letters | false positives 0.000 |
+
+Detection by phrasing: authority 0/1, direct 2/6, hidden 2/4, obfuscated 0/4, polite 0/5, preference 0/4, role_spoof 4/6.
+
+End to end through the full graph (`injection_eval.json`, partial (daily quota reached at off:dev-9ff3c69969)): defences off 1 attacks run, ASR raw 0.000 / final 0.000; defences on 0 run, ASR final -.
 <!-- /table -->
 
 Full tables (by persona, by job type, ablation) and how each runner works: [evals/README.md](evals/README.md).

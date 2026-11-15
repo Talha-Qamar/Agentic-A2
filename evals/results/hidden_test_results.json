@@ -1,0 +1,411 @@
+{
+ "provenance": {
+  "git_sha": "04562a8",
+  "timestamp": "2026-11-15T11:31:56+0500",
+  "host": "MTQ-MacBook-Air",
+  "machine": "arm64",
+  "python": "3.11.17",
+  "profile": "open",
+  "rag_variant": "v9_skill_graph",
+  "models": {
+   "analyst": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "small"
+   },
+   "writer": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "strong"
+   },
+   "critic": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "reasoning_effort": "low",
+    "profile": "open",
+    "tier": "strong"
+   }
+  }
+ },
+ "summary": {
+  "n": 4,
+  "errors": 0,
+  "bid_f1": 0.0,
+  "accuracy": 1.0,
+  "confusion": {
+   "tp": 0,
+   "fp": 0,
+   "fn": 0,
+   "tn": 4
+  },
+  "scam_recall": 1.0,
+  "scam_skip_rate": 1.0,
+  "false_scam_rate": 0.0,
+  "price_in_band": null,
+  "proposals_drafted": 0,
+  "unsupported_claim_rate_before": null,
+  "unsupported_claim_rate_after": null,
+  "claims_checked": 0,
+  "p50_latency_s": 2.24,
+  "p95_latency_s": 2.79,
+  "p95_latency_s_proposal": null,
+  "mean_cost_usd_job": 0.0,
+  "mean_cost_usd_proposal": null,
+  "mean_tokens_job": 0.0,
+  "marketplace_would_accept": 0,
+  "marketplace_would_reject": 0,
+  "dead_letter": 0,
+  "needs_attention": 0
+ },
+ "by_persona": {
+  "ai_ml_engineer": {
+   "n": 2,
+   "errors": 0,
+   "bid_f1": 0.0,
+   "accuracy": 1.0,
+   "confusion": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "tn": 2
+   },
+   "scam_recall": 1.0,
+   "scam_skip_rate": 1.0,
+   "false_scam_rate": 0.0,
+   "price_in_band": null,
+   "proposals_drafted": 0,
+   "unsupported_claim_rate_before": null,
+   "unsupported_claim_rate_after": null,
+   "claims_checked": 0,
+   "p50_latency_s": 2.75,
+   "p95_latency_s": 2.8,
+   "p95_latency_s_proposal": null,
+   "mean_cost_usd_job": 0.0,
+   "mean_cost_usd_proposal": null,
+   "mean_tokens_job": 0.0,
+   "marketplace_would_accept": 0,
+   "marketplace_would_reject": 0,
+   "dead_letter": 0,
+   "needs_attention": 0
+  },
+  "data_analyst": {
+   "n": 1,
+   "errors": 0,
+   "bid_f1": 0.0,
+   "accuracy": 1.0,
+   "confusion": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "tn": 1
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": null,
+   "proposals_drafted": 0,
+   "unsupported_claim_rate_before": null,
+   "unsupported_claim_rate_after": null,
+   "claims_checked": 0,
+   "p50_latency_s": 1.76,
+   "p95_latency_s": 1.76,
+   "p95_latency_s_proposal": null,
+   "mean_cost_usd_job": 0.0,
+   "mean_cost_usd_proposal": null,
+   "mean_tokens_job": 0.0,
+   "marketplace_would_accept": 0,
+   "marketplace_would_reject": 0,
+   "dead_letter": 0,
+   "needs_attention": 0
+  },
+  "fullstack_web_dev": {
+   "n": 1,
+   "errors": 0,
+   "bid_f1": 0.0,
+   "accuracy": 1.0,
+   "confusion": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "tn": 1
+   },
+   "scam_recall": null,
+   "scam_skip_rate": null,
+   "false_scam_rate": 0.0,
+   "price_in_band": null,
+   "proposals_drafted": 0,
+   "unsupported_claim_rate_before": null,
+   "unsupported_claim_rate_after": null,
+   "claims_checked": 0,
+   "p50_latency_s": 1.78,
+   "p95_latency_s": 1.78,
+   "p95_latency_s_proposal": null,
+   "mean_cost_usd_job": 0.0,
+   "mean_cost_usd_proposal": null,
+   "mean_tokens_job": 0.0,
+   "marketplace_would_accept": 0,
+   "marketplace_would_reject": 0,
+   "dead_letter": 0,
+   "needs_attention": 0
+  }
+ },
+ "complete": false,
+ "stopped": "daily quota reached at hid-d324778615",
+ "planned_rows": 6,
+ "declared_budgets": {
+  "p95_latency_s_job_analysed": 25,
+  "p95_latency_s_proposal": 60,
+  "usd_per_job_analysed": 0.002,
+  "usd_per_proposal": 0.01
+ },
+ "rows": [
+  {
+   "job_id": "hid-dc4f55f3c6",
+   "persona": "ai_ml_engineer",
+   "gold": "skip",
+   "gold_scam": true,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    35,
+    49.4
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.0,
+   "scam_score": 0.8,
+   "risk": 0.8175,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 2.803,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 60,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1793,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 1892,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 2411,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 8,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "704fb35210b94d05b0255cc0af287a1b",
+   "errors": [],
+   "platform_violations": null,
+   "would_be_accepted": null
+  },
+  {
+   "job_id": "hid-2afc91c2ef",
+   "persona": "ai_ml_engineer",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": "price_override",
+   "fit_level": "partial",
+   "band": [
+    630.0,
+    800.0
+   ],
+   "status": "watching",
+   "pred": "skip",
+   "raw_decision": "watch",
+   "fit": 0.1584,
+   "scam_score": 0.0,
+   "risk": 0.15249999999999997,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 2.699,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 60,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1937,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "risk": {
+     "ms": 2037,
+     "tokens": 0,
+     "cost": 0.0
+    },
+    "matcher": {
+     "ms": 2486,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 2,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "b4e0cca905144f6186a294a5ee9b85de",
+   "errors": [],
+   "platform_violations": null,
+   "would_be_accepted": null
+  },
+  {
+   "job_id": "hid-a58a684f82",
+   "persona": "fullstack_web_dev",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    28,
+    37.9
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.6333,
+   "scam_score": 0.0,
+   "risk": 0.05249999999999996,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 1.777,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 46,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1510,
+     "tokens": 0,
+     "cost": 0
+    },
+    "risk": {
+     "ms": 1657,
+     "tokens": 0,
+     "cost": 0
+    },
+    "matcher": {
+     "ms": 993,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "d815e3dd1dc948189e625f062fd6f9ee",
+   "errors": [],
+   "platform_violations": null,
+   "would_be_accepted": null
+  },
+  {
+   "job_id": "hid-f3820301a9",
+   "persona": "data_analyst",
+   "gold": "skip",
+   "gold_scam": false,
+   "injection": null,
+   "fit_level": "partial",
+   "band": [
+    130.0,
+    150.0
+   ],
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.0036,
+   "scam_score": 0.0,
+   "risk": 0.05249999999999996,
+   "price": null,
+   "in_band": false,
+   "drafted": false,
+   "claims": 0,
+   "unsupported_before": 0,
+   "unsupported_after": 0,
+   "latency_s": 1.757,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "steps": 5,
+   "cover_letter": null,
+   "compliance": null,
+   "by_node": {
+    "intake": {
+     "ms": 60,
+     "tokens": 0,
+     "cost": 0
+    },
+    "analyst": {
+     "ms": 1505,
+     "tokens": 0,
+     "cost": 0
+    },
+    "risk": {
+     "ms": 1647,
+     "tokens": 0,
+     "cost": 0
+    },
+    "matcher": {
+     "ms": 1011,
+     "tokens": 0,
+     "cost": 0
+    },
+    "decide": {
+     "ms": 0,
+     "tokens": 0,
+     "cost": 0
+    }
+   },
+   "trace_id": "08d245a4b05d4082b419ca81709011f2",
+   "errors": [],
+   "platform_violations": null,
+   "would_be_accepted": null
+  }
+ ]
+}

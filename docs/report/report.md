@@ -143,6 +143,10 @@ GigSim policy, policy pack before vs after (`change_request_before.json`, `chang
 
 {{table:change}}
 
+Both runs added the disclosure line and both drafts passed the marketplace dry run: compliance already reads the live
+policy, so the new GigSim requirement was met even with the old pack. The pack edit makes the wording ours and keeps
+the line when a policy feed omits the flag. Six jobs per run, so this shows the mechanism, not a rate.
+
 **What it says about the design:** rules that change with the platform live in data (policy pack, live policy), and
 the marketplace's own dry run is part of the graph, so a policy change shows up as a rejected preview, not as a
 rejected proposal.

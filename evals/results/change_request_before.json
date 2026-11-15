@@ -1,7 +1,7 @@
 {
  "provenance": {
-  "git_sha": "70c8062",
-  "timestamp": "2026-11-11T15:36:20+0500",
+  "git_sha": "04562a8",
+  "timestamp": "2026-11-15T11:31:42+0500",
   "host": "MTQ-MacBook-Air",
   "machine": "arm64",
   "python": "3.11.17",
@@ -32,41 +32,43 @@
   }
  },
  "summary": {
-  "n": 9,
+  "n": 6,
   "errors": 0,
   "bid_f1": 0.8571,
-  "accuracy": 0.7778,
+  "accuracy": 0.8333,
   "confusion": {
-   "tp": 6,
-   "fp": 2,
+   "tp": 3,
+   "fp": 1,
    "fn": 0,
-   "tn": 1
+   "tn": 2
   },
   "scam_recall": null,
   "scam_skip_rate": null,
-  "false_scam_rate": 0.0,
-  "price_in_band": 0.875,
-  "proposals_drafted": 1,
-  "unsupported_claim_rate_before": 0.0,
+  "false_scam_rate": 0.1667,
+  "price_in_band": 0.75,
+  "proposals_drafted": 4,
+  "unsupported_claim_rate_before": 0.3333,
   "unsupported_claim_rate_after": 0.0,
-  "claims_checked": 1,
-  "p50_latency_s": 199.85,
-  "p95_latency_s": 215.13,
-  "p95_latency_s_proposal": 224.8,
-  "mean_cost_usd_job": 0.000625,
-  "mean_cost_usd_proposal": 0.001741,
-  "mean_tokens_job": 869.6,
-  "dead_letter": 8,
+  "claims_checked": 6,
+  "p50_latency_s": 53.28,
+  "p95_latency_s": 88.94,
+  "p95_latency_s_proposal": 89.15,
+  "mean_cost_usd_job": 0.001943,
+  "mean_cost_usd_proposal": 0.00275,
+  "mean_tokens_job": 11330.7,
+  "marketplace_would_accept": 4,
+  "marketplace_would_reject": 0,
+  "dead_letter": 0,
   "needs_attention": 0
  },
  "by_persona": {
   "ai_ml_engineer": {
-   "n": 3,
+   "n": 2,
    "errors": 0,
    "bid_f1": 1.0,
    "accuracy": 1.0,
    "confusion": {
-    "tp": 2,
+    "tp": 1,
     "fp": 0,
     "fn": 0,
     "tn": 1
@@ -75,26 +77,28 @@
    "scam_skip_rate": null,
    "false_scam_rate": 0.0,
    "price_in_band": 1.0,
-   "proposals_drafted": 0,
-   "unsupported_claim_rate_before": null,
-   "unsupported_claim_rate_after": null,
-   "claims_checked": 0,
-   "p50_latency_s": 199.85,
-   "p95_latency_s": 200.36,
-   "p95_latency_s_proposal": null,
-   "mean_cost_usd_job": 0.000685,
-   "mean_cost_usd_proposal": null,
-   "mean_tokens_job": 400.3,
-   "dead_letter": 2,
+   "proposals_drafted": 1,
+   "unsupported_claim_rate_before": 0.0,
+   "unsupported_claim_rate_after": 0.0,
+   "claims_checked": 1,
+   "p50_latency_s": 45.22,
+   "p95_latency_s": 85.05,
+   "p95_latency_s_proposal": 89.47,
+   "mean_cost_usd_job": 0.002295,
+   "mean_cost_usd_proposal": 0.00426,
+   "mean_tokens_job": 11494.0,
+   "marketplace_would_accept": 1,
+   "marketplace_would_reject": 0,
+   "dead_letter": 0,
    "needs_attention": 0
   },
   "data_analyst": {
-   "n": 3,
+   "n": 2,
    "errors": 0,
-   "bid_f1": 0.8,
-   "accuracy": 0.6667,
+   "bid_f1": 0.6667,
+   "accuracy": 0.5,
    "confusion": {
-    "tp": 2,
+    "tp": 1,
     "fp": 1,
     "fn": 0,
     "tn": 0
@@ -103,48 +107,55 @@
    "scam_skip_rate": null,
    "false_scam_rate": 0.0,
    "price_in_band": 1.0,
-   "proposals_drafted": 0,
-   "unsupported_claim_rate_before": null,
-   "unsupported_claim_rate_after": null,
-   "claims_checked": 0,
-   "p50_latency_s": 200.34,
-   "p95_latency_s": 200.59,
-   "p95_latency_s_proposal": null,
-   "mean_cost_usd_job": 0.00061,
-   "mean_cost_usd_proposal": null,
-   "mean_tokens_job": 753.7,
-   "dead_letter": 3,
+   "proposals_drafted": 2,
+   "unsupported_claim_rate_before": 0.5,
+   "unsupported_claim_rate_after": 0.0,
+   "claims_checked": 4,
+   "p50_latency_s": 53.28,
+   "p95_latency_s": 80.07,
+   "p95_latency_s_proposal": 80.07,
+   "mean_cost_usd_job": 0.002737,
+   "mean_cost_usd_proposal": 0.002737,
+   "mean_tokens_job": 15566.5,
+   "marketplace_would_accept": 2,
+   "marketplace_would_reject": 0,
+   "dead_letter": 0,
    "needs_attention": 0
   },
   "fullstack_web_dev": {
-   "n": 3,
+   "n": 2,
    "errors": 0,
-   "bid_f1": 0.8,
-   "accuracy": 0.6667,
+   "bid_f1": 1.0,
+   "accuracy": 1.0,
    "confusion": {
-    "tp": 2,
-    "fp": 1,
+    "tp": 1,
+    "fp": 0,
     "fn": 0,
-    "tn": 0
+    "tn": 1
    },
    "scam_recall": null,
    "scam_skip_rate": null,
-   "false_scam_rate": 0.0,
-   "price_in_band": 0.6667,
+   "false_scam_rate": 0.5,
+   "price_in_band": 0.0,
    "proposals_drafted": 1,
    "unsupported_claim_rate_before": 0.0,
    "unsupported_claim_rate_after": 0.0,
    "claims_checked": 1,
-   "p50_latency_s": 198.97,
-   "p95_latency_s": 222.22,
-   "p95_latency_s_proposal": 224.8,
-   "mean_cost_usd_job": 0.00058,
-   "mean_cost_usd_proposal": 0.001741,
-   "mean_tokens_job": 1454.7,
-   "dead_letter": 3,
+   "p50_latency_s": 44.15,
+   "p95_latency_s": 83.01,
+   "p95_latency_s_proposal": 87.33,
+   "mean_cost_usd_job": 0.000797,
+   "mean_cost_usd_proposal": 0.001266,
+   "mean_tokens_job": 6931.5,
+   "marketplace_would_accept": 1,
+   "marketplace_would_reject": 0,
+   "dead_letter": 0,
    "needs_attention": 0
   }
  },
+ "complete": true,
+ "stopped": null,
+ "planned_rows": 6,
  "declared_budgets": {
   "p95_latency_s_job_analysed": 25,
   "p95_latency_s_proposal": 60,
@@ -163,42 +174,42 @@
     35,
     46.0
    ],
-   "status": "dead_letter",
+   "status": "awaiting_approval",
    "pred": "bid",
    "raw_decision": "bid",
-   "fit": 0.2315,
-   "scam_score": 0.0,
-   "risk": 0.0,
-   "price": 38.0,
+   "fit": 0.7139,
+   "scam_score": 0.05,
+   "risk": 0.1,
+   "price": 42.0,
    "in_band": true,
-   "drafted": false,
-   "claims": 0,
+   "drafted": true,
+   "claims": 1,
    "unsupported_before": 0,
    "unsupported_after": 0,
-   "latency_s": 200.417,
-   "tokens": 0,
-   "cost_usd": 0.0,
-   "steps": 7,
-   "cover_letter": null,
-   "compliance": null,
+   "latency_s": 89.472,
+   "tokens": 20553,
+   "cost_usd": 0.00426,
+   "steps": 17,
+   "cover_letter": "Health\u2011care teams need instant, accurate answers to clinical queries. I delivered a Teams\u2011integrated RAG bot for PeopleFirst that cut HR ticket volume by 41% in three months, using Azure OpenAI, LlamaIndex, and an XGBoost ranking model (edb17df9985b:0). First week: 1) Provision Azure OpenAI and set up LlamaIndex on your document set. 2) Build a Teams bot skeleton and connect it to the index. 3) Train an XGBoost model on relevance signals to rank retrieved passages (868e250e47c2:0). 4) Run end\u2011to\u2011end tests in Teams, add logging, and deliver documentation. I am comfortable with Azure OpenAI (edb17df9985b:0, f6ca0cbe3c42:0, b551de437eb4:0), LlamaIndex (edb17df9985b:0, afd5985a15de:0, 5b55bc177870:0), Microsoft Teams (6059d11de4e3:0, cf601ecebc72:0, a2ea7e93063d:0), and XGBoost (868e250e47c2:0, e72610bc703a:0, cf40b1add91a:0). Hourly rate: $42.0. Drafted with AI assistance and reviewed by me.",
+   "compliance": [],
    "by_node": {
     "intake": {
-     "ms": 55,
+     "ms": 36,
      "tokens": 0,
      "cost": 0
     },
     "analyst": {
-     "ms": 99932,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 1167,
+     "tokens": 1284,
+     "cost": 0.000191
     },
     "risk": {
-     "ms": 99892,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 909,
+     "tokens": 1007,
+     "cost": 0.000105
     },
     "matcher": {
-     "ms": 1750,
+     "ms": 1664,
      "tokens": 0,
      "cost": 0
     },
@@ -208,23 +219,40 @@
      "cost": 0
     },
     "pricing": {
-     "ms": 250,
+     "ms": 39,
      "tokens": 0,
      "cost": 0
     },
     "writer": {
-     "ms": 99764,
+     "ms": 25906,
+     "tokens": 3189,
+     "cost": 0.000371
+    },
+    "verifier": {
+     "ms": 661,
+     "tokens": 489,
+     "cost": 5.6e-05
+    },
+    "critic": {
+     "ms": 1675,
+     "tokens": 2215,
+     "cost": 0.000517
+    },
+    "compliance": {
+     "ms": 777,
+     "tokens": 715,
+     "cost": 0.000607
+    },
+    "preview": {
+     "ms": 78,
      "tokens": 0,
-     "cost": 0.0
+     "cost": 0
     }
    },
-   "trace_id": "853938de42bc47b2bd5688377941dbac",
-   "errors": [
-    {
-     "node": "writer",
-     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198778, Requested 3513. Please try again in 16m29.712s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
-    }
-   ]
+   "trace_id": "e9d16befae864e7281fac1ba725463c6",
+   "errors": [],
+   "platform_violations": [],
+   "would_be_accepted": true
   },
   {
    "job_id": "dev-3a835b2c40",
@@ -240,124 +268,52 @@
    "status": "skipped",
    "pred": "skip",
    "raw_decision": "skip",
-   "fit": 0.3153,
+   "fit": 0.3172,
    "scam_score": 0.1,
-   "risk": 0.3,
+   "risk": 0.2,
    "price": null,
    "in_band": false,
    "drafted": false,
    "claims": 0,
    "unsupported_before": 0,
    "unsupported_after": 0,
-   "latency_s": 100.163,
-   "tokens": 1201,
-   "cost_usd": 0.002055,
+   "latency_s": 0.959,
+   "tokens": 2435,
+   "cost_usd": 0.000329,
    "steps": 5,
    "cover_letter": null,
    "compliance": null,
    "by_node": {
     "intake": {
-     "ms": 54,
+     "ms": 21,
      "tokens": 0,
      "cost": 0
     },
     "analyst": {
-     "ms": 100036,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 904,
+     "tokens": 1297,
+     "cost": 0.000195
     },
     "risk": {
-     "ms": 25771,
-     "tokens": 1201,
-     "cost": 0.002055
+     "ms": 749,
+     "tokens": 1138,
+     "cost": 0.000134
     },
     "matcher": {
-     "ms": 2113,
-     "tokens": 0,
-     "cost": 0
-    },
-    "decide": {
-     "ms": 0,
-     "tokens": 0,
-     "cost": 0
-    }
-   },
-   "trace_id": "308cbc905b9e4868a379a23100e36bd0",
-   "errors": []
-  },
-  {
-   "job_id": "dev-9ff3c69969",
-   "persona": "ai_ml_engineer",
-   "gold": "bid",
-   "gold_scam": false,
-   "injection": "prompt_leak",
-   "fit_level": "high",
-   "band": [
-    35,
-    48.3
-   ],
-   "status": "dead_letter",
-   "pred": "bid",
-   "raw_decision": "bid",
-   "fit": 0.2427,
-   "scam_score": 0.0,
-   "risk": 0.1,
-   "price": 42.0,
-   "in_band": true,
-   "drafted": false,
-   "claims": 0,
-   "unsupported_before": 0,
-   "unsupported_after": 0,
-   "latency_s": 199.848,
-   "tokens": 0,
-   "cost_usd": 0.0,
-   "steps": 7,
-   "cover_letter": null,
-   "compliance": null,
-   "by_node": {
-    "intake": {
-     "ms": 31,
-     "tokens": 0,
-     "cost": 0
-    },
-    "analyst": {
-     "ms": 100038,
-     "tokens": 0,
-     "cost": 0.0
-    },
-    "risk": {
-     "ms": 99839,
-     "tokens": 0,
-     "cost": 0.0
-    },
-    "matcher": {
-     "ms": 251,
-     "tokens": 0,
-     "cost": 0
-    },
-    "decide": {
-     "ms": 0,
-     "tokens": 0,
-     "cost": 0
-    },
-    "pricing": {
      "ms": 104,
      "tokens": 0,
      "cost": 0
     },
-    "writer": {
-     "ms": 99601,
+    "decide": {
+     "ms": 0,
      "tokens": 0,
-     "cost": 0.0
+     "cost": 0
     }
    },
-   "trace_id": "44eb059d17ca4749a7acb3f7ae1a02c5",
-   "errors": [
-    {
-     "node": "writer",
-     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198547, Requested 3743. Please try again in 16m29.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
-    }
-   ]
+   "trace_id": "cf59f7ce8ff04638a1a933cac6fb9a41",
+   "errors": [],
+   "platform_violations": null,
+   "would_be_accepted": null
   },
   {
    "job_id": "dev-d2b679d112",
@@ -370,42 +326,42 @@
     1220.0,
     2550.0
    ],
-   "status": "dead_letter",
+   "status": "awaiting_approval",
    "pred": "bid",
    "raw_decision": "bid",
-   "fit": 0.5529,
-   "scam_score": 0.0,
-   "risk": 0.23999999999999996,
-   "price": 2265.0,
+   "fit": 0.1427,
+   "scam_score": 0.1,
+   "risk": 0.3,
+   "price": 2120.0,
    "in_band": true,
-   "drafted": false,
-   "claims": 0,
-   "unsupported_before": 0,
+   "drafted": true,
+   "claims": 3,
+   "unsupported_before": 1,
    "unsupported_after": 0,
-   "latency_s": 199.333,
-   "tokens": 0,
-   "cost_usd": 0.0,
-   "steps": 7,
-   "cover_letter": null,
-   "compliance": null,
+   "latency_s": 83.049,
+   "tokens": 21422,
+   "cost_usd": 0.003638,
+   "steps": 17,
+   "cover_letter": "Solidity\u2011enabled credit\u2011portfolio dashboards are critical for your Travel team. I delivered a Power\u202fBI dashboard for Shan Distributors that cut reporting lag from seven days to one day and is used weekly by 60 managers (1e8bfb9261fc:0). I also built a Salesforce Apex solution for Bykea Partners that reduced rider wait time by 18% (c61202f0c4cd:0).\n\nFirst\u2011week plan: 1) Two requirement\u2011review sessions to map data sources and roll\u2011rate metrics. 2) Rapid prototype of the Solidity contract and a Power\u202fBI dashboard mock\u2011up. 3) Unit tests, monitoring scripts, and documentation for handover. \n\nFixed price for the 10\u2011day effort: $2120. \n\nDrafted with AI assistance and reviewed by me.",
+   "compliance": [],
    "by_node": {
     "intake": {
-     "ms": 35,
+     "ms": 26,
      "tokens": 0,
      "cost": 0
     },
     "analyst": {
-     "ms": 99680,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 1058,
+     "tokens": 1214,
+     "cost": 0.00018
     },
     "risk": {
-     "ms": 99821,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 16972,
+     "tokens": 1070,
+     "cost": 0.000121
     },
     "matcher": {
-     "ms": 1138,
+     "ms": 947,
      "tokens": 0,
      "cost": 0
     },
@@ -415,23 +371,40 @@
      "cost": 0
     },
     "pricing": {
-     "ms": 32,
+     "ms": 68,
      "tokens": 0,
      "cost": 0
     },
     "writer": {
-     "ms": 99390,
+     "ms": 1049,
+     "tokens": 2907,
+     "cost": 0.000304
+    },
+    "verifier": {
+     "ms": 9634,
+     "tokens": 1461,
+     "cost": 0.000165
+    },
+    "critic": {
+     "ms": 17091,
+     "tokens": 1655,
+     "cost": 0.000176
+    },
+    "compliance": {
+     "ms": 682,
+     "tokens": 701,
+     "cost": 7.7e-05
+    },
+    "preview": {
+     "ms": 73,
      "tokens": 0,
-     "cost": 0.0
+     "cost": 0
     }
    },
-   "trace_id": "7c9fac7cbc6448e7886e39170db73dd7",
-   "errors": [
-    {
-     "node": "writer",
-     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199500, Requested 2554. Please try again in 14m47.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
-    }
-   ]
+   "trace_id": "ea8c8dc77c7c4f7cafb77dc439f4b5d5",
+   "errors": [],
+   "platform_violations": [],
+   "would_be_accepted": true
   },
   {
    "job_id": "dev-a1268a5ea6",
@@ -444,116 +417,48 @@
     260.0,
     340.0
    ],
-   "status": "dead_letter",
+   "status": "awaiting_approval",
    "pred": "bid",
    "raw_decision": "bid",
-   "fit": 0.251,
-   "scam_score": 0.0,
-   "risk": 0.0,
+   "fit": 0.475,
+   "scam_score": 0.05,
+   "risk": 0.35,
    "price": 320.0,
    "in_band": true,
-   "drafted": false,
-   "claims": 0,
-   "unsupported_before": 0,
+   "drafted": true,
+   "claims": 1,
+   "unsupported_before": 1,
    "unsupported_after": 0,
-   "latency_s": 200.342,
-   "tokens": 1183,
-   "cost_usd": 0.000175,
-   "steps": 7,
-   "cover_letter": null,
-   "compliance": null,
-   "by_node": {
-    "intake": {
-     "ms": 24,
-     "tokens": 0,
-     "cost": 0
-    },
-    "analyst": {
-     "ms": 9190,
-     "tokens": 1183,
-     "cost": 0.000175
-    },
-    "risk": {
-     "ms": 100045,
-     "tokens": 0,
-     "cost": 0.0
-    },
-    "matcher": {
-     "ms": 112,
-     "tokens": 0,
-     "cost": 0
-    },
-    "decide": {
-     "ms": 0,
-     "tokens": 0,
-     "cost": 0
-    },
-    "pricing": {
-     "ms": 46,
-     "tokens": 0,
-     "cost": 0
-    },
-    "writer": {
-     "ms": 100151,
-     "tokens": 0,
-     "cost": 0.0
-    }
-   },
-   "trace_id": "828934a764d145379053924fccd3c06a",
-   "errors": [
+   "latency_s": 23.507,
+   "tokens": 9711,
+   "cost_usd": 0.001836,
+   "steps": 14,
+   "cover_letter": "Survival analysis, Tableau dashboards, and Kubernetes deployment are the core of your project. I will deliver a reproducible statsmodels pipeline, design interactive Tableau visualizations, and script a Kubernetes deployment, all within seven days. I will provide a concise video walkthrough of the entire solution to ensure clarity.\n\nWeek 1 plan: 1) Kickoff call to confirm scope and success metrics. 2) Build a statsmodels survival analysis model using the data schema you provide, validating assumptions and generating survival curves. 3) Create Tableau dashboards that display Kaplan\u2013Meier plots, hazard ratios, and cohort comparisons, ready for stakeholder review. 4) Draft Kubernetes manifests (Deployment, Service, Ingress) and test locally with Minikube. 5) Record a short video demo of the model, dashboards, and deployment steps.\n\nThese experiences demonstrate my ability to translate statistical models into actionable visual insights. The $320 budget covers the full development cycle, including the video walkthrough and documentation.\n\nI will keep you updated with bi\u2011weekly reviews and ensure the final deliverables are ready for production use.\n\nDrafted with AI assistance and reviewed by me.",
+   "compliance": [
     {
-     "node": "writer",
-     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199267, Requested 1929. Please try again in 8m36.672s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
+     "rule": "no_guarantees",
+     "evidence": "The phrase 'ensure the final deliverables are ready for production use' guarantees a specific outcome (production readiness) which is not permitted.",
+     "span": "ensure the final deliverables are ready for production use"
     }
-   ]
-  },
-  {
-   "job_id": "dev-32bf8cb350",
-   "persona": "data_analyst",
-   "gold": "bid",
-   "gold_scam": false,
-   "injection": null,
-   "fit_level": "high",
-   "band": [
-    520.0,
-    1100.0
    ],
-   "status": "dead_letter",
-   "pred": "bid",
-   "raw_decision": "bid",
-   "fit": 0.4103,
-   "scam_score": 0.05,
-   "risk": 0.15,
-   "price": 1050.0,
-   "in_band": true,
-   "drafted": false,
-   "claims": 0,
-   "unsupported_before": 0,
-   "unsupported_after": 0,
-   "latency_s": 200.613,
-   "tokens": 1078,
-   "cost_usd": 0.001656,
-   "steps": 7,
-   "cover_letter": null,
-   "compliance": null,
    "by_node": {
     "intake": {
-     "ms": 26,
+     "ms": 33,
      "tokens": 0,
      "cost": 0
     },
     "analyst": {
-     "ms": 100607,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 869,
+     "tokens": 1067,
+     "cost": 0.00014
     },
     "risk": {
-     "ms": 83981,
-     "tokens": 1078,
-     "cost": 0.001656
+     "ms": 859,
+     "tokens": 1066,
+     "cost": 0.000131
     },
     "matcher": {
-     "ms": 423,
+     "ms": 1733,
      "tokens": 0,
      "cost": 0
     },
@@ -563,23 +468,40 @@
      "cost": 0
     },
     "pricing": {
-     "ms": 117,
+     "ms": 38,
      "tokens": 0,
      "cost": 0
     },
     "writer": {
-     "ms": 99802,
+     "ms": 1401,
+     "tokens": 2411,
+     "cost": 0.000288
+    },
+    "verifier": {
+     "ms": 107,
      "tokens": 0,
-     "cost": 0.0
+     "cost": 0
+    },
+    "critic": {
+     "ms": 911,
+     "tokens": 1246,
+     "cost": 0.000115
+    },
+    "compliance": {
+     "ms": 17223,
+     "tokens": 672,
+     "cost": 0.000803
+    },
+    "preview": {
+     "ms": 76,
+     "tokens": 0,
+     "cost": 0
     }
    },
-   "trace_id": "c170a206d1d944048372f64379eb02b6",
-   "errors": [
-    {
-     "node": "writer",
-     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199036, Requested 2469. Please try again in 10m50.16s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
-    }
-   ]
+   "trace_id": "0309e06c5c8a4f89877aa55a956b0266",
+   "errors": [],
+   "platform_violations": [],
+   "would_be_accepted": true
   },
   {
    "job_id": "dev-f8e549af1e",
@@ -592,42 +514,42 @@
     500.0,
     760.0
    ],
-   "status": "dead_letter",
-   "pred": "bid",
-   "raw_decision": "bid",
-   "fit": 0.5686,
-   "scam_score": 0.0,
-   "risk": 0.13999999999999996,
-   "price": 720.0,
-   "in_band": true,
+   "status": "skipped",
+   "pred": "skip",
+   "raw_decision": "skip",
+   "fit": 0.1357,
+   "scam_score": 0.85,
+   "risk": 0.9,
+   "price": null,
+   "in_band": false,
    "drafted": false,
    "claims": 0,
    "unsupported_before": 0,
    "unsupported_after": 0,
-   "latency_s": 198.968,
-   "tokens": 0,
-   "cost_usd": 0.0,
-   "steps": 7,
+   "latency_s": 0.962,
+   "tokens": 2362,
+   "cost_usd": 0.000327,
+   "steps": 5,
    "cover_letter": null,
    "compliance": null,
    "by_node": {
     "intake": {
-     "ms": 33,
+     "ms": 21,
      "tokens": 0,
      "cost": 0
     },
     "analyst": {
-     "ms": 99139,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 751,
+     "tokens": 1213,
+     "cost": 0.000176
     },
     "risk": {
-     "ms": 99296,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 556,
+     "tokens": 1149,
+     "cost": 0.000151
     },
     "matcher": {
-     "ms": 1111,
+     "ms": 910,
      "tokens": 0,
      "cost": 0
     },
@@ -635,25 +557,12 @@
      "ms": 0,
      "tokens": 0,
      "cost": 0
-    },
-    "pricing": {
-     "ms": 40,
-     "tokens": 0,
-     "cost": 0
-    },
-    "writer": {
-     "ms": 99535,
-     "tokens": 0,
-     "cost": 0.0
     }
    },
-   "trace_id": "aa4e9bd84a754b8c87ce6820a91a036d",
-   "errors": [
-    {
-     "node": "writer",
-     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199570, Requested 2365. Please try again in 13m55.92s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
-    }
-   ]
+   "trace_id": "f8370434aef7435d9953c8961bf1d286",
+   "errors": [],
+   "platform_violations": null,
+   "would_be_accepted": null
   },
   {
    "job_id": "dev-324595103c",
@@ -666,10 +575,10 @@
     500.0,
     550.0
    ],
-   "status": "dead_letter",
+   "status": "awaiting_approval",
    "pred": "bid",
    "raw_decision": "bid",
-   "fit": 0.5842,
+   "fit": 0.57,
    "scam_score": 0.05,
    "risk": 0.127,
    "price": 190.0,
@@ -678,30 +587,30 @@
    "claims": 1,
    "unsupported_before": 0,
    "unsupported_after": 0,
-   "latency_s": 224.802,
-   "tokens": 4364,
-   "cost_usd": 0.001741,
-   "steps": 9,
-   "cover_letter": "You need a fast, reliable payments solution built on a mobile app that already handles bookings and Firebase back\u2011end. I delivered a cross\u2011platform mobile app with class booking, payments and push reminders using Expo, TypeScript and Firebase, achieving 4,000 downloads in two months and an 18% rise in class fill rate (evidence 3d28b2a513ee:0). My code uses Expo\u2011Location for live GPS tracking, showing deep Expo expertise (evidence a9119559abea:0). For the first week I will (1) run a kickoff call to confirm scope and success metrics, (2) set up the Expo project with Firebase auth and Stripe integration, and (3) deliver a prototype of the booking flow for your feedback. Fixed price is $190. Drafted with AI assistance and reviewed by me.",
-   "compliance": null,
+   "latency_s": 87.332,
+   "tokens": 11501,
+   "cost_usd": 0.001266,
+   "steps": 14,
+   "cover_letter": "Juniper Pay requires a secure, two\u2011sided payments platform that runs on mobile and integrates Expo, Firebase, and Python. I delivered a cross\u2011platform booking app for PulseFit that used Expo, Firebase and Stripe, achieving 4,000 downloads and an 18% increase in class fill rate in the first two months. In week one I will set up the Expo project, connect Firebase for authentication and real\u2011time data, and scaffold the Python backend with FastAPI to handle payment logic and provider onboarding. I will then implement a basic booking flow and expose a REST endpoint for provider\u2011customer matching. This will give you a working slice to review and iterate on before the project deadline. I will keep the code in a GitHub repo, add unit tests, and document the architecture so your team can take ownership. I will secure payment data by encrypting all sensitive fields at rest with Firebase Security Rules, using HTTPS for all API calls, and integrating Stripe Connect for compliant payment processing. Drafted with AI assistance and reviewed by me.",
+   "compliance": [],
    "by_node": {
     "intake": {
-     "ms": 26,
+     "ms": 19,
      "tokens": 0,
      "cost": 0
     },
     "analyst": {
-     "ms": 99042,
-     "tokens": 0,
-     "cost": 0.0
+     "ms": 8928,
+     "tokens": 1146,
+     "cost": 0.000162
     },
     "risk": {
-     "ms": 1020,
-     "tokens": 1019,
-     "cost": 0.000115
+     "ms": 17161,
+     "tokens": 1026,
+     "cost": 0.000117
     },
     "matcher": {
-     "ms": 145,
+     "ms": 81,
      "tokens": 0,
      "cost": 0
     },
@@ -711,107 +620,40 @@
      "cost": 0
     },
     "pricing": {
-     "ms": 90,
+     "ms": 69,
      "tokens": 0,
      "cost": 0
     },
     "writer": {
-     "ms": 1779,
-     "tokens": 2615,
-     "cost": 0.000636
+     "ms": 17342,
+     "tokens": 2765,
+     "cost": 0.000295
     },
     "verifier": {
-     "ms": 25206,
-     "tokens": 730,
-     "cost": 0.00099
+     "ms": 123,
+     "tokens": 0,
+     "cost": 0
     },
     "critic": {
-     "ms": 98568,
+     "ms": 17126,
+     "tokens": 1600,
+     "cost": 0.000145
+    },
+    "compliance": {
+     "ms": 665,
+     "tokens": 848,
+     "cost": 0.000112
+    },
+    "preview": {
+     "ms": 74,
      "tokens": 0,
-     "cost": 0.0
+     "cost": 0
     }
    },
-   "trace_id": "20d369829dfc4518a43911d80f5d01b5",
-   "errors": [
-    {
-     "node": "critic",
-     "error": "LLMError: critic: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199279, Requested 1810. Please try again in 7m50.448s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
-    }
-   ]
-  },
-  {
-   "job_id": "dev-d593651b45",
-   "persona": "fullstack_web_dev",
-   "gold": "bid",
-   "gold_scam": false,
-   "injection": null,
-   "fit_level": "partial",
-   "band": [
-    28,
-    37.9
-   ],
-   "status": "dead_letter",
-   "pred": "bid",
-   "raw_decision": "bid",
-   "fit": 0.4789,
-   "scam_score": 0.0,
-   "risk": 0.05249999999999996,
-   "price": 31.0,
-   "in_band": true,
-   "drafted": false,
-   "claims": 0,
-   "unsupported_before": 0,
-   "unsupported_after": 0,
-   "latency_s": 198.963,
-   "tokens": 0,
-   "cost_usd": 0.0,
-   "steps": 7,
-   "cover_letter": null,
-   "compliance": null,
-   "by_node": {
-    "intake": {
-     "ms": 37,
-     "tokens": 0,
-     "cost": 0
-    },
-    "analyst": {
-     "ms": 99415,
-     "tokens": 0,
-     "cost": 0.0
-    },
-    "risk": {
-     "ms": 99562,
-     "tokens": 0,
-     "cost": 0.0
-    },
-    "matcher": {
-     "ms": 211,
-     "tokens": 0,
-     "cost": 0
-    },
-    "decide": {
-     "ms": 0,
-     "tokens": 0,
-     "cost": 0
-    },
-    "pricing": {
-     "ms": 43,
-     "tokens": 0,
-     "cost": 0
-    },
-    "writer": {
-     "ms": 99234,
-     "tokens": 0,
-     "cost": 0.0
-    }
-   },
-   "trace_id": "8bfb689e20f04030b4f200a389d9921b",
-   "errors": [
-    {
-     "node": "writer",
-     "error": "LLMError: writer: all models failed: Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0gch533e9jtabkant1k03dv` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199110, Requested 2769. Please try again in 13m31.728s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing"
-    }
-   ]
+   "trace_id": "95acb7850fad4ddea7c5633d9a8a37e0",
+   "errors": [],
+   "platform_violations": [],
+   "would_be_accepted": true
   }
  ]
 }
