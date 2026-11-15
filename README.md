@@ -82,7 +82,7 @@ n = 247 dev jobs with gold evidence; commit ea06a77; embedder fastembed.
 | variant | Evidence Recall@5 | nDCG@10 | unsupported claim rate (after verification) | judge score (1-10) | GigSim reply rate | p95 latency (s) | cost per job (USD) |
 |---|---|---|---|---|---|---|---|
 | V0 naive | 0.441 | 0.534 | pending | pending | pending | pending | pending |
-| V9 skill graph (shipped) | 0.672 | 0.778 | pending | pending | pending | pending | pending |
+| V9 skill graph (shipped) | 0.672 | 0.778 | 0.500 | 5.67 | 1.000 | 136.4 | 0.00197 |
 <!-- /table -->
 
 ### Decisions
@@ -98,7 +98,11 @@ n = 247 dev jobs with gold evidence; commit ea06a77; embedder fastembed.
 ### Multi-agent comparison (C) — same jobs, same tools, same models
 
 <!-- table:multiagent -->
-_multiagent_comparison.json pending_
+| system | n | bid F1 | proposals | unsupported claim rate | judge (1-10) | GigSim reply rate | p95 latency (s) | mean tokens | cost/job (USD) | errors |
+|---|---|---|---|---|---|---|---|---|---|---|
+| gigbid_graph | 6 | 0.667 | 3 | 0.500 | 5.67 | 1.000 | 136.4 | 9998 | 0.00197 | 1 |
+| single_react | 6 | 0.000 | 0 | - | - | - | 0.0 | 0 | 0.00000 | 6 |
+| supervisor | 6 | 0.400 | 2 | 0.833 | 9.00 | 0.667 | 42.9 | 2871 | 0.00080 | 3 |
 <!-- /table -->
 
 ### Tool granularity (A)
