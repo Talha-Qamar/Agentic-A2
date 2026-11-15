@@ -16,23 +16,60 @@ import random
 
 from evals.runners.common import RESULTS, provenance, write_result
 
+SOURCES = ("multiagent_comparison.json", "decision_eval.json", "decision_eval_precalibration.json", "change_request_before.json",
+           "change_request_after.json", "hidden_test_results.json", "injection_eval.json", "rag_e2e_v0.json")
+
+
+def _all_letters() -> list[dict]:
+    """Every distinct proposal a system actually drafted for a dev job, across the committed results files."""
+    out, seen = [], set()
+    for name in SOURCES:
+        p = RESULTS / name
+        if not p.exists():
+            continue
+        d = json.loads(p.read_text())
+        for key in ("rows", "rows_off", "rows_on"):
+            for r in d.get(key) or []:
+                text = r.get("letter") or r.get("cover_letter")
+                if not text or not str(r.get("job_id", "")).startswith("dev-") or text[:300] in seen:
+                    continue
+                seen.add(text[:300])
+                out.append({"system": r.get("system") or "gigbid_graph", "job_id": r["job_id"], "letter": text,
+                            "judge": r.get("judge") if name == "multiagent_comparison.json" else None, "source": name})
+    return out
+
 
 def build() -> None:
+    import os
+    os.environ["GIGBID_PROFILE"] = "open"   # the judge is the strong model of the open profile, as in the comparison
+    from evals.runners.common import RowCache, quota_exhausted
     from evals.runners.multiagent_comparison import judge
     cmp = json.loads((RESULTS / "multiagent_comparison.json").read_text())
     dev = {json.loads(line)["job_id"]: json.loads(line) for line in open(RESULTS.parent / "datasets" / "dev_set.jsonl")}
     letters = [r for r in cmp["rows"] if r.get("letter")]
+    pool = _all_letters()
     rng = random.Random(30)
-    pick = rng.sample(letters, min(30, len(letters)))
+    pick = rng.sample(pool, min(30, len(pool)))
+    cache = RowCache("judge_items")
     items = []
     for i, r in enumerate(pick):
         j = dev[r["job_id"]]
-        items.append({"item_id": f"j{i:02d}", "system": r["system"], "job_id": r["job_id"], "job": f"{j['title']}\n\n{j['description']}",
-                      "proposal": r["letter"], "judge": r.get("judge")})
-    for it in items:
+        it = {"item_id": f"j{i:02d}", "system": r["system"], "job_id": r["job_id"], "source": r["source"],
+              "job": f"{j['title']}\n\n{j['description']}", "proposal": r["letter"], "judge": r["judge"]}
+        key = r["letter"][:120]
+        if it["judge"] is None and cache.get(key):
+            it["judge"] = cache.get(key)["judge"]
         if it["judge"] is None:
-            it["judge"] = asyncio.run(judge(dev[it["job_id"]], it["proposal"]))
-    write_result("judge_items.json", {"provenance": provenance(), "items": items})
+            try:
+                it["judge"] = asyncio.run(judge(j, r["letter"]))
+            except Exception as e:  # noqa: BLE001
+                if not quota_exhausted(str(e)):
+                    raise
+            if it["judge"] is not None:
+                cache.put(key, {"judge": it["judge"]})
+        items.append(it)
+    write_result("judge_items.json", {"provenance": provenance({"pool": len(pool), "judge_profile": "open"}), "items": items,
+                                      "complete": all(i["judge"] is not None for i in items)})
     by_job: dict[str, dict] = {}
     for r in letters:
         by_job.setdefault(r["job_id"], {})[r["system"]] = r["letter"]
