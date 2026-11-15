@@ -7,7 +7,7 @@ pip install -q -r requirements-eval.txt
 set +x
 [ -f ~/.gigbid_reviewer.env ] && set -a && . ~/.gigbid_reviewer.env && set +a
 set -x
-OUT=runs/out/011_sunday; mkdir -p $OUT/results
+OUT=runs/out/012_final; mkdir -p $OUT/results
 export EMBED_THREADS=6 GIGBID_PROFILE=open   # same routing as the live site: gpt-oss-20b for light nodes, 120b for writer/critic/baselines
 if [ -n "${NVIDIA_API_KEY:-}" ]; then export GIGBID_PROFILE=nv; TS_ARGS="--provider nvidia --model openai/gpt-oss-20b"; else TS_ARGS="--provider groq --model qwen/qwen3.8-27b"; fi
 echo "profile=$GIGBID_PROFILE"
@@ -24,7 +24,7 @@ if [ ! -f $OUT/gigbid_demo.mp4 ]; then
 fi
 
 # 1b. Part A: one agent drafts one grounded proposal for a GigSim job
-[ -f docs/examples/single_agent_proposal.md ] || python scripts/single_agent_proposal.py > $OUT/single_agent.log 2>&1
+[ -f $OUT/single_agent.done ] || { python scripts/single_agent_proposal.py > $OUT/single_agent.log 2>&1 && touch $OUT/single_agent.done; }
 cp docs/examples/single_agent_proposal.* $OUT/results/ 2>/dev/null
 
 # 2. no-LLM analysis
@@ -34,6 +34,16 @@ cp evals/results/rerank_analysis.json $OUT/results/ 2>/dev/null
 # X3 evaluation, no model needed
 [ -f evals/results/portfolio_builder_eval.json ] || python -m evals.runners.portfolio_builder_eval > $OUT/builder.log 2>&1
 cp evals/results/portfolio_builder_eval.json $OUT/results/ 2>/dev/null
+
+# drop tool-study rows that failed for an infrastructure reason (closed event loop), so they are redone
+python - <<'PY'
+import json, pathlib
+p = pathlib.Path("var/eval_cache/tool_granularity_qwen_qwen3.8-27b.jsonl")
+if p.exists():
+    keep = [l for l in p.read_text().splitlines() if l.strip() and "Event loop is closed" not in l and "ConnectError" not in l]
+    p.write_text("\n".join(keep) + ("\n" if keep else ""))
+    print("tool-study cache rows kept:", len(keep))
+PY
 
 # 3. experiments, fresh caches once
 if [ ! -f var/.fresh_011 ]; then rm -rf var/eval_cache var/cmp_gigsim.db* var/inj_gigsim.db*; mkdir -p var; touch var/.fresh_011; fi
