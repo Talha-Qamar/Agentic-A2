@@ -5,9 +5,9 @@
 | R&D report PDF | `docs/report/GigBid_RnD_Report.pdf` (built by `scripts/build_report.py`) |
 | Live web app | https://gigbid-d3l2.onrender.com |
 | Public repo | https://github.com/Talha-Qamar/Agentic-A2 |
-| Demo video | link added after upload |
+| Demo video | https://talha-qamar.github.io/Agentic-A2/demo/ (file: `docs/demo/gigbid_demo.mp4`) |
 | Portfolio MCP server | `uvx --from "git+https://github.com/Talha-Qamar/Agentic-A2#subdirectory=mcp_servers/portfolio" gigbid-portfolio-mcp` |
-| Technical write-up | link added after publishing (`docs/WRITEUP.md` is the source) |
+| Technical write-up | https://talha-qamar.github.io/Agentic-A2/blog/ (source `docs/WRITEUP.md`, built to `docs/blog/index.html`) |
 | ZIP of source | `git archive` of the final commit |
 | Reviewer login | private Google Classroom comment only (never in the repo) |
 

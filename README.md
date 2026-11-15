@@ -3,9 +3,9 @@
 ![GigBid demo: inbox, scam skipped, proposal studio, approval](docs/images/demo.gif)
 
 **Live:** https://gigbid-d3l2.onrender.com (reviewer login is in the private submission comment; the free instance
-sleeps when idle, so the first load takes ~1 minute) · **Demo video:** [`docs/demo/gigbid_demo.mp4`](docs/demo/gigbid_demo.mp4) (2:23, recorded against the live deployment by `scripts/demo_video.py`) ·
+sleeps when idle, so the first load takes ~1 minute) · **Demo video:** [watch (2:34)](https://talha-qamar.github.io/Agentic-A2/demo/) · file [`docs/demo/gigbid_demo.mp4`](docs/demo/gigbid_demo.mp4) (recorded against the live deployment by `scripts/demo_video.py` and `scripts/demo_reply_clip.py`) ·
 **Portfolio MCP server:** [`mcp_servers/portfolio`](mcp_servers/portfolio/README.md) ·
-**Write-up:** _link added after publishing_ · **Report:** `docs/report/GigBid_RnD_Report.pdf`
+**Write-up:** [Relevant is not the same as proven](https://talha-qamar.github.io/Agentic-A2/blog/) · **Report:** `docs/report/GigBid_RnD_Report.pdf`
 
 GigBid reads a freelancer's job feed, decides which jobs to bid on from **evidence in their own portfolio**, drafts a
 proposal whose every claim cites that evidence, and stops for a human to approve before anything is sent or any
