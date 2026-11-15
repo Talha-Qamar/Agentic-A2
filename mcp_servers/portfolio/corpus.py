@@ -84,7 +84,8 @@ class SimpleSearch:
     def __init__(self, items: list[Item]):
         from rank_bm25 import BM25Okapi
         self.items = items
-        self.bm = BM25Okapi([TOKEN.findall((i.title + " " + i.text).lower()) or ["_"] for i in items])
+        # an empty folder still starts (tools then return no evidence) instead of crashing inside BM25
+        self.bm = BM25Okapi([TOKEN.findall((i.title + " " + i.text).lower()) or ["_"] for i in items] or [["_"]])
         self.dense = None
         try:
             import numpy as np

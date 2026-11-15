@@ -1,2 +1,0 @@
-[console_scripts]
-gigbid-portfolio-mcp = gigbid_portfolio.server:main

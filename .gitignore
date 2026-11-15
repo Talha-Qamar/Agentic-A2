@@ -22,3 +22,5 @@ apps/web/test-results/
 apps/web/playwright-report/
 data/user_portfolios/
 *.tsbuildinfo
+mcp_servers/portfolio/build/
+mcp_servers/portfolio/*.egg-info/
