@@ -29,7 +29,14 @@ async def record(url: str, email: str, password: str, work: Path, seconds: float
         b = await p.chromium.launch()
         ctx = await b.new_context(viewport={"width": 1280, "height": 720}, record_video_dir=str(work), record_video_size={"width": 1280, "height": 720})
         page = await ctx.new_page()
-        r = await page.request.post(url + "/api/auth/login", data={"email": email, "password": password})
+        for _ in range(12):   # the free instance may be asleep: wake it before logging in
+            try:
+                if (await page.request.get(url + "/api/live", timeout=20000)).ok:
+                    break
+            except Exception:  # noqa: BLE001
+                pass
+            await page.wait_for_timeout(5000)
+        r = await page.request.post(url + "/api/auth/login", data={"email": email, "password": password}, timeout=90000)
         assert r.ok, f"login failed: {r.status}"
         await page.goto(url + "/messages")
         await page.wait_for_timeout(2500)
