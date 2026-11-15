@@ -7,7 +7,7 @@ pip install -q -r requirements-eval.txt
 set +x
 [ -f ~/.gigbid_reviewer.env ] && set -a && . ~/.gigbid_reviewer.env && set +a
 set -x
-OUT=runs/out/012_final; mkdir -p $OUT/results
+OUT=runs/out/013_final; mkdir -p $OUT/results
 export EMBED_THREADS=6 GIGBID_PROFILE=open   # same routing as the live site: gpt-oss-20b for light nodes, 120b for writer/critic/baselines
 if [ -n "${NVIDIA_API_KEY:-}" ]; then export GIGBID_PROFILE=nv; TS_ARGS="--provider nvidia --model openai/gpt-oss-20b"; else TS_ARGS="--provider groq --model qwen/qwen3.8-27b"; fi
 echo "profile=$GIGBID_PROFILE"
@@ -16,15 +16,13 @@ export GIGBID_FIT_BID=$(python -c "import json;print(json.load(open('evals/resul
 export GIGBID_FIT_WATCH=$(python -c "import json;print(round(0.6*json.load(open('evals/results/fit_calibration.json'))['summary']['fit_bid'],4))")
 
 python scripts/quota_probe.py
-# 1. demo video against the live deployment (narration with macOS `say`)
+# 1. client-reply scene appended to the recorded demo (no model call; the reply is already drafted on the live site)
 python -m playwright install chromium >/dev/null 2>&1
-if [ ! -f $OUT/gigbid_demo.mp4 ]; then
-  python scripts/demo_video.py --url https://gigbid-d3l2.onrender.com --out $OUT/gigbid_demo.mp4 > $OUT/demo.log 2>&1
-  tail -5 $OUT/demo.log
-fi
+[ -f $OUT/gigbid_demo_full.mp4 ] || python scripts/demo_reply_clip.py --url https://gigbid-d3l2.onrender.com --base docs/demo/gigbid_demo.mp4 --out $OUT/gigbid_demo_full.mp4 > $OUT/reply_clip.log 2>&1
+tail -3 $OUT/reply_clip.log
 
 # 1b. Part A: one agent drafts one grounded proposal for a GigSim job
-[ -f $OUT/single_agent.done ] || { python scripts/single_agent_proposal.py > $OUT/single_agent.log 2>&1 && touch $OUT/single_agent.done; }
+[ -f $OUT/single_agent.done ] || { GIGBID_PROFILE=open_small python scripts/single_agent_proposal.py > $OUT/single_agent.log 2>&1 && touch $OUT/single_agent.done; }
 cp docs/examples/single_agent_proposal.* $OUT/results/ 2>/dev/null
 
 # 2. no-LLM analysis
