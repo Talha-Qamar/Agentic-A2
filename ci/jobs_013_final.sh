@@ -8,7 +8,7 @@ set +x
 [ -f ~/.gigbid_reviewer.env ] && set -a && . ~/.gigbid_reviewer.env && set +a
 set -x
 OUT=runs/out/013_final; mkdir -p $OUT/results
-export EMBED_THREADS=6 GIGBID_PROFILE=open   # same routing as the live site: gpt-oss-20b for light nodes, 120b for writer/critic/baselines
+export EMBED_THREADS=6 GIGBID_PROFILE=open_small   # gpt-oss-120b daily pool is spent: remaining runs use gpt-oss-20b on every node
 if [ -n "${NVIDIA_API_KEY:-}" ]; then export GIGBID_PROFILE=nv; TS_ARGS="--provider nvidia --model openai/gpt-oss-20b"; else TS_ARGS="--provider groq --model qwen/qwen3.8-27b"; fi
 echo "profile=$GIGBID_PROFILE"
 [ -n "${REVIEWER_EMAIL:-}" ] && echo "reviewer email set" || echo "REVIEWER_EMAIL missing in ~/.gigbid_reviewer.env"
