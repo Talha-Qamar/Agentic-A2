@@ -85,11 +85,19 @@ def save_state_snapshot(thread_id: str, out: dict) -> None:
 
 
 # ------------------------------------------------------------------ tasks
+FINISHED = {"skipped", "awaiting_approval", "submitted", "blocked", "needs_attention"}
+
+
 async def analyse_job(ctx, user_id: str, job_id: str, force: bool = False) -> dict:
     from agent.runner import run_bid
     user = user_row(user_id)
     row = db.one("SELECT * FROM jobs WHERE user_id=%s AND job_id=%s", (user_id, job_id))
-    thread_id = (row or {}).get("thread_id") if row and not force else None
+    if row and not force and row.get("thread_id") and row.get("status") in FINISHED:
+        # idempotent: a repeated request (retry, restart, double click) never re-runs a finished analysis; re-running on
+        # the same thread would also add to that thread's step budget until it trips
+        return {"thread_id": row["thread_id"], "status": row["status"], "already_analysed": True}
+    # a dead-lettered run (e.g. provider quota) is retried on a fresh thread so it gets a fresh step and token budget
+    thread_id = (row or {}).get("thread_id") if row and not force and row.get("status") != "dead_letter" else None
     thread_id = thread_id or f"bid-{user_id[-6:]}-{job_id}-{int(time.time()) % 100000}"
     if row is None:
         db.x("INSERT INTO jobs(user_id, job_id, title, data, status, thread_id) VALUES (%s,%s,%s,%s,'analysing',%s) ON CONFLICT DO NOTHING",

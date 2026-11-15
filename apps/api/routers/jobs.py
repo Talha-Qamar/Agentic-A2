@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 from apps.api.auth.session import UserDep
 from common import db
-from worker.tasks import enqueue
+from worker.tasks import FINISHED, enqueue
 
 router = APIRouter(prefix="/api", tags=["jobs"])
 
@@ -60,9 +60,12 @@ class AnalyseIn(BaseModel):
 
 @router.post("/jobs/{job_id}/analyse")
 async def analyse(job_id: str, body: AnalyseIn | None = None, user=UserDep):
-    jid = await enqueue("analyse_job", user["user_id"], job_id, bool(body and body.force))
+    force = bool(body and body.force)
+    row = db.one("SELECT status FROM jobs WHERE user_id=%s AND job_id=%s", (user["user_id"], job_id))
+    if row and row["status"] in FINISHED and not force:
+        return {"queued": None, "status": row["status"], "already_analysed": True}   # use force=true to re-analyse
     db.x("UPDATE jobs SET status='queued', updated_at=now() WHERE user_id=%s AND job_id=%s", (user["user_id"], job_id))
-    return {"queued": jid}
+    return {"queued": await enqueue("analyse_job", user["user_id"], job_id, force)}
 
 
 class ManualJobIn(BaseModel):
