@@ -17,8 +17,8 @@ supervisor invented a tool name). The hand-built graph finished every job; one d
 (an authorisation error in the preview step). Its proposals drew a simulated client reply 3 times out of 3,
 against 2 of 3 for the supervisor. The LLM judge scored the supervisor's letters higher (9.0 against 5.7) even
 though the independent claim check found more unsupported claims in them (0.83 against 0.50): the judge rewards
-fluent, confident letters, which is why GigBid does not use it to decide anything and why it is calibrated against
-human labels before its scores are reported. Six jobs per system is a small sample; the failure modes, not the
+fluent, confident letters, which is why GigBid does not use it to decide anything and why its scores here are
+indicative until it is checked against human labels. Six jobs per system is a small sample; the failure modes, not the
 means, are the result. **What ships:** the hand-built graph, because only it finished every job and its tool
 surface per step stays small enough for a capped endpoint.
 

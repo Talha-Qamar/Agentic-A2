@@ -125,7 +125,7 @@ model call at query time. End to end (B5):
 
 Same jobs, same MCP tools, same models (`evals/runners/multiagent_comparison.py`): (a) one ReAct agent holding all
 tools, (b) `langgraph-supervisor` with the same specialist roles, (c) the hand-built graph. Proposals are submitted to
-GigSim (evaluation accounts) to observe simulated client replies; quality is scored by the calibrated judge.
+GigSim (evaluation accounts) to observe simulated client replies; quality is scored by an LLM judge (gpt-oss-120b, 1-10 rubric). The judge is not yet calibrated against human labels: the labelling page (`/label`) and the item export exist, but too few labels were collected for an agreement figure, so judge scores are indicative only.
 
 {{table:multiagent}}
 

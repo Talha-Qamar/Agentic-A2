@@ -4,7 +4,7 @@
 
 Same jobs, same models (config tier `strong` for the baselines), same MCP tools. Metrics per system:
 bid/skip F1, unsupported-claim rate of the proposal (independent verifier: rag/verify.py against the portfolio),
-LLM-judge quality (judge prompt; calibration in judge_calibration.json), latency, tokens, cost, and GigSim outcomes
+LLM-judge quality (judge prompt; not yet calibrated against human labels, see report §5), latency, tokens, cost, and GigSim outcomes
 (each system's proposals are submitted to its own GigSim account and the simulated clients react).
 """
 from __future__ import annotations

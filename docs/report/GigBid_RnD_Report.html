@@ -436,7 +436,7 @@ offline Recall@5 gap (0.441 against 0.672) predicts.</p>
 <h2>5. R&amp;D question C — single agent vs prebuilt supervisor vs our graph</h2>
 <p>Same jobs, same MCP tools, same models (<code>evals/runners/multiagent_comparison.py</code>): (a) one ReAct agent holding all
 tools, (b) <code>langgraph-supervisor</code> with the same specialist roles, (c) the hand-built graph. Proposals are submitted to
-GigSim (evaluation accounts) to observe simulated client replies; quality is scored by the calibrated judge.</p>
+GigSim (evaluation accounts) to observe simulated client replies; quality is scored by an LLM judge (gpt-oss-120b, 1-10 rubric). The judge is not yet calibrated against human labels: the labelling page (<code>/label</code>) and the item export exist, but too few labels were collected for an agreement figure, so judge scores are indicative only.</p>
 <table>
 <thead>
 <tr>
@@ -504,8 +504,8 @@ supervisor invented a tool name). The hand-built graph finished every job; one d
 (an authorisation error in the preview step). Its proposals drew a simulated client reply 3 times out of 3,
 against 2 of 3 for the supervisor. The LLM judge scored the supervisor's letters higher (9.0 against 5.7) even
 though the independent claim check found more unsupported claims in them (0.83 against 0.50): the judge rewards
-fluent, confident letters, which is why GigBid does not use it to decide anything and why it is calibrated against
-human labels before its scores are reported. Six jobs per system is a small sample; the failure modes, not the
+fluent, confident letters, which is why GigBid does not use it to decide anything and why its scores here are
+indicative until it is checked against human labels. Six jobs per system is a small sample; the failure modes, not the
 means, are the result. <strong>What ships:</strong> the hand-built graph, because only it finished every job and its tool
 surface per step stays small enough for a capped endpoint.</p>
 <h2>6. The change request (GigSim policy 2026-11-02)</h2>
