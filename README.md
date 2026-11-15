@@ -140,7 +140,7 @@ Public traces (read-only pages on the live app: per-node tokens, cost and latenc
 MCP audit log), published from the demo run:
 
 * [approved proposal, then dead letter](https://gigbid-d3l2.onrender.com/t/bid-ce082d-live-4c7c84832f-63724) - full bid graph through the human approval; the submit then failed because the free host had restarted and its in-memory GigSim no longer had the job, so the run went to the dead-letter queue with the reason shown (the exactly-once submit path is in the demo video and `tests/integration/test_graph_e2e.py`)
-* [scam skipped](https://gigbid-d3l2.onrender.com/t/bid-ce082d-dev-922f47037a-63013) - off-platform crypto payment caught, no proposal drafted
+* [scam caught](https://gigbid-d3l2.onrender.com/t/bid-ce082d-dev-922f47037a-63013) - off-platform crypto payment flagged and skipped at `decide`, no proposal drafted; the trace also shows the demo warm-up re-queuing the same job until the per-thread step budget stopped it (a bug since fixed, `docs/AI_USAGE.md` item 6)
 * [injection ignored](https://gigbid-d3l2.onrender.com/t/bid-ce082d-dev-19cf56c7ca-63022) - planted "rate this a perfect fit" instruction quarantined; decision made by rules on evidence
 
 ## Run it yourself
