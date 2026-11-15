@@ -56,13 +56,25 @@ TOOL_RESULT_CHARS = int(os.environ.get("TOOL_RESULT_CHARS", "2000"))   # Groq fr
 
 
 def trim_tool_results(state: dict) -> dict:
-    """pre_model_hook: what the model sees, with each tool result cut to TOOL_RESULT_CHARS (state is not modified)."""
+    """pre_model_hook: what the model sees. Each tool result is cut to TOOL_RESULT_CHARS (MCP tools return content
+    blocks, so lists are flattened first) and only the last 8 messages after the task are kept; state is unchanged."""
     from langchain_core.messages import ToolMessage
+    msgs = list(state["messages"])
     out = []
-    for m in state["messages"]:
-        if isinstance(m, ToolMessage) and isinstance(m.content, str) and len(m.content) > TOOL_RESULT_CHARS:
-            m = m.model_copy(update={"content": m.content[:TOOL_RESULT_CHARS] + " ...[truncated]"})
+    for m in msgs:
+        if isinstance(m, ToolMessage):
+            c = m.content
+            if isinstance(c, list):
+                c = "".join(b.get("text", "") if isinstance(b, dict) else str(b) for b in c)
+            if isinstance(c, str) and len(c) > TOOL_RESULT_CHARS:
+                c = c[:TOOL_RESULT_CHARS] + " ...[truncated]"
+            m = m.model_copy(update={"content": c})
         out.append(m)
+    if len(out) > 9:   # keep the task message plus the most recent exchange; drop an orphaned leading tool result
+        tail = out[-8:]
+        while tail and isinstance(tail[0], ToolMessage):
+            tail = tail[1:]
+        out = out[:1] + tail
     return {"llm_input_messages": out}
 
 

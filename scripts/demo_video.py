@@ -173,9 +173,19 @@ async def record(url: str, email: str, password: str, workdir: Path, durations: 
         await hold(7, t0)
         # 8 approve
         t0 = time.monotonic(); await cap(8)
+        # the edit in scene 7 re-runs compliance, which can take a while under the free tier's per-minute cap:
+        # wait for whichever proposal approval is pending now and open its studio before clicking
+        for _ in range(50):
+            pending = [a for a in await (await api.get(url + "/api/approvals")).json() if a["kind"] == "proposal_approval"]
+            if pending:
+                appr = pending
+                break
+            await page.wait_for_timeout(3000)
         if appr:
             PUBLISH.append(appr[0]["thread_id"])
-            await page.get_by_test_id("approve").click()
+            if f"/studio/{appr[0]['thread_id']}" not in page.url:
+                await page.goto(url + f"/studio/{appr[0]['thread_id']}")
+            await page.get_by_test_id("approve").click(timeout=90000)
             await page.wait_for_timeout(2500); await cap(8)
         await hold(8, t0)
         # 9 pipeline + client reply
